@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TakeoffAI — The 90-Day Bid Domination System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+:root{--orange:#E8611A;--orange-hover:#D4560F;--orange-light:#FFF3EC;--orange-100:#FFE4D1;--gray-900:#1C1C1C;--gray-800:#2D2D2D;--gray-700:#404040;--gray-600:#555555;--gray-500:#777777;--gray-400:#999999;--gray-300:#BBBBBB;--gray-200:#E0E0E0;--gray-150:#EBEBEB;--gray-100:#F4F4F4;--gray-50:#F9F9F9;--white:#FFFFFF;--green:#1B8C4F;--green-light:#EDFBF3;--red:#D94040;--red-light:#FEF2F2}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',-apple-system,sans-serif;background:var(--white);color:var(--gray-900);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.container{max-width:1080px;margin:0 auto;padding:0 24px}
+.kicker{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:14px;display:inline-block}
+.section-heading{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(30px,4.5vw,48px);line-height:1.12;letter-spacing:-.025em;color:var(--gray-900);margin-bottom:16px}
+.section-sub{font-size:17px;line-height:1.65;color:var(--gray-500);max-width:580px;font-weight:400}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:var(--white);font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;padding:14px 28px;border-radius:10px;border:none;cursor:pointer;text-decoration:none;transition:all .2s ease}
+.btn-primary:hover{background:var(--orange-hover);transform:translateY(-1px);box-shadow:0 6px 24px rgba(232,97,26,.25)}
+.btn-primary svg{transition:transform .2s ease}
+.btn-primary:hover svg{transform:translateX(3px)}
+.btn-primary.lg{font-size:17px;padding:18px 36px;border-radius:12px}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:0 0;color:var(--gray-700);font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;padding:14px 24px;border-radius:10px;border:1.5px solid var(--gray-200);cursor:pointer;text-decoration:none;transition:all .2s ease}
+.btn-ghost:hover{border-color:var(--gray-300);background:var(--gray-50)}
+.arrow-svg{width:18px;height:18px}
+.arrow-sm{width:15px;height:15px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.anim{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.anim.visible{opacity:1;transform:translateY(0)}
+.anim-hero{opacity:0;animation:fadeUp .65s ease forwards}
+.d1{animation-delay:.05s}.d2{animation-delay:.12s}.d3{animation-delay:.2s}.d4{animation-delay:.28s}.d5{animation-delay:.36s}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--gray-150);transition:box-shadow .3s ease}
+nav.scrolled{box-shadow:0 1px 12px rgba(0,0,0,.06)}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;cursor:pointer}
+.nav-logo-icon{width:32px;height:32px;position:relative}
+.nav-logo-icon .corner-tl{position:absolute;top:2px;left:2px;width:12px;height:12px;border-top:3px solid var(--gray-900);border-left:3px solid var(--gray-900)}
+.nav-logo-icon .corner-br{position:absolute;bottom:2px;right:2px;width:12px;height:12px;border-bottom:3px solid var(--orange);border-right:3px solid var(--orange)}
+.nav-logo-text{font-size:17px;font-weight:600;color:var(--gray-900);letter-spacing:-.01em}
+.nav-logo-text span{color:var(--gray-400);font-weight:400}
+#nav-main-links{display:flex;align-items:center;gap:32px}
+#nav-main-links a{font-size:14px;font-weight:500;color:var(--gray-500);text-decoration:none;transition:color .2s;cursor:pointer}
+#nav-main-links a:hover{color:var(--gray-900)}
+.nav-cta{font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;padding:9px 20px;background:var(--gray-900);color:var(--white);border:none;border-radius:8px;cursor:pointer;text-decoration:none;transition:all .2s}
+.nav-cta:hover{background:var(--gray-700)}
+#nav-back{font-size:14px;font-weight:500;color:var(--gray-500);text-decoration:none;transition:color .2s;cursor:pointer;display:none}
+#nav-back:hover{color:var(--orange)}
+@media(max-width:768px){#nav-main-links{display:none!important}}
+
+/* HERO */
+.hero{padding:140px 0 80px;position:relative;background:linear-gradient(180deg,var(--gray-50) 0%,var(--white) 100%)}
+.hero .container{max-width:880px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:var(--orange-light);border:1px solid var(--orange-100);border-radius:100px;padding:6px 16px 6px 8px;font-size:13px;font-weight:500;color:var(--orange);margin-bottom:28px}
+.hero-pill-dot{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:pulse 2s ease infinite}
+.hero h1{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(38px,6vw,64px);line-height:1.08;letter-spacing:-.03em;margin-bottom:20px;color:var(--gray-900)}
+.hero h1 .orange{color:var(--orange)}
+.hero-sub{font-size:18px;line-height:1.65;color:var(--gray-500);max-width:540px;margin-bottom:36px;font-weight:400}
+.hero-sub strong{color:var(--gray-800);font-weight:600}
+.hero-ctas{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center;margin-bottom:56px}
+.hero-stats{display:flex;gap:48px;flex-wrap:wrap;justify-content:center;padding-top:40px;border-top:1px solid var(--gray-150);width:100%;max-width:560px}
+.hero-stat{text-align:center}
+.hero-stat-num{font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:var(--gray-900)}
+.hero-stat-num .orange{color:var(--orange);font-size:inherit}
+.hero-stat-label{font-size:13px;color:var(--gray-400);margin-top:2px}
+
+/* PAIN */
+.pain{padding:96px 0}
+.pain-header{margin-bottom:48px}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pain-card{background:var(--white);border:1px solid var(--gray-150);border-radius:14px;padding:28px 24px;transition:all .25s ease}
+.pain-card:hover{border-color:var(--gray-200);box-shadow:0 4px 20px rgba(0,0,0,.04)}
+.pain-icon{width:40px;height:40px;border-radius:10px;background:var(--red-light);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.pain-icon svg{color:var(--red)}
+.pain-card h3{font-size:16px;font-weight:600;margin-bottom:8px;line-height:1.35;color:var(--gray-800)}
+.pain-card p{font-size:14px;line-height:1.6;color:var(--gray-500)}
+.pain-tag{display:inline-block;margin-top:14px;font-size:12px;font-weight:600;color:var(--red);background:var(--red-light);padding:4px 10px;border-radius:6px}
+
+/* HOW */
+.how{padding:96px 0;background:var(--gray-50)}
+.how-header{text-align:center;margin-bottom:56px}
+.how-header .section-sub{margin:0 auto}
+.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.how-step{text-align:center;position:relative}
+.how-num{font-family:'Fraunces',serif;font-size:56px;font-weight:700;color:var(--orange-100);line-height:1;margin-bottom:12px}
+.how-step h3{font-size:18px;font-weight:600;margin-bottom:8px;color:var(--gray-800)}
+.how-step p{font-size:14px;line-height:1.6;color:var(--gray-500);max-width:280px;margin:0 auto}
+.how-connector{position:absolute;top:28px;right:-12px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;color:var(--gray-300)}
+.how-step:last-child .how-connector{display:none}
+
+/* OFFER */
+.offer{padding:96px 0}
+.offer-header{text-align:center;margin-bottom:48px}
+.offer-header .section-sub{margin:0 auto}
+.offer-name-badge{display:inline-flex;align-items:center;gap:6px;background:var(--gray-900);color:var(--white);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:6px;margin-bottom:16px}
+.stack{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.stack-card{display:grid;grid-template-columns:1fr auto;background:var(--white);border:1.5px solid var(--gray-150);border-radius:14px;overflow:hidden;transition:all .25s ease}
+.stack-card:hover{border-color:var(--gray-200);box-shadow:0 4px 16px rgba(0,0,0,.04)}
+.stack-card.core{border-color:var(--orange);background:var(--orange-light)}
+.stack-body{padding:22px 24px}
+.stack-body .sb-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:4px;margin-bottom:8px}
+.stack-card.core .sb-tag{background:var(--orange);color:var(--white)}
+.stack-card:not(.core) .sb-tag{background:var(--gray-100);color:var(--gray-500)}
+.stack-body h3{font-size:16px;font-weight:600;color:var(--gray-800);margin-bottom:4px}
+.stack-body p{font-size:13px;line-height:1.6;color:var(--gray-500)}
+.stack-val{display:flex;align-items:center;justify-content:center;padding:0 24px;border-left:1px solid var(--gray-150);min-width:100px;flex-direction:column;gap:1px}
+.stack-card.core .stack-val{border-left-color:rgba(232,97,26,.2)}
+.stack-val-label{font-size:10px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;font-weight:500}
+.stack-val-num{font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:var(--orange)}
+.offer-total{max-width:760px;margin:20px auto 0;background:var(--gray-900);border-radius:14px;padding:24px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.ot-left .ot-label{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:2px}
+.ot-left .ot-num{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:rgba(255,255,255,.4);text-decoration:line-through;text-decoration-color:var(--red)}
+.ot-right{text-align:right}
+.ot-right .ot-label{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:2px}
+.ot-right .ot-num{font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:var(--orange)}
+.ot-right .ot-per{font-size:13px;color:rgba(255,255,255,.4)}
+
+/* URGENCY */
+.urgency{padding:0 0 96px}
+.urgency-bar{max-width:680px;margin:0 auto;background:var(--gray-900);border-radius:16px;padding:24px 32px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:center}
+.urgency-count{display:flex;align-items:baseline;gap:8px}
+.urgency-num{font-family:'Fraunces',serif;font-size:36px;font-weight:700;color:var(--orange)}
+.urgency-label{font-size:14px;color:rgba(255,255,255,.6);line-height:1.3}
+.urgency-div{width:1px;height:36px;background:rgba(255,255,255,.1)}
+.urgency-text{font-size:13px;color:rgba(255,255,255,.5);max-width:260px;line-height:1.5}
+.urgency-text strong{color:rgba(255,255,255,.9);font-weight:600}
+
+/* GUARANTEE */
+.guarantee{padding:96px 0;background:var(--gray-50)}
+.guarantee-header{text-align:center;margin-bottom:48px}
+.guarantee-header .section-sub{margin:0 auto}
+.guar-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px;margin:0 auto}
+.guar-card{border-radius:16px;padding:32px 28px}
+.guar-card.g1{background:var(--white);border:1.5px solid var(--gray-150)}
+.guar-card.g2{background:var(--orange-light);border:1.5px solid var(--orange-100)}
+.guar-badge{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:5px;margin-bottom:18px}
+.guar-card.g1 .guar-badge{background:var(--gray-100);color:var(--gray-600)}
+.guar-card.g2 .guar-badge{background:var(--orange-100);color:var(--orange)}
+.guar-card h3{font-family:'Fraunces',serif;font-size:20px;font-weight:700;margin-bottom:10px;color:var(--gray-900);line-height:1.25}
+.guar-card p{font-size:14px;line-height:1.65;color:var(--gray-500)}
+.guar-card p strong{color:var(--gray-800);font-weight:600}
+
+/* PRICING */
+.pricing{padding:96px 0}
+.pricing-header{text-align:center;margin-bottom:48px}
+.pricing-header .section-sub{margin:0 auto}
+.pricing-compare{display:grid;grid-template-columns:1fr 48px 1fr;max-width:780px;margin:0 auto 48px;align-items:stretch}
+.pr-card{border-radius:18px;padding:36px 32px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.pr-old{background:var(--gray-50);border:1.5px solid var(--gray-150);opacity:.7}
+.pr-old .pr-tag{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-400);margin-bottom:16px}
+.pr-old .pr-amount{font-family:'Fraunces',serif;font-size:40px;font-weight:700;color:var(--gray-400);text-decoration:line-through;text-decoration-color:var(--red);margin-bottom:4px}
+.pr-old .pr-per{font-size:14px;color:var(--gray-400);margin-bottom:16px}
+.pr-old .pr-detail{font-size:13px;color:var(--gray-400);line-height:1.55}
+.pr-vs{display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--gray-300)}
+.pr-new{background:var(--white);border:2px solid var(--orange);position:relative;box-shadow:0 8px 40px rgba(232,97,26,.08)}
+.pr-featured{position:absolute;top:-12px;background:var(--orange);color:var(--white);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 16px;border-radius:100px}
+.pr-new .pr-tag{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;margin-top:6px}
+.pr-new .pr-amount{font-family:'Fraunces',serif;font-size:52px;font-weight:700;color:var(--gray-900);margin-bottom:2px}
+.pr-new .pr-amount small{font-size:20px;font-weight:400;color:var(--gray-400)}
+.pr-new .pr-per{font-size:13px;color:var(--gray-400);margin-bottom:24px}
+.pr-list{text-align:left;width:100%;list-style:none}
+.pr-list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.5;color:var(--gray-600);padding:9px 0;border-bottom:1px solid var(--gray-100)}
+.pr-list li:last-child{border-bottom:none}
+.pr-check{width:20px;height:20px;min-width:20px;border-radius:6px;background:var(--green-light);display:flex;align-items:center;justify-content:center;margin-top:1px}
+.pr-check svg{color:var(--green)}
+.pricing-cta{text-align:center}
+.pricing-cta .sub{margin-top:14px;font-size:13px;color:var(--gray-400)}
+
+/* ROI */
+.roi{padding:96px 0;background:var(--gray-50)}
+.roi-header{text-align:center;margin-bottom:48px}
+.roi-header .section-sub{margin:0 auto}
+.roi-calc{max-width:680px;margin:0 auto;background:var(--white);border:1.5px solid var(--gray-150);border-radius:18px;padding:36px;box-shadow:0 2px 12px rgba(0,0,0,.03)}
+.roi-inputs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+.roi-field label{display:block;font-size:13px;font-weight:500;color:var(--gray-500);margin-bottom:6px}
+.roi-field input{width:100%;padding:12px 14px;background:var(--gray-50);border:1.5px solid var(--gray-150);border-radius:10px;color:var(--gray-900);font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;outline:none;transition:border-color .2s}
+.roi-field input:focus{border-color:var(--orange);background:var(--white)}
+.roi-results{background:var(--gray-50);border-radius:12px;padding:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.roi-r{text-align:center}
+.roi-r-label{font-size:11px;color:var(--gray-400);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.roi-r-num{font-family:'Fraunces',serif;font-size:28px;font-weight:700}
+.roi-r-num.c-orange{color:var(--orange)}
+.roi-r-num.c-green{color:var(--green)}
+.roi-r-num.c-dark{color:var(--gray-900)}
+
+/* FAQ */
+.faq{padding:96px 0}
+.faq-header{text-align:center;margin-bottom:48px}
+.faq-list{max-width:660px;margin:0 auto;display:flex;flex-direction:column;gap:6px}
+.faq-item{background:var(--white);border:1.5px solid var(--gray-150);border-radius:12px;overflow:hidden;transition:border-color .2s}
+.faq-item.open{border-color:var(--gray-200)}
+.faq-q{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:15px;font-weight:500;color:var(--gray-800);user-select:none;transition:color .2s}
+.faq-q:hover{color:var(--orange)}
+.faq-arrow{width:18px;height:18px;transition:transform .3s ease;color:var(--gray-300);flex-shrink:0}
+.faq-item.open .faq-arrow{transform:rotate(180deg);color:var(--orange)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a-inner{padding:0 22px 20px;font-size:14px;line-height:1.65;color:var(--gray-500)}
+
+/* FINAL CTA */
+.final-cta{padding:96px 0 112px;text-align:center;background:var(--gray-900);color:var(--white);position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(232,97,26,.15),transparent 70%);pointer-events:none}
+.final-cta .container{position:relative;z-index:1}
+.final-cta h2{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(32px,5vw,52px);line-height:1.1;letter-spacing:-.025em;margin-bottom:16px}
+.final-cta h2 .orange{color:var(--orange)}
+.final-cta p{font-size:17px;color:rgba(255,255,255,.55);max-width:480px;margin:0 auto 36px;line-height:1.6}
+.final-cta .subtext{font-size:13px;color:rgba(255,255,255,.35);margin-top:16px}
+
+/* FOOTER */
+footer{padding:36px 0;border-top:1px solid var(--gray-150)}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+footer p{font-size:13px;color:var(--gray-400)}
+footer a{color:var(--gray-500);text-decoration:none;cursor:pointer}
+footer a:hover{color:var(--orange)}
+
+/* LEGAL PAGES */
+.page-view{display:none}
+.page-view.active{display:block}
+.legal-header{padding:120px 0 48px;background:var(--gray-50);border-bottom:1px solid var(--gray-150)}
+.legal-header .container{max-width:720px}
+.legal-header h1{font-family:'Fraunces',serif;font-weight:700;font-size:36px;line-height:1.15;letter-spacing:-.02em;color:var(--gray-900);margin-bottom:8px}
+.legal-header .updated{font-size:14px;color:var(--gray-400)}
+.legal-body{max-width:720px;margin:0 auto;padding:48px 24px 96px}
+.legal-body h2{font-family:'Fraunces',serif;font-weight:700;font-size:22px;color:var(--gray-900);margin:40px 0 12px;letter-spacing:-.01em}
+.legal-body h2:first-child{margin-top:0}
+.legal-body h3{font-size:16px;font-weight:600;color:var(--gray-800);margin:28px 0 8px}
+.legal-body p{font-size:15px;line-height:1.75;color:var(--gray-600);margin-bottom:12px}
+.legal-body ul,.legal-body ol{margin:8px 0 16px 20px;list-style:none}
+.legal-body ul li,.legal-body ol li{font-size:15px;line-height:1.75;color:var(--gray-600);padding:3px 0;position:relative;padding-left:16px}
+.legal-body ul li::before{content:'';position:absolute;left:0;top:12px;width:5px;height:5px;border-radius:50%;background:var(--gray-300)}
+.legal-body ol{counter-reset:item}
+.legal-body ol li{counter-increment:item}
+.legal-body ol li::before{content:counter(item,lower-alpha) ')';position:absolute;left:-4px;top:3px;font-size:14px;color:var(--gray-400);font-weight:500;width:auto;height:auto;border-radius:0;background:none}
+.legal-body a{color:var(--orange);text-decoration:none}
+.legal-body a:hover{color:var(--orange-hover);text-decoration:underline}
+.legal-body strong{color:var(--gray-800);font-weight:600}
+.lc{background:var(--orange-light);border:1px solid var(--orange-100);border-radius:12px;padding:20px 24px;margin:20px 0}
+.lc p{color:var(--gray-700);margin-bottom:0}
+.lcn{background:var(--gray-50);border:1px solid var(--gray-150);border-radius:12px;padding:20px 24px;margin:20px 0}
+.lcn p{color:var(--gray-600);margin-bottom:0}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .pain-grid,.guar-grid,.roi-inputs{grid-template-columns:1fr}
+  .how-steps{grid-template-columns:1fr;gap:40px}
+  .how-connector{display:none!important}
+  .pricing-compare{grid-template-columns:1fr;gap:12px}
+  .pr-vs{padding:8px 0}
+  .stack-card{grid-template-columns:1fr}
+  .stack-val{border-left:none;border-top:1px solid var(--gray-150);padding:14px 24px;flex-direction:row;gap:8px;justify-content:flex-start}
+  .stack-card.core .stack-val{border-top-color:rgba(232,97,26,.2)}
+  .roi-results{grid-template-columns:1fr}
+  .hero-stats{gap:32px}
+  .offer-total{flex-direction:column;text-align:center}
+  .ot-right{text-align:center}
+  .urgency-div{display:none}
+  .urgency-bar{flex-direction:column;text-align:center}
+  .urgency-text{max-width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="container">
+    <a class="nav-logo" id="nav-logo">
+      <div class="nav-logo-icon"><div class="corner-tl"></div><div class="corner-br"></div></div>
+      <div class="nav-logo-text">takeoff<span>.ai</span></div>
+    </a>
+    <div id="nav-main-links">
+      <a href="#offer">What's included</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#roi">ROI calculator</a>
+      <a href="#pricing" class="nav-cta">Get started</a>
+    </div>
+    <a id="nav-back" style="display:none">&larr; Back to home</a>
+  </div>
+</nav>
+
+<!-- ========== MAIN PAGE ========== -->
+<div id="page-main">
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-pill anim-hero d1"><span class="hero-pill-dot"></span> Founding 100 — limited spots at launch pricing</div>
+    <h1 class="anim-hero d2">Double your bids.<br>Without hiring another <span class="orange">estimator.</span></h1>
+    <p class="hero-sub anim-hero d3">TakeoffAI replaces 80% of manual electrical takeoff work. <strong>Upload plans. AI counts. You review.</strong> Your estimator does the work of three.</p>
+    <div class="hero-ctas anim-hero d4">
+      <a href="#pricing" class="btn-primary lg">Claim your founding spot <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      <a href="#roi" class="btn-ghost">See your ROI</a>
+    </div>
+    <div class="hero-stats anim-hero d5">
+      <div class="hero-stat"><div class="hero-stat-num"><span class="orange">40</span>s</div><div class="hero-stat-label">Average takeoff time</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">2–3<span class="orange">x</span></div><div class="hero-stat-label">More bids submitted</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">100<span class="orange">%</span></div><div class="hero-stat-label">Money-back guarantee</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="pain"><div class="container"><div class="pain-header"><div class="kicker">The problem</div><h2 class="section-heading">Manual takeoffs are killing<br>your growth</h2><p class="section-sub">Every bid you can't get to is revenue on the table. Every counting error erodes margin.</p></div>
+<div class="pain-grid">
+  <div class="pain-card anim"><div class="pain-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div><h3>Takeoffs consume 50%+ of your bid cycle</h3><p>Counting thousands of devices from drawings by hand — downlights, GPOs, switches, junction boxes — sheet by sheet.</p><span class="pain-tag">15–20 hrs/week lost to counting</span></div>
+  <div class="pain-card anim"><div class="pain-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><h3>Can't find or afford another estimator</h3><p>Experienced electrical estimators earn $95K–$130K+. The hiring pool is tiny and ramp time is 3–6 months.</p><span class="pain-tag">$120K–$150K true cost per hire</span></div>
+  <div class="pain-card anim"><div class="pain-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></div><h3>One missed device, thousands in margin gone</h3><p>Underbidding from counting errors is invisible until the job's underway. One rushed takeoff — you eat the difference.</p><span class="pain-tag">1 error can cost $5K–$30K+</span></div>
+  <div class="pain-card anim"><div class="pain-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div><h3>Legacy software takes months to learn</h3><p>ConEst, Accubid, McCormick — massive database setup, weeks of training, steep learning curves.</p><span class="pain-tag">4–6 weeks just to configure</span></div>
+</div></div></section>
+
+<section class="how"><div class="container"><div class="how-header"><div class="kicker">How it works</div><h2 class="section-heading">What your estimator does in a day.<br>Done in 40 seconds.</h2><p class="section-sub">Three steps. No database setup. No training required.</p></div>
+<div class="how-steps">
+  <div class="how-step anim"><div class="how-num">1</div><h3>Upload your plans</h3><p>Drop in multi-sheet PDF drawing sets — electrical, architectural, all of it. No reformatting needed.</p><div class="how-connector"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div>
+  <div class="how-step anim"><div class="how-num">2</div><h3>AI detects & counts</h3><p>Downlights, GPOs, switches, data points, smoke detectors — every symbol counted in seconds.</p><div class="how-connector"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div>
+  <div class="how-step anim"><div class="how-num">3</div><h3>Export BQ or send a proposal</h3><p>One click to Excel, PDF, or a branded bid proposal with scope, exclusions, and pricing — ready to send to the GC.</p></div>
+</div></div></section>
+
+<section class="offer" id="offer"><div class="container"><div class="offer-header"><div class="offer-name-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> The 90-day bid domination system</div><h2 class="section-heading">Everything you get</h2><p class="section-sub">Not just software — a complete system to transform your estimating capacity and win rate.</p></div>
+<div class="stack">
+  <div class="stack-card core anim"><div class="stack-body"><div class="sb-tag">Core</div><h3>TakeoffAI Pro — annual licence</h3><p>AI symbol detection, auto-counting, conduit & wire measurement, exportable BOQ to Excel/PDF. The engine that replaces 80% of manual takeoff.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$24K</div></div></div>
+  <div class="stack-card anim"><div class="stack-body"><div class="sb-tag">Bonus</div><h3>"Bid-ready in 60 min" onboarding sprint</h3><p>1-on-1 setup on your actual plans. You leave with a completed AI takeoff you can submit — not a sandbox demo.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$2.5K</div></div></div>
+  <div class="stack-card anim"><div class="stack-body"><div class="sb-tag">Bonus</div><h3>One-click bid proposal generator</h3><p>Turn your finished BQ into a branded, professional proposal PDF — with scope, exclusions, terms, and pricing pre-filled. Send or share a trackable link. No more formatting in Word.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$5K</div></div></div>
+  <div class="stack-card anim"><div class="stack-body"><div class="sb-tag">Bonus</div><h3>Estimator's edge — bid strategy vault</h3><p>12-module video training: advanced takeoff tactics, markup psychology, spotting hidden costs in specs.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$3K</div></div></div>
+  <div class="stack-card anim"><div class="stack-body"><div class="sb-tag">Bonus</div><h3>Addendum variance auto-detection</h3><p>Upload revised plans → instantly see what changed. Side-by-side delta report. No re-counting entire sheets.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$4K</div></div></div>
+  <div class="stack-card anim"><div class="stack-body"><div class="sb-tag">Bonus</div><h3>Priority support + quarterly accuracy audits</h3><p>Dedicated channel, same-day response. Every 90 days, benchmark AI quantities against actual as-builts.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$6K</div></div></div>
+</div>
+<div class="offer-total anim"><div class="ot-left"><div class="ot-label">Total value</div><div class="ot-num">$44,500/year</div></div><div class="ot-right"><div class="ot-label">You pay</div><div class="ot-num">$497/mo</div><div class="ot-per">Billed annually at $5,964</div></div></div>
+</div></section>
+
+<section class="urgency"><div class="container"><div class="urgency-bar anim"><div class="urgency-count"><div class="urgency-num">73</div><div class="urgency-label">founding spots<br>remaining</div></div><div class="urgency-div"></div><div class="urgency-text"><strong>Founding 100 pricing locks in for life.</strong> After 100, the price increases permanently.</div><a href="#pricing" class="btn-primary" style="padding:11px 22px;font-size:14px;">Claim spot <svg class="arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></div></div></section>
+
+<section class="guarantee"><div class="container"><div class="guarantee-header"><div class="kicker">Zero risk</div><h2 class="section-heading">The double guarantee</h2><p class="section-sub">We put our money where our mouth is. Twice.</p></div>
+<div class="guar-grid">
+  <div class="guar-card g1 anim"><div class="guar-badge">30-day unconditional</div><h3>Don't love it? Full refund.</h3><p>Use TakeoffAI on as many real projects as you want for 30 days. If it doesn't save you meaningful time on <strong>every single takeoff</strong>, email us for a 100% refund. No questions, no hoops.</p></div>
+  <div class="guar-card g2 anim"><div class="guar-badge">90-day outcome-based</div><h3>Double your bids — or we pay.</h3><p>If you don't at least <strong>double the bids you submit</strong> within 90 days, we refund your full annual fee <strong>and pay for a competitor's licence of your choice.</strong></p></div>
+</div></div></section>
+
+<section class="pricing" id="pricing"><div class="container"><div class="pricing-header"><div class="kicker">Pricing</div><h2 class="section-heading">Stop paying for headcount.<br>Pay for output.</h2><p class="section-sub">The real alternative isn't another software tool — it's hiring an estimator you can't find.</p></div>
+<div class="pricing-compare">
+  <div class="pr-card pr-old anim"><div class="pr-tag">The alternative</div><div class="pr-amount">$95K+</div><div class="pr-per">per year, per estimator</div><div class="pr-detail">Plus $20K recruiting fees, 3–6 month ramp, benefits, and the risk they leave.</div></div>
+  <div class="pr-vs">vs</div>
+  <div class="pr-card pr-new anim">
+    <div class="pr-featured">Founding price</div>
+    <div class="pr-tag">Bid domination system</div>
+    <div class="pr-amount">$497<small>/mo</small></div>
+    <div class="pr-per">Billed annually at $5,964 — locked in for life</div>
+    <ul class="pr-list">
+      <li><span class="pr-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>TakeoffAI Pro — unlimited projects</li>
+      <li><span class="pr-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>1-on-1 onboarding sprint (60 min)</li>
+      <li><span class="pr-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>One-click bid proposal generator</li>
+      <li><span class="pr-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Bid strategy video vault (12 modules)</li>
+      <li><span class="pr-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Addendum variance detection</li>
+      <li><span class="pr-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Priority support + quarterly audits</li>
+      <li><span class="pr-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Double guarantee (30 + 90 day)</li>
+    </ul>
+  </div>
+</div>
+<div class="pricing-cta"><a href="#" class="btn-primary lg">Start your 30-day risk-free trial <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a><p class="sub">No credit card required to start · Cancel anytime in the first 30 days</p></div>
+</div></section>
+
+<section class="roi" id="roi"><div class="container"><div class="roi-header"><div class="kicker">ROI calculator</div><h2 class="section-heading">See what you're leaving<br>on the table</h2><p class="section-sub">Plug in your numbers. The math does the selling.</p></div>
+<div class="roi-calc anim">
+  <div class="roi-inputs">
+    <div class="roi-field"><label>Hours per takeoff (manual)</label><input type="number" id="roi-hours" value="8" min="1" max="40"></div>
+    <div class="roi-field"><label>Bids per month</label><input type="number" id="roi-bids" value="6" min="1" max="50"></div>
+    <div class="roi-field"><label>Estimator hourly cost ($)</label><input type="number" id="roi-rate" value="46" min="20" max="200"></div>
+    <div class="roi-field"><label>Average project value ($)</label><input type="number" id="roi-proj" value="150000" min="10000" max="10000000"></div>
+  </div>
+  <div class="roi-results">
+    <div class="roi-r"><div class="roi-r-label">Hours saved / year</div><div class="roi-r-num c-orange" id="res-hours">461</div></div>
+    <div class="roi-r"><div class="roi-r-label">Labour cost saved</div><div class="roi-r-num c-green" id="res-cost">$21K</div></div>
+    <div class="roi-r"><div class="roi-r-label">Extra bids / year</div><div class="roi-r-num c-dark" id="res-bids">58</div></div>
+  </div>
+</div></div></section>
+
+<section class="faq"><div class="container"><div class="faq-header"><div class="kicker">Questions</div><h2 class="section-heading">Frequently asked</h2></div>
+<div class="faq-list">
+  <div class="faq-item"><div class="faq-q">What types of electrical plans does TakeoffAI support? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Any PDF electrical drawing — residential, commercial, and industrial. Standard symbols including downlights, GPOs, switches, data points, smoke detectors, distribution boards, and more. Multi-sheet sets are fully supported.</div></div></div>
+  <div class="faq-item"><div class="faq-q">How accurate is the AI counting? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">95%+ accuracy on standard symbols out of the box, improving over time as you review and confirm counts. Quarterly accuracy audits benchmark AI performance against real project as-builts.</div></div></div>
+  <div class="faq-item"><div class="faq-q">Can I cancel at any time? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Yes. 30-day unconditional money-back guarantee. After 30 days, the 90-day outcome guarantee still applies — if you haven't doubled your bid output, full refund plus a competitor's licence on us.</div></div></div>
+  <div class="faq-item"><div class="faq-q">How does this compare to ConEst, Accubid, or STACK? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Legacy tools require weeks of database setup. TakeoffAI gets you to a completed takeoff on your first session — in under 60 minutes. AI does the counting; your estimator focuses on review and winning work.</div></div></div>
+  <div class="faq-item"><div class="faq-q">What does the onboarding sprint include? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">A dedicated 60-minute 1-on-1 session using your actual plans. Upload a real drawing set, run the AI takeoff, review and adjust counts, export a finished BOQ you can use immediately.</div></div></div>
+  <div class="faq-item"><div class="faq-q">Is my plan data secure? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">All plans are encrypted in transit and at rest. We never share your drawings or data with third parties. Your project information stays yours — always.</div></div></div>
+</div></div></section>
+
+<section class="final-cta"><div class="container"><h2>Stop counting.<br>Start <span class="orange">winning.</span></h2><p>Join the Founding 100 electrical contractors replacing manual takeoffs with AI — and doubling their bid capacity in 90 days.</p><a href="#pricing" class="btn-primary lg">Claim your founding spot <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a><p class="subtext">30-day money-back guarantee · No credit card to start · Founding price locked for life</p></div></section>
+
+</div><!-- /page-main -->
+
+<!-- ========== PRIVACY ========== -->
+<div id="page-privacy" class="page-view">
+<div class="legal-header"><div class="container"><h1>Privacy policy</h1><p class="updated">Last updated: 9 April 2026</p></div></div>
+<div class="legal-body">
+<div class="lc"><p><strong>In plain English:</strong> We collect only what's necessary to run TakeoffAI, we never sell your data, and your construction plans remain yours at all times. We comply with the Australian Privacy Act 1988 and the Australian Privacy Principles (APPs).</p></div>
+<h2>1. Who we are</h2><p>TakeoffAI Pty Ltd (ABN [insert ABN]) ("TakeoffAI", "we", "us", "our") operates the TakeoffAI platform, a cloud-based electrical takeoff and estimating tool available at takeoff.ai and related applications.</p><p>We are the data controller for the personal information we collect through our platform, website, and communications. Our registered address is [insert address], Australia.</p>
+<h2>2. Information we collect</h2><h3>Information you provide directly</h3><ul><li><strong>Account information:</strong> name, email address, company name, phone number, and billing details when you sign up or subscribe.</li><li><strong>Construction plans and documents:</strong> PDF drawings, specifications, and other project files you upload for takeoff processing.</li><li><strong>Communications:</strong> messages you send through our support channels, emails, or feedback forms.</li><li><strong>Payment information:</strong> credit card or payment method details processed by our third-party payment provider (we do not store full card numbers).</li></ul><h3>Information collected automatically</h3><ul><li><strong>Usage data:</strong> features used, takeoffs generated, pages visited, session duration, and interaction patterns.</li><li><strong>Device information:</strong> browser type, operating system, device identifiers, and screen resolution.</li><li><strong>Log data:</strong> IP address, access times, referring URLs, and error logs.</li><li><strong>Cookies and similar technologies:</strong> as described in Section 8 below.</li></ul>
+<h2>3. How we use your information</h2><p>We use the information we collect to:</p><ul><li>Provide, maintain, and improve the TakeoffAI platform and services.</li><li>Process your construction plans and generate takeoff outputs.</li><li>Process payments and manage your subscription.</li><li>Communicate with you about your account, updates, and support requests.</li><li>Send product updates and marketing communications (with your consent, and you can opt out at any time).</li><li>Analyse usage patterns to improve our AI models, features, and user experience.</li><li>Detect, prevent, and address fraud, abuse, and technical issues.</li><li>Comply with legal obligations and enforce our terms.</li></ul>
+<h2>4. Your construction plans and project data</h2><div class="lc"><p><strong>Your plans are your property.</strong> We do not sell, share, or distribute your construction plans or project data to third parties. Plans are processed solely for the purpose of providing takeoff services to you.</p></div><p>Uploaded plans and generated takeoff data are encrypted in transit (TLS 1.2+) and at rest (AES-256). Access to plan data is restricted to authorised personnel on a need-to-know basis for support and technical purposes only.</p><p>We may use anonymised, aggregated data derived from platform usage (not identifiable project data) to improve our AI models and service quality. This data cannot be traced back to any individual, company, or project.</p><p>When you delete your account, your plans and project data are permanently deleted from our active systems within 30 days. Backup copies are purged within 90 days.</p>
+<h2>5. How we share your information</h2><p>We do not sell your personal information. We may share information with the following categories of third parties, solely for the purposes described:</p><ul><li><strong>Service providers:</strong> cloud hosting (e.g., AWS, Google Cloud), payment processing (e.g., Stripe), email delivery, analytics, and customer support tools — each bound by data processing agreements.</li><li><strong>Professional advisors:</strong> lawyers, accountants, and auditors where necessary for our business operations.</li><li><strong>Legal requirements:</strong> where required by law, regulation, legal process, or enforceable governmental request.</li><li><strong>Business transfers:</strong> in connection with a merger, acquisition, or sale of assets, where your data may be transferred as a business asset (with notice to you).</li></ul>
+<h2>6. Data retention</h2><p>We retain your personal information for as long as your account is active or as needed to provide services. Specific retention periods:</p><ul><li><strong>Account data:</strong> retained while your account is active and for 12 months after closure.</li><li><strong>Construction plans:</strong> retained while your account is active. Deleted within 30 days of account closure (90 days from backups).</li><li><strong>Usage and log data:</strong> retained for up to 24 months for analytics and security purposes.</li><li><strong>Billing records:</strong> retained for 7 years as required by Australian tax law.</li></ul>
+<h2>7. Data security</h2><p>We implement industry-standard security measures to protect your information, including:</p><ul><li>Encryption in transit (TLS 1.2+) and at rest (AES-256).</li><li>Access controls and role-based permissions for internal systems.</li><li>Regular security assessments and vulnerability testing.</li><li>Secure cloud infrastructure hosted in reputable data centres.</li><li>Employee security awareness training.</li></ul><p>While we take reasonable steps to protect your data, no method of electronic transmission or storage is 100% secure. We encourage you to use strong passwords and take appropriate precautions.</p>
+<h2>8. Cookies and tracking</h2><p>We use cookies and similar technologies for the following purposes:</p><ul><li><strong>Essential cookies:</strong> required for the platform to function (authentication, session management). These cannot be disabled.</li><li><strong>Analytics cookies:</strong> help us understand how users interact with our platform (e.g., Google Analytics). You can opt out via your browser settings or our cookie preferences.</li><li><strong>Marketing cookies:</strong> used to deliver relevant advertising and measure campaign effectiveness. Only used with your consent.</li></ul><p>You can manage cookie preferences through your browser settings. Disabling non-essential cookies will not affect core platform functionality.</p>
+<h2>9. Your rights</h2><p>Under the Australian Privacy Act and applicable privacy laws, you have the right to:</p><ul><li><strong>Access:</strong> request a copy of the personal information we hold about you.</li><li><strong>Correction:</strong> request correction of inaccurate or incomplete information.</li><li><strong>Deletion:</strong> request deletion of your personal information (subject to legal obligations).</li><li><strong>Data portability:</strong> request your data in a structured, commonly used format.</li><li><strong>Opt out:</strong> unsubscribe from marketing communications at any time.</li><li><strong>Complaint:</strong> lodge a complaint with the Office of the Australian Information Commissioner (OAIC) if you believe we have breached the APPs.</li></ul><p>To exercise any of these rights, contact us at <a href="mailto:privacy@takeoff.ai">privacy@takeoff.ai</a>. We will respond within 30 days.</p>
+<h2>10. International data transfers</h2><p>Our services may involve processing data in countries outside Australia (e.g., where our cloud providers operate data centres). Where this occurs, we ensure appropriate safeguards are in place, including data processing agreements and compliance with the APPs regarding cross-border disclosure (APP 8).</p>
+<h2>11. Children's privacy</h2><p>TakeoffAI is not intended for use by individuals under the age of 18. We do not knowingly collect personal information from children. If we become aware that we have collected information from a child, we will take steps to delete it promptly.</p>
+<h2>12. Changes to this policy</h2><p>We may update this privacy policy from time to time. We will notify you of material changes by posting the updated policy on our website and, where appropriate, by email. The "Last updated" date at the top indicates when this policy was last revised.</p>
+<h2>13. Contact us</h2><p>If you have questions about this privacy policy or our data practices, contact us at:</p><p><strong>TakeoffAI Pty Ltd</strong><br>Email: <a href="mailto:privacy@takeoff.ai">privacy@takeoff.ai</a><br>Address: [insert registered address], Australia</p>
+</div>
+</div><!-- /page-privacy -->
+
+<!-- ========== TERMS ========== -->
+<div id="page-terms" class="page-view">
+<div class="legal-header"><div class="container"><h1>Terms & conditions</h1><p class="updated">Last updated: 9 April 2026</p></div></div>
+<div class="legal-body">
+<div class="lc"><p><strong>Summary:</strong> You retain full ownership of your plans and data. We grant you a licence to use our platform. You pay the agreed subscription fee. Either party can terminate with notice. Our liability is capped. These terms are governed by Australian law.</p></div>
+<h2>1. Agreement to terms</h2><p>These Terms and Conditions ("Terms") constitute a legally binding agreement between you ("Customer", "you", "your") and TakeoffAI Pty Ltd (ABN [insert ABN]) ("TakeoffAI", "we", "us", "our") governing your access to and use of the TakeoffAI platform, website at takeoff.ai, and related services (collectively, the "Service").</p><p>By creating an account, subscribing to a plan, or otherwise accessing the Service, you agree to be bound by these Terms. If you are entering into these Terms on behalf of a company or other legal entity, you represent that you have the authority to bind that entity.</p><p>If you do not agree with these Terms, do not use the Service.</p>
+<h2>2. Definitions</h2><ul><li><strong>"Platform"</strong> means the TakeoffAI web application, APIs, and any associated tools or features.</li><li><strong>"Customer Data"</strong> means all data, files, construction plans, documents, and information uploaded, submitted, or generated by you through the Service.</li><li><strong>"Subscription"</strong> means the paid plan you have selected, as described on our pricing page or in an order form.</li><li><strong>"User"</strong> means any individual authorised by the Customer to access and use the Service under the Customer's account.</li><li><strong>"Takeoff Output"</strong> means the bills of quantities, reports, proposals, spreadsheets, and other deliverables generated by the Service from Customer Data.</li></ul>
+<h2>3. Account registration</h2><p>To use the Service, you must create an account and provide accurate, complete, and current information. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.</p><p>You must notify us immediately at <a href="mailto:support@takeoff.ai">support@takeoff.ai</a> if you become aware of any unauthorised use of your account.</p><p>You must be at least 18 years of age to create an account. Each account is for a single organisation and may not be shared with unrelated third parties.</p>
+<h2>4. Service description</h2><p>TakeoffAI provides an AI-powered platform for electrical takeoff and estimating. The Service includes:</p><ul><li>Automated detection and counting of electrical symbols from uploaded PDF construction plans.</li><li>Measurement of conduit runs, wire pulls, and related quantities.</li><li>Generation of exportable bills of quantities (BOQ) in Excel and PDF formats.</li><li>One-click bid proposal generation with customisable scope, exclusions, and terms.</li><li>Addendum variance detection and revision tracking.</li><li>Access to proposal generation tools, training materials, and exclusion libraries (where included in your plan).</li></ul><p>The Service is provided as a tool to assist qualified electrical estimators and contractors. Takeoff Outputs are generated by AI and should always be reviewed by a qualified professional before being used for bidding, procurement, or construction purposes.</p><div class="lcn"><p><strong>Important:</strong> TakeoffAI is an estimating assistance tool, not a substitute for professional judgment. You are solely responsible for verifying the accuracy of all Takeoff Outputs before relying on them for any purpose.</p></div>
+<h2>5. Subscription and payment</h2><h3>5.1 Plans and pricing</h3><p>The Service is offered on a subscription basis. Current pricing, plan features, and billing cycles are described on our website or in a separate order form. All prices are in Australian Dollars (AUD) unless otherwise stated, and are exclusive of GST.</p><h3>5.2 Billing</h3><p>Subscriptions are billed in advance on a monthly or annual basis, depending on the plan selected. Payment is processed through our third-party payment provider (currently Stripe). You authorise us to charge your chosen payment method for all applicable fees.</p><h3>5.3 Founding member pricing</h3><p>Customers who subscribe during the Founding 100 promotion period receive a locked-in subscription rate for the lifetime of their continuous subscription. If a Founding 100 subscription is cancelled and later reactivated, the founding rate is forfeited and current pricing applies.</p><h3>5.4 Price changes</h3><p>We may change our pricing from time to time. For existing subscribers (excluding Founding 100 members on continuous subscriptions), we will provide at least 30 days' notice of any price increase. Continued use after the effective date constitutes acceptance of the new pricing.</p><h3>5.5 Taxes</h3><p>You are responsible for all applicable taxes (including GST) associated with your subscription, except for taxes based on TakeoffAI's income.</p>
+<h2>6. Refund and guarantee policy</h2><h3>6.1 30-day unconditional guarantee</h3><p>New subscribers may request a full refund within 30 days of their initial subscription date for any reason. Refund requests should be sent to <a href="mailto:support@takeoff.ai">support@takeoff.ai</a>. Refunds will be processed within 10 business days.</p><h3>6.2 90-day outcome guarantee</h3><p>If, within 90 days of completing the onboarding sprint, you have not at least doubled the number of bids you submit compared to your pre-TakeoffAI baseline, you may request a full refund of your annual subscription fee. To qualify:</p><ol><li>You must have completed the onboarding sprint within 14 days of subscribing.</li><li>You must have actively used the platform, completing a minimum of 10 takeoffs during the 90-day period.</li><li>You must provide reasonable documentation of your bid submission volume before and after using TakeoffAI.</li></ol><p>Refund requests under this guarantee should be submitted to <a href="mailto:support@takeoff.ai">support@takeoff.ai</a> within 100 days of your onboarding sprint completion. We will review and respond within 14 business days.</p><h3>6.3 General refund policy</h3><p>Outside of the guarantees described above, subscription fees are non-refundable. Partial-month or partial-year refunds are not provided for cancellations made after the applicable guarantee period.</p>
+<h2>7. Intellectual property</h2><h3>7.1 Your content</h3><p><strong>You retain all ownership rights to your Customer Data.</strong> By uploading Customer Data to the Service, you grant TakeoffAI a limited, non-exclusive licence to process, store, and display your Customer Data solely for the purpose of providing and improving the Service.</p><p>Takeoff Outputs generated from your Customer Data are owned by you.</p><h3>7.2 Our platform</h3><p>TakeoffAI and its licensors retain all rights, title, and interest in the Service, including all software, algorithms, AI models, user interfaces, designs, documentation, and trademarks. These Terms do not grant you any rights to our intellectual property except the limited licence to use the Service as described herein.</p><h3>7.3 Feedback</h3><p>If you provide suggestions, feature requests, or other feedback about the Service, we may use that feedback without restriction or obligation to you.</p>
+<h2>8. Acceptable use</h2><p>You agree not to:</p><ul><li>Use the Service for any unlawful purpose or in violation of any applicable law or regulation.</li><li>Upload content that infringes on third-party intellectual property rights.</li><li>Attempt to reverse-engineer, decompile, or extract source code from any part of the Service.</li><li>Interfere with or disrupt the integrity or performance of the Service.</li><li>Access the Service through automated means (bots, scrapers) except through our authorised APIs.</li><li>Resell, sublicence, or provide access to the Service to third parties without our written consent.</li><li>Use the Service to develop a competing product or service.</li></ul>
+<h2>9. Data handling</h2><p>Our handling of personal information and Customer Data is described in our <a href="javascript:void(0)" onclick="showPage('privacy')">Privacy Policy</a>, which forms part of these Terms.</p><p>We implement appropriate technical and organisational measures to protect Customer Data. However, no method of electronic storage is completely secure, and we cannot guarantee absolute security.</p>
+<h2>10. Service availability and support</h2><p>We aim to maintain high availability of the Service but do not guarantee uninterrupted access. We may perform scheduled maintenance with reasonable advance notice where possible.</p><p>Support is provided according to the level included in your subscription plan. Priority support subscribers receive same-business-day response via their dedicated support channel.</p><p>We reserve the right to modify, suspend, or discontinue any feature of the Service at any time. For material changes that reduce functionality, we will provide at least 30 days' notice.</p>
+<h2>11. AI-generated outputs disclaimer</h2><p>The Service uses artificial intelligence and machine learning to process construction plans and generate Takeoff Outputs. While we strive for high accuracy, AI-generated outputs may contain errors, omissions, or inaccuracies.</p><p><strong>You acknowledge and agree that:</strong></p><ul><li>Takeoff Outputs are provided as estimating aids and must be reviewed by qualified professionals.</li><li>You are solely responsible for verifying the accuracy of all outputs before use in bidding, pricing, or construction.</li><li>TakeoffAI does not warrant that outputs will be error-free, complete, or suitable for any particular purpose.</li><li>Reliance on Takeoff Outputs without independent verification is at your own risk.</li></ul>
+<h2>12. Limitation of liability</h2><p>To the maximum extent permitted by law, including the Australian Consumer Law:</p><ul><li><strong>No consequential damages:</strong> TakeoffAI will not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, revenue, data, business opportunities, or goodwill, regardless of the cause of action or theory of liability.</li><li><strong>Liability cap:</strong> TakeoffAI's total aggregate liability arising out of or in connection with these Terms or the Service will not exceed the total fees paid by you to TakeoffAI in the 12 months immediately preceding the event giving rise to the claim.</li><li><strong>Exclusions:</strong> Nothing in these Terms excludes, restricts, or modifies any consumer guarantee or right under the Australian Consumer Law (Schedule 2 of the Competition and Consumer Act 2010 (Cth)) that cannot be excluded, restricted, or modified by agreement.</li></ul>
+<h2>13. Indemnification</h2><p>You agree to indemnify, defend, and hold harmless TakeoffAI, its directors, officers, employees, and agents from and against any claims, liabilities, damages, losses, and expenses (including reasonable legal fees) arising out of or in connection with:</p><ul><li>Your use of the Service.</li><li>Your breach of these Terms.</li><li>Your violation of any applicable law or third-party rights.</li><li>Customer Data you upload or submit through the Service.</li><li>Any reliance on Takeoff Outputs without appropriate verification.</li></ul>
+<h2>14. Term and termination</h2><h3>14.1 Term</h3><p>These Terms commence when you create an account and continue until terminated by either party.</p><h3>14.2 Termination by you</h3><p>You may cancel your subscription at any time through your account settings or by contacting <a href="mailto:support@takeoff.ai">support@takeoff.ai</a>. Cancellation takes effect at the end of your current billing period. You will retain access until then.</p><h3>14.3 Termination by us</h3><p>We may suspend or terminate your access to the Service if you breach these Terms, fail to pay fees when due, or if we reasonably believe your use poses a security risk. Where practicable, we will provide notice and an opportunity to cure before termination.</p><h3>14.4 Effect of termination</h3><p>Upon termination, your right to access the Service ceases immediately. You may export your Customer Data for up to 30 days following termination by contacting support. After 30 days, Customer Data will be deleted in accordance with our Privacy Policy.</p><p>Sections that by their nature should survive termination will survive, including Sections 7, 11, 12, 13, and 16.</p>
+<h2>15. Changes to terms</h2><p>We may modify these Terms from time to time. We will notify you of material changes at least 30 days before they take effect, by email or through the Service. Your continued use of the Service after the effective date constitutes acceptance of the modified Terms.</p><p>If you do not agree with modified Terms, you may cancel your subscription before the changes take effect.</p>
+<h2>16. Governing law and disputes</h2><p>These Terms are governed by and construed in accordance with the laws of the State of Victoria, Australia. Any disputes arising out of or in connection with these Terms will be subject to the exclusive jurisdiction of the courts of Victoria, Australia.</p><p>Before commencing legal proceedings, the parties agree to attempt to resolve disputes through good faith negotiation for a period of at least 30 days.</p>
+<h2>17. General provisions</h2><ul><li><strong>Entire agreement:</strong> These Terms, together with the Privacy Policy and any order forms, constitute the entire agreement between you and TakeoffAI regarding the Service.</li><li><strong>Severability:</strong> If any provision of these Terms is found to be unenforceable, the remaining provisions will continue in full force and effect.</li><li><strong>Waiver:</strong> Failure to enforce any provision does not constitute a waiver of that provision.</li><li><strong>Assignment:</strong> You may not assign your rights under these Terms without our written consent. We may assign our rights and obligations in connection with a merger, acquisition, or sale of assets.</li><li><strong>Force majeure:</strong> Neither party will be liable for delays or failures in performance caused by events beyond their reasonable control, including natural disasters, pandemics, government actions, or internet disruptions.</li><li><strong>Notices:</strong> Notices to TakeoffAI should be sent to <a href="mailto:legal@takeoff.ai">legal@takeoff.ai</a>. Notices to you will be sent to the email address associated with your account.</li></ul>
+<h2>18. Contact us</h2><p>For questions about these Terms, contact us at:</p><p><strong>TakeoffAI Pty Ltd</strong><br>Email: <a href="mailto:legal@takeoff.ai">legal@takeoff.ai</a><br>Address: [insert registered address], Australia</p>
+</div>
+</div><!-- /page-terms -->
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="container">
+    <a class="nav-logo" id="footer-logo"><div class="nav-logo-icon"><div class="corner-tl"></div><div class="corner-br"></div></div><div class="nav-logo-text">takeoff<span>.ai</span></div></a>
+    <p>&copy; 2026 TakeoffAI Pty Ltd. <a id="footer-privacy">Privacy</a> &middot; <a id="footer-terms">Terms</a></p>
+  </div>
+</footer>
+
+<script>
+// Page routing
+function showPage(page) {
+  var main = document.getElementById('page-main');
+  var privacy = document.getElementById('page-privacy');
+  var terms = document.getElementById('page-terms');
+  var navLinks = document.getElementById('nav-main-links');
+  var navBack = document.getElementById('nav-back');
+
+  main.style.display = 'none';
+  privacy.className = 'page-view';
+  terms.className = 'page-view';
+
+  if (page === 'main') {
+    main.style.display = '';
+    navLinks.style.display = '';
+    navBack.style.display = 'none';
+    document.title = 'TakeoffAI \u2014 The 90-Day Bid Domination System';
+  } else {
+    navLinks.style.display = 'none';
+    navBack.style.display = 'inline';
+    if (page === 'privacy') {
+      privacy.className = 'page-view active';
+      document.title = 'Privacy Policy \u2014 TakeoffAI';
+    } else if (page === 'terms') {
+      terms.className = 'page-view active';
+      document.title = 'Terms & Conditions \u2014 TakeoffAI';
+    }
+  }
+  window.scrollTo(0, 0);
+}
+
+// Wire up navigation
+document.getElementById('nav-logo').addEventListener('click', function(e) { e.preventDefault(); showPage('main'); });
+document.getElementById('nav-back').addEventListener('click', function(e) { e.preventDefault(); showPage('main'); });
+document.getElementById('footer-logo').addEventListener('click', function(e) { e.preventDefault(); showPage('main'); });
+document.getElementById('footer-privacy').addEventListener('click', function(e) { e.preventDefault(); showPage('privacy'); });
+document.getElementById('footer-terms').addEventListener('click', function(e) { e.preventDefault(); showPage('terms'); });
+
+// ROI calculator
+function calc() {
+  var h = parseFloat(document.getElementById('roi-hours').value) || 8;
+  var b = parseFloat(document.getElementById('roi-bids').value) || 6;
+  var r = parseFloat(document.getElementById('roi-rate').value) || 46;
+  var s = Math.round(h * 0.8 * b * 12);
+  var c = Math.round(s * r);
+  var e = Math.round(h * 0.8 * b * 12 / h);
+  document.getElementById('res-hours').textContent = s.toLocaleString();
+  document.getElementById('res-cost').textContent = c >= 1000 ? '$' + Math.round(c / 1000) + 'K' : '$' + c;
+  document.getElementById('res-bids').textContent = e;
+}
+var roiInputs = document.querySelectorAll('.roi-field input');
+for (var i = 0; i < roiInputs.length; i++) { roiInputs[i].addEventListener('input', calc); }
+calc();
+
+// FAQ accordion
+var faqQs = document.querySelectorAll('.faq-q');
+for (var j = 0; j < faqQs.length; j++) {
+  faqQs[j].addEventListener('click', function() {
+    var item = this.parentElement;
+    var wasOpen = item.classList.contains('open');
+    var allItems = document.querySelectorAll('.faq-item');
+    for (var k = 0; k < allItems.length; k++) { allItems[k].classList.remove('open'); }
+    if (!wasOpen) item.classList.add('open');
+  });
+}
+
+// Scroll animations
+var obs = new IntersectionObserver(function(entries) {
+  for (var i = 0; i < entries.length; i++) {
+    if (entries[i].isIntersecting) {
+      entries[i].target.classList.add('visible');
+      obs.unobserve(entries[i].target);
+    }
+  }
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+var anims = document.querySelectorAll('.anim');
+for (var m = 0; m < anims.length; m++) {
+  anims[m].style.transitionDelay = Math.min(m * 0.04, 0.3) + 's';
+  obs.observe(anims[m]);
+}
+
+// Nav scroll shadow
+window.addEventListener('scroll', function() {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+{
+  "outputDirectory": ".",
+  "routes": [{ "src": "/(.*)", "dest": "/$1" }]
+}
