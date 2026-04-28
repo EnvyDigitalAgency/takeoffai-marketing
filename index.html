@@ -83,6 +83,17 @@ body{font-family:'Outfit',-apple-system,sans-serif;background:var(--white);color
 .anim-hero{opacity:0;animation:fadeUp .65s ease forwards}
 .d1{animation-delay:.05s}.d2{animation-delay:.12s}.d3{animation-delay:.2s}.d4{animation-delay:.28s}.d5{animation-delay:.36s}
 
+/* PRODUCT SHOT */
+.product-shot{padding:0 0 96px;margin-top:-40px;position:relative;z-index:1}
+.product-shot .container{max-width:1040px}
+.product-frame{border-radius:16px;overflow:hidden;border:1px solid var(--gray-150);box-shadow:0 32px 96px rgba(0,0,0,.12),0 8px 24px rgba(0,0,0,.06)}
+.product-frame-bar{background:var(--gray-100);padding:10px 16px;display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--gray-150)}
+.product-frame-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.product-frame-dot:nth-child(1){background:#FF5F57}
+.product-frame-dot:nth-child(2){background:#FEBC2E}
+.product-frame-dot:nth-child(3){background:#28C840}
+.product-frame img{width:100%;display:block}
+
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--gray-150);transition:box-shadow .3s ease}
 nav.scrolled{box-shadow:0 1px 12px rgba(0,0,0,.06)}
@@ -347,6 +358,19 @@ footer a:hover{color:var(--orange)}
       <div class="hero-stat"><div class="hero-stat-num"><span class="orange">40</span>s</div><div class="hero-stat-label">Average takeoff time</div></div>
       <div class="hero-stat"><div class="hero-stat-num">2–3<span class="orange">x</span></div><div class="hero-stat-label">More bids submitted</div></div>
       <div class="hero-stat"><div class="hero-stat-num">100<span class="orange">%</span></div><div class="hero-stat-label">Money-back guarantee</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="product-shot">
+  <div class="container">
+    <div class="product-frame anim">
+      <div class="product-frame-bar">
+        <div class="product-frame-dot"></div>
+        <div class="product-frame-dot"></div>
+        <div class="product-frame-dot"></div>
+      </div>
+      <img src="/takeoffai_plan_review_web.png" alt="TakeoffAI dashboard — AI electrical takeoff in action" loading="lazy">
     </div>
   </div>
 </section>
