@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>TakeoffAI — Hero Animation</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --orange: #E8590C; --pitch: #111; --paper: #F7F6F2; }
+    html, body { margin:0; padding:0; height:100%; background:#0a0a0a; font-family:'Outfit',sans-serif; overflow:hidden; }
+    #stage { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; padding: 24px; box-sizing: border-box; }
+    .hero {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      aspect-ratio: 11 / 7;
+      max-height: 100%;
+      background: var(--paper);
+      border-radius: 18px;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.5);
+      overflow: hidden;
+      container-type: inline-size;
+    }
+    .hero svg { display:block; width:100%; height:100%; }
+    .hud {
+      position: absolute; left: 2.5%; top: 3.4%;
+      display:flex; align-items:center; gap: 14px;
+      font-family:'Outfit'; font-size: 14px; font-weight: 600;
+      color: #555; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .hud .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 0 0 rgba(232,89,12,0.5);
+      animation: pulse 1.4s ease-out infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(232,89,12,0.55); }
+      80%,100% { box-shadow: 0 0 0 14px rgba(232,89,12,0); }
+    }
+    .counter {
+      position:absolute; right: 2.5%; top: 3.1%;
+      display:flex; align-items:baseline; gap: 8px;
+      font-family:'DM Mono', monospace; color: var(--pitch);
+      background: #fff; padding: 10px 14px; border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .counter .n {
+      font-family:'Outfit'; font-weight: 800; font-size: 28px;
+      color: var(--orange); font-variant-numeric: tabular-nums;
+      min-width: 42px; text-align: right;
+    }
+    .counter .lbl { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #888; }
+    .caption {
+      position:absolute; left:50%; bottom: 4%;
+      white-space: nowrap;
+      transform: translateX(-50%);
+      font-family:'Outfit'; font-weight: 600; font-size: 18px; color:#444;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(6px);
+      padding: 10px 18px; border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: all 0.4s cubic-bezier(.2,.8,.2,1);
+    }
+    .caption strong { color: var(--orange); font-weight: 800; }
+  </style>
+</head>
+<body>
+  <div id="stage">
+    <div class="hero">
+      <div class="hud"><span class="dot"></span><span id="hudLabel">Ready</span></div>
+      <div class="counter"><span class="n" id="cnum">0</span><span class="lbl">downlights</span></div>
+      <div class="caption" id="cap">Mark <strong>one</strong> symbol…</div>
+
+      <svg id="plan" viewBox="0 0 1100 700" preserveAspectRatio="xMidYMid slice">
+        <!-- grid -->
+        <defs>
+          <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2ddd2" stroke-width="1"/>
+          </pattern>
+          <radialGradient id="sweepGrad" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%" stop-color="#E8590C" stop-opacity="0.35"/>
+            <stop offset="60%" stop-color="#E8590C" stop-opacity="0.06"/>
+            <stop offset="100%" stop-color="#E8590C" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="1100" height="700" fill="url(#g)"/>
+
+        <!-- walls (drawn) -->
+        <g stroke="#1a1a1a" stroke-width="4" fill="none" stroke-linecap="square">
+          <path id="wallsOuter" d="M 80 110 L 1020 110 L 1020 620 L 80 620 Z"/>
+          <path id="wallsInner" d="M 80 290 L 480 290 M 480 110 L 480 420 M 480 420 L 1020 420 M 720 420 L 720 620 M 280 290 L 280 620"/>
+        </g>
+
+        <!-- room labels -->
+        <g font-family="Outfit" font-size="13" font-weight="500" fill="#888" letter-spacing="2">
+          <text x="120" y="170">KITCHEN</text>
+          <text x="540" y="170">LIVING / DINING</text>
+          <text x="120" y="350">BED 1</text>
+          <text x="320" y="350">BED 2</text>
+          <text x="540" y="470">HALL</text>
+          <text x="780" y="470">BATH</text>
+        </g>
+
+        <!-- sweep -->
+        <g id="sweepG" opacity="0">
+          <line id="sweepLine" x1="80" y1="110" x2="80" y2="620" stroke="#E8590C" stroke-width="3" />
+          <rect id="sweepGlow" x="-200" y="110" width="240" height="510" fill="url(#sweepGrad)"/>
+        </g>
+
+        <!-- pins -->
+        <g id="pins"></g>
+
+        <!-- marker (user-drawn) -->
+        <g id="marker" opacity="0">
+          <!-- handwritten lasso circle -->
+          <path id="markerPath" fill="none" stroke="#E8590C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <text id="markerLabel" font-family="DM Mono" font-size="11" fill="#E8590C" font-weight="600">DOWNLIGHT</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+<script>
+(() => {
+  // ── Fixture positions (12 downlights, distributed around rooms) ──
+  const fixtures = [
+    [180, 200], [320, 200], [400, 200],                // Kitchen
+    [560, 220], [720, 220], [880, 220], [960, 220],    // Living/Dining
+    [560, 380], [720, 380], [880, 380],                // Living back
+    [180, 520], [380, 520],                            // Beds
+    [820, 540], [940, 540],                            // Bath
+    [600, 540],                                        // Hall
+  ];
+  const FIRST_PIN = 5; // index of the user-marked one (in living)
+
+  // ── Build the marker scribble around fixtures[FIRST_PIN] ──
+  // Hand-drawn lasso: small overshooting circle.
+  function lassoPath(cx, cy, r = 32) {
+    // Generate a slightly wobbly closed path so it feels hand-drawn.
+    const pts = [];
+    const steps = 26;
+    for (let i = 0; i <= steps; i++) {
+      const a = (i / steps) * Math.PI * 2 - Math.PI/2;
+      const wobble = (Math.sin(i * 1.3) + Math.cos(i * 0.7)) * 1.6;
+      const rr = r + wobble + (i === steps ? 6 : 0); // overshoot at the end
+      pts.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr]);
+    }
+    return 'M ' + pts.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L ');
+  }
+
+  const markerPath = document.getElementById('markerPath');
+  const markerLabel = document.getElementById('markerLabel');
+  const markerG = document.getElementById('marker');
+  const [mx, my] = fixtures[FIRST_PIN];
+  const d = lassoPath(mx, my, 30);
+  markerPath.setAttribute('d', d);
+  markerLabel.setAttribute('x', mx + 38);
+  markerLabel.setAttribute('y', my - 32);
+  // Get total length for stroke draw animation
+  const totalLen = markerPath.getTotalLength();
+  markerPath.style.strokeDasharray = totalLen;
+  markerPath.style.strokeDashoffset = totalLen;
+
+  // ── Pin builder ──
+  const pinsG = document.getElementById('pins');
+  function makePin(i, [x, y], delay) {
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('transform', `translate(${x} ${y})`);
+    g.style.opacity = '0';
+    g.style.transition = `opacity 0.18s ease-out, transform 0.45s cubic-bezier(.2,1.5,.3,1)`;
+    g.style.transitionDelay = `${delay}ms`;
+    g.innerHTML = `
+      <circle r="22" fill="none" stroke="#E8590C" stroke-width="2" opacity="0">
+        <animate attributeName="r" from="14" to="34" begin="${delay}ms" dur="0.7s" fill="freeze"/>
+        <animate attributeName="opacity" from="0.8" to="0" begin="${delay}ms" dur="0.7s" fill="freeze"/>
+      </circle>
+      <circle r="11" fill="#E8590C"/>
+      <circle r="4" fill="#fff"/>
+      <line x1="-7" y1="0" x2="7" y2="0" stroke="#fff" stroke-width="1.6"/>
+      <line x1="0" y1="-7" x2="0" y2="7" stroke="#fff" stroke-width="1.6"/>
+    `;
+    return g;
+  }
+
+  // ── Counter, caption, hud helpers ──
+  const cnum = document.getElementById('cnum');
+  const cap = document.getElementById('cap');
+  const hudLabel = document.getElementById('hudLabel');
+  function setCount(n) {
+    cnum.textContent = n;
+  }
+  function setCaption(html) { cap.innerHTML = html; }
+  function setHud(t) { hudLabel.textContent = t; }
+
+  // ── Sweep ──
+  const sweepG = document.getElementById('sweepG');
+  const sweepLine = document.getElementById('sweepLine');
+  const sweepGlow = document.getElementById('sweepGlow');
+
+  // ── Timeline ──
+  // 0.0 - 0.4   walls draw in (CSS via stroke-dash)
+  // 0.4 - 1.4   user "draws" lasso on first fixture
+  // 1.4 - 1.9   first pin lands
+  // 1.9 - 4.0   sweep across, fixtures pop in pitch-laddered
+  // 4.0 - 5.5   hold ("15 in 0.6s") then reset and loop
+
+  function drawWalls() {
+    [document.getElementById('wallsOuter'), document.getElementById('wallsInner')].forEach((p, i) => {
+      const len = p.getTotalLength();
+      p.style.strokeDasharray = len;
+      p.style.strokeDashoffset = len;
+      p.style.transition = `stroke-dashoffset 0.55s cubic-bezier(.4,.1,.3,1) ${i*0.1}s`;
+      // force reflow
+      p.getBoundingClientRect();
+      p.style.strokeDashoffset = '0';
+    });
+  }
+
+  function resetWalls() {
+    [document.getElementById('wallsOuter'), document.getElementById('wallsInner')].forEach(p => {
+      const len = p.getTotalLength();
+      p.style.transition = 'none';
+      p.style.strokeDashoffset = len;
+    });
+  }
+
+  function play() {
+    // Reset
+    resetWalls();
+    pinsG.innerHTML = '';
+    markerG.style.opacity = '0';
+    markerLabel.style.opacity = '0';
+    markerPath.style.strokeDashoffset = totalLen;
+    sweepG.style.opacity = '0';
+    setCount(0);
+    setCaption('');
+    setHud('Ready');
+
+    // 0.0s - walls draw
+    setTimeout(() => drawWalls(), 100);
+
+    // 0.4s - marker appears + scribbles
+    setTimeout(() => {
+      setHud('Marking');
+      setCaption('Mark <strong>one</strong> symbol…');
+      markerG.style.opacity = '1';
+      markerPath.style.transition = 'stroke-dashoffset 0.85s cubic-bezier(.4,.2,.3,1)';
+      // reflow
+      markerPath.getBoundingClientRect();
+      markerPath.style.strokeDashoffset = '0';
+    }, 500);
+
+    // 1.4s - first pin lands at the marked fixture
+    setTimeout(() => {
+      const pin = makePin(FIRST_PIN, fixtures[FIRST_PIN], 0);
+      pinsG.appendChild(pin);
+      pin.getBoundingClientRect();
+      pin.style.opacity = '1';
+      setCount(1);
+      setCaption('AI learns the symbol…');
+    }, 1400);
+
+    // 1.9s - sweep starts + AI auto-detects all others
+    setTimeout(() => {
+      setHud('Detecting');
+      setCaption('…and finds <strong>every match</strong>.');
+      sweepG.style.opacity = '1';
+      // sweep line moves left -> right
+      const sweepDur = 1500;
+      const startX = 80, endX = 1020;
+      const startT = performance.now();
+      function tick(now) {
+        const t = Math.min(1, (now - startT) / sweepDur);
+        const eased = t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2, 2)/2;
+        const x = startX + (endX - startX) * eased;
+        sweepLine.setAttribute('x1', x); sweepLine.setAttribute('x2', x);
+        sweepGlow.setAttribute('x', x - 240);
+        if (t < 1) requestAnimationFrame(tick);
+        else {
+          // fade sweep
+          sweepG.style.transition = 'opacity 0.4s';
+          sweepG.style.opacity = '0';
+        }
+      }
+      requestAnimationFrame(tick);
+
+      // Pop in remaining pins as the sweep crosses each x
+      let popped = 1;
+      fixtures.forEach((f, i) => {
+        if (i === FIRST_PIN) return;
+        const fx = f[0];
+        const fracX = (fx - startX) / (endX - startX);
+        // invert ease to find time for that fraction (approximate by ease)
+        const delay = fracX * sweepDur * 0.92;
+        setTimeout(() => {
+          const pin = makePin(i, f, 0);
+          pinsG.appendChild(pin);
+          pin.getBoundingClientRect();
+          pin.style.opacity = '1';
+          popped += 1;
+          setCount(popped);
+        }, delay);
+      });
+    }, 1900);
+
+    // 3.7s - lock in caption, fade marker
+    setTimeout(() => {
+      markerG.style.transition = 'opacity 0.6s';
+      markerG.style.opacity = '0.0';
+      setCaption('<strong>15 fixtures</strong> · 0.6 seconds');
+      setHud('Done');
+    }, 3700);
+
+    // 6.2s - loop
+    setTimeout(play, 6200);
+  }
+
+  // Wait for fonts then start
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => play());
+  } else {
+    play();
+  }
+})();
+</script>
+</body>
+</html>
