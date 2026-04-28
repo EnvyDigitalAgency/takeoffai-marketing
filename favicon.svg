@@ -1,6 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <!-- Top-left corner bracket -->
-  <path d="M4 14 L4 4 L14 4" stroke="#1C1C1C" stroke-width="4" stroke-linecap="square" fill="none"/>
-  <!-- Bottom-right corner bracket -->
-  <path d="M18 28 L28 28 L28 18" stroke="#E8611A" stroke-width="4" stroke-linecap="square" fill="none"/>
+  <rect width="32" height="32" rx="6" fill="#E8611A"/>
+  <!-- Top-left corner bracket (white) -->
+  <path d="M7 16 L7 7 L16 7" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="square" fill="none"/>
+  <!-- Bottom-right corner bracket (dark) -->
+  <path d="M16 25 L25 25 L25 16" stroke="#1C1C1C" stroke-width="3.5" stroke-linecap="square" fill="none"/>
 </svg>
