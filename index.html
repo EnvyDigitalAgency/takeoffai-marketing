@@ -278,6 +278,29 @@ footer p{font-size:13px;color:var(--gray-400)}
 footer a{color:var(--gray-500);text-decoration:none;cursor:pointer}
 footer a:hover{color:var(--orange)}
 
+/* ABOUT PAGE */
+.about-hero{padding:120px 0 64px;background:var(--gray-900);color:var(--white);text-align:center;position:relative;overflow:hidden}
+.about-hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(232,97,26,.18),transparent 70%);pointer-events:none}
+.about-hero .container{position:relative;z-index:1;max-width:720px}
+.about-hero .kicker{color:var(--orange)}
+.about-hero h1{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(32px,5vw,52px);line-height:1.1;letter-spacing:-.025em;margin-bottom:16px}
+.about-hero p{font-size:18px;color:rgba(255,255,255,.6);line-height:1.65;max-width:520px;margin:0 auto}
+.about-body{max-width:720px;margin:0 auto;padding:64px 24px 96px}
+.about-body p{font-size:16px;line-height:1.8;color:var(--gray-600);margin-bottom:20px}
+.about-body p strong{color:var(--gray-900);font-weight:600}
+.about-body h2{font-family:'Fraunces',serif;font-weight:700;font-size:26px;color:var(--gray-900);margin:48px 0 16px;letter-spacing:-.015em;line-height:1.2}
+.about-body h2:first-child{margin-top:0}
+.founder-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:40px 0}
+.founder-card{background:var(--gray-50);border:1.5px solid var(--gray-150);border-radius:16px;padding:28px 24px}
+.founder-initials{width:48px;height:48px;border-radius:12px;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--white);margin-bottom:14px;font-family:'Outfit',sans-serif}
+.founder-card h3{font-size:17px;font-weight:600;color:var(--gray-900);margin-bottom:4px}
+.founder-card .founder-role{font-size:13px;color:var(--orange);font-weight:500;margin-bottom:10px}
+.founder-card p{font-size:14px;line-height:1.65;color:var(--gray-500);margin:0}
+.about-cta{background:var(--orange-light);border:1.5px solid var(--orange-100);border-radius:16px;padding:32px;text-align:center;margin-top:48px}
+.about-cta h3{font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--gray-900);margin-bottom:8px}
+.about-cta p{font-size:15px;color:var(--gray-500);margin-bottom:20px}
+@media(max-width:640px){.founder-cards{grid-template-columns:1fr}}
+
 /* LEGAL PAGES */
 .page-view{display:none}
 .page-view.active{display:block}
@@ -465,6 +488,60 @@ footer a:hover{color:var(--orange)}
 
 </div><!-- /page-main -->
 
+<!-- ========== ABOUT ========== -->
+<div id="page-about" class="page-view">
+<div class="about-hero">
+  <div class="container">
+    <div class="kicker">Our story</div>
+    <h1>Built by tradies.<br>For tradies.</h1>
+    <p>We're not a Silicon Valley startup that stumbled onto construction. We came up through the trade — and we built the tool we wished existed.</p>
+  </div>
+</div>
+<div class="about-body">
+
+<h2>We noticed a problem nobody was fixing.</h2>
+<p>Jonah and AJ spent years in the electrical trade in Melbourne. On the tools. Reading plans. Running jobs. Quoting work at the kitchen table at 10pm because there wasn't enough time during the day.</p>
+<p>The estimating process was broken — and everyone in the industry just accepted it. You'd spend <strong>15 to 20 hours a week</strong> counting symbols by hand, sheet by sheet, praying you hadn't missed a room. Legacy software like Accubid or ConEst took weeks to set up and still required someone to do the counting manually.</p>
+<p>Smaller contractors couldn't afford a full-time estimator. Larger ones were buried in bottlenecks. And the tools built to help? They were designed for people with a month to spare and an IT team to configure them.</p>
+<p>We knew there had to be a better way.</p>
+
+<h2>So we built it.</h2>
+<p>TakeoffAI started with a simple idea: <strong>what if AI could do the counting?</strong> Not as a gimmick. Not as a "coming soon" feature. Actually count — every downlight, GPO, switch, data point, smoke detector — off a real PDF drawing set, in seconds.</p>
+<p>We spent months building and testing on real plans from real Australian jobs. Commercial fitouts. Residential subdivisions. Industrial facilities. We obsessed over accuracy because we knew from experience that <strong>one missed device can cost thousands.</strong></p>
+<p>The result is TakeoffAI — an AI estimating engine that replaces the worst part of your bid cycle, without replacing your estimator.</p>
+
+<h2>Why we're different from every other tool.</h2>
+<p>Most construction software is built by people who've never set foot on a job site. They build features that look good in demos but fall apart on real drawings.</p>
+<p>We're ex-tradies from Melbourne. We speak the language. We know what a messy set of plans looks like. We know the pressure of a Friday afternoon bid deadline. And we built TakeoffAI around that reality — not a sanitised version of it.</p>
+<p><strong>This isn't a faceless SaaS product.</strong> It's a tool built by two people who care deeply about the trade and want to see Australian contractors win more work, stress less, and build better businesses.</p>
+
+<div class="founder-cards">
+  <div class="founder-card">
+    <div class="founder-initials">J</div>
+    <h3>Jonah</h3>
+    <div class="founder-role">Co-founder</div>
+    <p>Ex-tradie turned builder of things. Spent years in the electrical industry before moving into tech. Still thinks in plans and quantities.</p>
+  </div>
+  <div class="founder-card">
+    <div class="founder-initials">AJ</div>
+    <h3>AJ</h3>
+    <div class="founder-role">Co-founder</div>
+    <p>Grew up around the trade. Worked his way through the industry before co-founding TakeoffAI. Obsessed with building things that actually work on the job.</p>
+  </div>
+</div>
+
+<p>We started TakeoffAI because we wanted to build something with <strong>so much real value</strong> that it genuinely improves people's lives — not just their workflow. When a contractor wins a job they would've missed because they could finally bid it on time, that matters to us.</p>
+<p>Melbourne-made. Australian-owned. Built for the trade.</p>
+
+<div class="about-cta">
+  <h3>Come try it yourself.</h3>
+  <p>7 days free. Your actual plans. No database setup, no training required.</p>
+  <a href="https://app.takeoffai.com.au/signup" class="btn-primary" target="_blank" rel="noopener">Try free for 7 days <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+</div>
+
+</div>
+</div><!-- /page-about -->
+
 <!-- ========== PRIVACY ========== -->
 <div id="page-privacy" class="page-view">
 <div class="legal-header"><div class="container"><h1>Privacy policy</h1><p class="updated">Last updated: 9 April 2026</p></div></div>
@@ -516,7 +593,7 @@ footer a:hover{color:var(--orange)}
 <footer>
   <div class="container">
     <a class="nav-logo" id="footer-logo"><div class="nav-logo-icon"><div class="corner-tl"></div><div class="corner-br"></div></div><div class="nav-logo-text">takeoff<span>.ai</span></div></a>
-    <p>&copy; 2026 TakeoffAI Pty Ltd. <a id="footer-privacy">Privacy</a> &middot; <a id="footer-terms">Terms</a></p>
+    <p>&copy; 2026 TakeoffAI Pty Ltd. <a id="footer-about">Our story</a> &middot; <a id="footer-privacy">Privacy</a> &middot; <a id="footer-terms">Terms</a></p>
   </div>
 </footer>
 
@@ -526,12 +603,14 @@ function showPage(page) {
   var main = document.getElementById('page-main');
   var privacy = document.getElementById('page-privacy');
   var terms = document.getElementById('page-terms');
+  var about = document.getElementById('page-about');
   var navLinks = document.getElementById('nav-main-links');
   var navBack = document.getElementById('nav-back');
 
   main.style.display = 'none';
   privacy.className = 'page-view';
   terms.className = 'page-view';
+  about.className = 'page-view';
 
   if (page === 'main') {
     main.style.display = '';
@@ -547,6 +626,9 @@ function showPage(page) {
     } else if (page === 'terms') {
       terms.className = 'page-view active';
       document.title = 'Terms & Conditions \u2014 TakeoffAI';
+    } else if (page === 'about') {
+      about.className = 'page-view active';
+      document.title = 'Our Story \u2014 TakeoffAI';
     }
   }
   window.scrollTo(0, 0);
@@ -556,6 +638,7 @@ function showPage(page) {
 document.getElementById('nav-logo').addEventListener('click', function(e) { e.preventDefault(); showPage('main'); });
 document.getElementById('nav-back').addEventListener('click', function(e) { e.preventDefault(); showPage('main'); });
 document.getElementById('footer-logo').addEventListener('click', function(e) { e.preventDefault(); showPage('main'); });
+document.getElementById('footer-about').addEventListener('click', function(e) { e.preventDefault(); showPage('about'); });
 document.getElementById('footer-privacy').addEventListener('click', function(e) { e.preventDefault(); showPage('privacy'); });
 document.getElementById('footer-terms').addEventListener('click', function(e) { e.preventDefault(); showPage('terms'); });
 
