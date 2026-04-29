@@ -1,4 +1,7 @@
 {
   "outputDirectory": ".",
-  "routes": [{ "src": "/(.*)", "dest": "/$1" }]
+  "routes": [
+    { "src": "/compare", "dest": "/compare.html" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
 }
