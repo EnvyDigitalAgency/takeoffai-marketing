@@ -689,6 +689,17 @@ for (var m = 0; m < anims.length; m++) {
   obs.observe(anims[m]);
 }
 
+// Animation iframe — play only when visible
+var animFrame = document.querySelector('.product-frame iframe');
+if (animFrame) {
+  var animObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      animFrame.contentWindow.postMessage(entry.isIntersecting ? 'play' : 'pause', '*');
+    });
+  }, { threshold: 0.3 });
+  animFrame.addEventListener('load', function() { animObs.observe(animFrame); });
+}
+
 // Nav scroll shadow
 window.addEventListener('scroll', function() {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);

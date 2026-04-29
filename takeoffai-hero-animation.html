@@ -228,8 +228,25 @@
     });
   }
 
+  // ── Playback state ──
+  let timers = [];
+  let playing = false;
+
+  function addTimer(fn, ms) {
+    timers.push(setTimeout(fn, ms));
+  }
+
+  function stopAll() {
+    timers.forEach(clearTimeout);
+    timers = [];
+    playing = false;
+  }
+
   function play() {
-    // Reset
+    stopAll();
+    playing = true;
+
+    // Reset visuals
     resetWalls();
     pinsG.innerHTML = '';
     markerG.style.opacity = '0';
@@ -240,22 +257,18 @@
     setCaption('');
     setHud('Ready');
 
-    // 0.0s - walls draw
-    setTimeout(() => drawWalls(), 100);
+    addTimer(() => drawWalls(), 100);
 
-    // 0.4s - marker appears + scribbles
-    setTimeout(() => {
+    addTimer(() => {
       setHud('Marking');
       setCaption('Mark <strong>one</strong> symbol…');
       markerG.style.opacity = '1';
       markerPath.style.transition = 'stroke-dashoffset 0.85s cubic-bezier(.4,.2,.3,1)';
-      // reflow
       markerPath.getBoundingClientRect();
       markerPath.style.strokeDashoffset = '0';
     }, 500);
 
-    // 1.4s - first pin lands at the marked fixture
-    setTimeout(() => {
+    addTimer(() => {
       const pin = makePin(FIRST_PIN, fixtures[FIRST_PIN], 0);
       pinsG.appendChild(pin);
       pin.getBoundingClientRect();
@@ -264,16 +277,15 @@
       setCaption('AI learns the symbol…');
     }, 1400);
 
-    // 1.9s - sweep starts + AI auto-detects all others
-    setTimeout(() => {
+    addTimer(() => {
       setHud('Detecting');
       setCaption('…and finds <strong>every match</strong>.');
       sweepG.style.opacity = '1';
-      // sweep line moves left -> right
       const sweepDur = 1500;
       const startX = 80, endX = 1020;
       const startT = performance.now();
       function tick(now) {
+        if (!playing) return;
         const t = Math.min(1, (now - startT) / sweepDur);
         const eased = t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2, 2)/2;
         const x = startX + (endX - startX) * eased;
@@ -281,22 +293,19 @@
         sweepGlow.setAttribute('x', x - 240);
         if (t < 1) requestAnimationFrame(tick);
         else {
-          // fade sweep
           sweepG.style.transition = 'opacity 0.4s';
           sweepG.style.opacity = '0';
         }
       }
       requestAnimationFrame(tick);
 
-      // Pop in remaining pins as the sweep crosses each x
       let popped = 1;
       fixtures.forEach((f, i) => {
         if (i === FIRST_PIN) return;
         const fx = f[0];
         const fracX = (fx - startX) / (endX - startX);
-        // invert ease to find time for that fraction (approximate by ease)
         const delay = fracX * sweepDur * 0.92;
-        setTimeout(() => {
+        addTimer(() => {
           const pin = makePin(i, f, 0);
           pinsG.appendChild(pin);
           pin.getBoundingClientRect();
@@ -307,24 +316,31 @@
       });
     }, 1900);
 
-    // 3.7s - lock in caption, fade marker
-    setTimeout(() => {
+    addTimer(() => {
       markerG.style.transition = 'opacity 0.6s';
       markerG.style.opacity = '0.0';
       setCaption('<strong>15 fixtures</strong> · 0.6 seconds');
       setHud('Done');
     }, 3700);
 
-    // 6.2s - loop
-    setTimeout(play, 6200);
+    addTimer(play, 6200);
   }
 
-  // Wait for fonts then start
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(() => play());
-  } else {
-    play();
-  }
+  // ── Listen for play/pause from parent page ──
+  window.addEventListener('message', (e) => {
+    if (e.data === 'play' && !playing) {
+      document.fonts.ready.then(() => play());
+    } else if (e.data === 'pause') {
+      stopAll();
+      resetWalls();
+      pinsG.innerHTML = '';
+      markerG.style.opacity = '0';
+      sweepG.style.opacity = '0';
+      setCount(0);
+      setCaption('');
+      setHud('Ready');
+    }
+  });
 })();
 </script>
 </body>
