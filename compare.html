@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TakeoffAI vs Groundplan, ConEst & Bluebeam — Electrical Takeoff Software Comparison</title>
+<meta name="description" content="Honest comparison of TakeoffAI vs Groundplan, ConEst, and Bluebeam Revu for Australian electrical contractors. AI counting, pricing, setup time, SimPro integration, and more.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://takeoffai.com.au/compare">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://takeoffai.com.au/compare">
+<meta property="og:title" content="TakeoffAI vs Groundplan vs ConEst vs Bluebeam — Which is right for Australian sparkies?">
+<meta property="og:description" content="Side-by-side comparison of electrical takeoff software for Australian contractors. Honest look at pricing, AI counting, setup, and SimPro integration.">
+<meta property="og:image" content="https://takeoffai.com.au/takeoffai_og_banner.png">
+<meta property="og:locale" content="en_AU">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "TakeoffAI vs Groundplan vs ConEst vs Bluebeam Revu",
+  "description": "Comparison of electrical takeoff and estimating software for Australian contractors",
+  "url": "https://takeoffai.com.au/compare"
+}
+</script>
+
+<style>
+:root{--orange:#E8611A;--orange-hover:#D4560F;--orange-light:#FFF3EC;--orange-100:#FFE4D1;--gray-900:#1C1C1C;--gray-800:#2D2D2D;--gray-700:#404040;--gray-600:#555555;--gray-500:#777777;--gray-400:#999999;--gray-300:#BBBBBB;--gray-200:#E0E0E0;--gray-150:#EBEBEB;--gray-100:#F4F4F4;--gray-50:#F9F9F9;--white:#FFFFFF;--green:#1B8C4F;--green-light:#EDFBF3;--red:#D94040}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',-apple-system,sans-serif;background:var(--white);color:var(--gray-900);-webkit-font-smoothing:antialiased}
+.container{max-width:1080px;margin:0 auto;padding:0 24px}
+a{text-decoration:none}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;padding:14px 0;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--gray-150)}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+.nav-logo-icon{width:32px;height:32px;position:relative}
+.nav-logo-icon .corner-tl{position:absolute;top:2px;left:2px;width:12px;height:12px;border-top:3px solid var(--gray-900);border-left:3px solid var(--gray-900)}
+.nav-logo-icon .corner-br{position:absolute;bottom:2px;right:2px;width:12px;height:12px;border-bottom:3px solid var(--orange);border-right:3px solid var(--orange)}
+.nav-logo-text{font-size:17px;font-weight:600;color:var(--gray-900)}
+.nav-logo-text span{color:var(--gray-400);font-weight:400}
+.nav-right{display:flex;align-items:center;gap:20px}
+.nav-back{font-size:14px;color:var(--gray-500);display:flex;align-items:center;gap:6px}
+.nav-back:hover{color:var(--orange)}
+.nav-cta{font-size:14px;font-weight:600;padding:9px 20px;background:var(--gray-900);color:var(--white);border-radius:8px;transition:background .2s}
+.nav-cta:hover{background:var(--gray-700)}
+
+/* HERO */
+.hero{padding:80px 0 64px;text-align:center;background:var(--gray-900);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(232,97,26,.18),transparent 70%);pointer-events:none}
+.hero .container{position:relative;z-index:1;max-width:800px}
+.kicker{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:14px;display:inline-block}
+.hero h1{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(28px,4.5vw,48px);line-height:1.1;letter-spacing:-.025em;color:var(--white);margin-bottom:16px}
+.hero h1 span{color:var(--orange)}
+.hero p{font-size:17px;color:rgba(255,255,255,.55);line-height:1.65;max-width:580px;margin:0 auto 32px}
+.hero-note{font-size:13px;color:rgba(255,255,255,.3);margin-top:16px}
+
+/* CTA button */
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:var(--white);font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;padding:14px 28px;border-radius:10px;border:none;cursor:pointer;text-decoration:none;transition:all .2s ease}
+.btn-primary:hover{background:var(--orange-hover);transform:translateY(-1px)}
+
+/* VERDICT STRIP */
+.verdict-strip{background:var(--orange-light);border-bottom:1px solid var(--orange-100);padding:20px 0}
+.verdict-strip .container{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.verdict-strip p{font-size:14px;color:var(--gray-700);line-height:1.55}
+.verdict-strip strong{color:var(--gray-900)}
+
+/* SECTION */
+.section{padding:80px 0}
+.section-alt{background:var(--gray-50)}
+.section-heading{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(26px,3.5vw,38px);line-height:1.15;letter-spacing:-.02em;color:var(--gray-900);margin-bottom:12px}
+.section-sub{font-size:16px;line-height:1.65;color:var(--gray-500);max-width:560px}
+
+/* COMPARISON TABLE */
+.compare-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:40px}
+table{width:100%;border-collapse:collapse;min-width:680px}
+thead th{padding:16px 20px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid var(--gray-150);text-align:left;vertical-align:bottom}
+thead th:first-child{color:var(--gray-400);font-weight:500;text-transform:none;letter-spacing:0;font-size:13px}
+thead th.col-us{background:var(--orange-light);color:var(--orange);border-bottom-color:var(--orange);border-radius:12px 12px 0 0;text-align:center}
+thead th.col-comp{color:var(--gray-500);text-align:center}
+tbody tr{border-bottom:1px solid var(--gray-100)}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:var(--gray-50)}
+tbody td{padding:18px 20px;font-size:14px;vertical-align:middle;line-height:1.4}
+tbody td:first-child{font-weight:600;color:var(--gray-800);width:26%}
+tbody td.col-us{background:rgba(255,243,236,.4);text-align:center;font-weight:500}
+tbody td.col-comp{text-align:center;color:var(--gray-600)}
+.chk{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:var(--green-light)}
+.chk svg{color:var(--green)}
+.cross{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:var(--gray-100)}
+.cross svg{color:var(--gray-300)}
+.partial{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:#FFF8E1}
+.partial svg{color:#F59E0B}
+.cell-text{font-size:13px;line-height:1.4;color:var(--gray-600)}
+.cell-text strong{color:var(--gray-900);font-size:14px;display:block;margin-bottom:2px}
+.cell-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:4px;margin-top:4px}
+.badge-win{background:var(--green-light);color:var(--green)}
+.badge-soon{background:var(--orange-100);color:var(--orange)}
+.badge-partial{background:#FFF8E1;color:#D97706}
+.table-footer{margin-top:12px;font-size:12px;color:var(--gray-400);font-style:italic}
+
+/* BREAKDOWN SECTIONS */
+.breakdown-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.breakdown-card{border-radius:16px;padding:28px 24px;border:1.5px solid var(--gray-150);background:var(--white)}
+.breakdown-card h3{font-size:17px;font-weight:700;color:var(--gray-900);margin-bottom:6px}
+.breakdown-card .bc-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:5px;margin-bottom:12px}
+.bc-tag-green{background:var(--green-light);color:var(--green)}
+.bc-tag-orange{background:var(--orange-100);color:var(--orange)}
+.bc-tag-gray{background:var(--gray-100);color:var(--gray-500)}
+.breakdown-card p{font-size:14px;line-height:1.65;color:var(--gray-500)}
+.breakdown-card p strong{color:var(--gray-800);font-weight:600}
+
+/* FAQ */
+.faq-list{max-width:700px;margin:40px auto 0;display:flex;flex-direction:column;gap:6px}
+.faq-item{background:var(--white);border:1.5px solid var(--gray-150);border-radius:12px;overflow:hidden}
+.faq-item.open{border-color:var(--gray-200)}
+.faq-q{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:15px;font-weight:500;color:var(--gray-800);user-select:none}
+.faq-q:hover{color:var(--orange)}
+.faq-arrow{width:18px;height:18px;transition:transform .3s ease;color:var(--gray-300);flex-shrink:0}
+.faq-item.open .faq-arrow{transform:rotate(180deg);color:var(--orange)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a-inner{padding:0 22px 20px;font-size:14px;line-height:1.65;color:var(--gray-500)}
+
+/* FINAL CTA */
+.final-cta{padding:96px 0;text-align:center;background:var(--gray-900);position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(232,97,26,.15),transparent 70%);pointer-events:none}
+.final-cta .container{position:relative;z-index:1;max-width:640px}
+.final-cta h2{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(28px,4vw,44px);line-height:1.1;letter-spacing:-.025em;color:var(--white);margin-bottom:12px}
+.final-cta h2 span{color:var(--orange)}
+.final-cta p{font-size:16px;color:rgba(255,255,255,.5);margin:0 auto 32px;line-height:1.6}
+.final-cta .sub{font-size:13px;color:rgba(255,255,255,.3);margin-top:14px}
+
+/* FOOTER */
+footer{padding:32px 0;border-top:1px solid var(--gray-150)}
+footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+footer p{font-size:13px;color:var(--gray-400)}
+footer a{color:var(--gray-500)}
+footer a:hover{color:var(--orange)}
+
+@media(max-width:768px){
+  .breakdown-grid{grid-template-columns:1fr}
+  .nav-back span{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a class="nav-logo" href="/">
+      <div class="nav-logo-icon"><div class="corner-tl"></div><div class="corner-br"></div></div>
+      <div class="nav-logo-text">takeoff<span>.ai</span></div>
+    </a>
+    <div class="nav-right">
+      <a class="nav-back" href="/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 5 5 12 12 19"></polyline></svg> <span>Back to home</span></a>
+      <a class="nav-cta" href="https://app.takeoffai.com.au/signup" target="_blank" rel="noopener">Try free for 7 days</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="kicker">Software comparison</div>
+    <h1>TakeoffAI vs <span>Groundplan</span>, ConEst<br>& Bluebeam Revu</h1>
+    <p>An honest, side-by-side look at the electrical takeoff tools Australian contractors are actually using — and where each one wins and loses.</p>
+    <a href="https://app.takeoffai.com.au/signup" class="btn-primary" target="_blank" rel="noopener">Try TakeoffAI free for 7 days</a>
+    <p class="hero-note">Last updated April 2026 · Pricing verified against each vendor's public website</p>
+  </div>
+</section>
+
+<!-- VERDICT -->
+<div class="verdict-strip">
+  <div class="container">
+    <p><strong>Bottom line:</strong> Groundplan is the closest competitor for Australian sparkies — solid product, good SimPro integration, mobile app. But it has no AI counting; you still click every symbol manually. ConEst is enterprise-grade and expensive, built for the US market. Bluebeam is a PDF markup tool — not really a takeoff tool at all. TakeoffAI is the only one where the AI does the counting for you.</p>
+  </div>
+</div>
+
+<!-- MAIN TABLE -->
+<section class="section">
+  <div class="container">
+    <div class="kicker">Side by side</div>
+    <h2 class="section-heading">Feature comparison</h2>
+    <p class="section-sub">We've tried to be fair. Where competitors have a genuine edge, we say so.</p>
+
+    <div class="compare-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th class="col-us">TakeoffAI</th>
+            <th class="col-comp">Groundplan</th>
+            <th class="col-comp">ConEst</th>
+            <th class="col-comp">Bluebeam Revu</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>Starting price</td>
+            <td class="col-us"><div class="cell-text"><strong>$79/mo</strong>Starter · $297/mo Pro<br><span class="cell-badge badge-win">7-day free trial</span></div></td>
+            <td class="col-comp"><div class="cell-text"><strong>~$149/mo</strong>Essentials plan<br><span class="cell-badge badge-partial">Trial available</span></div></td>
+            <td class="col-comp"><div class="cell-text"><strong>$200–$500+/mo</strong>Enterprise pricing<br><span class="cell-badge" style="background:var(--gray-100);color:var(--gray-500)">Demo only</span></div></td>
+            <td class="col-comp"><div class="cell-text"><strong>~$310/yr</strong>(~$26/mo per user)<br><span class="cell-badge" style="background:var(--gray-100);color:var(--gray-500)">30-day trial</span></div></td>
+          </tr>
+
+          <tr>
+            <td>AI symbol counting</td>
+            <td class="col-us"><span class="chk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><br><span class="cell-badge badge-win">Auto-detects all symbols</span></td>
+            <td class="col-comp"><span class="cross"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span><br><span style="font-size:12px;color:var(--gray-400)">Manual click-to-count</span></td>
+            <td class="col-comp"><span class="cross"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span><br><span style="font-size:12px;color:var(--gray-400)">Manual counting</span></td>
+            <td class="col-comp"><span class="cross"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span><br><span style="font-size:12px;color:var(--gray-400)">PDF markup only</span></td>
+          </tr>
+
+          <tr>
+            <td>Setup time</td>
+            <td class="col-us"><div class="cell-text"><strong>Under 1 hour</strong>First takeoff in your onboarding session</div></td>
+            <td class="col-comp"><div class="cell-text"><strong>A few hours</strong>Straightforward setup</div></td>
+            <td class="col-comp"><div class="cell-text"><strong>Days to weeks</strong>Complex database configuration required</div></td>
+            <td class="col-comp"><div class="cell-text"><strong>Hours</strong>Not electrical-specific; needs manual configuration</div></td>
+          </tr>
+
+          <tr>
+            <td>Australian electrical symbols</td>
+            <td class="col-us"><span class="chk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><br><span style="font-size:12px;color:var(--gray-500)">GPO, downlight, switch, data, smoke</span></td>
+            <td class="col-comp"><span class="chk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><br><span style="font-size:12px;color:var(--gray-500)">Australian-built product</span></td>
+            <td class="col-comp"><span class="partial"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span><br><span style="font-size:12px;color:var(--gray-400)">US-focused; AU symbols need setup</span></td>
+            <td class="col-comp"><span class="cross"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span><br><span style="font-size:12px;color:var(--gray-400)">Generic PDF tool</span></td>
+          </tr>
+
+          <tr>
+            <td>SimPro integration</td>
+            <td class="col-us"><span class="partial"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span><br><span class="cell-badge badge-soon">Coming soon</span></td>
+            <td class="col-comp"><span class="chk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><br><span style="font-size:12px;color:var(--gray-500)">Native integration</span></td>
+            <td class="col-comp"><span class="cross"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></td>
+            <td class="col-comp"><span class="cross"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></td>
+          </tr>
+
+          <tr>
+            <td>Mobile app</td>
+            <td class="col-us"><span class="partial"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span><br><span style="font-size:12px;color:var(--gray-400)">Web app (mobile responsive)</span></td>
+            <td class="col-comp"><span class="chk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><br><span style="font-size:12px;color:var(--gray-500)">iOS & Android app</span></td>
+            <td class="col-comp"><span class="partial"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span><br><span style="font-size:12px;color:var(--gray-400)">Limited mobile support</span></td>
+            <td class="col-comp"><span class="chk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><br><span style="font-size:12px;color:var(--gray-500)">Bluebeam Studio mobile</span></td>
+          </tr>
+
+          <tr>
+            <td>BOQ export (Excel/PDF)</td>
+            <td class="col-us"><span class="chk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span></td>
+            <td class="col-comp"><span class="chk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span></td>
+            <td class="col-comp"><span class="chk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span></td>
+            <td class="col-comp"><span class="partial"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span><br><span style="font-size:12px;color:var(--gray-400)">PDF markup; no BOQ</span></td>
+          </tr>
+
+          <tr>
+            <td>Addendum / revision detection</td>
+            <td class="col-us"><span class="chk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><br><span style="font-size:12px;color:var(--gray-500)">Auto-detects plan changes</span></td>
+            <td class="col-comp"><span class="partial"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span><br><span style="font-size:12px;color:var(--gray-400)">Manual version comparison</span></td>
+            <td class="col-comp"><span class="partial"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></td>
+            <td class="col-comp"><span class="chk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><br><span style="font-size:12px;color:var(--gray-500)">PDF comparison tool</span></td>
+          </tr>
+
+          <tr>
+            <td>Money-back guarantee</td>
+            <td class="col-us"><span class="chk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><br><span style="font-size:12px;color:var(--gray-500)">30-day + 90-day outcome guarantee</span></td>
+            <td class="col-comp"><span class="partial"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span><br><span style="font-size:12px;color:var(--gray-400)">Trial only</span></td>
+            <td class="col-comp"><span class="cross"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></td>
+            <td class="col-comp"><span class="cross"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+    <p class="table-footer">* Competitor pricing and features based on publicly available information as of April 2026. Always verify current pricing with each vendor directly.</p>
+  </div>
+</section>
+
+<!-- BREAKDOWN -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="kicker">The honest breakdown</div>
+    <h2 class="section-heading">Where each tool actually wins</h2>
+    <p class="section-sub">We're not going to pretend every competitor is rubbish. Here's the real picture.</p>
+
+    <div class="breakdown-grid">
+
+      <div class="breakdown-card">
+        <div class="bc-tag bc-tag-orange">TakeoffAI</div>
+        <h3>Best for: Speed and AI automation</h3>
+        <p>If you want to upload a PDF and have the AI count everything — without clicking each symbol individually — TakeoffAI is the only option on this list. <strong>First takeoff in under an hour, no database setup, no IT department required.</strong> Built specifically for Australian electrical contractors by ex-tradies who understand the job.</p>
+      </div>
+
+      <div class="breakdown-card">
+        <div class="bc-tag bc-tag-green">Groundplan</div>
+        <h3>Best for: SimPro users who want mobile</h3>
+        <p>Groundplan is a solid Australian product. If your workflow is heavily tied to SimPro already and you need a native mobile app, Groundplan has a genuine edge over TakeoffAI right now. <strong>The key limitation: there's no AI counting.</strong> You still click every symbol manually — it's just faster than paper.</p>
+      </div>
+
+      <div class="breakdown-card">
+        <div class="bc-tag bc-tag-gray">ConEst</div>
+        <h3>Best for: Large US-style estimating departments</h3>
+        <p>ConEst is a powerful, enterprise-grade platform built for large US electrical contractors with a dedicated estimating team and budget to match. <strong>For Australian sole traders or SMEs, it's overkill</strong> — expensive, complex to configure, and not built with AU standards in mind.</p>
+      </div>
+
+      <div class="breakdown-card">
+        <div class="bc-tag bc-tag-gray">Bluebeam Revu</div>
+        <h3>Best for: General PDF markup (not takeoffs)</h3>
+        <p>Bluebeam is genuinely excellent at what it does — PDF collaboration and markup. But it's not a takeoff tool. <strong>There's no BOQ export, no AI counting, no electrical symbol library.</strong> Many contractors use it alongside a takeoff tool for plan annotation, not instead of one.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container" style="text-align:center">
+    <div class="kicker">Common questions</div>
+    <h2 class="section-heading">Switching from another tool?</h2>
+    <div class="faq-list" style="text-align:left">
+      <div class="faq-item"><div class="faq-q">Can I use TakeoffAI alongside Groundplan or Bluebeam? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Yes — many contractors use TakeoffAI for the AI counting and quantity generation, then continue using Bluebeam for plan markup and annotation. They solve different problems. If you're on Groundplan, TakeoffAI can replace the takeoff part of your workflow immediately; SimPro sync is coming soon.</div></div></div>
+      <div class="faq-item"><div class="faq-q">How long does it take to switch from ConEst or Groundplan? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">TakeoffAI has no database migration or configuration. Upload a real drawing set, run the AI, and you'll have a completed takeoff within your first session. Most contractors are fully up and running within a day — not weeks. Your existing BOQ templates and pricing data stay in whatever system you use today.</div></div></div>
+      <div class="faq-item"><div class="faq-q">Is TakeoffAI accurate enough for real jobs? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">95%+ on standard electrical symbols out of the box. Every count is reviewable before you export — you're always the last set of eyes before it goes to the GC. The AI does the counting; you do the judgment call. That's the right division of labour.</div></div></div>
+      <div class="faq-item"><div class="faq-q">What if I try it and it's not right for my workflow? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">7-day free trial, no credit card required. If you subscribe and change your mind, 30-day unconditional refund — no questions asked. And if you don't double your bid output within 90 days, we refund the annual fee and pay for a competitor licence of your choice. We stand behind it.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>See it on your <span>actual plans.</span></h2>
+    <p>Try TakeoffAI free for 7 days. No credit card, no setup, no training required. Upload a real drawing set and run your first AI takeoff today.</p>
+    <a href="https://app.takeoffai.com.au/signup" class="btn-primary" target="_blank" rel="noopener" style="font-size:17px;padding:18px 36px;border-radius:12px">Try free for 7 days <svg style="width:18px;height:18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+    <p class="sub">No credit card required · Cancel anytime · 30-day money-back guarantee</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <a class="nav-logo" href="/">
+      <div class="nav-logo-icon"><div class="corner-tl"></div><div class="corner-br"></div></div>
+      <div class="nav-logo-text">takeoff<span>.ai</span></div>
+    </a>
+    <p>&copy; 2026 TakeoffAI Pty Ltd. <a href="/">Home</a> &middot; <a href="/compare">Compare</a> &middot; <a href="/#privacy">Privacy</a> &middot; <a href="/#terms">Terms</a></p>
+  </div>
+</footer>
+
+<script>
+var faqQs = document.querySelectorAll('.faq-q');
+for (var j = 0; j < faqQs.length; j++) {
+  faqQs[j].addEventListener('click', function() {
+    var item = this.parentElement;
+    var wasOpen = item.classList.contains('open');
+    var allItems = document.querySelectorAll('.faq-item');
+    for (var k = 0; k < allItems.length; k++) { allItems[k].classList.remove('open'); }
+    if (!wasOpen) item.classList.add('open');
+  });
+}
+</script>
+</body>
+</html>
