@@ -232,6 +232,35 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .pricing-cta{text-align:center}
 .pricing-cta .sub{margin-top:14px;font-size:13px;color:var(--gray-400)}
 
+/* PRICING TIERS */
+.pricing-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto 48px;align-items:start}
+.pt-card{background:var(--white);border:1.5px solid var(--gray-150);border-radius:18px;padding:32px 28px;position:relative}
+.pt-card.pt-featured{border-color:var(--orange);background:var(--orange-light);box-shadow:0 8px 40px rgba(232,97,26,.10)}
+.pt-card.pt-dim{opacity:.65}
+.pt-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 16px;border-radius:100px;background:var(--orange);color:var(--white)}
+.pt-badge.pt-badge-dim{background:var(--gray-200);color:var(--gray-500)}
+.pt-name{font-size:20px;font-weight:700;color:var(--gray-900);margin-bottom:4px}
+.pt-desc{font-size:13px;color:var(--gray-500);margin-bottom:20px;line-height:1.5}
+.pt-price{display:flex;align-items:baseline;gap:3px;margin-bottom:4px}
+.pt-price .pt-dollar{font-family:'Fraunces',serif;font-size:44px;font-weight:700;color:var(--gray-900);line-height:1}
+.pt-card.pt-dim .pt-price .pt-dollar{color:var(--gray-400)}
+.pt-price .pt-per{font-size:14px;color:var(--gray-400)}
+.pt-billed{font-size:12px;color:var(--gray-400);margin-bottom:24px}
+.pt-list{list-style:none;margin-bottom:28px;display:flex;flex-direction:column;gap:10px}
+.pt-list li{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--gray-600);line-height:1.4}
+.pt-list li.pt-no{color:var(--gray-300)}
+.pt-check-icon{width:18px;height:18px;min-width:18px;border-radius:5px;background:var(--green-light);display:flex;align-items:center;justify-content:center}
+.pt-check-icon svg{color:var(--green)}
+.pt-x-icon{width:18px;height:18px;min-width:18px;border-radius:5px;background:var(--gray-100);display:flex;align-items:center;justify-content:center}
+.pt-x-icon svg{color:var(--gray-300)}
+.pt-btn{display:block;text-align:center;width:100%;padding:13px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;border:none}
+.pt-btn-primary{background:var(--orange);color:var(--white)}
+.pt-btn-primary:hover{background:var(--orange-hover);transform:translateY(-1px)}
+.pt-btn-ghost{background:var(--white);color:var(--gray-700);border:1.5px solid var(--gray-200)}
+.pt-btn-ghost:hover{border-color:var(--gray-300);background:var(--gray-50)}
+.pt-btn-disabled{background:var(--gray-100);color:var(--gray-400);cursor:not-allowed}
+@media(max-width:768px){.pricing-tiers{grid-template-columns:1fr}}
+
 /* ROI */
 .roi{padding:96px 0;background:var(--gray-50)}
 .roi-header{text-align:center;margin-bottom:48px}
@@ -440,26 +469,68 @@ footer a:hover{color:var(--orange)}
   <div class="guar-card g2 anim"><div class="guar-badge">90-day outcome-based</div><h3>Double your bids — or we pay.</h3><p>If you don't at least <strong>double the bids you submit</strong> within 90 days, we refund your full annual fee <strong>and pay for a competitor's licence of your choice.</strong></p></div>
 </div></div></section>
 
-<section class="pricing" id="pricing"><div class="container"><div class="pricing-header"><div class="kicker">Pricing</div><h2 class="section-heading">Stop paying for headcount.<br>Pay for output.</h2><p class="section-sub">The real alternative isn't another software tool — it's hiring an estimator you can't find.</p></div>
-<div class="pricing-compare">
-  <div class="pr-card pr-old anim"><div class="pr-tag">The alternative</div><div class="pr-amount">$95K+</div><div class="pr-per">per year, per estimator</div><div class="pr-detail">Plus $20K recruiting fees, 3–6 month ramp, benefits, and the risk they leave.</div></div>
-  <div class="pr-vs">vs</div>
-  <div class="pr-card pr-new anim">
-    <div class="pr-featured">Founding price</div>
-    <div class="pr-tag">Bid domination system</div>
-    <div class="pr-amount">$297<small>/mo</small></div>
-    <div class="pr-per">Or $2,400/year billed annually — just $200/month</div>
-    <ul class="pr-list">
-      <li><span class="pr-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>TakeoffAI Pro — unlimited projects</li>
-      <li><span class="pr-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>1-on-1 onboarding sprint (60 min)</li>
-      <li><span class="pr-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>One-click bid proposal generator</li>
-      <li><span class="pr-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Addendum variance detection</li>
-      <li><span class="pr-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Priority support + quarterly audits</li>
-      <li><span class="pr-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Double guarantee (30 + 90 day)</li>
+<section class="pricing" id="pricing"><div class="container"><div class="pricing-header"><div class="kicker">Pricing</div><h2 class="section-heading">Simple, transparent pricing.</h2><p class="section-sub">Start with a 7-day free trial. No credit card required.</p></div>
+
+<div class="pricing-tiers">
+
+  <!-- Starter -->
+  <div class="pt-card anim">
+    <div class="pt-name">Starter</div>
+    <div class="pt-desc">Perfect for sole traders and small operators.</div>
+    <div class="pt-price"><span class="pt-dollar">$79</span><span class="pt-per">/month</span></div>
+    <div class="pt-billed">Billed monthly</div>
+    <ul class="pt-list">
+      <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Up to 10 projects</li>
+      <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>AI symbol detection</li>
+      <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Excel & CSV export</li>
+      <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>7-day free trial</li>
+      <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Email support</li>
+      <li class="pt-no"><span class="pt-x-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span>Unlimited projects</li>
+      <li class="pt-no"><span class="pt-x-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span>Priority support</li>
     </ul>
+    <a href="https://app.takeoffai.com.au/signup" class="pt-btn pt-btn-ghost" target="_blank" rel="noopener">Start free trial</a>
   </div>
+
+  <!-- Pro -->
+  <div class="pt-card pt-featured anim">
+    <div class="pt-badge">Most popular</div>
+    <div class="pt-name">Pro</div>
+    <div class="pt-desc">For growing electrical businesses.</div>
+    <div class="pt-price"><span class="pt-dollar">$297</span><span class="pt-per">/month</span></div>
+    <div class="pt-billed">Or $2,400/year — just $200/month</div>
+    <ul class="pt-list">
+      <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Unlimited projects</li>
+      <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>AI symbol detection</li>
+      <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Excel & CSV export</li>
+      <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>7-day free trial</li>
+      <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Priority support</li>
+      <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Team access <span style="font-size:11px;color:var(--orange);font-weight:600;margin-left:4px">(coming soon)</span></li>
+      <li class="pt-no"><span class="pt-x-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span>SimPro automations</li>
+    </ul>
+    <a href="https://app.takeoffai.com.au/signup" class="pt-btn pt-btn-primary" target="_blank" rel="noopener">Start free trial</a>
+  </div>
+
+  <!-- Scale -->
+  <div class="pt-card pt-dim anim">
+    <div class="pt-badge pt-badge-dim">Coming soon</div>
+    <div class="pt-name">Scale</div>
+    <div class="pt-desc">Automations and integrations for high-volume teams.</div>
+    <div class="pt-price"><span class="pt-dollar">$497</span><span class="pt-per">/month</span></div>
+    <div class="pt-billed">&nbsp;</div>
+    <ul class="pt-list">
+      <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Everything in Pro</li>
+      <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>SimPro sync</li>
+      <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Auto-dispatch quotes</li>
+      <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>API access</li>
+      <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Dedicated support</li>
+      <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Custom onboarding</li>
+      <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>SLA guarantee</li>
+    </ul>
+    <button class="pt-btn pt-btn-disabled" disabled>Opening checkout…</button>
+  </div>
+
 </div>
-<div class="pricing-cta"><a href="https://app.takeoffai.com.au/signup" class="btn-primary lg" target="_blank" rel="noopener">Try free for 7 days <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a><p class="sub">No credit card required to start · Cancel anytime</p></div>
+<div class="pricing-cta"><p class="sub">Prices in AUD. Payments processed securely by Stripe. Cancel any time.</p></div>
 </div></section>
 
 <section class="roi" id="roi"><div class="container"><div class="roi-header"><div class="kicker">ROI calculator</div><h2 class="section-heading">See what you're leaving<br>on the table</h2><p class="section-sub">Plug in your numbers. The math does the selling.</p></div>
