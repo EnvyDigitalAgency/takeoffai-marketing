@@ -112,7 +112,22 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .nav-cta:hover{background:var(--gray-700)}
 #nav-back{font-size:14px;font-weight:500;color:var(--gray-500);text-decoration:none;transition:color .2s;cursor:pointer;display:none}
 #nav-back:hover{color:var(--orange)}
-@media(max-width:768px){#nav-main-links{display:none!important}}
+/* MOBILE NAV */
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;cursor:pointer;background:none;border:none;padding:4px}
+.nav-hamburger span{display:block;height:2px;border-radius:2px;background:var(--gray-900);transition:all .25s ease}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile-menu{display:none;position:fixed;top:61px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--gray-150);padding:16px 24px 24px;z-index:99;flex-direction:column;gap:4px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.nav-mobile-menu.open{display:flex}
+.nav-mobile-menu a{font-size:16px;font-weight:600;color:var(--gray-700);padding:12px 0;border-bottom:1px solid var(--gray-100);text-decoration:none}
+.nav-mobile-menu a:last-child{border-bottom:none}
+.nav-mobile-menu a:hover{color:var(--orange)}
+.nav-mobile-cta{margin-top:8px;display:block;text-align:center;background:var(--gray-900);color:var(--white)!important;padding:14px!important;border-radius:10px;border-bottom:none!important}
+@media(max-width:768px){
+  #nav-main-links{display:none!important}
+  .nav-hamburger{display:flex}
+}
 
 /* HERO */
 .hero{padding:140px 0 80px;position:relative;background:linear-gradient(180deg,var(--gray-50) 0%,var(--white) 100%)}
@@ -395,9 +410,22 @@ footer a:hover{color:var(--orange)}
       <a href="/demo">Book a demo</a>
       <a href="https://app.takeoffai.com.au/signup" class="nav-cta" target="_blank" rel="noopener">Try free for 7 days</a>
     </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
     <a id="nav-back" style="display:none">&larr; Back to home</a>
   </div>
 </nav>
+
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="#offer" onclick="closeMobileMenu()">What's included</a>
+  <a href="javascript:void(0)" onclick="showPage('pricing');closeMobileMenu()">Pricing</a>
+  <a href="#roi" onclick="closeMobileMenu()">ROI calculator</a>
+  <a href="javascript:void(0)" onclick="showPage('about');closeMobileMenu()">Our story</a>
+  <a href="/compare">Compare</a>
+  <a href="/demo">Book a demo</a>
+  <a href="https://app.takeoffai.com.au/signup" class="nav-mobile-cta" target="_blank" rel="noopener">Try free for 7 days</a>
+</div>
 
 <!-- ========== MAIN PAGE ========== -->
 <div id="page-main">
@@ -749,6 +777,20 @@ footer a:hover{color:var(--orange)}
 </footer>
 
 <script>
+// Mobile nav
+var navHamburger = document.getElementById('nav-hamburger');
+var navMobileMenu = document.getElementById('nav-mobile-menu');
+if (navHamburger) {
+  navHamburger.addEventListener('click', function() {
+    var open = navMobileMenu.classList.toggle('open');
+    navHamburger.classList.toggle('open', open);
+  });
+}
+function closeMobileMenu() {
+  navMobileMenu.classList.remove('open');
+  navHamburger.classList.remove('open');
+}
+
 // Page routing
 function showPage(page) {
   var main = document.getElementById('page-main');
