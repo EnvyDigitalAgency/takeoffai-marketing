@@ -96,20 +96,21 @@ body{font-family:'Outfit',-apple-system,sans-serif;background:var(--white);color
 .product-frame iframe{width:100%;display:block;border:none;aspect-ratio:11/7}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--gray-150);transition:box-shadow .3s ease}
-nav.scrolled{box-shadow:0 1px 12px rgba(0,0,0,.06)}
-nav .container{display:flex;align-items:center;justify-content:space-between}
-.nav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;cursor:pointer}
-.nav-logo-icon{width:32px;height:32px;position:relative}
-.nav-logo-icon .corner-tl{position:absolute;top:2px;left:2px;width:12px;height:12px;border-top:3px solid var(--gray-900);border-left:3px solid var(--gray-900)}
-.nav-logo-icon .corner-br{position:absolute;bottom:2px;right:2px;width:12px;height:12px;border-bottom:3px solid var(--orange);border-right:3px solid var(--orange)}
-.nav-logo-text{font-size:17px;font-weight:600;color:var(--gray-900);letter-spacing:-.01em}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;background:rgba(255,255,255,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--gray-150);transition:box-shadow .3s ease}
+nav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.07)}
+nav .container{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer}
+.nav-logo-icon{width:34px;height:34px;position:relative}
+.nav-logo-icon .corner-tl{position:absolute;top:2px;left:2px;width:13px;height:13px;border-top:3px solid var(--gray-900);border-left:3px solid var(--gray-900)}
+.nav-logo-icon .corner-br{position:absolute;bottom:2px;right:2px;width:13px;height:13px;border-bottom:3px solid var(--orange);border-right:3px solid var(--orange)}
+.nav-logo-text{font-size:18px;font-weight:700;color:var(--gray-900);letter-spacing:-.01em}
 .nav-logo-text span{color:var(--gray-400);font-weight:400}
-#nav-main-links{display:flex;align-items:center;gap:32px}
-#nav-main-links a{font-size:15px;font-weight:600;color:var(--gray-700);text-decoration:none;transition:color .2s;cursor:pointer}
+#nav-main-links{display:flex;align-items:center;justify-content:center;gap:36px}
+#nav-main-links a{font-size:15px;font-weight:600;color:var(--gray-700);text-decoration:none;transition:color .2s;cursor:pointer;white-space:nowrap}
 #nav-main-links a:hover{color:var(--orange)}
+.nav-right{display:flex;justify-content:flex-end;align-items:center}
 .nav-cta{font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;padding:10px 22px;background:var(--gray-900);color:var(--white);border:none;border-radius:8px;cursor:pointer;text-decoration:none;transition:all .2s}
-.nav-cta:hover{background:var(--gray-700)}
+.nav-cta:hover{background:var(--orange);transform:translateY(-1px)}
 #nav-back{font-size:14px;font-weight:500;color:var(--gray-500);text-decoration:none;transition:color .2s;cursor:pointer;display:none}
 #nav-back:hover{color:var(--orange)}
 /* MOBILE NAV */
@@ -125,7 +126,9 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .nav-mobile-menu a:hover{color:var(--orange)}
 .nav-mobile-cta{margin-top:8px;display:block;text-align:center;background:var(--gray-900);color:var(--white)!important;padding:14px!important;border-radius:10px;border-bottom:none!important}
 @media(max-width:768px){
+  nav .container{grid-template-columns:1fr auto}
   #nav-main-links{display:none!important}
+  .nav-cta{display:none}
   .nav-hamburger{display:flex}
 }
 
@@ -406,11 +409,13 @@ footer a:hover{color:var(--orange)}
       <a href="javascript:void(0)" onclick="showPage('about')">Our story</a>
       <a href="/compare">Compare</a>
       <a href="/demo">Book a demo</a>
-      <a href="https://app.takeoffai.com.au/signup" class="nav-cta" target="_blank" rel="noopener">Try free for 7 days</a>
     </div>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-right">
+      <a href="https://app.takeoffai.com.au/signup" class="nav-cta" target="_blank" rel="noopener">Try free for 7 days</a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
     <a id="nav-back" style="display:none">&larr; Back to home</a>
   </div>
 </nav>
