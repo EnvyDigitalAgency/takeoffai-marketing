@@ -2,6 +2,7 @@
   "outputDirectory": ".",
   "routes": [
     { "src": "/compare", "dest": "/compare.html" },
+    { "src": "/demo", "dest": "/demo.html" },
     { "src": "/(.*)", "dest": "/$1" }
   ]
 }
