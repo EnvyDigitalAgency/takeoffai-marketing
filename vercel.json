@@ -4,6 +4,7 @@
     { "src": "/compare", "dest": "/compare.html" },
     { "src": "/demo", "dest": "/demo.html" },
     { "src": "/terms", "dest": "/terms.html" },
+    { "src": "/privacy", "dest": "/privacy.html" },
     { "src": "/(.*)", "dest": "/$1" }
   ]
 }
