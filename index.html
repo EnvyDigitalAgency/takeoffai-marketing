@@ -160,17 +160,64 @@ nav .container{display:grid;grid-template-columns:1fr auto 1fr;align-items:cente
 .pain-card p{font-size:14px;line-height:1.6;color:var(--gray-500)}
 .pain-tag{display:inline-block;margin-top:14px;font-size:12px;font-weight:600;color:var(--red);background:var(--red-light);padding:4px 10px;border-radius:6px}
 
-/* HOW */
-.how{padding:96px 0;background:var(--gray-50)}
-.how-header{text-align:center;margin-bottom:56px}
-.how-header .section-sub{margin:0 auto}
-.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.how-step{text-align:center;position:relative}
-.how-num{font-family:'Fraunces',serif;font-size:56px;font-weight:700;color:var(--orange-100);line-height:1;margin-bottom:12px}
-.how-step h3{font-size:18px;font-weight:600;margin-bottom:8px;color:var(--gray-800)}
-.how-step p{font-size:14px;line-height:1.6;color:var(--gray-500);max-width:280px;margin:0 auto}
-.how-connector{position:absolute;top:28px;right:-12px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;color:var(--gray-300)}
-.how-step:last-child .how-connector{display:none}
+/* INTERACTIVE TOUR */
+.tour{padding:80px 0 96px;background:var(--gray-50)}
+.tour-header{text-align:center;margin-bottom:40px}
+.tour-header .section-sub{margin:0 auto}
+.tour-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+.tour-tab{padding:8px 20px;border-radius:100px;border:1.5px solid var(--gray-200);background:#fff;font-size:14px;font-weight:500;color:var(--gray-500);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif}
+.tour-tab.active{background:var(--orange);border-color:var(--orange);color:#fff;font-weight:600}
+.tour-tab:hover:not(.active){border-color:var(--orange);color:var(--orange)}
+.tour-progress-bar{height:2px;background:var(--gray-150);border-radius:2px;max-width:480px;margin:0 auto 24px;overflow:hidden}
+.tour-progress-fill{height:100%;background:var(--orange);width:0%}
+.tour-frame{margin-bottom:24px}
+.tour-screens{min-height:400px}
+.tour-screen{display:none;flex-direction:row}
+.tour-screen.active{display:flex;animation:tourFadeIn .35s ease}
+@keyframes tourFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.mock-sidebar{width:190px;flex-shrink:0;background:var(--gray-50);border-right:1px solid var(--gray-150);padding:16px}
+.mock-main{flex:1;padding:24px;background:#fff;overflow:auto}
+.mock-nav-title{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-400);margin-bottom:10px}
+.mock-project-item{padding:7px 10px;border-radius:6px;font-size:13px;font-weight:500;color:var(--gray-600);cursor:default;display:flex;align-items:center;gap:8px;margin-bottom:2px}
+.mock-project-item.active-item{background:var(--orange-light);color:var(--orange)}
+.mock-new-btn{margin-top:10px;padding:7px 10px;border-radius:6px;border:1.5px dashed var(--gray-200);font-size:12px;color:var(--gray-400);text-align:center;cursor:default}
+.mock-sheet-item{padding:5px 10px;border-radius:6px;font-size:12px;color:var(--gray-500);display:flex;align-items:center;gap:6px;margin-bottom:2px}
+.mock-sheet-item.processing{color:var(--orange)}
+.mock-sheet-item.done{color:var(--green)}
+.mock-drop-zone{border:2px dashed var(--gray-200);border-radius:12px;padding:48px 24px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;background:var(--gray-50)}
+.mock-drop-icon{width:48px;height:48px;border-radius:12px;background:var(--orange-light);display:flex;align-items:center;justify-content:center;color:var(--orange)}
+.mock-drop-title{font-size:15px;font-weight:600;color:var(--gray-800)}
+.mock-drop-sub{font-size:13px;color:var(--gray-400)}
+.mock-badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:4px}
+.mock-badge{padding:3px 10px;border-radius:100px;background:var(--gray-100);font-size:11px;font-weight:500;color:var(--gray-500)}
+.mock-upload-btn{margin-top:8px;padding:10px 24px;border-radius:8px;background:var(--orange);color:#fff;font-size:13px;font-weight:600;border:none;cursor:default}
+.mock-status{font-size:13px;color:var(--gray-500);margin-bottom:12px}
+.mock-status strong{color:var(--gray-800);font-weight:600}
+.mock-progress-track{height:8px;background:var(--gray-100);border-radius:100px;overflow:hidden;margin-bottom:20px}
+.mock-progress-inner{height:100%;background:var(--orange);border-radius:100px}
+.mock-counter-row{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:8px;background:var(--gray-50);margin-bottom:6px;border:1px solid var(--gray-150)}
+.mock-counter-label{font-size:13px;font-weight:500;color:var(--gray-700)}
+.mock-counter-val{font-size:16px;font-weight:700;color:var(--orange);font-family:'Fraunces',serif;min-width:32px;text-align:right}
+.mock-table{width:100%;border-collapse:collapse}
+.mock-table th{font-size:11px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;padding:0 12px 10px;text-align:left;border-bottom:1px solid var(--gray-150)}
+.mock-table td{font-size:13px;color:var(--gray-700);padding:10px 12px;border-bottom:1px solid var(--gray-100)}
+.mock-table tr:last-child td{border-bottom:none;font-weight:700;color:var(--gray-900)}
+.mock-check{color:var(--green)}
+.mock-edit{font-size:12px;color:var(--orange);cursor:default}
+.mock-export-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.mock-export-card{border:1px solid var(--gray-150);border-radius:10px;padding:18px;text-align:center;background:var(--gray-50);display:flex;flex-direction:column;align-items:center;gap:8px}
+.mock-export-card.featured{border-color:var(--orange);background:var(--orange-light)}
+.mock-export-icon{width:40px;height:40px;border-radius:10px;background:var(--gray-100);display:flex;align-items:center;justify-content:center;color:var(--gray-500)}
+.mock-export-card.featured .mock-export-icon{background:var(--orange);color:#fff}
+.mock-export-name{font-size:13px;font-weight:600;color:var(--gray-800)}
+.mock-export-sub{font-size:11px;color:var(--gray-400);line-height:1.4}
+.mock-export-btn{margin-top:4px;padding:7px 16px;border-radius:6px;border:1.5px solid var(--gray-200);background:#fff;font-size:12px;font-weight:500;color:var(--gray-600);cursor:default}
+.mock-export-card.featured .mock-export-btn{background:var(--orange);border-color:var(--orange);color:#fff}
+.tour-desc{display:flex;align-items:center;justify-content:space-between;max-width:860px;margin:0 auto;gap:16px;padding:0 4px}
+.tour-desc-text{font-size:15px;color:var(--gray-500);line-height:1.6}
+.tour-nav{display:flex;gap:8px;flex-shrink:0}
+.tour-nav button{padding:8px 16px;border-radius:8px;border:1.5px solid var(--gray-200);background:#fff;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;color:var(--gray-700)}
+.tour-nav button:hover{border-color:var(--orange);color:var(--orange)}
 
 /* OFFER */
 .offer{padding:96px 0}
@@ -379,8 +426,12 @@ footer a:hover{color:var(--orange)}
 /* RESPONSIVE */
 @media(max-width:768px){
   .pain-grid,.guar-grid,.roi-inputs{grid-template-columns:1fr}
-  .how-steps{grid-template-columns:1fr;gap:40px}
-  .how-connector{display:none!important}
+  .mock-sidebar{display:none}
+  .mock-export-grid{grid-template-columns:1fr}
+  .tour-tabs{gap:6px}
+  .tour-tab{font-size:13px;padding:7px 14px}
+  .tour-desc{flex-direction:column;text-align:center}
+  .tour-screens{min-height:260px}
   .pricing-compare{grid-template-columns:1fr;gap:12px}
   .pr-vs{padding:8px 0}
   .stack-card{grid-template-columns:1fr}
@@ -395,6 +446,24 @@ footer a:hover{color:var(--orange)}
   .urgency-text{max-width:100%;text-align:center}
 }
 </style>
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1881764475868036');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel -->
 </head>
 <body>
 
@@ -468,19 +537,197 @@ footer a:hover{color:var(--orange)}
   </div>
 </section>
 
+<section class="tour" id="how-it-works">
+  <div class="container" style="max-width:1040px">
+    <div class="tour-header">
+      <div class="kicker">How it works</div>
+      <h2 class="section-heading" style="margin:0 auto 12px;">From PDF to finished takeoff<br>in under a minute.</h2>
+      <p class="section-sub" style="margin:0 auto;">Four steps. No database setup. No training required. See it for yourself.</p>
+    </div>
+
+    <div class="tour-tabs">
+      <button class="tour-tab active" data-step="0">1 · Upload Plans</button>
+      <button class="tour-tab" data-step="1">2 · AI Detects &amp; Counts</button>
+      <button class="tour-tab" data-step="2">3 · Review Results</button>
+      <button class="tour-tab" data-step="3">4 · Export</button>
+    </div>
+    <div class="tour-progress-bar"><div class="tour-progress-fill" id="tour-fill"></div></div>
+
+    <div class="product-frame tour-frame">
+      <div class="product-frame-bar">
+        <div class="product-frame-dot"></div>
+        <div class="product-frame-dot"></div>
+        <div class="product-frame-dot"></div>
+        <span style="margin-left:8px;font-size:12px;color:var(--gray-400);font-weight:500">TakeoffAI — app.takeoffai.com.au</span>
+      </div>
+      <div class="tour-screens">
+
+        <!-- Step 0: Upload -->
+        <div class="tour-screen active" data-screen="0">
+          <div class="mock-sidebar">
+            <div class="mock-nav-title">Projects</div>
+            <div class="mock-project-item active-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+              Richmond Office
+            </div>
+            <div class="mock-project-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+              Thornbury Units
+            </div>
+            <div class="mock-new-btn">+ New project</div>
+          </div>
+          <div class="mock-main" style="display:flex;flex-direction:column;justify-content:center">
+            <div style="font-size:14px;font-weight:600;color:var(--gray-800);margin-bottom:16px">Upload drawing set</div>
+            <div class="mock-drop-zone">
+              <div class="mock-drop-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              </div>
+              <div class="mock-drop-title">Drop your PDF drawing set here</div>
+              <div class="mock-drop-sub">Or click to browse — multi-sheet sets supported</div>
+              <div class="mock-badges">
+                <span class="mock-badge">PDF</span>
+                <span class="mock-badge">Multi-sheet</span>
+                <span class="mock-badge">Electrical</span>
+                <span class="mock-badge">Architectural</span>
+              </div>
+              <button class="mock-upload-btn">Browse files</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 1: AI Detects -->
+        <div class="tour-screen" data-screen="1">
+          <div class="mock-sidebar">
+            <div class="mock-nav-title">Sheets (12)</div>
+            <div class="mock-sheet-item done">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-001 Ground Flr
+            </div>
+            <div class="mock-sheet-item done">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-002 Level 1
+            </div>
+            <div class="mock-sheet-item done">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-003 Level 2
+            </div>
+            <div class="mock-sheet-item done">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-004 Level 3
+            </div>
+            <div class="mock-sheet-item done">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-005 Level 4
+            </div>
+            <div class="mock-sheet-item done">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-006 Level 5
+            </div>
+            <div class="mock-sheet-item done">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-007 Level 6
+            </div>
+            <div class="mock-sheet-item processing">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> E-008 Level 7
+            </div>
+            <div class="mock-sheet-item" style="color:var(--gray-300)">E-009 Roof</div>
+            <div class="mock-sheet-item" style="color:var(--gray-300)">E-010 Basement</div>
+            <div class="mock-sheet-item" style="color:var(--gray-300)">E-011 Details</div>
+            <div class="mock-sheet-item" style="color:var(--gray-300)">E-012 Legend</div>
+          </div>
+          <div class="mock-main">
+            <div class="mock-status"><strong>Analysing Sheet 8 of 12</strong> — E-008 Level 7 Electrical</div>
+            <div class="mock-progress-track"><div class="mock-progress-inner" id="tour-prog-bar" style="width:65%"></div></div>
+            <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-400);margin-bottom:10px">Detected so far</div>
+            <div class="mock-counter-row"><span class="mock-counter-label">Downlights</span><span class="mock-counter-val" id="cnt-downlights">0</span></div>
+            <div class="mock-counter-row"><span class="mock-counter-label">GPOs (power points)</span><span class="mock-counter-val" id="cnt-gpos">0</span></div>
+            <div class="mock-counter-row"><span class="mock-counter-label">Switches</span><span class="mock-counter-val" id="cnt-switches">0</span></div>
+            <div class="mock-counter-row"><span class="mock-counter-label">Smoke detectors</span><span class="mock-counter-val" id="cnt-smoke-det">0</span></div>
+            <div class="mock-counter-row"><span class="mock-counter-label">Data points</span><span class="mock-counter-val" id="cnt-data-pts">0</span></div>
+          </div>
+        </div>
+
+        <!-- Step 2: Review -->
+        <div class="tour-screen" data-screen="2">
+          <div class="mock-sidebar">
+            <div class="mock-nav-title">Sheets (12)</div>
+            <div class="mock-sheet-item" style="color:var(--gray-400);font-size:12px;font-weight:600">All sheets</div>
+            <div class="mock-sheet-item done"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-001 Ground Flr</div>
+            <div class="mock-sheet-item done"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-002 Level 1</div>
+            <div class="mock-sheet-item done"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-003 Level 2</div>
+            <div class="mock-sheet-item done"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-004 Level 3</div>
+          </div>
+          <div class="mock-main">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+              <div style="font-size:14px;font-weight:600;color:var(--gray-800)">Takeoff results — all sheets</div>
+              <div style="font-size:12px;color:var(--green);font-weight:600;display:flex;align-items:center;gap:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 12 sheets complete</div>
+            </div>
+            <table class="mock-table">
+              <thead><tr><th>Symbol</th><th>Count</th><th>Sheets</th><th></th></tr></thead>
+              <tbody>
+                <tr><td><span class="mock-check">✓</span> Downlights</td><td>247</td><td>E-001–E-012</td><td><span class="mock-edit">Edit</span></td></tr>
+                <tr><td><span class="mock-check">✓</span> GPOs (power points)</td><td>183</td><td>E-001–E-010</td><td><span class="mock-edit">Edit</span></td></tr>
+                <tr><td><span class="mock-check">✓</span> Switches</td><td>94</td><td>E-001–E-012</td><td><span class="mock-edit">Edit</span></td></tr>
+                <tr><td><span class="mock-check">✓</span> Smoke detectors</td><td>38</td><td>E-001–E-009</td><td><span class="mock-edit">Edit</span></td></tr>
+                <tr><td><span class="mock-check">✓</span> Data points</td><td>72</td><td>E-001–E-008</td><td><span class="mock-edit">Edit</span></td></tr>
+                <tr><td><span class="mock-check">✓</span> Junction boxes</td><td>56</td><td>E-001–E-012</td><td><span class="mock-edit">Edit</span></td></tr>
+                <tr style="background:var(--gray-50)"><td>Total items</td><td>690</td><td>12 sheets</td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Step 3: Export -->
+        <div class="tour-screen" data-screen="3">
+          <div class="mock-sidebar">
+            <div class="mock-nav-title">Project</div>
+            <div class="mock-project-item active-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+              Richmond Office
+            </div>
+            <div style="margin-top:16px" class="mock-nav-title">Summary</div>
+            <div style="font-size:12px;color:var(--gray-500);padding:4px 10px">690 items counted</div>
+            <div style="font-size:12px;color:var(--gray-500);padding:4px 10px">12 sheets processed</div>
+            <div style="font-size:12px;color:var(--green);padding:4px 10px;font-weight:600">Ready to export</div>
+          </div>
+          <div class="mock-main">
+            <div style="font-size:14px;font-weight:600;color:var(--gray-800);margin-bottom:6px">Export your takeoff</div>
+            <div style="font-size:13px;color:var(--gray-400);margin-bottom:20px">Choose your format — all include the full BOQ with 690 counted items.</div>
+            <div class="mock-export-grid">
+              <div class="mock-export-card">
+                <div class="mock-export-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg></div>
+                <div class="mock-export-name">Excel BOQ</div>
+                <div class="mock-export-sub">Itemised bill of quantities, editable spreadsheet</div>
+                <button class="mock-export-btn">Export .xlsx</button>
+              </div>
+              <div class="mock-export-card">
+                <div class="mock-export-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
+                <div class="mock-export-name">PDF Report</div>
+                <div class="mock-export-sub">Print-ready summary with quantities by sheet</div>
+                <button class="mock-export-btn">Export .pdf</button>
+              </div>
+              <div class="mock-export-card featured">
+                <div class="mock-export-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+                <div class="mock-export-name">Bid Proposal</div>
+                <div class="mock-export-sub">Branded PDF with scope, exclusions &amp; pricing — ready to send</div>
+                <button class="mock-export-btn">Generate proposal</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /tour-screens -->
+    </div><!-- /product-frame -->
+
+    <div class="tour-desc">
+      <div class="tour-desc-text" id="tour-desc-text">Drop in any multi-sheet PDF drawing set — residential, commercial, or industrial. No reformatting or page splitting needed.</div>
+      <div class="tour-nav">
+        <button class="tour-prev">&#8592; Prev</button>
+        <button class="tour-next">Next &#8594;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="pain"><div class="container"><div class="pain-header"><div class="kicker">The problem</div><h2 class="section-heading">Manual takeoffs are killing<br>your growth</h2><p class="section-sub">Every bid you can't get to is revenue on the table. Every counting error erodes margin.</p></div>
 <div class="pain-grid">
   <div class="pain-card anim"><div class="pain-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div><h3>Takeoffs consume 50%+ of your bid cycle</h3><p>Counting thousands of devices from drawings by hand — downlights, GPOs, switches, junction boxes — sheet by sheet.</p><span class="pain-tag">15–20 hrs/week lost to counting</span></div>
   <div class="pain-card anim"><div class="pain-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><h3>Can't find or afford another estimator</h3><p>Experienced electrical estimators earn $95K–$130K+. The hiring pool is tiny and ramp time is 3–6 months.</p><span class="pain-tag">$120K–$150K true cost per hire</span></div>
   <div class="pain-card anim"><div class="pain-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></div><h3>One missed device, thousands in margin gone</h3><p>Underbidding from counting errors is invisible until the job's underway. One rushed takeoff — you eat the difference.</p><span class="pain-tag">1 error can cost $5K–$30K+</span></div>
   <div class="pain-card anim"><div class="pain-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div><h3>Legacy software takes months to learn</h3><p>ConEst, Accubid, McCormick — massive database setup, weeks of training, steep learning curves.</p><span class="pain-tag">4–6 weeks just to configure</span></div>
-</div></div></section>
-
-<section class="how"><div class="container"><div class="how-header"><div class="kicker">How it works</div><h2 class="section-heading">What your estimator does in a day.<br>Done in 40 seconds.</h2><p class="section-sub">Three steps. No database setup. No training required.</p></div>
-<div class="how-steps">
-  <div class="how-step anim"><div class="how-num">1</div><h3>Upload your plans</h3><p>Drop in multi-sheet PDF drawing sets — electrical, architectural, all of it. No reformatting needed.</p><div class="how-connector"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div>
-  <div class="how-step anim"><div class="how-num">2</div><h3>AI detects & counts</h3><p>Downlights, GPOs, switches, data points, smoke detectors — every symbol counted in seconds.</p><div class="how-connector"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div></div>
-  <div class="how-step anim"><div class="how-num">3</div><h3>Export BQ or send a proposal</h3><p>One click to Excel, PDF, or a branded bid proposal with scope, exclusions, and pricing — ready to send to the GC.</p></div>
 </div></div></section>
 
 <section class="offer" id="offer"><div class="container"><div class="offer-header"><div class="offer-name-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> The 90-day bid domination system</div><h2 class="section-heading">Everything you get</h2><p class="section-sub">Not just software — a complete system to transform your estimating capacity and win rate.</p></div>
@@ -775,7 +1022,7 @@ footer a:hover{color:var(--orange)}
 <footer>
   <div class="container">
     <a class="nav-logo" id="footer-logo"><div class="nav-logo-icon"><div class="corner-tl"></div><div class="corner-br"></div></div><div class="nav-logo-text">takeoff<span>.ai</span></div></a>
-    <p>&copy; 2026 TakeoffAI Pty Ltd. <a id="footer-about">Our story</a> &middot; <a id="footer-pricing">Pricing</a> &middot; <a href="/compare">Compare</a> &middot; <a href="/demo">Book a demo</a> &middot; <a id="footer-privacy">Privacy</a> &middot; <a id="footer-terms">Terms</a></p>
+    <p>&copy; 2026 TakeoffAI Pty Ltd. <a id="footer-about">Our story</a> &middot; <a id="footer-pricing">Pricing</a> &middot; <a href="/compare">Compare</a> &middot; <a href="/demo">Book a demo</a> &middot; <a id="footer-privacy">Privacy</a> &middot; <a href="/terms">Terms</a></p>
   </div>
 </footer>
 
@@ -842,7 +1089,6 @@ document.getElementById('footer-logo').addEventListener('click', function(e) { e
 document.getElementById('footer-about').addEventListener('click', function(e) { e.preventDefault(); showPage('about'); });
 document.getElementById('footer-pricing').addEventListener('click', function(e) { e.preventDefault(); showPage('pricing'); });
 document.getElementById('footer-privacy').addEventListener('click', function(e) { e.preventDefault(); showPage('privacy'); });
-document.getElementById('footer-terms').addEventListener('click', function(e) { e.preventDefault(); showPage('terms'); });
 
 // ROI calculator
 function calc() {
@@ -897,6 +1143,86 @@ if (animFrame) {
   }, { threshold: 0.3 });
   animFrame.addEventListener('load', function() { animObs.observe(animFrame); });
 }
+
+// Interactive product tour
+(function() {
+  var DESCS = [
+    'Drop in any multi-sheet PDF drawing set — residential, commercial, or industrial. No reformatting or page splitting needed.',
+    'TakeoffAI scans every sheet and counts every electrical symbol in seconds — downlights, GPOs, switches, data points, smoke detectors, and more.',
+    'Review AI-counted quantities by symbol type and sheet. Spot-check or adjust any row before you export.',
+    'Export a complete BOQ to Excel, generate a PDF summary, or create a branded bid proposal with scope, exclusions, and pricing — ready to send.'
+  ];
+  var INTERVAL = 5000;
+  var tourTabs = document.querySelectorAll('.tour-tab');
+  var tourScreens = document.querySelectorAll('.tour-screen');
+  var descEl = document.getElementById('tour-desc-text');
+  var fill = document.getElementById('tour-fill');
+  var prevBtn = document.querySelector('.tour-prev');
+  var nextBtn = document.querySelector('.tour-next');
+  var tourSection = document.querySelector('.tour');
+  var current = 0;
+  var autoTimer = null;
+  var paused = false;
+  var fillStart = null;
+  var fillRaf = null;
+
+  function animateFill() {
+    if (fillRaf) cancelAnimationFrame(fillRaf);
+    fill.style.transition = 'none';
+    fill.style.width = '0%';
+    fillStart = performance.now();
+    function step(ts) {
+      if (paused) { fillRaf = requestAnimationFrame(step); return; }
+      var pct = Math.min((ts - fillStart) / INTERVAL * 100, 100);
+      fill.style.width = pct + '%';
+      if (pct < 100) fillRaf = requestAnimationFrame(step);
+    }
+    fillRaf = requestAnimationFrame(step);
+  }
+
+  function goTo(idx) {
+    tourTabs[current].classList.remove('active');
+    tourScreens[current].classList.remove('active');
+    current = ((idx % DESCS.length) + DESCS.length) % DESCS.length;
+    tourTabs[current].classList.add('active');
+    tourScreens[current].classList.add('active');
+    descEl.textContent = DESCS[current];
+    animateFill();
+    if (current === 1) startCounters();
+  }
+
+  function startAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(function() { if (!paused) goTo(current + 1); }, INTERVAL);
+  }
+
+  for (var ti = 0; ti < tourTabs.length; ti++) {
+    (function(i) { tourTabs[i].addEventListener('click', function() { paused = false; goTo(i); startAuto(); }); })(ti);
+  }
+  prevBtn.addEventListener('click', function() { paused = false; goTo(current - 1); startAuto(); });
+  nextBtn.addEventListener('click', function() { paused = false; goTo(current + 1); startAuto(); });
+  tourSection.addEventListener('mouseenter', function() { paused = true; });
+  tourSection.addEventListener('mouseleave', function() { paused = false; fillStart = performance.now() - (parseFloat(fill.style.width) / 100 * INTERVAL); });
+
+  var counterTargets = { downlights: 247, gpos: 183, switches: 94, 'smoke-det': 38, 'data-pts': 72 };
+  function startCounters() {
+    Object.keys(counterTargets).forEach(function(key) {
+      var el = document.getElementById('cnt-' + key);
+      if (!el) return;
+      var target = counterTargets[key];
+      var n = 0;
+      el.textContent = '0';
+      var iv = setInterval(function() {
+        n += Math.ceil(target / 25);
+        if (n >= target) { n = target; clearInterval(iv); }
+        el.textContent = n;
+      }, 50);
+    });
+  }
+
+  goTo(0);
+  startAuto();
+})();
 
 // Nav scroll shadow
 window.addEventListener('scroll', function() {

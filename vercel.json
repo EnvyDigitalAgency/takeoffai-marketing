@@ -3,6 +3,7 @@
   "routes": [
     { "src": "/compare", "dest": "/compare.html" },
     { "src": "/demo", "dest": "/demo.html" },
+    { "src": "/terms", "dest": "/terms.html" },
     { "src": "/(.*)", "dest": "/$1" }
   ]
 }
