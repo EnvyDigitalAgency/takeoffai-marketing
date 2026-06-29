@@ -39,7 +39,7 @@
     "priceCurrency": "AUD",
     "priceSpecification": {
       "@type": "UnitPriceSpecification",
-      "price": "200",
+      "price": "247",
       "priceCurrency": "AUD",
       "unitText": "MONTH",
       "billingDuration": "P1Y"
@@ -198,6 +198,15 @@ nav .container{display:grid;grid-template-columns:1fr auto 1fr;align-items:cente
 .mock-counter-row{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:8px;background:var(--gray-50);margin-bottom:6px;border:1px solid var(--gray-150)}
 .mock-counter-label{font-size:13px;font-weight:500;color:var(--gray-700)}
 .mock-counter-val{font-size:16px;font-weight:700;color:var(--orange);font-family:'Fraunces',serif;min-width:32px;text-align:right}
+.mock-plan{position:relative;border:1px solid var(--gray-150);border-radius:10px;overflow:hidden;background:#fff;margin-bottom:14px}
+.mock-plan svg{display:block;width:100%;height:auto}
+.mock-plan-tag{position:absolute;top:8px;left:8px;background:rgba(28,28,28,.82);color:#fff;font-size:10px;font-weight:600;letter-spacing:.03em;padding:3px 9px;border-radius:5px;display:flex;align-items:center;gap:6px}
+.mock-plan-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--orange);animation:pulse 1.4s ease infinite}
+.mock-legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:16px}
+.mock-legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray-500);font-weight:500}
+.mock-legend-swatch{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+@keyframes markIn{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}
+.mock-mark{transform-box:fill-box;transform-origin:center;animation:markIn .45s ease backwards}
 .mock-table{width:100%;border-collapse:collapse}
 .mock-table th{font-size:11px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;padding:0 12px 10px;text-align:left;border-bottom:1px solid var(--gray-150)}
 .mock-table td{font-size:13px;color:var(--gray-700);padding:10px 12px;border-bottom:1px solid var(--gray-100)}
@@ -423,6 +432,33 @@ footer a:hover{color:var(--orange)}
 .lcn{background:var(--gray-50);border:1px solid var(--gray-150);border-radius:12px;padding:20px 24px;margin:20px 0}
 .lcn p{color:var(--gray-600);margin-bottom:0}
 
+/* IN-HOUSE ESTIMATOR */
+.estimator{padding:96px 0;background:var(--orange-light)}
+.estimator .container{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.est-copy .kicker{color:var(--orange)}
+.est-copy h2{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(30px,4vw,44px);line-height:1.12;letter-spacing:-.02em;color:var(--gray-900);margin-bottom:16px}
+.est-copy>p{font-size:16px;line-height:1.7;color:var(--gray-600);margin-bottom:24px;max-width:480px}
+.est-list{list-style:none;display:flex;flex-direction:column;gap:13px;margin-bottom:28px}
+.est-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--gray-700);line-height:1.5}
+.est-list li strong{color:var(--gray-900);font-weight:600}
+.est-ic{width:22px;height:22px;min-width:22px;border-radius:7px;background:var(--orange);display:flex;align-items:center;justify-content:center;margin-top:1px}
+.est-ic svg{color:#fff}
+.est-note{font-size:13px;font-weight:600;color:var(--orange);margin-top:14px}
+.est-card{background:#fff;border:1.5px solid var(--orange-100);border-radius:20px;padding:26px;box-shadow:0 16px 48px rgba(232,97,26,.12)}
+.est-card-head{display:flex;align-items:center;gap:14px;padding-bottom:18px;border-bottom:1px solid var(--gray-150);margin-bottom:18px}
+.est-avatar{width:52px;height:52px;border-radius:14px;background:var(--gray-900);color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;flex-shrink:0;font-family:'Outfit',sans-serif}
+.est-card-head h3{font-size:17px;font-weight:700;color:var(--gray-900);margin-bottom:2px}
+.est-role{font-size:13px;color:var(--orange);font-weight:500}
+.est-badge{margin-left:auto;font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--green);background:var(--green-light);padding:4px 9px;border-radius:6px;display:flex;align-items:center;gap:5px}
+.est-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.6s ease infinite}
+.est-stat-row{display:flex;gap:10px;margin-bottom:18px}
+.est-stat{flex:1;background:var(--gray-50);border-radius:12px;padding:14px 8px;text-align:center}
+.est-stat-num{font-family:'Fraunces',serif;font-size:24px;font-weight:700;color:var(--orange)}
+.est-stat-lbl{font-size:11px;color:var(--gray-500);margin-top:2px;line-height:1.3}
+.est-bubble{background:var(--gray-50);border-radius:12px;border-top-left-radius:4px;padding:14px 16px;font-size:14px;line-height:1.55;color:var(--gray-700)}
+.est-bubble strong{color:var(--gray-900);font-weight:600}
+@media(max-width:768px){.estimator .container{grid-template-columns:1fr;gap:32px}}
+
 /* RESPONSIVE */
 @media(max-width:768px){
   .pain-grid,.guar-grid,.roi-inputs{grid-template-columns:1fr}
@@ -631,6 +667,62 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
           <div class="mock-main">
             <div class="mock-status"><strong>Analysing Sheet 8 of 12</strong> — E-008 Level 7 Electrical</div>
             <div class="mock-progress-track"><div class="mock-progress-inner" id="tour-prog-bar" style="width:65%"></div></div>
+            <div class="mock-plan">
+              <div class="mock-plan-tag"><span class="dot"></span> Live markup — E-008</div>
+              <svg viewBox="0 0 460 260" role="img" aria-label="Mock electrical floor plan with AI markups">
+                <rect x="12" y="12" width="436" height="236" rx="3" fill="#FAFAFA" stroke="#3A3A3A" stroke-width="3"/>
+                <!-- interior walls with door gaps -->
+                <line x1="200" y1="12" x2="200" y2="100" stroke="#3A3A3A" stroke-width="2.5"/>
+                <line x1="200" y1="140" x2="200" y2="150" stroke="#3A3A3A" stroke-width="2.5"/>
+                <line x1="12" y1="150" x2="120" y2="150" stroke="#3A3A3A" stroke-width="2.5"/>
+                <line x1="170" y1="150" x2="300" y2="150" stroke="#3A3A3A" stroke-width="2.5"/>
+                <line x1="300" y1="150" x2="300" y2="248" stroke="#3A3A3A" stroke-width="2.5"/>
+                <!-- room labels -->
+                <text x="95" y="142" fill="#C4C4C4" font-family="Outfit,sans-serif" font-size="9" font-weight="600" letter-spacing="1" text-anchor="middle">LIVING</text>
+                <text x="322" y="142" fill="#C4C4C4" font-family="Outfit,sans-serif" font-size="9" font-weight="600" letter-spacing="1" text-anchor="middle">KITCHEN</text>
+                <text x="150" y="242" fill="#C4C4C4" font-family="Outfit,sans-serif" font-size="9" font-weight="600" letter-spacing="1" text-anchor="middle">BED 1</text>
+                <text x="374" y="242" fill="#C4C4C4" font-family="Outfit,sans-serif" font-size="9" font-weight="600" letter-spacing="1" text-anchor="middle">BED 2</text>
+                <!-- downlights (orange) -->
+                <g class="mock-mark" style="animation-delay:.05s"><circle cx="55" cy="50" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="55" cy="50" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.1s"><circle cx="110" cy="50" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="110" cy="50" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.15s"><circle cx="160" cy="50" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="160" cy="50" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.2s"><circle cx="55" cy="105" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="55" cy="105" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.25s"><circle cx="110" cy="105" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="110" cy="105" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.12s"><circle cx="250" cy="50" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="250" cy="50" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.18s"><circle cx="320" cy="50" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="320" cy="50" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.24s"><circle cx="400" cy="50" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="400" cy="50" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.3s"><circle cx="255" cy="108" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="255" cy="108" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.34s"><circle cx="365" cy="108" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="365" cy="108" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.28s"><circle cx="72" cy="200" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="72" cy="200" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.32s"><circle cx="155" cy="205" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="155" cy="205" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.36s"><circle cx="240" cy="200" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="240" cy="200" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.4s"><circle cx="375" cy="200" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="375" cy="200" r="1.6" fill="#E8611A"/></g>
+                <!-- GPOs (blue) -->
+                <g class="mock-mark" style="animation-delay:.42s"><rect x="19" y="70" width="10" height="10" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/></g>
+                <g class="mock-mark" style="animation-delay:.46s"><rect x="19" y="200" width="10" height="10" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/></g>
+                <g class="mock-mark" style="animation-delay:.5s"><rect x="181" y="35" width="10" height="10" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/></g>
+                <g class="mock-mark" style="animation-delay:.54s"><rect x="431" y="90" width="10" height="10" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/></g>
+                <g class="mock-mark" style="animation-delay:.58s"><rect x="275" y="231" width="10" height="10" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/></g>
+                <g class="mock-mark" style="animation-delay:.62s"><rect x="415" y="200" width="10" height="10" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/></g>
+                <!-- switches (green) -->
+                <g class="mock-mark" style="animation-delay:.5s"><path d="M188,112 L194,123 L182,123 Z" fill="none" stroke="#1B8C4F" stroke-width="2" stroke-linejoin="round"/></g>
+                <g class="mock-mark" style="animation-delay:.56s"><path d="M140,154 L146,165 L134,165 Z" fill="none" stroke="#1B8C4F" stroke-width="2" stroke-linejoin="round"/></g>
+                <g class="mock-mark" style="animation-delay:.6s"><path d="M310,156 L316,167 L304,167 Z" fill="none" stroke="#1B8C4F" stroke-width="2" stroke-linejoin="round"/></g>
+                <!-- data points (purple) -->
+                <g class="mock-mark" style="animation-delay:.64s"><path d="M330,134 L337,141 L330,148 L323,141 Z" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linejoin="round"/></g>
+                <g class="mock-mark" style="animation-delay:.68s"><path d="M110,229 L117,236 L110,243 L103,236 Z" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linejoin="round"/></g>
+                <!-- smoke detectors (red) -->
+                <g class="mock-mark" style="animation-delay:.7s"><circle cx="110" cy="75" r="6" fill="none" stroke="#D94040" stroke-width="2"/><circle cx="110" cy="75" r="2" fill="#D94040"/></g>
+                <g class="mock-mark" style="animation-delay:.74s"><circle cx="360" cy="200" r="6" fill="none" stroke="#D94040" stroke-width="2"/><circle cx="360" cy="200" r="2" fill="#D94040"/></g>
+              </svg>
+            </div>
+            <div class="mock-legend">
+              <span class="mock-legend-item"><span class="mock-legend-swatch" style="background:#E8611A"></span>Downlights</span>
+              <span class="mock-legend-item"><span class="mock-legend-swatch" style="background:#2563EB"></span>GPOs</span>
+              <span class="mock-legend-item"><span class="mock-legend-swatch" style="background:#1B8C4F"></span>Switches</span>
+              <span class="mock-legend-item"><span class="mock-legend-swatch" style="background:#7C3AED"></span>Data points</span>
+              <span class="mock-legend-item"><span class="mock-legend-swatch" style="background:#D94040"></span>Smoke detectors</span>
+            </div>
             <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-400);margin-bottom:10px">Detected so far</div>
             <div class="mock-counter-row"><span class="mock-counter-label">Downlights</span><span class="mock-counter-val" id="cnt-downlights">0</span></div>
             <div class="mock-counter-row"><span class="mock-counter-label">GPOs (power points)</span><span class="mock-counter-val" id="cnt-gpos">0</span></div>
@@ -730,6 +822,37 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
   <div class="pain-card anim"><div class="pain-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div><h3>Legacy software takes months to learn</h3><p>ConEst, Accubid, McCormick — massive database setup, weeks of training, steep learning curves.</p><span class="pain-tag">4–6 weeks just to configure</span></div>
 </div></div></section>
 
+<section class="estimator" id="estimator"><div class="container">
+  <div class="est-copy anim">
+    <div class="kicker">The human layer</div>
+    <h2>AI does the counting.<br>A real estimator has your back.</h2>
+    <p>TakeoffAI isn't software you're left alone with. Annual members get a dedicated <strong>in-house electrical estimator</strong> — a real person who knows the trade and works your jobs alongside the AI.</p>
+    <ul class="est-list">
+      <li><span class="est-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><div><strong>5 full takeoffs done for you, every month.</strong> Hand over a drawing set, get back a reviewed, bid-ready BOQ.</div></li>
+      <li><span class="est-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><div><strong>A second set of eyes before you bid.</strong> Tricky sheets, odd symbols, tight margins — sanity-checked by a human.</div></li>
+      <li><span class="est-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><div><strong>No hiring, no $120K salary.</strong> Estimator capacity on tap — without another head on payroll.</div></li>
+    </ul>
+    <a href="https://app.takeoffai.com.au/signup" class="btn-primary" target="_blank" rel="noopener">Try free for 7 days <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+    <div class="est-note">Included with the annual Pro plan.</div>
+  </div>
+  <div class="est-card anim">
+    <div class="est-card-head">
+      <div class="est-avatar"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+      <div>
+        <h3>Senior Estimator</h3>
+        <div class="est-role">TakeoffAI in-house team</div>
+      </div>
+      <div class="est-badge"><span class="dot"></span> Online</div>
+    </div>
+    <div class="est-stat-row">
+      <div class="est-stat"><div class="est-stat-num">5</div><div class="est-stat-lbl">takeoffs / month</div></div>
+      <div class="est-stat"><div class="est-stat-num">12+</div><div class="est-stat-lbl">yrs on the tools</div></div>
+      <div class="est-stat"><div class="est-stat-num">24h</div><div class="est-stat-lbl">avg turnaround</div></div>
+    </div>
+    <div class="est-bubble">"Ran your <strong>Richmond Office</strong> set — 690 items counted and reviewed. Flagged 3 GPOs on E-007 that weren't in the legend. Bid-ready BOQ is in your inbox."</div>
+  </div>
+</div></section>
+
 <section class="offer" id="offer"><div class="container"><div class="offer-header"><div class="offer-name-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> The 90-day bid domination system</div><h2 class="section-heading">Everything you get</h2><p class="section-sub">Not just software — a complete system to transform your estimating capacity and win rate.</p></div>
 <div class="stack">
   <div class="stack-card core anim"><div class="stack-body"><div class="sb-tag">Core</div><h3>TakeoffAI Pro — annual licence</h3><p>AI symbol detection, auto-counting, conduit & wire measurement, exportable BOQ to Excel/PDF. The engine that replaces 80% of manual takeoff.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$24K</div></div></div>
@@ -738,7 +861,7 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
 <div class="stack-card anim"><div class="stack-body"><div class="sb-tag">Bonus</div><h3>Addendum variance auto-detection</h3><p>Upload revised plans → instantly see what changed. Side-by-side delta report. No re-counting entire sheets.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$4K</div></div></div>
   <div class="stack-card anim"><div class="stack-body"><div class="sb-tag">Bonus</div><h3>Priority support + quarterly accuracy audits</h3><p>Dedicated channel, same-day response. Every 90 days, benchmark AI quantities against actual as-builts.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$6K</div></div></div>
 </div>
-<div class="offer-total anim"><div class="ot-left"><div class="ot-label">Total value</div><div class="ot-num">$41,500/year</div></div><div class="ot-right"><div class="ot-label">You pay</div><div class="ot-num">$297/mo</div><div class="ot-per">Or $2,400/year — just $200/month</div></div></div>
+<div class="offer-total anim"><div class="ot-left"><div class="ot-label">Total value</div><div class="ot-num">$41,500/year</div></div><div class="ot-right"><div class="ot-label">You pay</div><div class="ot-num">$297/mo</div><div class="ot-per">Or $2,970/year — just $247/month</div></div></div>
 </div></section>
 
 <section class="urgency"><div class="container"><div class="urgency-bar anim"><div class="urgency-count"><div class="urgency-num">73</div><div class="urgency-label">founding spots<br>remaining</div></div><a href="https://app.takeoffai.com.au/signup" class="btn-primary" style="padding:11px 22px;font-size:14px;" target="_blank" rel="noopener">Try free for 7 days <svg class="arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></div></div></section>
@@ -850,9 +973,10 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
         <div class="pt-name">Pro</div>
         <div class="pt-desc">For growing electrical businesses.</div>
         <div class="pt-price"><span class="pt-dollar">$297</span><span class="pt-per">/month</span></div>
-        <div class="pt-billed">Or $2,400/year — just $200/month</div>
+        <div class="pt-billed">Or $2,970/year — just $247/month</div>
         <ul class="pt-list">
           <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Unlimited projects</li>
+          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>In-house estimator — 5 takeoffs/mo <span style="font-size:11px;color:var(--orange);font-weight:600;margin-left:4px">(annual)</span></li>
           <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>AI symbol detection</li>
           <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Excel & CSV export</li>
           <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>7-day free trial</li>
@@ -882,6 +1006,19 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
       </div>
 
     </div>
+
+    <!-- Annual plan bonus -->
+    <div style="max-width:960px;margin:32px auto 0;background:var(--orange-light);border:1.5px solid var(--orange-100);border-radius:18px;padding:28px 32px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+      <div style="width:52px;height:52px;border-radius:14px;background:var(--orange);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+      </div>
+      <div style="flex:1;min-width:240px">
+        <div style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);background:var(--orange-100);padding:4px 10px;border-radius:5px;margin-bottom:8px">Annual plan bonus</div>
+        <h3 style="font-family:'Fraunces',serif;font-size:21px;font-weight:700;color:var(--gray-900);margin-bottom:6px;line-height:1.25">Pay yearly — get a human estimator in your corner.</h3>
+        <p style="font-size:14px;line-height:1.6;color:var(--gray-600);margin:0">Annual Pro members get direct access to <strong>our in-house estimator</strong>, who'll personally run up to <strong>5 full takeoffs for you every month</strong> — on top of your unlimited AI takeoffs. Overflow weeks, tricky drawing sets, or a second set of eyes before you bid.</p>
+      </div>
+    </div>
+
     <p style="text-align:center;font-size:13px;color:var(--gray-400);margin-top:24px">Prices in AUD. Payments processed securely by Stripe. Cancel any time.</p>
   </div>
 </div>
@@ -1147,7 +1284,7 @@ if (animFrame) {
 (function() {
   var DESCS = [
     'Drop in any multi-sheet PDF drawing set — residential, commercial, or industrial. No reformatting or page splitting needed.',
-    'TakeoffAI scans every sheet and counts every electrical symbol in seconds — downlights, GPOs, switches, data points, smoke detectors, and more.',
+    'TakeoffAI scans every sheet and marks each detection right on the plan — downlights, GPOs, switches, data points, smoke detectors — so you can see exactly what was counted, not just a number.',
     'Review AI-counted quantities by symbol type and sheet. Spot-check or adjust any row before you export.',
     'Export a complete BOQ to Excel, generate a PDF summary, or create a branded bid proposal with scope, exclusions, and pricing — ready to send.'
   ];
