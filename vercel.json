@@ -1,6 +1,7 @@
 {
   "outputDirectory": ".",
   "routes": [
+    { "src": "/pricing", "dest": "/pricing.html" },
     { "src": "/compare", "dest": "/compare.html" },
     { "src": "/demo", "dest": "/demo.html" },
     { "src": "/terms", "dest": "/terms.html" },
