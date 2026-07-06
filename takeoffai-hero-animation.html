@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    :root { --orange: #E8590C; --pitch: #111; --paper: #F7F6F2; }
+    :root { --orange: #E8590C; --green: #1B8C4F; --dark: #1C1C1C; --pitch: #111; --paper: #F7F6F2; }
     html, body { margin:0; padding:0; height:100%; background:#0a0a0a; font-family:'Outfit',sans-serif; overflow:hidden; }
     #stage { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; padding: 24px; box-sizing: border-box; }
     .hero {
@@ -23,12 +23,14 @@
       overflow: hidden;
       container-type: inline-size;
     }
-    .hero svg { display:block; width:100%; height:100%; }
+    .hero > #plan, #plan { display:block; width:100%; height:100%; }
+    #cloudIcon { width: 44px; height: 44px; flex-shrink: 0; }
     .hud {
       position: absolute; left: 2.5%; top: 3.4%;
       display:flex; align-items:center; gap: 14px;
       font-family:'Outfit'; font-size: 14px; font-weight: 600;
       color: #555; letter-spacing: 0.08em; text-transform: uppercase;
+      z-index: 3;
     }
     .hud .dot {
       width: 10px; height: 10px; border-radius: 50%;
@@ -40,20 +42,25 @@
       0% { box-shadow: 0 0 0 0 rgba(232,89,12,0.55); }
       80%,100% { box-shadow: 0 0 0 14px rgba(232,89,12,0); }
     }
-    .counter {
+    /* ── Tally panel (per-category counts) ── */
+    .tally {
       position:absolute; right: 2.5%; top: 3.1%;
-      display:flex; align-items:baseline; gap: 8px;
       font-family:'DM Mono', monospace; color: var(--pitch);
       background: #fff; padding: 10px 14px; border-radius: 10px;
       border: 1px solid rgba(0,0,0,0.06);
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      display:flex; flex-direction:column; gap: 5px;
+      z-index: 3;
+      opacity: 0; transition: opacity 0.4s ease;
     }
-    .counter .n {
-      font-family:'Outfit'; font-weight: 800; font-size: 28px;
-      color: var(--orange); font-variant-numeric: tabular-nums;
-      min-width: 42px; text-align: right;
+    .tally.show { opacity: 1; }
+    .tally .row { display:flex; align-items:center; gap: 8px; }
+    .tally .swatch { width: 9px; height: 9px; border-radius: 3px; }
+    .tally .lbl { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #888; width: 82px; }
+    .tally .n {
+      font-family:'Outfit'; font-weight: 800; font-size: 17px;
+      font-variant-numeric: tabular-nums; min-width: 26px; text-align: right;
     }
-    .counter .lbl { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #888; }
     .caption {
       position:absolute; left:50%; bottom: 4%;
       white-space: nowrap;
@@ -64,19 +71,89 @@
       padding: 10px 18px; border-radius: 999px;
       border: 1px solid rgba(0,0,0,0.05);
       transition: all 0.4s cubic-bezier(.2,.8,.2,1);
+      z-index: 3;
     }
     .caption strong { color: var(--orange); font-weight: 800; }
+    .caption:empty { opacity: 0; }
+
+    /* ── Upload overlay ── */
+    .upload {
+      position:absolute; inset:0; z-index: 5;
+      background: var(--paper);
+      display:flex; align-items:center; justify-content:center;
+      transition: opacity 0.45s ease;
+    }
+    .upload.hide { opacity: 0; pointer-events: none; }
+    .dropzone {
+      width: 46%; max-width: 460px;
+      border: 2.5px dashed #cfc9bc; border-radius: 20px;
+      padding: 5.5% 4%;
+      display:flex; flex-direction:column; align-items:center; gap: 18px;
+      background: rgba(255,255,255,0.5);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .dropzone.active { border-color: var(--orange); background: #fff; }
+    .filecard {
+      display:flex; align-items:center; gap: 14px;
+      background:#fff; border:1px solid rgba(0,0,0,0.07); border-radius: 14px;
+      padding: 14px 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+      opacity: 0; transform: translateY(-56px) rotate(-3deg);
+    }
+    .filecard.drop {
+      animation: filedrop 0.6s cubic-bezier(.2,1.2,.3,1) forwards;
+    }
+    @keyframes filedrop {
+      to { opacity: 1; transform: translateY(0) rotate(0deg); }
+    }
+    .fileicon {
+      width: 40px; height: 48px; background: var(--orange); border-radius: 7px;
+      display:flex; align-items:center; justify-content:center;
+      color:#fff; font-family:'Outfit'; font-weight: 800; font-size: 11px; letter-spacing: 0.06em;
+      position: relative; flex-shrink: 0;
+    }
+    .fileicon::before {
+      content:''; position:absolute; top:0; right:0;
+      border-style: solid; border-width: 0 11px 11px 0;
+      border-color: var(--paper) var(--paper) rgba(255,255,255,0.35) rgba(255,255,255,0.35);
+      border-radius: 0 7px 0 4px;
+    }
+    .filemeta { display:flex; flex-direction:column; gap: 6px; min-width: 190px; }
+    .filename { font-family:'Outfit'; font-weight: 700; font-size: 14.5px; color: var(--pitch); }
+    .progress { height: 6px; border-radius: 99px; background:#efece4; overflow:hidden; }
+    .progress .fill { height:100%; width:0%; background: var(--orange); border-radius: 99px; transition: width 1.0s cubic-bezier(.3,.1,.2,1); }
+    .upload-label {
+      font-family:'Outfit'; font-weight: 600; font-size: 14px; color:#999;
+      letter-spacing: 0.02em;
+    }
+    .upload-label strong { color: var(--orange); }
+
+    /* ── Bounding boxes ── */
+    /* scale animates on an inner group only — a CSS transform here would
+       override the outer group's translate() attribute */
+    .bbox { transform-box: fill-box; transform-origin: center; opacity: 0; }
+    .bbox.pop { animation: boxpop 0.38s cubic-bezier(.2,1.3,.3,1) forwards; }
+    @keyframes boxpop {
+      0%   { opacity: 0; transform: scale(1.55); }
+      60%  { opacity: 1; }
+      100% { opacity: 1; transform: scale(1); }
+    }
   </style>
 </head>
 <body>
   <div id="stage">
     <div class="hero">
       <div class="hud"><span class="dot"></span><span id="hudLabel">Ready</span></div>
-      <div class="counter"><span class="n" id="cnum">0</span><span class="lbl">downlights</span></div>
-      <div class="caption" id="cap">Mark <strong>one</strong> symbol…</div>
+
+      <div class="tally" id="tally">
+        <div class="row"><span class="swatch" style="background:#E8590C"></span><span class="lbl">Downlights</span><span class="n" id="n-dl">0</span></div>
+        <div class="row"><span class="swatch" style="background:#1B8C4F"></span><span class="lbl">GPOs</span><span class="n" id="n-gpo">0</span></div>
+        <div class="row"><span class="swatch" style="background:#1C1C1C"></span><span class="lbl">Switches</span><span class="n" id="n-sw">0</span></div>
+      </div>
+
+      <div class="caption" id="cap"></div>
 
       <svg id="plan" viewBox="0 0 1100 700" preserveAspectRatio="xMidYMid slice">
-        <!-- grid -->
         <defs>
           <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse">
             <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2ddd2" stroke-width="1"/>
@@ -96,7 +173,7 @@
         </g>
 
         <!-- room labels -->
-        <g font-family="Outfit" font-size="13" font-weight="500" fill="#888" letter-spacing="2">
+        <g id="roomLabels" font-family="Outfit" font-size="13" font-weight="500" fill="#888" letter-spacing="2" opacity="0">
           <text x="120" y="170">KITCHEN</text>
           <text x="540" y="170">LIVING / DINING</text>
           <text x="120" y="350">BED 1</text>
@@ -105,121 +182,158 @@
           <text x="780" y="470">BATH</text>
         </g>
 
-        <!-- sweep -->
+        <!-- printed plan symbols -->
+        <g id="symbols"></g>
+
+        <!-- scan sweep -->
         <g id="sweepG" opacity="0">
           <line id="sweepLine" x1="80" y1="110" x2="80" y2="620" stroke="#E8590C" stroke-width="3" />
           <rect id="sweepGlow" x="-200" y="110" width="240" height="510" fill="url(#sweepGrad)"/>
         </g>
 
-        <!-- pins -->
-        <g id="pins"></g>
-
-        <!-- marker (user-drawn) -->
-        <g id="marker" opacity="0">
-          <!-- handwritten lasso circle -->
-          <path id="markerPath" fill="none" stroke="#E8590C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <text id="markerLabel" font-family="DM Mono" font-size="11" fill="#E8590C" font-weight="600">DOWNLIGHT</text>
-        </g>
+        <!-- detection bounding boxes -->
+        <g id="boxes"></g>
       </svg>
+
+      <!-- upload overlay -->
+      <div class="upload" id="upload">
+        <div class="dropzone" id="dropzone">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#b8b1a2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" id="cloudIcon">
+            <path d="M4 14.9A7 7 0 1 1 15.7 8h1.8a4.5 4.5 0 0 1 2.5 8.2"/>
+            <polyline points="12 12 12 21"/>
+            <polyline points="8 16 12 12 16 16"/>
+          </svg>
+          <div class="filecard" id="filecard">
+            <div class="fileicon">PDF</div>
+            <div class="filemeta">
+              <div class="filename">Lakeview_Rd_Electrical.pdf</div>
+              <div class="progress"><div class="fill" id="progressFill"></div></div>
+            </div>
+          </div>
+          <div class="upload-label" id="uploadLabel">Drop in your drawing set</div>
+        </div>
+      </div>
     </div>
   </div>
 
 <script>
 (() => {
-  // ── Fixture positions (12 downlights, distributed around rooms) ──
-  const fixtures = [
-    [180, 200], [320, 200], [400, 200],                // Kitchen
-    [560, 220], [720, 220], [880, 220], [960, 220],    // Living/Dining
-    [560, 380], [720, 380], [880, 380],                // Living back
-    [180, 520], [380, 520],                            // Beds
-    [820, 540], [940, 540],                            // Bath
-    [600, 540],                                        // Hall
-  ];
-  const FIRST_PIN = 5; // index of the user-marked one (in living)
+  const NS = 'http://www.w3.org/2000/svg';
 
-  // ── Build the marker scribble around fixtures[FIRST_PIN] ──
-  // Hand-drawn lasso: small overshooting circle.
-  function lassoPath(cx, cy, r = 32) {
-    // Generate a slightly wobbly closed path so it feels hand-drawn.
-    const pts = [];
-    const steps = 26;
-    for (let i = 0; i <= steps; i++) {
-      const a = (i / steps) * Math.PI * 2 - Math.PI/2;
-      const wobble = (Math.sin(i * 1.3) + Math.cos(i * 0.7)) * 1.6;
-      const rr = r + wobble + (i === steps ? 6 : 0); // overshoot at the end
-      pts.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr]);
+  // ── Symbol layout: [type, x, y] on the 1100x700 plan ──
+  // dl = downlight, gpo = power point, sw = switch
+  const SYMBOLS = [
+    // Kitchen
+    ['dl', 160, 210], ['dl', 280, 210], ['dl', 400, 210],
+    ['gpo', 120, 262], ['gpo', 330, 262], ['gpo', 452, 180],
+    ['sw', 452, 268],
+    // Living / Dining
+    ['dl', 570, 205], ['dl', 700, 205], ['dl', 830, 205], ['dl', 960, 205],
+    ['dl', 570, 335], ['dl', 700, 335], ['dl', 830, 335], ['dl', 960, 335],
+    ['gpo', 512, 140], ['gpo', 760, 142], ['gpo', 992, 388],
+    ['sw', 505, 395],
+    // Bed 1
+    ['dl', 180, 455], ['gpo', 108, 555], ['gpo', 252, 385], ['sw', 252, 312],
+    // Bed 2
+    ['dl', 380, 455], ['gpo', 308, 555], ['gpo', 452, 385], ['sw', 308, 312],
+    // Hall
+    ['dl', 600, 525], ['sw', 698, 442],
+    // Bath
+    ['dl', 790, 525], ['dl', 950, 525], ['sw', 745, 590], ['gpo', 990, 470],
+  ];
+
+  const CLASSES = {
+    dl:  { color: '#E8590C', tag: 'DL',  box: 46, counter: 'n-dl'  },
+    gpo: { color: '#1B8C4F', tag: 'GPO', box: 40, counter: 'n-gpo' },
+    sw:  { color: '#1C1C1C', tag: 'SW',  box: 38, counter: 'n-sw'  },
+  };
+
+  // ── Draw printed plan glyphs (dark, like ink on the drawing) ──
+  const symbolsG = document.getElementById('symbols');
+  function glyphMarkup(type) {
+    if (type === 'dl') {
+      // downlight: circle with cross
+      return `<circle r="11" fill="none" stroke="#2b2b2b" stroke-width="2.2"/>
+              <line x1="-7.8" y1="-7.8" x2="7.8" y2="7.8" stroke="#2b2b2b" stroke-width="2"/>
+              <line x1="7.8" y1="-7.8" x2="-7.8" y2="7.8" stroke="#2b2b2b" stroke-width="2"/>`;
     }
-    return 'M ' + pts.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L ');
+    if (type === 'gpo') {
+      // GPO: circle with vertical stroke rising from centre
+      return `<circle r="8.5" fill="none" stroke="#2b2b2b" stroke-width="2.2"/>
+              <line x1="0" y1="0" x2="0" y2="-15" stroke="#2b2b2b" stroke-width="2.2"/>`;
+    }
+    // switch: small circle with angled strike
+    return `<circle r="6.5" fill="none" stroke="#2b2b2b" stroke-width="2.2"/>
+            <line x1="4.5" y1="-4.5" x2="14" y2="-14" stroke="#2b2b2b" stroke-width="2.2"/>`;
+  }
+  function buildSymbols() {
+    symbolsG.innerHTML = '';
+    SYMBOLS.forEach(([type, x, y]) => {
+      const g = document.createElementNS(NS, 'g');
+      g.setAttribute('transform', `translate(${x} ${y})`);
+      g.innerHTML = glyphMarkup(type);
+      g.style.opacity = '0';
+      symbolsG.appendChild(g);
+    });
   }
 
-  const markerPath = document.getElementById('markerPath');
-  const markerLabel = document.getElementById('markerLabel');
-  const markerG = document.getElementById('marker');
-  const [mx, my] = fixtures[FIRST_PIN];
-  const d = lassoPath(mx, my, 30);
-  markerPath.setAttribute('d', d);
-  markerLabel.setAttribute('x', mx + 38);
-  markerLabel.setAttribute('y', my - 32);
-  // Get total length for stroke draw animation
-  const totalLen = markerPath.getTotalLength();
-  markerPath.style.strokeDasharray = totalLen;
-  markerPath.style.strokeDashoffset = totalLen;
-
-  // ── Pin builder ──
-  const pinsG = document.getElementById('pins');
-  function makePin(i, [x, y], delay) {
-    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  // ── Bounding box builder (object-detection style) ──
+  const boxesG = document.getElementById('boxes');
+  function makeBox(type, x, y, conf) {
+    const cls = CLASSES[type];
+    const s = cls.box, h = s / 2, b = 9; // b = corner bracket length
+    const g = document.createElementNS(NS, 'g');
     g.setAttribute('transform', `translate(${x} ${y})`);
-    g.style.opacity = '0';
-    g.style.transition = `opacity 0.18s ease-out, transform 0.45s cubic-bezier(.2,1.5,.3,1)`;
-    g.style.transitionDelay = `${delay}ms`;
+    const label = `${cls.tag} ${conf}%`;
+    const chipW = label.length * 6.4 + 10;
+    // keep label chip inside the plan edges
+    let chipX = -h, chipY = -h - 20;
+    if (y - h - 20 < 112) chipY = h + 4;
+    if (x + chipX + chipW > 1018) chipX = h - chipW;
     g.innerHTML = `
-      <circle r="22" fill="none" stroke="#E8590C" stroke-width="2" opacity="0">
-        <animate attributeName="r" from="14" to="34" begin="${delay}ms" dur="0.7s" fill="freeze"/>
-        <animate attributeName="opacity" from="0.8" to="0" begin="${delay}ms" dur="0.7s" fill="freeze"/>
-      </circle>
-      <circle r="11" fill="#E8590C"/>
-      <circle r="4" fill="#fff"/>
-      <line x1="-7" y1="0" x2="7" y2="0" stroke="#fff" stroke-width="1.6"/>
-      <line x1="0" y1="-7" x2="0" y2="7" stroke="#fff" stroke-width="1.6"/>
+      <g class="bbox">
+      <rect x="${-h}" y="${-h}" width="${s}" height="${s}" fill="${cls.color}" opacity="0.07" rx="2"/>
+      <rect x="${-h}" y="${-h}" width="${s}" height="${s}" fill="none" stroke="${cls.color}" stroke-width="1.4" opacity="0.85" rx="2"/>
+      <g stroke="${cls.color}" stroke-width="3.2" fill="none" stroke-linecap="round">
+        <path d="M ${-h} ${-h + b} L ${-h} ${-h} L ${-h + b} ${-h}"/>
+        <path d="M ${h - b} ${-h} L ${h} ${-h} L ${h} ${-h + b}"/>
+        <path d="M ${h} ${h - b} L ${h} ${h} L ${h - b} ${h}"/>
+        <path d="M ${-h + b} ${h} L ${-h} ${h} L ${-h} ${h - b}"/>
+      </g>
+      <rect x="${chipX}" y="${chipY}" width="${chipW}" height="16" rx="4" fill="${cls.color}"/>
+      <text x="${chipX + chipW / 2}" y="${chipY + 11.5}" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" font-weight="500" fill="#fff">${label}</text>
+      </g>
     `;
     return g;
   }
 
-  // ── Counter, caption, hud helpers ──
-  const cnum = document.getElementById('cnum');
+  // ── HUD / caption / tally helpers ──
   const cap = document.getElementById('cap');
   const hudLabel = document.getElementById('hudLabel');
-  function setCount(n) {
-    cnum.textContent = n;
-  }
+  const tally = document.getElementById('tally');
+  const counts = { dl: 0, gpo: 0, sw: 0 };
   function setCaption(html) { cap.innerHTML = html; }
   function setHud(t) { hudLabel.textContent = t; }
+  function resetCounts() {
+    counts.dl = counts.gpo = counts.sw = 0;
+    for (const k in CLASSES) document.getElementById(CLASSES[k].counter).textContent = '0';
+  }
+  function bump(type) {
+    counts[type] += 1;
+    document.getElementById(CLASSES[type].counter).textContent = counts[type];
+  }
 
-  // ── Sweep ──
-  const sweepG = document.getElementById('sweepG');
-  const sweepLine = document.getElementById('sweepLine');
-  const sweepGlow = document.getElementById('sweepGlow');
-
-  // ── Timeline ──
-  // 0.0 - 0.4   walls draw in (CSS via stroke-dash)
-  // 0.4 - 1.4   user "draws" lasso on first fixture
-  // 1.4 - 1.9   first pin lands
-  // 1.9 - 4.0   sweep across, fixtures pop in pitch-laddered
-  // 4.0 - 5.5   hold ("15 in 0.6s") then reset and loop
-
+  // ── Walls ──
   function drawWalls() {
     [document.getElementById('wallsOuter'), document.getElementById('wallsInner')].forEach((p, i) => {
       const len = p.getTotalLength();
       p.style.strokeDasharray = len;
       p.style.strokeDashoffset = len;
-      p.style.transition = `stroke-dashoffset 0.55s cubic-bezier(.4,.1,.3,1) ${i*0.1}s`;
-      // force reflow
+      p.style.transition = `stroke-dashoffset 0.55s cubic-bezier(.4,.1,.3,1) ${i * 0.1}s`;
       p.getBoundingClientRect();
       p.style.strokeDashoffset = '0';
     });
   }
-
   function resetWalls() {
     [document.getElementById('wallsOuter'), document.getElementById('wallsInner')].forEach(p => {
       const len = p.getTotalLength();
@@ -228,66 +342,99 @@
     });
   }
 
-  // ── Playback state ──
+  // ── Sweep ──
+  const sweepG = document.getElementById('sweepG');
+  const sweepLine = document.getElementById('sweepLine');
+  const sweepGlow = document.getElementById('sweepGlow');
+
+  // ── Upload overlay elements ──
+  const upload = document.getElementById('upload');
+  const dropzone = document.getElementById('dropzone');
+  const filecard = document.getElementById('filecard');
+  const progressFill = document.getElementById('progressFill');
+  const uploadLabel = document.getElementById('uploadLabel');
+  const roomLabels = document.getElementById('roomLabels');
+
+  // ── Playback ──
   let timers = [];
   let playing = false;
+  function addTimer(fn, ms) { timers.push(setTimeout(fn, ms)); }
+  function stopAll() { timers.forEach(clearTimeout); timers = []; playing = false; }
 
-  function addTimer(fn, ms) {
-    timers.push(setTimeout(fn, ms));
-  }
-
-  function stopAll() {
-    timers.forEach(clearTimeout);
-    timers = [];
-    playing = false;
+  function resetAll() {
+    resetWalls();
+    buildSymbols();
+    boxesG.innerHTML = '';
+    sweepG.style.opacity = '0';
+    sweepG.style.transition = 'none';
+    roomLabels.style.transition = 'none';
+    roomLabels.setAttribute('opacity', '0');
+    resetCounts();
+    tally.classList.remove('show');
+    setCaption('');
+    setHud('Ready');
+    upload.classList.remove('hide');
+    dropzone.classList.remove('active');
+    filecard.classList.remove('drop');
+    progressFill.style.transition = 'none';
+    progressFill.style.width = '0%';
+    uploadLabel.innerHTML = 'Drop in your drawing set';
   }
 
   function play() {
     stopAll();
     playing = true;
+    resetAll();
 
-    // Reset visuals
-    resetWalls();
-    pinsG.innerHTML = '';
-    markerG.style.opacity = '0';
-    markerLabel.style.opacity = '0';
-    markerPath.style.strokeDashoffset = totalLen;
-    sweepG.style.opacity = '0';
-    setCount(0);
-    setCaption('');
-    setHud('Ready');
-
-    addTimer(() => drawWalls(), 100);
-
+    // ── Phase 1: upload (0 – 1.9s) ──
+    setHud('Upload');
     addTimer(() => {
-      setHud('Marking');
-      setCaption('Mark <strong>one</strong> symbol…');
-      markerG.style.opacity = '1';
-      markerPath.style.transition = 'stroke-dashoffset 0.85s cubic-bezier(.4,.2,.3,1)';
-      markerPath.getBoundingClientRect();
-      markerPath.style.strokeDashoffset = '0';
-    }, 500);
-
+      dropzone.classList.add('active');
+      filecard.classList.add('drop');
+    }, 250);
     addTimer(() => {
-      const pin = makePin(FIRST_PIN, fixtures[FIRST_PIN], 0);
-      pinsG.appendChild(pin);
-      pin.getBoundingClientRect();
-      pin.style.opacity = '1';
-      setCount(1);
-      setCaption('AI learns the symbol…');
-    }, 1400);
+      progressFill.style.transition = 'width 1.0s cubic-bezier(.3,.1,.2,1)';
+      progressFill.getBoundingClientRect();
+      progressFill.style.width = '100%';
+      uploadLabel.innerHTML = 'Uploading <strong>4 sheets</strong>…';
+    }, 750);
+    addTimer(() => { uploadLabel.innerHTML = 'Reading plans…'; }, 1750);
 
+    // ── Phase 2: plan renders (1.9 – 3.4s) ──
+    addTimer(() => {
+      upload.classList.add('hide');
+      setHud('Reading plans');
+      drawWalls();
+    }, 1950);
+    addTimer(() => {
+      roomLabels.style.transition = 'opacity 0.5s';
+      roomLabels.setAttribute('opacity', '1');
+      setCaption('AI reads every sheet…');
+      // symbols pop in with a light stagger, left to right
+      const gs = Array.from(symbolsG.children);
+      SYMBOLS.forEach(([, x], i) => {
+        const delay = ((x - 80) / 940) * 500;
+        addTimer(() => {
+          gs[i].style.transition = 'opacity 0.25s ease-out';
+          gs[i].style.opacity = '1';
+        }, delay);
+      });
+    }, 2550);
+
+    // ── Phase 3: detection sweep with bounding boxes (3.6 – 5.6s) ──
     addTimer(() => {
       setHud('Detecting');
-      setCaption('…and finds <strong>every match</strong>.');
+      setCaption('Every symbol found, boxed, and <strong>counted</strong>…');
+      tally.classList.add('show');
+      sweepG.style.transition = 'none';
       sweepG.style.opacity = '1';
-      const sweepDur = 1500;
+      const sweepDur = 1900;
       const startX = 80, endX = 1020;
       const startT = performance.now();
       function tick(now) {
         if (!playing) return;
         const t = Math.min(1, (now - startT) / sweepDur);
-        const eased = t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2, 2)/2;
+        const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
         const x = startX + (endX - startX) * eased;
         sweepLine.setAttribute('x1', x); sweepLine.setAttribute('x2', x);
         sweepGlow.setAttribute('x', x - 240);
@@ -299,32 +446,35 @@
       }
       requestAnimationFrame(tick);
 
-      let popped = 1;
-      fixtures.forEach((f, i) => {
-        if (i === FIRST_PIN) return;
-        const fx = f[0];
-        const fracX = (fx - startX) / (endX - startX);
-        const delay = fracX * sweepDur * 0.92;
+      SYMBOLS.forEach(([type, x, y], i) => {
+        const fracX = (x - startX) / (endX - startX);
+        // invert the ease to sync box pops with the eased sweep position
+        const f = fracX < 0.5 ? Math.sqrt(fracX / 2) : 1 - Math.sqrt((1 - fracX) / 2);
+        const delay = f * sweepDur;
+        const conf = 96 + ((i * 7) % 4); // deterministic 96–99%
         addTimer(() => {
-          const pin = makePin(i, f, 0);
-          pinsG.appendChild(pin);
-          pin.getBoundingClientRect();
-          pin.style.opacity = '1';
-          popped += 1;
-          setCount(popped);
+          const box = makeBox(type, x, y, conf);
+          boxesG.appendChild(box);
+          box.getBoundingClientRect();
+          box.querySelector('.bbox').classList.add('pop');
+          bump(type);
         }, delay);
       });
-    }, 1900);
+    }, 3600);
 
+    // ── Phase 4: done, hold, loop ──
     addTimer(() => {
-      markerG.style.transition = 'opacity 0.6s';
-      markerG.style.opacity = '0.0';
-      setCaption('<strong>15 fixtures</strong> · 0.6 seconds');
       setHud('Done');
-    }, 3700);
+      setCaption(`<strong>${SYMBOLS.length} symbols</strong> counted · ready to review`);
+      // rAF can be throttled in background tabs — force the sweep away
+      sweepG.style.transition = 'opacity 0.4s';
+      sweepG.style.opacity = '0';
+    }, 5700);
 
-    addTimer(play, 6200);
+    addTimer(play, 8400);
   }
+
+  buildSymbols();
 
   // ── Listen for play/pause from parent page ──
   window.addEventListener('message', (e) => {
@@ -332,13 +482,7 @@
       document.fonts.ready.then(() => play());
     } else if (e.data === 'pause') {
       stopAll();
-      resetWalls();
-      pinsG.innerHTML = '';
-      markerG.style.opacity = '0';
-      sweepG.style.opacity = '0';
-      setCount(0);
-      setCaption('');
-      setHud('Ready');
+      resetAll();
     }
   });
 })();
