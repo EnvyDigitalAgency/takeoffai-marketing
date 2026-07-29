@@ -138,8 +138,6 @@ nav .container{display:grid;grid-template-columns:1fr auto 1fr;align-items:cente
 /* HERO */
 .hero{padding:140px 0 80px;position:relative;background:linear-gradient(180deg,var(--gray-50) 0%,var(--white) 100%)}
 .hero .container{max-width:880px;text-align:center;display:flex;flex-direction:column;align-items:center}
-.hero-pill{display:inline-flex;align-items:center;gap:8px;background:var(--orange-light);border:1px solid var(--orange-100);border-radius:100px;padding:6px 16px 6px 8px;font-size:13px;font-weight:500;color:var(--orange);margin-bottom:28px}
-.hero-pill-dot{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:pulse 2s ease infinite}
 .hero h1{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(38px,6vw,64px);line-height:1.08;letter-spacing:-.03em;margin-bottom:20px;color:var(--gray-900)}
 .hero h1 .orange{color:var(--orange)}
 .hero-sub{font-size:18px;line-height:1.65;color:var(--gray-500);max-width:540px;margin-bottom:36px;font-weight:400}
@@ -260,13 +258,6 @@ nav .container{display:grid;grid-template-columns:1fr auto 1fr;align-items:cente
 
 /* URGENCY */
 .urgency{padding:0 0 96px}
-.urgency-bar{max-width:680px;margin:0 auto;background:var(--gray-900);border-radius:16px;padding:24px 32px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:center}
-.urgency-count{display:flex;align-items:baseline;gap:8px}
-.urgency-num{font-family:'Fraunces',serif;font-size:36px;font-weight:700;color:var(--orange)}
-.urgency-label{font-size:14px;color:rgba(255,255,255,.6);line-height:1.3}
-.urgency-div{width:1px;height:36px;background:rgba(255,255,255,.1)}
-.urgency-text{font-size:13px;color:rgba(255,255,255,.5);max-width:260px;line-height:1.5}
-.urgency-text strong{color:rgba(255,255,255,.9);font-weight:600}
 
 /* GUARANTEE */
 .guarantee{padding:96px 0;background:var(--gray-50)}
@@ -518,9 +509,6 @@ footer a:hover{color:var(--orange)}
   .hero-stats{gap:32px}
   .offer-total{flex-direction:column;text-align:center}
   .ot-right{text-align:center}
-  .urgency-div{display:none}
-  .urgency-bar{flex-direction:column;text-align:center}
-  .urgency-text{max-width:100%;text-align:center}
 }
 </style>
 
@@ -583,7 +571,6 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
 
 <section class="hero">
   <div class="container">
-    <div class="hero-pill anim-hero d1"><span class="hero-pill-dot"></span> Founding 100 — limited spots at launch pricing</div>
     <h1 class="anim-hero d2">Double your bids.<br>Without hiring another <span class="orange">estimator.</span></h1>
     <p class="hero-sub anim-hero d3">TakeoffAI replaces 80% of manual electrical takeoff work. <strong>Upload plans. AI counts. You review.</strong> Your estimator does the work of three.</p>
     <div class="hero-ctas anim-hero d4">
@@ -936,7 +923,7 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
 <div class="offer-total anim"><div class="ot-left"><div class="ot-label">Total value</div><div class="ot-num">$41,500/year</div></div><div class="ot-right"><div class="ot-label">You pay</div><div class="ot-num">$297/mo</div><div class="ot-per">Or $2,970/year — just $247/month</div></div></div>
 </div></section>
 
-<section class="urgency"><div class="container"><div class="urgency-bar anim"><div class="urgency-count"><div class="urgency-num">73</div><div class="urgency-label">founding spots<br>remaining</div></div><a href="#book-call" class="btn-primary" style="padding:11px 22px;font-size:14px;">Book a demo <svg class="arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></div></div></section>
+<section class="urgency"><div class="container"><div class="anim" style="text-align:center"><a href="#book-call" class="btn-primary" style="padding:11px 22px;font-size:14px;">Book a demo <svg class="arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></div></div></section>
 
 <section class="guarantee"><div class="container"><div class="guarantee-header"><div class="kicker">Zero risk</div><h2 class="section-heading">The double guarantee</h2><p class="section-sub">We put our money where our mouth is. Twice.</p></div>
 <div class="guar-grid">
@@ -1001,7 +988,7 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
   </div>
 </section>
 
-<section class="final-cta"><div class="container"><h2>Stop counting.<br>Start <span class="orange">winning.</span></h2><p>Join the Founding 100 electrical contractors replacing manual takeoffs with AI — and doubling their bid capacity in 90 days.</p><a href="#book-call" class="btn-primary lg">Book a demo <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a><p class="subtext">30-day money-back guarantee · Guided onboarding included · Founding price locked for life</p></div></section>
+<section class="final-cta"><div class="container"><h2>Stop counting.<br>Start <span class="orange">winning.</span></h2><p>Join the electrical contractors replacing manual takeoffs with AI — and doubling their bid capacity in 90 days.</p><a href="#book-call" class="btn-primary lg">Book a demo <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a><p class="subtext">30-day money-back guarantee · Guided onboarding included</p></div></section>
 
 </div><!-- /page-main -->
 
