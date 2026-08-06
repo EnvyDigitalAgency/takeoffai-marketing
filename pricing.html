@@ -139,7 +139,8 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .rate-card.rc-feat{border-color:var(--orange);background:var(--orange-light)}
 .rate-name{font-size:15px;font-weight:700;color:var(--gray-900);margin-bottom:10px}
 .rate-price{font-family:'Fraunces',serif;font-size:40px;font-weight:700;color:var(--gray-900);line-height:1}
-.rate-unit{font-size:12px;color:var(--gray-400);margin:6px 0 14px}
+.rate-cr{font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;color:var(--gray-500);margin-left:5px}
+.rate-unit{font-size:12px;color:var(--gray-400);margin:6px 0 14px;min-height:30px}
 .rate-desc{font-size:13px;line-height:1.6;color:var(--gray-600)}
 .sheet-note{max-width:960px;margin:0 auto;background:var(--gray-50);border:1.5px solid var(--gray-150);border-radius:14px;padding:22px 26px;font-size:14px;line-height:1.7;color:var(--gray-600)}
 .sheet-note strong{color:var(--gray-900);font-weight:600}
@@ -152,7 +153,9 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .pack-jobs{font-size:14px;font-weight:600;color:var(--gray-900);margin-bottom:16px;line-height:1.4;min-height:40px}
 .pack-price{display:flex;align-items:baseline;gap:4px;margin-bottom:6px}
 .pk-dollar{font-family:'Fraunces',serif;font-size:36px;font-weight:700;color:var(--gray-900);line-height:1}
-.pack-eff{font-size:13px;color:var(--gray-500);margin-bottom:18px;line-height:1.5}
+.pk-cr{font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;color:var(--gray-500);margin-left:5px}
+.pack-cost{font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:var(--gray-900);margin-bottom:4px}
+.pack-eff{font-size:13px;color:var(--gray-500);margin-bottom:18px;line-height:1.5;min-height:39px}
 .pack-eff strong{color:var(--orange);font-weight:700}
 .pack-credits{font-size:12px;color:var(--gray-400);border-top:1px solid var(--gray-150);padding-top:14px}
 
@@ -196,7 +199,7 @@ footer a:hover{color:var(--orange)}
   .fc-list{grid-template-columns:1fr}
   .fc-dollar{font-size:54px}
   .rate-grid,.pack-grid{grid-template-columns:1fr}
-  .pack-jobs{min-height:0}
+  .pack-jobs,.pack-eff,.rate-unit{min-height:0}
 }
 </style>
 </head>
@@ -294,20 +297,20 @@ footer a:hover{color:var(--orange)}
     <div class="rate-grid">
       <div class="rate-card">
         <div class="rate-name">Residential</div>
-        <div class="rate-price">$50</div>
-        <div class="rate-unit">per take-off</div>
+        <div class="rate-price">500<span class="rate-cr">credits</span></div>
+        <div class="rate-unit">per take-off · about $50</div>
         <p class="rate-desc">A house or unit. Replaces 1–2 hours of estimator time.</p>
       </div>
       <div class="rate-card rc-feat">
         <div class="rate-name">Commercial</div>
-        <div class="rate-price">$100</div>
-        <div class="rate-unit">per take-off · up to 15 electrical sheets</div>
+        <div class="rate-price">1,000<span class="rate-cr">credits</span></div>
+        <div class="rate-unit">per take-off · about $100 · up to 15 electrical sheets</div>
         <p class="rate-desc">A commercial set. Replaces 6–10 hours of estimator time — about a tenth of what those hours cost you.</p>
       </div>
       <div class="rate-card">
         <div class="rate-name">Large commercial</div>
-        <div class="rate-price">$200</div>
-        <div class="rate-unit">per take-off · over 15 electrical sheets</div>
+        <div class="rate-price">2,000<span class="rate-cr">credits</span></div>
+        <div class="rate-unit">per take-off · about $200 · over 15 electrical sheets</div>
         <p class="rate-desc">A genuinely large tender set. One step, no bands — most jobs never reach it.</p>
       </div>
     </div>
@@ -325,29 +328,29 @@ footer a:hover{color:var(--orange)}
 
     <div class="pack-grid">
       <div class="pack-card">
-        <div class="pack-jobs">1 commercial take-off<br>or 2 residential</div>
-        <div class="pack-price"><span class="pk-dollar">$100</span></div>
-        <div class="pack-eff"><strong>$100</strong> a commercial take-off</div>
-        <div class="pack-credits">1,000 credits</div>
+        <div class="pack-price"><span class="pk-dollar">1,000</span><span class="pk-cr">credits</span></div>
+        <div class="pack-cost">$100</div>
+        <div class="pack-eff">Works out to <strong>$100</strong> a commercial take-off</div>
+        <div class="pack-credits">1 commercial or 2 residential take-offs</div>
       </div>
       <div class="pack-card">
-        <div class="pack-jobs">5 commercial take-offs<br>or 10 residential</div>
-        <div class="pack-price"><span class="pk-dollar">$400</span></div>
-        <div class="pack-eff"><strong>$80</strong> a commercial take-off — save 20%</div>
-        <div class="pack-credits">5,000 credits</div>
+        <div class="pack-price"><span class="pk-dollar">5,000</span><span class="pk-cr">credits</span></div>
+        <div class="pack-cost">$400</div>
+        <div class="pack-eff">Works out to <strong>$80</strong> a commercial take-off — save 20%</div>
+        <div class="pack-credits">5 commercial or 10 residential take-offs</div>
       </div>
       <div class="pack-card pk-best">
         <div class="pack-tag">Best value</div>
-        <div class="pack-jobs">15 commercial take-offs<br>or 30 residential</div>
-        <div class="pack-price"><span class="pk-dollar">$1,000</span></div>
-        <div class="pack-eff"><strong>$67</strong> a commercial take-off — save 33%</div>
-        <div class="pack-credits">15,000 credits</div>
+        <div class="pack-price"><span class="pk-dollar">15,000</span><span class="pk-cr">credits</span></div>
+        <div class="pack-cost">$1,000</div>
+        <div class="pack-eff">Works out to <strong>$67</strong> a commercial take-off — save 33%</div>
+        <div class="pack-credits">15 commercial or 30 residential take-offs</div>
       </div>
     </div>
 
     <p style="text-align:center;font-size:14px;color:var(--gray-500);margin-top:28px">Running more volume than that, or want to bring your own AI key? <a href="mailto:info@takeoffai.com.au?subject=High-volume%20take-off%20pricing" style="color:var(--orange);font-weight:600">Talk to us</a> — we'll put something together.</p>
 
-    <p style="text-align:center;font-size:13px;color:var(--gray-400);margin-top:20px">Prices in AUD, GST included. Payments processed securely by Stripe. No subscription — buy take-offs when you need them.</p>
+    <p style="text-align:center;font-size:13px;color:var(--gray-400);margin-top:20px"><strong style="color:var(--gray-600)">1 credit = $0.10.</strong> Credits don’t reset month to month. Prices in AUD, GST included. Payments processed securely by Stripe. No subscription — buy take-offs when you need them.</p>
   </div>
 </div>
 
