@@ -160,6 +160,12 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .pack-cost{font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:var(--gray-900);margin-bottom:4px}
 .pack-eff{font-size:13px;color:var(--gray-500);margin-bottom:18px;line-height:1.5;min-height:39px}
 .pack-eff strong{color:var(--orange);font-weight:700}
+.pack-sub{font-size:14px;font-weight:600;color:var(--orange);margin:4px 0 14px}
+.pc-per{font-size:14px;font-weight:600;color:var(--gray-400);margin-left:2px}
+.onceoff{max-width:960px;margin:22px auto 0;background:var(--gray-50);border:1.5px solid var(--gray-150);border-radius:14px;padding:20px 26px;text-align:center;font-size:14px;color:var(--gray-600);line-height:1.6}
+.onceoff strong{color:var(--gray-900);font-weight:700}
+.oo-label{font-weight:700;color:var(--gray-900)}
+.oo-note{display:block;font-size:13px;color:var(--gray-400);margin-top:6px}
 .pk-save{color:var(--green);font-weight:700}
 .pack-credits{font-size:12px;color:var(--gray-400);border-top:1px solid var(--gray-150);padding-top:14px}
 
@@ -203,7 +209,7 @@ footer a:hover{color:var(--orange)}
   .fc-list{grid-template-columns:1fr}
   .fc-dollar{font-size:54px}
   .rate-grid,.pack-grid{grid-template-columns:1fr}
-  .pack-jobs,.pack-eff,.rate-unit{min-height:0}
+  .pack-jobs,.pack-eff,.rate-unit,.pack-sub{min-height:0}
   .rate-value{min-height:0}
 }
 </style>
@@ -322,33 +328,42 @@ footer a:hover{color:var(--orange)}
       <strong>Upload the whole binder.</strong> Architectural, structural, hydraulic — the lot. We only count the electrical drawings, and the price is the same whether the set is 3 sheets or 30. On real jobs, a 25-page binder held just <strong>one</strong> electrical sheet.
     </div>
 
-    <!-- Credit packs -->
+    <!-- Credit plans -->
     <div style="text-align:center;margin:72px 0 32px">
       <h3 style="font-family:'Fraunces',serif;font-size:clamp(22px,3vw,30px);font-weight:700;color:var(--gray-900);letter-spacing:-.02em">Buy ahead and save.</h3>
+      <p class="section-sub" style="margin:10px auto 0;font-size:16px">Subscribe monthly for the lowest rate, or buy credits once and use them whenever.</p>
     </div>
 
     <div class="pack-grid">
       <div class="pack-card">
-        <div class="pack-price"><span class="pk-dollar">1,000</span><span class="pk-cr">credits</span></div>
-        <div class="pack-cost">$100</div>
-        <div class="pack-credits">Pay as you go</div>
+        <div class="pack-price"><span class="pk-dollar">1,000</span><span class="pk-cr">credits / mo</span></div>
+        <div class="pack-sub">1 project a month</div>
+        <div class="pack-cost">$85<span class="pc-per">/mo</span></div>
+        <div class="pack-credits"><strong class="pk-save">Save 15%</strong></div>
       </div>
       <div class="pack-card">
-        <div class="pack-price"><span class="pk-dollar">5,000</span><span class="pk-cr">credits</span></div>
-        <div class="pack-cost">$400</div>
-        <div class="pack-credits"><strong class="pk-save">Save 20%</strong></div>
+        <div class="pack-price"><span class="pk-dollar">5,000</span><span class="pk-cr">credits / mo</span></div>
+        <div class="pack-sub">5 projects a month</div>
+        <div class="pack-cost">$382<span class="pc-per">/mo</span></div>
+        <div class="pack-credits"><strong class="pk-save">Save 15%</strong></div>
       </div>
       <div class="pack-card pk-best">
         <div class="pack-tag">Best value</div>
-        <div class="pack-price"><span class="pk-dollar">15,000</span><span class="pk-cr">credits</span></div>
-        <div class="pack-cost">$1,000</div>
-        <div class="pack-credits"><strong class="pk-save">Save 33%</strong></div>
+        <div class="pack-price"><span class="pk-dollar">15,000</span><span class="pk-cr">credits / mo</span></div>
+        <div class="pack-sub">15 projects a month</div>
+        <div class="pack-cost">$1,125<span class="pc-per">/mo</span></div>
+        <div class="pack-credits"><strong class="pk-save">Save 12%</strong></div>
       </div>
+    </div>
+
+    <div class="onceoff">
+      <span class="oo-label">Or buy credits once —</span> 1,000 for <strong>$100</strong> &middot; 5,000 for <strong>$450</strong> &middot; 15,000 for <strong>$1,275</strong>
+      <span class="oo-note">No subscription. Credits stay on your account until you use them.</span>
     </div>
 
     <p style="text-align:center;font-size:14px;color:var(--gray-500);margin-top:28px">Bigger volume, or want to bring your own AI key? <a href="mailto:info@takeoffai.com.au?subject=High-volume%20take-off%20pricing" style="color:var(--orange);font-weight:600">Talk to us.</a></p>
 
-    <p style="text-align:center;font-size:13px;color:var(--gray-400);margin-top:16px">1 credit = $0.10 · Credits never reset · Prices in AUD, GST included</p>
+    <p style="text-align:center;font-size:13px;color:var(--gray-400);margin-top:16px">A project means one commercial take-off &middot; residential jobs go twice as far &middot; prices in AUD, GST included</p>
   </div>
 </div>
 
