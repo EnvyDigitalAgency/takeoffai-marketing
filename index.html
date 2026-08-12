@@ -518,6 +518,15 @@ footer a:hover{color:var(--orange)}
 @media(max-width:768px){.estimator .container{grid-template-columns:1fr;gap:32px}}
 
 /* Claude integration */
+.integ{padding:72px 0;background:var(--gray-50);border-top:1px solid var(--gray-150);border-bottom:1px solid var(--gray-150)}
+.integ .container{max-width:900px;text-align:center}
+.integ h2{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(26px,3.6vw,38px);line-height:1.15;letter-spacing:-.02em;color:var(--gray-900);margin-bottom:14px}
+.integ>.container>p{font-size:16px;line-height:1.7;color:var(--gray-600);max-width:600px;margin:0 auto 32px}
+.integ-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:left}
+.integ-card{background:var(--white);border:1.5px solid var(--gray-150);border-radius:14px;padding:22px 24px}
+.integ-card h3{font-size:15px;font-weight:700;color:var(--gray-900);margin-bottom:7px}
+.integ-card p{font-size:14px;line-height:1.6;color:var(--gray-600)}
+@media(max-width:768px){.integ-grid{grid-template-columns:1fr}}
 .claude-sec{padding:96px 0;background:var(--gray-900)}
 .claude-sec .container{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
 .claude-copy .kicker{color:#E8825A}
@@ -965,6 +974,27 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
   </div>
 </div></section>
 
+<section class="integ" id="simpro"><div class="container">
+  <div class="kicker">Integrations</div>
+  <h2>Your counts don't stop at the take-off.</h2>
+  <p>TakeoffAI connects to <strong>SimPro</strong>, so a finished take-off becomes a priced quote in the system you already run your jobs from — without anyone retyping a bill of quantities.</p>
+  <div class="integ-grid">
+    <div class="integ-card">
+      <h3>Push quotes straight to SimPro</h3>
+      <p>Send the finished quote into SimPro from TakeoffAI. No CSV shuffling, no re-keying line items, no transcription errors between the count and the quote.</p>
+    </div>
+    <div class="integ-card">
+      <h3>Priced with your own rates</h3>
+      <p>Counts are costed against your price lists and labour rates before they go across, so what lands in SimPro is a quote you can send, not a raw parts list.</p>
+    </div>
+    <div class="integ-card">
+      <h3>Included free</h3>
+      <p>The SimPro connection is part of the free platform — like every other export. You're only ever charged for the AI take-off itself.</p>
+    </div>
+  </div>
+  <p style="font-size:12px;color:var(--gray-400);margin:28px auto 0">SimPro is a trademark of its respective owner. TakeoffAI is an independent product and is not affiliated with or endorsed by SimPro.</p>
+</div></section>
+
 <section class="offer" id="offer"><div class="container"><div class="offer-header"><div class="offer-name-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> The 90-day bid domination system</div><h2 class="section-heading">Everything you get</h2><p class="section-sub">Not just software — a complete system to transform your estimating capacity and win rate.</p></div>
 <div class="stack">
   <div class="stack-card core anim"><div class="stack-body"><div class="sb-tag">Core</div><h3>The TakeoffAI platform — free, forever</h3><p>Unlimited projects and users, manual take-off and mark-up, conduit & wire measurement, your own symbol library and price lists, exportable BOQ to Excel/PDF. No subscription, no seat fees.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$24K</div></div></div>
@@ -1008,6 +1038,7 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
   <div class="faq-item"><div class="faq-q">How does this compare to ConEst, Accubid, or STACK? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Legacy tools require weeks of database setup. TakeoffAI gets you to a completed takeoff on your first session — in under 60 minutes. AI does the counting; your estimator focuses on review and winning work.</div></div></div>
   <div class="faq-item"><div class="faq-q">What does the onboarding sprint include? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">A dedicated 60-minute 1-on-1 session using your actual plans. Upload a real drawing set, run the AI takeoff, review and adjust counts, export a finished BOQ you can use immediately.</div></div></div>
   <div class="faq-item"><div class="faq-q">How does the Claude integration work? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">TakeoffAI connects with Claude, Anthropic's AI assistant, inside the app. Once your takeoff is done, you can ask questions about your drawings in plain English, turn counts into a priced estimate using your own rates, and draft scopes, RFIs, and proposals from the actual takeoff data — takeoff and estimating in one place.</div></div></div>
+  <div class="faq-item"><div class="faq-q">Does it work with SimPro? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Yes. TakeoffAI connects to SimPro, so you can push a finished quote straight across rather than re-keying a bill of quantities. Counts are priced against your own rates and price lists first, so what arrives in SimPro is a quote you can send. The connection is part of the free platform — you're only ever charged for the AI take-off itself.</div></div></div>
   <div class="faq-item"><div class="faq-q">Is my plan data secure? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">All plans are encrypted in transit and at rest. We never share your drawings or data with third parties. Your project information stays yours — always.</div></div></div>
 </div></div></section>
 
@@ -1106,7 +1137,7 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
           <li><span class="fc-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Excel, CSV &amp; PDF export</li>
           <li><span class="fc-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Your own symbol library</li>
           <li><span class="fc-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Price lists &amp; your own rates</li>
-          <li><span class="fc-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>SimPro export</li>
+          <li><span class="fc-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Push quotes to SimPro</li>
           <li><span class="fc-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Guided 1-on-1 onboarding</li>
         </ul>
       </div>
