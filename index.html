@@ -37,7 +37,7 @@
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "AUD",
-    "description": "The TakeoffAI platform is free — manual take-off, mark-up, exports, price lists, symbol library, unlimited projects and unlimited users. AI take-offs are charged per job, from A$50 residential and A$100 commercial."
+    "description": "The TakeoffAI platform is free — manual take-off, mark-up, exports, price lists, symbol library, SimPro, unlimited projects and unlimited users. AI take-offs are charged on a monthly plan from A$149, or pay as you go."
   },
   "publisher": {
     "@type": "Organization",
@@ -348,6 +348,14 @@ nav .container{display:grid;grid-template-columns:1fr auto 1fr;align-items:cente
 .rate-value{margin-top:16px;padding-top:14px;border-top:1px solid var(--gray-150);font-size:13px;line-height:1.5;color:var(--gray-600)}
 .rate-card.rc-feat .rate-value{border-top-color:var(--orange-100)}
 .rate-value strong{color:var(--green);font-weight:700;font-size:15px}
+.pt-value{margin:0 0 20px;padding:11px 14px;background:var(--green-light);border-radius:10px;font-size:13px;line-height:1.5;color:var(--gray-700);text-align:center;min-height:60px;display:flex;align-items:center;justify-content:center}
+.pt-value strong{color:var(--green);font-weight:700}
+.pt-card.pt-featured .pt-value{background:rgba(255,255,255,.72)}
+.pt-card.pt-dim .pt-value{background:var(--gray-100)}
+.pt-card.pt-dim .pt-value strong{color:var(--gray-600)}
+.pt-list li{align-items:flex-start}
+.pt-list li .pt-check-icon{margin-top:2px}
+.pt-list li strong{color:var(--gray-900);font-weight:700}
 .sheet-note{max-width:960px;margin:0 auto;background:var(--gray-50);border:1.5px solid var(--gray-150);border-radius:14px;padding:22px 26px;font-size:14px;line-height:1.7;color:var(--gray-600)}
 .sheet-note strong{color:var(--gray-900);font-weight:600}
 
@@ -379,6 +387,7 @@ nav .container{display:grid;grid-template-columns:1fr auto 1fr;align-items:cente
   .fc-dollar{font-size:54px}
   .rate-grid,.pack-grid{grid-template-columns:1fr}
   .pack-jobs,.pack-eff,.rate-unit,.pack-sub{min-height:0}
+  .pt-value{min-height:0}
   .rate-value{min-height:0}
 }
 
@@ -997,18 +1006,18 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
 
 <section class="offer" id="offer"><div class="container"><div class="offer-header"><div class="offer-name-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> The 90-day bid domination system</div><h2 class="section-heading">Everything you get</h2><p class="section-sub">Not just software — a complete system to transform your estimating capacity and win rate.</p></div>
 <div class="stack">
-  <div class="stack-card core anim"><div class="stack-body"><div class="sb-tag">Core</div><h3>The TakeoffAI platform — free, forever</h3><p>Unlimited projects and users, manual take-off and mark-up, conduit & wire measurement, your own symbol library and price lists, exportable BOQ to Excel/PDF. No subscription, no seat fees.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$24K</div></div></div>
+  <div class="stack-card core anim"><div class="stack-body"><div class="sb-tag">Core</div><h3>The TakeoffAI platform — free, forever</h3><p>Unlimited projects and users, manual take-off and mark-up, conduit & wire measurement, your own symbol library and price lists, exportable BOQ to Excel/PDF. No seat fees, no per-project fees.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$24K</div></div></div>
   <div class="stack-card anim"><div class="stack-body"><div class="sb-tag">Bonus</div><h3>"Bid-ready in 60 min" onboarding sprint</h3><p>1-on-1 setup on your actual plans. You leave with a completed AI takeoff you can submit — not a sandbox demo.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$2.5K</div></div></div>
   <div class="stack-card anim"><div class="stack-body"><div class="sb-tag">Bonus</div><h3>One-click bid proposal generator</h3><p>Turn your finished BQ into a branded, professional proposal PDF — with scope, exclusions, terms, and pricing pre-filled. Send or share a trackable link. No more formatting in Word.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$5K</div></div></div>
 <div class="stack-card anim"><div class="stack-body"><div class="sb-tag">Bonus</div><h3>Addendum variance auto-detection</h3><p>Upload revised plans → instantly see what changed. Side-by-side delta report. No re-counting entire sheets.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$4K</div></div></div>
   <div class="stack-card anim"><div class="stack-body"><div class="sb-tag">Bonus</div><h3>Priority support + quarterly accuracy audits</h3><p>Dedicated channel, same-day response. Every 90 days, benchmark AI quantities against actual as-builts.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$6K</div></div></div>
 </div>
-<div class="offer-total anim"><div class="ot-left"><div class="ot-label">Total value</div><div class="ot-num">$41,500/year</div></div><div class="ot-right"><div class="ot-label">You pay</div><div class="ot-num">$0/mo</div><div class="ot-per">The software is free — AI take-offs from $50 a job</div></div></div>
+<div class="offer-total anim"><div class="ot-left"><div class="ot-label">Total value</div><div class="ot-num">$41,500/year</div></div><div class="ot-right"><div class="ot-label">You pay</div><div class="ot-num">From $149/mo</div><div class="ot-per">Software free — plans cover the AI take-offs, or pay as you go</div></div></div>
 </div></section>
 
 <section class="urgency"><div class="container"><div class="anim" style="text-align:center"><a href="#book-call" class="btn-primary" style="padding:11px 22px;font-size:14px;">Book a demo <svg class="arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></div></div></section>
 
-<section class="guarantee"><div class="container"><div class="guarantee-header"><div class="kicker">Zero risk</div><h2 class="section-heading">You're only charged if it delivers</h2><p class="section-sub">No subscription, no lock-in. The only thing you ever pay for is a finished take-off.</p></div>
+<section class="guarantee"><div class="container"><div class="guarantee-header"><div class="kicker">Zero risk</div><h2 class="section-heading">You're only charged if it delivers</h2><p class="section-sub">Cancel any time. The only thing you ever pay for is a finished take-off.</p></div>
 <div class="guar-grid">
   <div class="guar-card g1 anim"><div class="guar-badge">No result, no charge</div><h3>A failed take-off costs you nothing.</h3><p>If the AI can't deliver, the credits go <strong>straight back onto your account automatically</strong> — you don't have to email anyone or ask. You see the exact price before you spend it, and we re-check that price the moment you confirm.</p></div>
   <div class="guar-card g2 anim"><div class="guar-badge">Every count is checkable</div><h3>Nothing you have to take on trust.</h3><p>The AI doesn't hand you a number and ask you to believe it. <strong>Every single item it counts gets a marker placed on the drawing</strong>, so you can check it against the plan yourself. Where a drawing is ambiguous, it raises an RFI instead of guessing.</p></div>
@@ -1034,7 +1043,7 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
 <div class="faq-list">
   <div class="faq-item"><div class="faq-q">What types of electrical plans does TakeoffAI support? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Any PDF electrical drawing — residential, commercial, and industrial. Standard symbols including downlights, GPOs, switches, data points, smoke detectors, distribution boards, and more. Multi-sheet sets are fully supported.</div></div></div>
   <div class="faq-item"><div class="faq-q">How accurate is the AI counting? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">95%+ accuracy on standard symbols out of the box, improving over time as you review and confirm counts. Quarterly accuracy audits benchmark AI performance against real project as-builts.</div></div></div>
-  <div class="faq-item"><div class="faq-q">What does it cost? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">The software is free — unlimited projects, unlimited users, manual take-off, exports, price lists and your symbol library, with no subscription and nothing to cancel. You only pay when you ask the AI to do a take-off: $50 residential, $100 commercial, priced per job rather than per page. If it doesn't deliver, you're not charged. <a href="/pricing" style="color:var(--orange)">See full pricing</a>.</div></div></div>
+  <div class="faq-item"><div class="faq-q">What does it cost? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">The software is free — unlimited projects, unlimited users, manual take-off, exports, price lists, your symbol library and the SimPro connection. You only pay when you ask the AI to do a take-off. Plans start at $149 a month for 3 commercial take-offs ($50 each), and Contractor is $349 for 10 ($35 each). Prefer no commitment? Buy a pack of credits and spend them whenever. Either way, if a take-off doesn't deliver you're not charged. <a href="/pricing" style="color:var(--orange)">See full pricing</a>.</div></div></div>
   <div class="faq-item"><div class="faq-q">How does this compare to ConEst, Accubid, or STACK? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Legacy tools require weeks of database setup. TakeoffAI gets you to a completed takeoff on your first session — in under 60 minutes. AI does the counting; your estimator focuses on review and winning work.</div></div></div>
   <div class="faq-item"><div class="faq-q">What does the onboarding sprint include? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">A dedicated 60-minute 1-on-1 session using your actual plans. Upload a real drawing set, run the AI takeoff, review and adjust counts, export a finished BOQ you can use immediately.</div></div></div>
   <div class="faq-item"><div class="faq-q">How does the Claude integration work? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">TakeoffAI connects with Claude, Anthropic's AI assistant, inside the app. Once your takeoff is done, you can ask questions about your drawings in plain English, turn counts into a priced estimate using your own rates, and draft scopes, RFIs, and proposals from the actual takeoff data — takeoff and estimating in one place.</div></div></div>
@@ -1088,7 +1097,7 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
       <a href="/demo" class="btn-primary lg">Book a demo <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
     </div>
     <div style="margin-top:20px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap">
-      <span style="font-size:13px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Free platform, no subscription</span>
+      <span style="font-size:13px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Software free to use</span>
       <span style="font-size:13px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Priced per job, not per page</span>
       <span style="font-size:13px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Only charged if it delivers</span>
       <span style="font-size:13px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Guided setup on your plans</span>
@@ -1120,8 +1129,8 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
 <div style="padding:80px 0 48px">
   <div class="container">
     <div style="text-align:center;margin-bottom:44px">
-      <h2 class="section-heading">Free to use. Pay per take-off.</h2>
-      <p class="section-sub" style="margin:0 auto">No plans to compare, no seats to count, nothing to cancel. The software costs nothing — you buy a take-off only when you want the AI to do one for you.</p>
+      <h2 class="section-heading">Pay for what the AI counts.</h2>
+      <p class="section-sub" style="margin:0 auto">The software is free. You only pay when the AI counts — nothing per user, per project or per page.</p>
     </div>
 
     <!-- Free platform -->
@@ -1129,8 +1138,8 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
       <div class="free-inner">
         <div>
           <div class="fc-badge">Free forever</div>
-          <div class="fc-price"><span class="fc-dollar">$0</span><span class="fc-per">/month</span></div>
-          <p class="fc-lead">Unlimited projects. Unlimited users. No card to start.</p>
+          <div class="fc-price"><span class="fc-dollar">$0</span><span class="fc-per">to use</span></div>
+          <p class="fc-lead">Unlimited projects. Unlimited users. No card to start. You only reach a price when you ask the AI to count.</p>
         </div>
         <ul class="fc-list">
           <li><span class="fc-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Manual take-off &amp; mark-up</li>
@@ -1143,74 +1152,100 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
       </div>
     </div>
 
-    <!-- Per take-off rates -->
+    <!-- Plans -->
     <div style="text-align:center;margin-bottom:36px">
       <div class="kicker">Then, only when the AI counts</div>
-      <h2 class="section-heading" style="font-size:clamp(28px,4vw,42px)">One price per job.</h2>
-      <p class="section-sub" style="margin:0 auto">Not per page, not per symbol. The AI reads the legend, counts every device, marks each one on the drawing, and raises an RFI where the plan is unclear.</p>
+      <h2 class="section-heading" style="font-size:clamp(28px,4vw,42px)">Pick the volume you actually run.</h2>
+      <p class="section-sub" style="margin:0 auto">Every plan is priced per finished take-off, not per page or per seat. Unused take-offs roll over, and you can cancel any time.</p>
     </div>
 
-    <div class="rate-grid">
-      <div class="rate-card">
-        <div class="rate-name">Residential</div>
-        <div class="rate-price">500<span class="rate-cr">credits</span></div>
-        <div class="rate-unit">about $50 a take-off</div>
-        <div class="rate-value">Replaces <strong>1–2 hours</strong><br>of estimator time</div>
+    <div class="pricing-tiers">
+
+      <div class="pt-card">
+        <div class="pt-name">Solo</div>
+        <div class="pt-desc">3 commercial or 6 residential take-offs a month.</div>
+        <div class="pt-price"><span class="pt-dollar">$149</span><span class="pt-per">/month</span></div>
+        <div class="pt-billed">$50 a take-off</div>
+        <div class="pt-value">A commercial take-off is <strong>6–10 hours</strong> by hand</div>
+        <ul class="pt-list">
+          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Price shown before every take-off</li>
+          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>No result, no charge — refunded automatically</li>
+          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Every count marked on the drawing</li>
+          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Unused take-offs roll over</li>
+          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Cancel any time</li>
+        </ul>
+        <a href="/demo" class="pt-btn pt-btn-ghost">Book a demo</a>
       </div>
-      <div class="rate-card rc-feat">
-        <div class="rate-name">Commercial</div>
-        <div class="rate-price">1,000<span class="rate-cr">credits</span></div>
-        <div class="rate-unit">about $100 a take-off</div>
-        <div class="rate-value">Replaces <strong>6–10 hours</strong><br>of estimator time</div>
+
+      <div class="pt-card pt-featured">
+        <div class="pt-badge">Most popular</div>
+        <div class="pt-name">Contractor</div>
+        <div class="pt-desc">10 commercial or 20 residential take-offs a month.</div>
+        <div class="pt-price"><span class="pt-dollar">$349</span><span class="pt-per">/month</span></div>
+        <div class="pt-billed">$35 a take-off</div>
+        <div class="pt-value"><strong>$35</strong> for what takes 6–10 hours by hand</div>
+        <ul class="pt-list">
+          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><strong>Claude connector</strong> — run counts on your own Claude account and import them</li>
+          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Price shown before every take-off</li>
+          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>No result, no charge — refunded automatically</li>
+          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Every count marked on the drawing</li>
+          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Unused take-offs roll over</li>
+          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Cancel any time</li>
+        </ul>
+        <a href="/demo" class="pt-btn pt-btn-primary">Book a demo</a>
       </div>
-      <div class="rate-card">
-        <div class="rate-name">Large commercial</div>
-        <div class="rate-price">2,000<span class="rate-cr">credits</span></div>
-        <div class="rate-unit">about $200 a take-off · over 15 sheets</div>
-        <div class="rate-value">Replaces <strong>days</strong><br>of counting by hand</div>
+
+      <div class="pt-card pt-dim">
+        <div class="pt-badge pt-badge-dim">Coming soon</div>
+        <div class="pt-name">Unlimited</div>
+        <div class="pt-desc">Unlimited take-offs. Fair use 40 a month.</div>
+        <div class="pt-price"><span class="pt-dollar">$749</span><span class="pt-per">/month</span></div>
+        <div class="pt-billed">Per company, not per seat</div>
+        <div class="pt-value">From <strong>$19</strong> a take-off at fair use</div>
+        <ul class="pt-list">
+          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><strong>Claude connector</strong> — run counts on your own Claude account and import them</li>
+          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Price shown before every take-off</li>
+          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>No result, no charge — refunded automatically</li>
+          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Every count marked on the drawing</li>
+          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Cancel any time</li>
+        </ul>
+        <a href="mailto:info@takeoffai.com.au?subject=Unlimited%20plan" class="pt-btn pt-btn-ghost">Talk to us if you need this now</a>
       </div>
+
     </div>
 
     <div class="sheet-note">
       <strong>Upload the whole binder.</strong> Architectural, structural, hydraulic — the lot. We only count the electrical drawings, and the price is the same whether the set is 3 sheets or 30. On real jobs, a 25-page binder held just <strong>one</strong> electrical sheet.
     </div>
 
-    <!-- Credit plans -->
+    <!-- Pay as you go -->
     <div style="text-align:center;margin:72px 0 32px">
-      <h3 style="font-family:'Fraunces',serif;font-size:clamp(22px,3vw,30px);font-weight:700;color:var(--gray-900);letter-spacing:-.02em">Buy ahead and save.</h3>
-      <p class="section-sub" style="margin:10px auto 0;font-size:16px">Subscribe monthly for the lowest rate, or buy credits once and use them whenever.</p>
+      <h3 style="font-family:'Fraunces',serif;font-size:clamp(22px,3vw,30px);font-weight:700;color:var(--gray-900);letter-spacing:-.02em">Or pay as you go.</h3>
+      <p class="section-sub" style="margin:10px auto 0;font-size:16px">Buy a pack of credits and spend them whenever. Top up any time, on any plan. No subscription, and credits never expire.</p>
     </div>
 
     <div class="pack-grid">
       <div class="pack-card">
-        <div class="pack-price"><span class="pk-dollar">1,000</span><span class="pk-cr">credits / mo</span></div>
-        <div class="pack-sub">1 project a month</div>
-        <div class="pack-cost">$85<span class="pc-per">/mo</span></div>
-        <div class="pack-credits"><strong class="pk-save">Save 15%</strong></div>
+        <div class="pack-price"><span class="pk-dollar">1,000</span><span class="pk-cr">credits</span></div>
+        <div class="pack-cost">$100</div>
+        <div class="pack-credits">1 commercial or 2 residential take-offs</div>
       </div>
       <div class="pack-card">
-        <div class="pack-price"><span class="pk-dollar">5,000</span><span class="pk-cr">credits / mo</span></div>
-        <div class="pack-sub">5 projects a month</div>
-        <div class="pack-cost">$382<span class="pc-per">/mo</span></div>
-        <div class="pack-credits"><strong class="pk-save">Save 15%</strong></div>
+        <div class="pack-price"><span class="pk-dollar">5,000</span><span class="pk-cr">credits</span></div>
+        <div class="pack-cost">$450</div>
+        <div class="pack-credits">5 commercial or 10 residential take-offs</div>
       </div>
       <div class="pack-card pk-best">
         <div class="pack-tag">Best value</div>
-        <div class="pack-price"><span class="pk-dollar">15,000</span><span class="pk-cr">credits / mo</span></div>
-        <div class="pack-sub">15 projects a month</div>
-        <div class="pack-cost">$1,125<span class="pc-per">/mo</span></div>
-        <div class="pack-credits"><strong class="pk-save">Save 12%</strong></div>
+        <div class="pack-price"><span class="pk-dollar">15,000</span><span class="pk-cr">credits</span></div>
+        <div class="pack-cost">$1,275</div>
+        <div class="pack-credits">15 commercial or 30 residential take-offs</div>
       </div>
     </div>
 
-    <div class="onceoff">
-      <span class="oo-label">Or buy credits once —</span> 1,000 for <strong>$100</strong> &middot; 5,000 for <strong>$450</strong> &middot; 15,000 for <strong>$1,275</strong>
-      <span class="oo-note">No subscription. Credits stay on your account until you use them.</span>
-    </div>
+    <p style="text-align:center;font-size:14px;color:var(--gray-500);margin-top:28px">Running bigger volume than any of this? <a href="mailto:info@takeoffai.com.au?subject=High-volume%20take-off%20pricing" style="color:var(--orange);font-weight:600">Talk to us.</a></p>
 
-    <p style="text-align:center;font-size:14px;color:var(--gray-500);margin-top:28px">Bigger volume, or want to bring your own AI key? <a href="mailto:info@takeoffai.com.au?subject=High-volume%20take-off%20pricing" style="color:var(--orange);font-weight:600">Talk to us.</a></p>
-
-    <p style="text-align:center;font-size:13px;color:var(--gray-400);margin-top:16px">A project means one commercial take-off &middot; residential jobs go twice as far &middot; prices in AUD, GST included</p>
+    <p style="text-align:center;font-size:13px;color:var(--gray-400);margin-top:16px">A commercial take-off is 1,000 credits, residential 500 &middot; prices in AUD, GST included</p>
   </div>
 </div>
 
@@ -1220,7 +1255,7 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
     <div style="text-align:center;margin-bottom:36px;padding-top:80px">
       <div class="kicker">Zero risk</div>
       <h2 class="section-heading">You're only charged if it delivers.</h2>
-      <p class="section-sub" style="margin:0 auto">There's no subscription to lock you in. The only thing you ever pay for is a finished take-off.</p>
+      <p class="section-sub" style="margin:0 auto">Cancel any time, and unused take-offs roll over. The only thing you ever pay for is a finished take-off.</p>
     </div>
     <div class="guar-grid">
       <div class="guar-card g1"><div class="guar-badge">No result, no charge</div><h3>A failed take-off costs you nothing.</h3><p>If the AI can't deliver, the credits go <strong>straight back onto your account automatically</strong> — you don't have to email anyone or ask. You see the exact price before you spend it, and we re-check that price the moment you confirm, so it can never quietly go up.</p></div>
@@ -1234,8 +1269,8 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
   <div class="container">
     <div style="text-align:center;margin-bottom:36px"><div class="kicker">Questions</div><h2 class="section-heading">Pricing FAQ</h2></div>
     <div class="faq-list">
-      <div class="faq-item"><div class="faq-q">Is the software really free? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Yes, and there's no contract to cancel. Unlimited projects, unlimited users, manual take-off, exports, your symbol library and price lists — all free, permanently. You pay only when you ask the AI to do a take-off, because that's the part with a real cost behind it. Stop buying take-offs and you keep your account, your projects and your exports.</div></div></div>
-      <div class="faq-item"><div class="faq-q">What am I actually paying for? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">A finished take-off, not a tool to do one with. The AI reads the legend itself, works out what needs counting, counts it, and drops a marker on every single item so you can check its work against the drawing. A commercial job costs about $100 and replaces six to ten hours of estimator time.</div></div></div>
+      <div class="faq-item"><div class="faq-q">Is the software really free? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Yes. Unlimited projects, unlimited users, manual take-off, exports, your symbol library, price lists and the SimPro connection — all free, permanently, with no card to start. What costs money is the AI doing a take-off for you, because that's the part with a real cost behind it. You can put that on a monthly plan from $149, or skip the plan entirely and buy a pack of credits to spend whenever. Stop paying either way and you keep your account, your projects and your exports.</div></div></div>
+      <div class="faq-item"><div class="faq-q">What am I actually paying for? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">A finished take-off, not a tool to do one with. The AI reads the legend itself, works out what needs counting, counts it, and drops a marker on every single item so you can check its work against the drawing. A commercial job replaces six to ten hours of estimator time and costs $50 a take-off on Solo, or $35 on Contractor.</div></div></div>
       <div class="faq-item"><div class="faq-q">Why can't I just sign up and try it myself? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Every account is tuned to your own symbol legends and drawing standards before it will count accurately — that's the setup we do with you on the onboarding call. A generic self-serve account gives you a poor first take-off and a wrong impression of the tool, so we don't offer one. Book a 30-minute demo and you'll leave with a real BOQ from your own plans, and a free account already tuned to your drawings.</div></div></div>
       <div class="faq-item"><div class="faq-q">What counts as an "electrical sheet"? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Only the electrical drawings — never pages in the PDF. Upload the entire binder and we work out which sheets are electrical and count just those. On real jobs we've run, a 25-page binder held one electrical sheet. Fifteen electrical sheets is a large tender set, usually a binder of well over a hundred pages.</div></div></div>
       <div class="faq-item"><div class="faq-q">What's the difference between a residential and a commercial take-off? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Residential is a house or a unit — typically one or two sheets and a short legend. Commercial is offices, retail, industrial, healthcare and the like, where there's far more to read before anything gets counted. Multi-residential and mixed-use sets sit between the two and we quote those individually. Either way you see the exact price for your job before you spend anything.</div></div></div>
