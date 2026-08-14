@@ -295,8 +295,8 @@ nav .container{display:grid;grid-template-columns:1fr auto 1fr;align-items:cente
 .pricing-cta .sub{margin-top:14px;font-size:13px;color:var(--gray-400)}
 
 /* PRICING TIERS */
-.pricing-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto 48px;align-items:start}
-.pt-card{background:var(--white);border:1.5px solid var(--gray-150);border-radius:18px;padding:32px 28px;position:relative}
+.pricing-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto 28px;align-items:stretch}
+.pt-card{background:var(--white);border:1.5px solid var(--gray-150);border-radius:18px;padding:32px 28px;position:relative;display:flex;flex-direction:column}
 .pt-card.pt-featured{border-color:var(--orange);background:var(--orange-light);box-shadow:0 8px 40px rgba(232,97,26,.10)}
 .pt-card.pt-dim{opacity:.65}
 .pt-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 16px;border-radius:100px;background:var(--orange);color:var(--white)}
@@ -315,7 +315,7 @@ nav .container{display:grid;grid-template-columns:1fr auto 1fr;align-items:cente
 .pt-check-icon svg{color:var(--green)}
 .pt-x-icon{width:18px;height:18px;min-width:18px;border-radius:5px;background:var(--gray-100);display:flex;align-items:center;justify-content:center}
 .pt-x-icon svg{color:var(--gray-300)}
-.pt-btn{display:block;text-align:center;width:100%;padding:13px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;border:none}
+.pt-btn{display:block;text-align:center;width:100%;margin-top:auto;padding:13px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;border:none}
 .pt-btn-primary{background:var(--orange);color:var(--white)}
 .pt-btn-primary:hover{background:var(--orange-hover);transform:translateY(-1px)}
 .pt-btn-ghost{background:var(--white);color:var(--gray-700);border:1.5px solid var(--gray-200)}
@@ -373,6 +373,20 @@ nav .container{display:grid;grid-template-columns:1fr auto 1fr;align-items:cente
 .pack-eff strong{color:var(--orange);font-weight:700}
 .pack-sub{font-size:14px;font-weight:600;color:var(--orange);margin:4px 0 14px}
 .pc-per{font-size:14px;font-weight:600;color:var(--gray-400);margin-left:2px}
+.pt-rate{margin:2px 0 18px;font-size:15px;color:var(--gray-600)}
+.pt-rate strong{color:var(--gray-900);font-weight:700;font-size:17px}
+.pt-card.pt-dim .pt-rate strong{color:var(--gray-500)}
+.pt-extra{margin:0 0 18px;padding:12px 14px;background:var(--gray-50);border-radius:10px;font-size:13px;line-height:1.5;color:var(--gray-600)}
+.pt-card.pt-featured .pt-extra{background:rgba(255,255,255,.72)}
+.pt-extra strong{color:var(--gray-900);font-weight:700}
+.incl{max-width:960px;margin:0 auto;background:var(--gray-50);border:1.5px solid var(--gray-150);border-radius:16px;padding:26px 30px;text-align:center}
+.incl-title{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--gray-400);margin-bottom:16px}
+.incl-items{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;margin-bottom:20px}
+.incl-i{position:relative;padding-left:22px;font-size:14px;color:var(--gray-700);line-height:1.5}
+.incl-i::before{content:'';position:absolute;left:0;top:5px;width:13px;height:8px;border-left:2.5px solid var(--green);border-bottom:2.5px solid var(--green);transform:rotate(-45deg)}
+.incl-free{border-top:1px solid var(--gray-150);padding-top:18px;font-size:14px;line-height:1.65;color:var(--gray-600);max-width:720px;margin:0 auto}
+.incl-free strong{color:var(--gray-900);font-weight:700}
+@media(max-width:768px){.incl{padding:22px 20px}.incl-items{flex-direction:column;align-items:flex-start;text-align:left;gap:9px}}
 .onceoff{max-width:960px;margin:22px auto 0;background:var(--gray-50);border:1.5px solid var(--gray-150);border-radius:14px;padding:20px 26px;text-align:center;font-size:14px;color:var(--gray-600);line-height:1.6}
 .onceoff strong{color:var(--gray-900);font-weight:700}
 .oo-label{font-weight:700;color:var(--gray-900)}
@@ -1092,15 +1106,14 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
   <div class="container" style="max-width:760px">
     <div class="kicker">Pricing</div>
     <h1>The software is free.<br>You only pay when the AI counts.</h1>
-    <p>Everything except the AI counting is free, for everyone, forever. You pay only when you hand a set to the AI and it delivers a finished take-off.</p>
+    <p>Plans from $149 a month, or pay as you go. Nothing per user, per project or per page.</p>
     <div style="margin-top:32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
       <a href="/demo" class="btn-primary lg">Book a demo <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
     </div>
     <div style="margin-top:20px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap">
-      <span style="font-size:13px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Software free to use</span>
-      <span style="font-size:13px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Priced per job, not per page</span>
+      <span style="font-size:13px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Priced per finished take-off</span>
       <span style="font-size:13px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Only charged if it delivers</span>
-      <span style="font-size:13px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Guided setup on your plans</span>
+      <span style="font-size:13px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Cancel any time</span>
     </div>
   </div>
 </div>
@@ -1128,124 +1141,63 @@ src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
 <!-- Pricing cards -->
 <div style="padding:80px 0 48px">
   <div class="container">
-    <div style="text-align:center;margin-bottom:44px">
-      <h2 class="section-heading">Pay for what the AI counts.</h2>
-      <p class="section-sub" style="margin:0 auto">The software is free. You only pay when the AI counts — nothing per user, per project or per page.</p>
-    </div>
-
-    <!-- Free platform -->
-    <div class="free-card">
-      <div class="free-inner">
-        <div>
-          <div class="fc-badge">Free forever</div>
-          <div class="fc-price"><span class="fc-dollar">$0</span><span class="fc-per">to use</span></div>
-          <p class="fc-lead">Unlimited projects. Unlimited users. No card to start. You only reach a price when you ask the AI to count.</p>
-        </div>
-        <ul class="fc-list">
-          <li><span class="fc-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Manual take-off &amp; mark-up</li>
-          <li><span class="fc-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Excel, CSV &amp; PDF export</li>
-          <li><span class="fc-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Your own symbol library</li>
-          <li><span class="fc-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Price lists &amp; your own rates</li>
-          <li><span class="fc-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Push quotes to SimPro</li>
-          <li><span class="fc-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Guided 1-on-1 onboarding</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Plans -->
-    <div style="text-align:center;margin-bottom:36px">
-      <div class="kicker">Then, only when the AI counts</div>
-      <h2 class="section-heading" style="font-size:clamp(28px,4vw,42px)">Pick the volume you actually run.</h2>
-      <p class="section-sub" style="margin:0 auto">Every plan is priced per finished take-off, not per page or per seat. Unused take-offs roll over, and you can cancel any time.</p>
+    <div style="text-align:center;margin-bottom:40px">
+      <h2 class="section-heading">Pick the volume you run.</h2>
+      <p class="section-sub" style="margin:0 auto">Every plan is priced per finished take-off — never per page, per user or per project. A commercial take-off is <strong style="color:var(--gray-800);font-weight:600">6–10 hours of work by hand</strong>.</p>
     </div>
 
     <div class="pricing-tiers">
 
       <div class="pt-card">
         <div class="pt-name">Solo</div>
-        <div class="pt-desc">3 commercial or 6 residential take-offs a month.</div>
+        <div class="pt-desc">3 commercial or 6 residential take-offs a month</div>
         <div class="pt-price"><span class="pt-dollar">$149</span><span class="pt-per">/month</span></div>
-        <div class="pt-billed">$50 a take-off</div>
-        <div class="pt-value">A commercial take-off is <strong>6–10 hours</strong> by hand</div>
-        <ul class="pt-list">
-          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Price shown before every take-off</li>
-          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>No result, no charge — refunded automatically</li>
-          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Every count marked on the drawing</li>
-          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Unused take-offs roll over</li>
-          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Cancel any time</li>
-        </ul>
+        <div class="pt-rate"><strong>$50</strong> a take-off</div>
         <a href="/demo" class="pt-btn pt-btn-ghost">Book a demo</a>
       </div>
 
       <div class="pt-card pt-featured">
         <div class="pt-badge">Most popular</div>
         <div class="pt-name">Contractor</div>
-        <div class="pt-desc">10 commercial or 20 residential take-offs a month.</div>
+        <div class="pt-desc">10 commercial or 20 residential take-offs a month</div>
         <div class="pt-price"><span class="pt-dollar">$349</span><span class="pt-per">/month</span></div>
-        <div class="pt-billed">$35 a take-off</div>
-        <div class="pt-value"><strong>$35</strong> for what takes 6–10 hours by hand</div>
-        <ul class="pt-list">
-          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><strong>Claude connector</strong> — run counts on your own Claude account and import them</li>
-          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Price shown before every take-off</li>
-          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>No result, no charge — refunded automatically</li>
-          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Every count marked on the drawing</li>
-          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Unused take-offs roll over</li>
-          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Cancel any time</li>
-        </ul>
+        <div class="pt-rate"><strong>$35</strong> a take-off</div>
+        <div class="pt-extra"><strong>Claude connector</strong> — run counts on your own Claude account and import them</div>
         <a href="/demo" class="pt-btn pt-btn-primary">Book a demo</a>
       </div>
 
       <div class="pt-card pt-dim">
         <div class="pt-badge pt-badge-dim">Coming soon</div>
         <div class="pt-name">Unlimited</div>
-        <div class="pt-desc">Unlimited take-offs. Fair use 40 a month.</div>
+        <div class="pt-desc">Unlimited take-offs, fair use 40 a month</div>
         <div class="pt-price"><span class="pt-dollar">$749</span><span class="pt-per">/month</span></div>
-        <div class="pt-billed">Per company, not per seat</div>
-        <div class="pt-value">From <strong>$19</strong> a take-off at fair use</div>
-        <ul class="pt-list">
-          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><strong>Claude connector</strong> — run counts on your own Claude account and import them</li>
-          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Price shown before every take-off</li>
-          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>No result, no charge — refunded automatically</li>
-          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Every count marked on the drawing</li>
-          <li><span class="pt-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Cancel any time</li>
-        </ul>
-        <a href="mailto:info@takeoffai.com.au?subject=Unlimited%20plan" class="pt-btn pt-btn-ghost">Talk to us if you need this now</a>
+        <div class="pt-rate"><strong>Per company</strong>, not per seat</div>
+        <div class="pt-extra"><strong>Claude connector</strong> — run counts on your own Claude account and import them</div>
+        <a href="mailto:info@takeoffai.com.au?subject=Unlimited%20plan" class="pt-btn pt-btn-ghost">Talk to us</a>
       </div>
 
     </div>
 
-    <div class="sheet-note">
-      <strong>Upload the whole binder.</strong> Architectural, structural, hydraulic — the lot. We only count the electrical drawings, and the price is the same whether the set is 3 sheets or 30. On real jobs, a 25-page binder held just <strong>one</strong> electrical sheet.
+    <div class="incl">
+      <div class="incl-title">On every plan</div>
+      <div class="incl-items">
+        <span class="incl-i">Price shown before every take-off</span>
+        <span class="incl-i">No result, no charge — refunded automatically</span>
+        <span class="incl-i">Every count marked on the drawing</span>
+        <span class="incl-i">Unused take-offs roll over</span>
+        <span class="incl-i">Cancel any time</span>
+      </div>
+      <div class="incl-free"><strong>And the software itself is free</strong>, on every account — unlimited projects and users, manual take-off, Excel/CSV/PDF export, your symbol library, price lists, quotes pushed to SimPro, and 1-on-1 onboarding. You only ever reach a price when you ask the AI to count.</div>
     </div>
 
-    <!-- Pay as you go -->
-    <div style="text-align:center;margin:72px 0 32px">
-      <h3 style="font-family:'Fraunces',serif;font-size:clamp(22px,3vw,30px);font-weight:700;color:var(--gray-900);letter-spacing:-.02em">Or pay as you go.</h3>
-      <p class="section-sub" style="margin:10px auto 0;font-size:16px">Buy a pack of credits and spend them whenever. Top up any time, on any plan. No subscription, and credits never expire.</p>
+    <div class="onceoff">
+      <span class="oo-label">Or pay as you go —</span> 1,000 credits for <strong>$100</strong> &middot; 5,000 for <strong>$450</strong> &middot; 15,000 for <strong>$1,275</strong>
+      <span class="oo-note">No subscription, and credits never expire. A commercial take-off is 1,000 credits, residential 500.</span>
     </div>
 
-    <div class="pack-grid">
-      <div class="pack-card">
-        <div class="pack-price"><span class="pk-dollar">1,000</span><span class="pk-cr">credits</span></div>
-        <div class="pack-cost">$100</div>
-        <div class="pack-credits">1 commercial or 2 residential take-offs</div>
-      </div>
-      <div class="pack-card">
-        <div class="pack-price"><span class="pk-dollar">5,000</span><span class="pk-cr">credits</span></div>
-        <div class="pack-cost">$450</div>
-        <div class="pack-credits">5 commercial or 10 residential take-offs</div>
-      </div>
-      <div class="pack-card pk-best">
-        <div class="pack-tag">Best value</div>
-        <div class="pack-price"><span class="pk-dollar">15,000</span><span class="pk-cr">credits</span></div>
-        <div class="pack-cost">$1,275</div>
-        <div class="pack-credits">15 commercial or 30 residential take-offs</div>
-      </div>
-    </div>
+    <p style="text-align:center;font-size:14px;color:var(--gray-500);margin-top:26px">Running bigger volume than any of this? <a href="mailto:info@takeoffai.com.au?subject=High-volume%20take-off%20pricing" style="color:var(--orange);font-weight:600">Talk to us.</a></p>
 
-    <p style="text-align:center;font-size:14px;color:var(--gray-500);margin-top:28px">Running bigger volume than any of this? <a href="mailto:info@takeoffai.com.au?subject=High-volume%20take-off%20pricing" style="color:var(--orange);font-weight:600">Talk to us.</a></p>
-
-    <p style="text-align:center;font-size:13px;color:var(--gray-400);margin-top:16px">A commercial take-off is 1,000 credits, residential 500 &middot; prices in AUD, GST included</p>
+    <p style="text-align:center;font-size:13px;color:var(--gray-400);margin-top:14px">Prices in AUD, GST included</p>
   </div>
 </div>
 
