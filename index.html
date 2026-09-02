@@ -47,31 +47,18 @@
 .hero .hero-ctas{margin-top:0}
 .hero .hero-note{margin-top:18px}
 @media(max-width:900px){.hero{padding:32px 0 56px}.hero-grid{grid-template-columns:1fr;gap:40px}}
-/* composed product visual */
-.hv{position:relative;background:var(--panel-2);border-radius:120px 32px 32px 32px;padding:48px 0 0 48px;overflow:visible}
-.hv-window{background:#fff;border-radius:14px 0 0 14px;box-shadow:var(--shadow-card);overflow:hidden;border:1px solid var(--line);border-right:none}
-.hv-bar{display:flex;gap:6px;padding:10px 14px;border-bottom:1px solid var(--line)}
-.hv-bar span{width:9px;height:9px;border-radius:50%;background:var(--panel-2)}
-.hv-window img{width:100%;height:auto;display:block}
-.hv-badges{position:absolute;top:-14px;left:28px;display:flex;gap:10px}
-.hv-badge{position:relative;width:52px;height:52px;border-radius:50%;background:#fff;box-shadow:var(--shadow-float);display:flex;align-items:center;justify-content:center;color:var(--ink)}
-.hv-badge svg{width:22px;height:22px}
-.hv-badge b{position:absolute;top:-6px;right:-8px;min-width:24px;height:24px;padding:0 6px;border-radius:12px;background:var(--orange);color:#fff;font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center}
-.hv-export{position:absolute;top:18px;right:-16px;background:#fff;border-radius:var(--pill);box-shadow:var(--shadow-float);padding:10px 12px 10px 16px;display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--ink)}
-.hv-export svg{width:16px;height:16px;color:var(--ink)}
-.hv-export .chip{padding:5px 10px;font-size:12.5px}
-.hv-export .chip.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
-.hv-card{position:absolute;left:-18px;bottom:28px;width:260px;background:#fff;border-radius:16px;box-shadow:var(--shadow-float);padding:16px 18px}
-.hv-card-head{display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:12px}
-.hv-card-head .ic{width:28px;height:28px;border-radius:8px;background:var(--orange-tint);color:var(--orange);display:flex;align-items:center;justify-content:center}
-.hv-card-head .ic svg{width:15px;height:15px}
-.hv-row{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;color:var(--text);padding:7px 0;border-top:1px solid var(--line)}
-.hv-row b{font-weight:700;color:var(--ink)}
-.hv-row .bar{flex:1;height:8px;border-radius:4px;background:var(--panel-2);margin:0 12px}
-.hv-row .bar i{display:block;height:100%;border-radius:4px;background:var(--orange)}
-.hv-plus{position:absolute;right:22px;bottom:-16px;width:48px;height:48px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-float);font-size:24px;font-weight:500}
-@media(max-width:900px){.hv{border-radius:64px 24px 24px 24px;padding:36px 0 0 24px}.hv-card{left:-8px;width:220px;bottom:20px}.hv-export{right:-6px}}
-@media(max-width:560px){.hv{padding:32px 0 0 16px;margin:0 0 56px}.hv-badges{left:12px}.hv-badge{width:44px;height:44px}.hv-badge svg{width:18px;height:18px}.hv-export{top:auto;bottom:-52px;right:0;left:0;justify-content:center}.hv-card{position:static;width:auto;margin:16px 16px 0 0}.hv-plus{display:none}}
+/* hero visual: the upload-to-count animation on a drawing grid, framed by the logo's corner brackets */
+.hero-visual{position:relative;padding:30px}
+.hero-visual::before{content:'';position:absolute;inset:0;border-radius:var(--r);background-color:#F0F0EE;background-image:linear-gradient(rgba(0,0,0,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.07) 1px,transparent 1px);background-size:26px 26px}
+.hero-visual .ctl,.hero-visual .cbr{position:absolute;width:34px;height:34px;pointer-events:none}
+.hero-visual .ctl{top:14px;left:14px;border-top:4px solid var(--ink);border-left:4px solid var(--ink)}
+.hero-visual .cbr{bottom:14px;right:14px;border-bottom:4px solid var(--orange);border-right:4px solid var(--orange)}
+.hero-anim{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.14);background:#fff}
+.hero-anim iframe{width:100%;aspect-ratio:11/7;border:0;display:block}
+.hero-count{position:relative;display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.hero-count .chip{background:#fff;font-weight:600}
+.hero-count .chip b{font-weight:700;color:var(--orange)}
+@media(max-width:560px){.hero-visual{padding:16px}.hero-visual .ctl,.hero-visual .cbr{width:24px;height:24px;border-width:3px;top:8px;left:8px}.hero-visual .cbr{top:auto;left:auto;bottom:8px;right:8px}}
 
 /* ---- logo / works-with strip ---- */
 .strip{background:var(--band);padding:0 0 72px}
@@ -111,19 +98,31 @@
 .check-cols h4{font-size:14px;font-weight:600;color:var(--muted);margin-bottom:14px}
 @media(max-width:768px){.shot-panel{padding:20px}.check-cols{grid-template-columns:1fr}}
 
-/* ---- integrations orbit ---- */
-.orbit{position:relative;width:100%;max-width:520px;margin:0 auto}
-.orbit::before{content:"";display:block;padding-top:100%}
-.orbit .ring{position:absolute;inset:0;border-radius:50%;border:1px solid var(--line)}
-.orbit .ring.inner{inset:18%}
-.orbit .core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:96px;height:96px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;box-shadow:0 14px 40px rgba(232,97,26,.35)}
-.orbit .core .nav-logo-icon{width:40px;height:40px}
-.orbit .core .corner-tl{border-color:#fff;width:16px;height:16px;border-width:4px}
-.orbit .core .corner-br{border-color:#fff;width:16px;height:16px;border-width:4px}
-.orbit .node{position:absolute;transform:translate(-50%,-50%);background:#fff;border-radius:var(--pill);box-shadow:var(--shadow-float);padding:12px 18px;font-size:15px;font-weight:700;color:var(--ink);white-space:nowrap;display:flex;align-items:center;gap:8px}
-.orbit .node.dark{background:var(--ink);color:#fff}
-.orbit .node .dot{width:9px;height:9px;border-radius:50%}
-@media(max-width:560px){.orbit .node{padding:9px 13px;font-size:13px}.orbit .core{width:72px;height:72px}}
+/* ---- integrations: the count becomes a Simpro quote ---- */
+.pipe-panel{background:var(--panel);border-radius:var(--r);padding:28px}
+.pipe{display:flex;flex-direction:column;gap:0}
+.pipe-step{background:#fff;border-radius:16px;padding:18px 20px;box-shadow:var(--shadow-card)}
+.pipe-step.dark{background:var(--ink);color:#fff}
+.pipe-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.pipe-label{font-size:12.5px;font-weight:700;color:var(--orange);letter-spacing:.02em}
+.pipe-app{font-size:15px;font-weight:700;color:var(--ink)}
+.pipe-app span{color:var(--orange)}
+.pipe-step.dark .pipe-app{color:#fff}
+.pipe-app.sp{display:inline-flex;align-items:center;gap:8px}
+.pipe-app.sp i{width:22px;height:22px;border-radius:6px;background:#fff;color:var(--ink);font-style:normal;font-size:13px;font-weight:800;display:inline-flex;align-items:center;justify-content:center}
+.pipe-rows{display:flex;flex-direction:column;gap:6px}
+.pipe-rows div{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--text);padding:8px 12px;background:var(--panel);border-radius:8px}
+.pipe-rows div b{font-weight:700;color:var(--ink)}
+.pipe-step.dark .pipe-rows div{background:rgba(255,255,255,.08);color:rgba(255,255,255,.8)}
+.pipe-step.dark .pipe-rows div b{color:#fff}
+.pipe-step.dark .pipe-rows div.tot{background:var(--orange);color:#fff}
+.pipe-step.dark .pipe-rows div.tot b{color:#fff}
+.pipe-arrow{display:flex;align-items:center;gap:12px;padding:10px 4px;font-size:13px;font-weight:600;color:var(--muted)}
+.pipe-arrow .ln{flex:1;height:1px;background:var(--line)}
+.pipe-arrow svg{width:16px;height:16px;color:var(--orange)}
+.pipe-tag{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:12.5px;font-weight:600;color:#fff;background:rgba(255,255,255,.12);border-radius:var(--pill);padding:5px 10px}
+.pipe-tag .dot{width:7px;height:7px;border-radius:50%;background:#54D98C}
+.also{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:22px;font-size:15px;color:var(--muted)}
 
 /* ---- booking ---- */
 .booking-embed{width:100%;height:700px;overflow:auto;border-radius:16px;background:#fff;border:1px solid var(--line)}
@@ -182,25 +181,15 @@
       </div>
       <p class="hero-note">2,000 free credits on sign-up. No credit card.</p>
     </div>
-    <div class="hv" aria-hidden="true">
-      <div class="hv-badges">
-        <div class="hv-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg><b>48</b></div>
-        <div class="hv-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><b>154</b></div>
-        <div class="hv-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><b>6</b></div>
+    <div class="hero-visual" aria-hidden="true">
+      <span class="ctl"></span><span class="cbr"></span>
+      <div class="hero-anim"><iframe src="/takeoffai-hero-animation.html" title="TakeoffAI: a drawing set uploaded and the first count appearing" scrolling="no" loading="eager" allowtransparency="true" data-anim></iframe></div>
+      <div class="hero-count">
+        <span class="chip">Downlights <b>48</b></span>
+        <span class="chip">GPOs <b>31</b></span>
+        <span class="chip">Switches <b>12</b></span>
+        <span class="chip">Notes <b>6</b></span>
       </div>
-      <div class="hv-export"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Export to <span class="chip">Excel</span><span class="chip">PDF</span><span class="chip dark">Simpro</span></div>
-      <div class="hv-window">
-        <div class="hv-bar"><span></span><span></span><span></span></div>
-        <img src="/takeoffai_plan_review_web.png" width="1345" height="662" alt="" loading="eager">
-      </div>
-      <div class="hv-card">
-        <div class="hv-card-head"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg></span> Ground floor · power &amp; lighting</div>
-        <div class="hv-row"><span>Downlight type 1</span><span class="bar"><i style="width:82%"></i></span><b>48</b></div>
-        <div class="hv-row"><span>Light rail</span><span class="bar"><i style="width:34%"></i></span><b>19</b></div>
-        <div class="hv-row"><span>Double GPO</span><span class="bar"><i style="width:56%"></i></span><b>31</b></div>
-        <div class="hv-row"><span>Total items</span><span class="bar"></span><b>154</b></div>
-      </div>
-      <div class="hv-plus">+</div>
     </div>
   </div>
 </section>
@@ -267,7 +256,7 @@
       <p class="muted" style="font-size:15px;max-width:520px">Need lengths as well? Measure conduit and cable runs on the same plan with the free measuring tools.</p>
     </div>
     <div class="howto-panel">
-      <div class="product-frame"><div class="product-frame-bar"><div class="product-frame-dot"></div><div class="product-frame-dot"></div><div class="product-frame-dot"></div></div><iframe src="/takeoffai-hero-animation.html" title="TakeoffAI: a drawing set uploaded and the first count appearing" scrolling="no" loading="lazy" allowtransparency="true" data-anim></iframe></div>
+      <img src="/takeoffai_plan_review_web.png" width="1345" height="662" alt="The TakeoffAI review screen with every counted symbol marked on a ground floor power and lighting drawing" loading="lazy" style="border-radius:12px;box-shadow:var(--shadow-card);display:block;width:100%">
     </div>
   </div>
 </section>
@@ -307,18 +296,29 @@
 <section class="section">
   <div class="container split">
     <div>
-      <h2 class="h2">Integrations to suit your existing workflow</h2>
-      <p class="lead" style="margin-top:16px;max-width:520px">The count is priced against your own materials and labour rates, then goes wherever you quote from. Push it into Simpro as a quote, drop the Excel into your own sheet, or let Claude write the tender paperwork from the real numbers.</p>
+      <h2 class="h2">The count goes straight into Simpro</h2>
+      <p class="lead" style="margin-top:16px;max-width:520px">Once you've reviewed the take-off, it's priced against your own materials and labour rates and pushed into Simpro as a quote you can send. No CSV export, no re-keying a bill of quantities, and the connection is part of the free platform.</p>
+      <div class="also">Also exports to <span class="chip"><span class="dot" style="background:var(--green)"></span>Excel</span><span class="chip"><span class="dot" style="background:var(--red)"></span>PDF</span><span class="chip"><span class="dot" style="background:var(--blue)"></span>CSV</span> and connects to <span class="chip"><span class="dot" style="background:var(--orange)"></span>Claude</span></div>
       <div class="hero-ctas"><a href="/simpro" class="btn btn-white">How the Simpro connection works</a></div>
     </div>
-    <div class="orbit" aria-hidden="true">
-      <div class="ring"></div><div class="ring inner"></div>
-      <div class="core"><span class="nav-logo-icon"><span class="corner-tl"></span><span class="corner-br"></span></span></div>
-      <div class="node dark" style="left:50%;top:0">Simpro</div>
-      <div class="node" style="left:93%;top:32%"><span class="dot" style="background:var(--green)"></span>Excel</div>
-      <div class="node" style="left:84%;top:84%"><span class="dot" style="background:var(--red)"></span>PDF</div>
-      <div class="node" style="left:18%;top:86%"><span class="dot" style="background:var(--blue)"></span>CSV</div>
-      <div class="node" style="left:5%;top:34%"><span class="dot" style="background:var(--orange)"></span>Claude</div>
+    <div class="pipe-panel" aria-hidden="true">
+      <div class="pipe">
+        <div class="pipe-step">
+          <div class="pipe-head"><span class="pipe-label">1 · COUNTED &amp; REVIEWED</span><span class="pipe-app">takeoff<span>.ai</span></span></div>
+          <div class="pipe-rows"><div><span>Downlight type 1</span><b>48</b></div><div><span>Double GPO</span><b>31</b></div><div><span>Total items · 3 sheets</span><b>154</b></div></div>
+        </div>
+        <div class="pipe-arrow"><span class="ln"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg> priced with your rates <span class="ln"></span></div>
+        <div class="pipe-step">
+          <div class="pipe-head"><span class="pipe-label">2 · PRICED</span><span class="pipe-app">Your price list &amp; labour</span></div>
+          <div class="pipe-rows"><div><span>Materials</span><b>$18,420</b></div><div><span>Labour · 164 hrs</span><b>$9,860</b></div></div>
+        </div>
+        <div class="pipe-arrow"><span class="ln"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg> pushed to Simpro <span class="ln"></span></div>
+        <div class="pipe-step dark">
+          <div class="pipe-head"><span class="pipe-label">3 · QUOTE</span><span class="pipe-app sp"><i>S</i>Simpro</span></div>
+          <div class="pipe-rows"><div><span>Quote #4821 · Richmond fit-out</span><b>Draft</b></div><div class="tot"><span>Quote total ex GST</span><b>$28,280</b></div></div>
+          <span class="pipe-tag"><span class="dot"></span> Created from TakeoffAI, ready to send</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
