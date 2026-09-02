@@ -19,18 +19,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/site.css?v=20260902b">
+<link rel="stylesheet" href="/site.css?v=20260903b">
 <script src="/pixel.js" async></script>
 <style>
 /* INTERACTIVE TOUR */
 .tour{padding:96px 0}
-.tour-header{text-align:center;margin-bottom:40px}.tour-header .lead{margin:0 auto}
+.tour-header{text-align:left;margin-bottom:36px}.tour-header .lead{margin:0 auto}
 .tour-header .section-sub{margin:0 auto}
-.tour-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+.tour-tabs{display:flex;gap:8px;justify-content:flex-start;flex-wrap:wrap;margin-bottom:12px}
 .tour-tab{padding:8px 20px;border-radius:100px;border:1.5px solid var(--gray-200);background:#fff;font-size:14px;font-weight:500;color:var(--gray-500);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif}
 .tour-tab.active{background:var(--orange);border-color:var(--orange);color:#fff;font-weight:600}
 .tour-tab:hover:not(.active){border-color:var(--orange);color:var(--orange)}
-.tour-progress-bar{height:2px;background:var(--gray-150);border-radius:2px;max-width:480px;margin:0 auto 24px;overflow:hidden}
+.tour-progress-bar{height:2px;background:var(--gray-150);border-radius:2px;max-width:480px;margin:0 0 24px;overflow:hidden}
 .tour-progress-fill{height:100%;background:var(--orange);width:0%}
 .tour-frame{margin-bottom:24px}
 .tour-screens{min-height:400px}
@@ -91,9 +91,9 @@
 .tour-nav button:hover{border-color:var(--orange);color:var(--orange)}
 /* ROI */
 .roi{padding:96px 0}
-.roi-header{text-align:center;margin-bottom:48px}
+.roi-header{text-align:left;margin-bottom:36px}
 .roi-header .lead{margin:0 auto}
-.roi-calc{max-width:680px;margin:0 auto;background:var(--white);border:1.5px solid var(--gray-150);border-radius:18px;padding:36px;box-shadow:0 2px 12px rgba(0,0,0,.03)}
+.roi-calc{max-width:680px;margin:0;background:var(--white);border:1.5px solid var(--gray-150);border-radius:18px;padding:36px;box-shadow:0 2px 12px rgba(0,0,0,.03)}
 .roi-inputs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
 .roi-field label{display:block;font-size:13px;font-weight:500;color:var(--gray-500);margin-bottom:6px}
 .roi-field input{width:100%;padding:12px 14px;background:var(--gray-50);border:1.5px solid var(--gray-150);border-radius:10px;color:var(--gray-900);font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;outline:none;transition:border-color .2s}
@@ -184,9 +184,8 @@
 <section class="tour section-paper" id="tour">
   <div class="container" style="max-width:1040px">
     <div class="tour-header">
-      <div class="kicker">Walkthrough</div>
-      <h2 class="h2" style="margin:0 auto 14px;max-width:720px">From PDF to finished take-off<br>in under a minute.</h2>
-      <p class="lead" style="margin:0 auto;max-width:620px">Click through the four screens below. This is the same flow you get in a free account.</p>
+            <h2 class="h2" style="margin:0 0 12px;max-width:720px">From PDF to finished take-off<br>in under a minute.</h2>
+      <p class="lead" style="margin:0;max-width:620px">Click through the four screens below. This is the same flow you get in a free account.</p>
     </div>
 
     <div class="tour-tabs">

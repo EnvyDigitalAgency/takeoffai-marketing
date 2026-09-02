@@ -19,11 +19,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/site.css?v=20260902b">
+<link rel="stylesheet" href="/site.css?v=20260903b">
 <script src="/pixel.js" async></script>
 <style>
 .demo-hero .lead{max-width:640px}
-.self-serve{max-width:760px;margin:0 auto;background:#fff;border:1.5px solid var(--gray-150);border-radius:var(--r-lg);padding:28px 32px;display:flex;align-items:center;gap:24px;box-shadow:var(--shadow-card)}
+.self-serve{max-width:760px;margin:0 auto;background:#fff;border:1.5px solid var(--gray-150);border-radius:var(--r-lg);padding:28px 32px;display:flex;align-items:center;gap:24px;box-shadow:none}
 .self-serve .icon-sq{margin:0;flex-shrink:0}
 .self-serve h3{font-size:17px;margin-bottom:4px}
 .self-serve p{font-size:14.5px;color:var(--gray-600);line-height:1.6}
@@ -139,7 +139,7 @@
       (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
       Cal("init", {origin:"https://cal.com"});
       Cal("inline", { elementOrSelector:"#my-cal-inline", calLink: "jonah-flinos-fv2dw0/30min", layout: "month_view" });
-      Cal("ui", {"styles":{"branding":{"brandColor":"#E8611A"}},"hideEventTypeDetails":false,"layout":"month_view"});
+      Cal("ui", {"theme":"light","styles":{"branding":{"brandColor":"#E8611A"}},"hideEventTypeDetails":false,"layout":"month_view"});
     </script>
     <div class="booking-fallback">
       <p>Prefer email? Send your plans and a good time to reach you to <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a> and we'll lock in a session.</p>
