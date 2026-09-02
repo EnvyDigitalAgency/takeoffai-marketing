@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simpro Integration — TakeoffAI, Official Simpro Integration Partner</title>
+<meta name="description" content="TakeoffAI is an official Simpro integration partner. AI counts your electrical drawings, the take-off is priced with your own rates, and the quote is pushed straight into Simpro. No CSV, no re-keying. Included free.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://takeoffai.com.au/simpro">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://takeoffai.com.au/simpro">
+<meta property="og:title" content="TakeoffAI + Simpro — Count in TakeoffAI, quote in Simpro">
+<meta property="og:description" content="Official Simpro integration partner. AI take-offs priced with your rates and pushed into Simpro as a quote. Included free on every account.">
+<meta property="og:image" content="https://takeoffai.com.au/takeoffai_og_banner.png">
+<meta property="og:locale" content="en_AU">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css?v=20260902">
+<script src="/pixel.js" async></script>
+<style>
+.sp-hero .partner-badge{margin-bottom:30px}
+.sp-hero .h1{font-size:clamp(38px,5.6vw,64px)}
+.sp-hero .lead{max-width:660px}
+
+/* horizontal flow */
+.flow-h{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:center;max-width:1040px;margin:0 auto}
+.fh-node{background:#fff;border:1.5px solid var(--gray-150);border-radius:16px;padding:20px;box-shadow:var(--shadow-card);min-height:250px;display:flex;flex-direction:column}
+.fh-step{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.fh-app{font-size:14px;font-weight:700;color:var(--gray-900);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.fh-app span{color:var(--gray-400);font-weight:400}
+.fh-app .chip{padding:3px 9px;border-radius:6px;background:var(--gray-900);color:#fff;font-size:12px;font-weight:700}
+.fh-rows{display:flex;flex-direction:column;gap:6px;margin-top:auto}
+.fh-rows div{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--gray-600);padding:7px 10px;background:var(--gray-50);border-radius:7px}
+.fh-rows div b{font-family:var(--display);font-weight:700;color:var(--gray-900);font-size:14.5px}
+.fh-rows div.tot{background:var(--orange-light);color:var(--gray-800);font-weight:600}
+.fh-rows div.tot b{color:var(--orange)}
+.fh-plan{border:1px solid var(--gray-150);border-radius:9px;overflow:hidden;background:#fff;margin-top:auto}
+.fh-plan svg{width:100%;height:auto;display:block}
+.fh-arrow{color:var(--gray-300);display:flex;align-items:center}
+.fh-arrow svg{width:26px;height:26px}
+.fh-caption{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;max-width:1040px;margin:14px auto 0}
+.fh-caption p{font-size:13.5px;line-height:1.55;color:var(--gray-600);text-align:center}
+.fh-caption .sp{width:26px}
+@media(max-width:900px){
+  .flow-h,.fh-caption{grid-template-columns:1fr}
+  .fh-arrow{justify-content:center;transform:rotate(90deg)}
+  .fh-caption .sp{display:none}
+  .fh-node{min-height:0}
+}
+
+.why-card h3{font-size:17px;margin-bottom:8px}
+.included{max-width:860px;margin:0 auto;background:var(--gray-900);color:#fff;border-radius:var(--r-lg);padding:40px 44px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.included .big{font-family:var(--display);font-size:56px;font-weight:700;line-height:1;letter-spacing:-.03em}
+.included h3{color:#fff;font-size:20px;margin-bottom:8px}
+.included p{font-size:15px;line-height:1.65;color:rgba(255,255,255,.65)}
+@media(max-width:640px){.included{grid-template-columns:1fr;padding:32px 28px}}
+</style>
+</head>
+<body>
+<nav class="site-nav" id="nav">
+  <div class="container nav-inner">
+    <a class="nav-logo" href="/" aria-label="TakeoffAI home">
+      <span class="nav-logo-icon"><span class="corner-tl"></span><span class="corner-br"></span></span>
+      <span class="nav-logo-text">takeoff<span>.ai</span></span>
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="/product">Product</a>
+      <a href="/simpro">Simpro</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/compare">Compare</a>
+      <a href="/about">About</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://app.takeoffai.com.au/login" class="nav-login">Log in</a>
+      <a href="https://app.takeoffai.com.au/signup" class="btn btn-primary btn-sm nav-cta">Try it free</a>
+      <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="/product">Product</a>
+    <a href="/simpro">Simpro integration</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/compare">Compare</a>
+    <a href="/about">About</a>
+    <a href="/demo">Book a demo</a>
+    <a href="https://app.takeoffai.com.au/login">Log in</a>
+    <a href="https://app.takeoffai.com.au/signup" class="nav-mobile-cta">Try it free</a>
+  </div>
+</nav>
+<main>
+
+<section class="page-hero dark center sp-hero">
+  <div class="container">
+    <div class="partner-badge on-dark lg" style="display:inline-flex"><span class="pb-mark">S</span><span class="pb-text"><span class="pb-top">Official</span><span class="pb-name">Simpro integration partner</span></span></div>
+    <h1 class="h1">Count in TakeoffAI.<br>Quote in Simpro.</h1>
+    <p class="lead">TakeoffAI is an official Simpro integration partner. A finished take-off is priced against your own rates and lands in Simpro as a quote you can send, with no CSV export and no re-keying a bill of quantities.</p>
+    <div class="hero-ctas">
+      <a href="https://app.takeoffai.com.au/signup" class="btn btn-primary btn-lg">Try it free <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="/demo" class="btn btn-ghost on-dark btn-lg">Book a demo</a>
+    </div>
+    <p class="hero-note">The Simpro connection is part of the free platform. You only pay for AI take-offs.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="sec-head center">
+      <div class="kicker">How it works</div>
+      <h2 class="h2">From drawing to Simpro quote in three steps.</h2>
+      <p class="lead">The count happens in TakeoffAI, where every item is marked on the drawing. Pricing uses the rates you already keep. Simpro gets a finished quote.</p>
+    </div>
+    <div class="flow-h" aria-hidden="true">
+      <div class="fh-node anim">
+        <div class="fh-step">1 · Count</div>
+        <div class="fh-app">takeoff<span>.ai</span></div>
+        <div class="fh-plan">
+          <svg viewBox="0 0 300 150" role="img">
+            <rect x="8" y="8" width="284" height="134" rx="3" fill="#FAFAFA" stroke="#3A3A3A" stroke-width="2.5"/>
+            <line x1="130" y1="8" x2="130" y2="70" stroke="#3A3A3A" stroke-width="2"/>
+            <line x1="8" y1="90" x2="90" y2="90" stroke="#3A3A3A" stroke-width="2"/>
+            <line x1="120" y1="90" x2="200" y2="90" stroke="#3A3A3A" stroke-width="2"/>
+            <line x1="200" y1="90" x2="200" y2="142" stroke="#3A3A3A" stroke-width="2"/>
+            <g fill="none" stroke="#E8611A" stroke-width="1.8"><circle cx="40" cy="35" r="5"/><circle cx="75" cy="35" r="5"/><circle cx="110" cy="35" r="5"/><circle cx="165" cy="35" r="5"/><circle cx="215" cy="35" r="5"/><circle cx="265" cy="35" r="5"/><circle cx="50" cy="118" r="5"/><circle cx="150" cy="118" r="5"/><circle cx="250" cy="118" r="5"/><circle cx="240" cy="70" r="5"/></g>
+            <g fill="#E8611A"><circle cx="40" cy="35" r="1.3"/><circle cx="75" cy="35" r="1.3"/><circle cx="110" cy="35" r="1.3"/><circle cx="165" cy="35" r="1.3"/><circle cx="215" cy="35" r="1.3"/><circle cx="265" cy="35" r="1.3"/><circle cx="50" cy="118" r="1.3"/><circle cx="150" cy="118" r="1.3"/><circle cx="250" cy="118" r="1.3"/><circle cx="240" cy="70" r="1.3"/></g>
+            <g fill="none" stroke="#2563EB" stroke-width="1.8"><rect x="14" y="50" width="8" height="8" rx="1.5"/><rect x="14" y="120" width="8" height="8" rx="1.5"/><rect x="278" y="60" width="8" height="8" rx="1.5"/><rect x="175" y="128" width="8" height="8" rx="1.5"/></g>
+            <g fill="none" stroke="#1B8C4F" stroke-width="1.8" stroke-linejoin="round"><path d="M122,72 L127,80 L117,80 Z"/><path d="M96,96 L101,104 L91,104 Z"/></g>
+          </svg>
+        </div>
+        <div class="fh-rows" style="margin-top:12px"><div><span>690 items across 12 sheets</span><b>Reviewed</b></div></div>
+      </div>
+      <div class="fh-arrow anim"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      <div class="fh-node anim">
+        <div class="fh-step">2 · Price</div>
+        <div class="fh-app">Your rates <span>· price lists and labour</span></div>
+        <div class="fh-rows">
+          <div><span>Downlights × 247</span><b>$7,410</b></div>
+          <div><span>GPOs × 183</span><b>$5,490</b></div>
+          <div><span>Switches × 94</span><b>$1,880</b></div>
+          <div><span>Data points × 72</span><b>$3,640</b></div>
+          <div><span>Labour · 164 hrs</span><b>$9,860</b></div>
+        </div>
+      </div>
+      <div class="fh-arrow anim"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      <div class="fh-node anim">
+        <div class="fh-step">3 · Quote</div>
+        <div class="fh-app"><span class="chip">Simpro</span> <span>Quote #4821</span></div>
+        <div class="fh-rows">
+          <div><span>Richmond Office fit-out</span><b>Draft</b></div>
+          <div><span>Materials</span><b>$18,420</b></div>
+          <div><span>Labour</span><b>$9,860</b></div>
+          <div class="tot"><span>Quote total ex GST</span><b>$28,280</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="fh-caption">
+      <p>The AI counts every symbol and marks it on the plan. You review and correct before anything leaves TakeoffAI.</p><span class="sp"></span>
+      <p>Counts are costed against the price lists and labour rates you keep in your account.</p><span class="sp"></span>
+      <p>The finished quote is pushed into Simpro, where it's a normal quote you can edit and send.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-paper">
+  <div class="container">
+    <div class="sec-head center">
+      <div class="kicker">What changes</div>
+      <h2 class="h2">What this means if you run your jobs from Simpro.</h2>
+    </div>
+    <div class="grid-2">
+      <div class="card why-card anim"><div class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg></div><h3>Nobody re-keys the bill of quantities</h3><p>The quantities go from the drawing to the quote without passing through a spreadsheet and a pair of hands. The number on the plan is the number on the quote.</p></div>
+      <div class="card why-card anim"><div class="icon-sq green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>Priced before it lands</h3><p>What arrives in Simpro is a quote costed with your own materials and labour rates, not a raw parts list you still have to price.</p></div>
+      <div class="card why-card anim"><div class="icon-sq dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h3>Every quantity is checkable</h3><p>Because each counted item has a marker on the drawing in TakeoffAI, you can trace any line on the Simpro quote back to where it came from.</p></div>
+      <div class="card why-card anim"><div class="icon-sq blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg></div><h3>Simpro stays the system of record</h3><p>Jobs, scheduling and invoicing don't move. TakeoffAI does the take-off and hands the quote over. Once it's in Simpro, it's a normal quote.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="included anim">
+      <div class="big">$0</div>
+      <div>
+        <h3>The Simpro connection is included free.</h3>
+        <p>It's part of the free platform, like every other export. Every account can push quotes to Simpro. You're only ever charged for the AI take-off itself, and every new account starts with 2,000 free credits to try it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-paper">
+  <div class="container">
+    <div class="sec-head center"><div class="kicker">Questions</div><h2 class="h2">About the integration</h2></div>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q">What does "official Simpro integration partner" mean? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">TakeoffAI is a member of the Simpro Partner Program as an integration partner. The connection is built on Simpro's platform and maintained as both products change, so it isn't a one-off export script that breaks with the next update.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Does it cost extra? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">No. The Simpro connection is part of the free TakeoffAI platform, on every account. You only pay when you ask the AI to do a take-off, and you can push a manually counted take-off to Simpro without paying anything at all.</div></div></div>
+      <div class="faq-item"><button class="faq-q">What exactly gets pushed to Simpro? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">A quote. The counted quantities are priced against the price lists and labour rates you keep in TakeoffAI, then sent into Simpro as a quote for the job. Once it's there it behaves like any other Simpro quote: you can edit it, add to it and send it.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Can I check the numbers before they go across? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Yes, and you should. Every item the AI counts has a marker on the drawing in the TakeoffAI review screen. You confirm the take-off there, then push. Nothing goes to Simpro until you send it.</div></div></div>
+      <div class="faq-item"><button class="faq-q">I'm on Groundplan. Is this a reason to switch? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Groundplan also connects to Simpro, so the integration itself isn't the difference. The difference is who does the counting: in Groundplan you click every symbol, in TakeoffAI the AI counts and you review. <a href="/compare">See the full comparison</a>.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2 class="h2">Try it on a job you're quoting this week.</h2>
+    <p>Create a free account, run the take-off with your 2,000 free credits, and push the quote into Simpro. If you'd rather see it done first, book a demo and we'll run it live on your plans.</p>
+    <div class="hero-ctas">
+      <a href="https://app.takeoffai.com.au/signup" class="btn btn-primary btn-lg">Try it free <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="/demo" class="btn btn-ghost on-dark btn-lg">Book a demo</a>
+    </div>
+    <p class="hero-note">No credit card · Simpro connection included free</p>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="/" aria-label="TakeoffAI home">
+          <span class="nav-logo-icon"><span class="corner-tl"></span><span class="corner-br"></span></span>
+          <span class="nav-logo-text">takeoff<span>.ai</span></span>
+        </a>
+        <p>AI electrical take-off for Australian contractors. Upload the drawings, review the count, quote in Simpro. Built in Melbourne.</p>
+        <a href="/simpro" class="partner-badge"><span class="pb-mark">S</span><span class="pb-text"><span class="pb-top">Official</span><span class="pb-name">Simpro integration partner</span></span></a>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="/product">How it works</a>
+        <a href="/simpro">Simpro integration</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/compare">Compare</a>
+        <a href="/demo">Book a demo</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/about">About</a>
+        <a href="mailto:info@takeoffai.com.au">Contact</a>
+        <a href="https://app.takeoffai.com.au/login">Log in</a>
+        <a href="https://app.takeoffai.com.au/signup">Create a free account</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="/privacy">Privacy policy</a>
+        <a href="/terms">Terms &amp; conditions</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 TakeoffAI Pty Ltd &middot; ABN 97 395 522 316</span>
+      <span>Simpro is a trademark of Simpro Software Pty Ltd.</span>
+    </div>
+  </div>
+</footer>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1" alt=""></noscript>
+<script src="/site.js?v=20260902"></script>
+</body>
+</html>

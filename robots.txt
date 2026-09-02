@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://takeoffai.com.au/sitemap.xml

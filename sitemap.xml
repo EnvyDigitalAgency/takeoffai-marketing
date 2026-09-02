@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://takeoffai.com.au/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://takeoffai.com.au/product</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://takeoffai.com.au/simpro</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://takeoffai.com.au/pricing</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://takeoffai.com.au/compare</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://takeoffai.com.au/demo</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://takeoffai.com.au/about</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://takeoffai.com.au/privacy</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://takeoffai.com.au/terms</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+</urlset>

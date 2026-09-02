@@ -3,27 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TakeoffAI — Electrical Takeoff Software for Australian Contractors</title>
-<meta name="description" content="TakeoffAI replaces manual electrical takeoffs with AI. Upload plans, AI counts every symbol in 40 seconds, export a BOQ. Double your bids without hiring another estimator. Book a demo and see it run on your own plans.">
+<title>TakeoffAI — AI Electrical Take-off Software for Australian Contractors</title>
+<meta name="description" content="Upload your electrical plans and AI counts every symbol in about 40 seconds, marking each one on the drawing so you can check it. Free account with 2,000 credits, no card. Official Simpro integration partner.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://takeoffai.com.au/">
 
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://takeoffai.com.au/">
-<meta property="og:title" content="TakeoffAI — Electrical Takeoff Software for Australian Contractors">
-<meta property="og:description" content="Upload plans. AI counts every device in 40 seconds. Export a BOQ. Double your bid capacity without hiring another estimator.">
+<meta property="og:title" content="TakeoffAI — AI Electrical Take-off Software for Australian Contractors">
+<meta property="og:description" content="Upload plans. AI counts every symbol in 40 seconds and marks each one on the drawing. Free to start, no card. Official Simpro integration partner.">
 <meta property="og:image" content="https://takeoffai.com.au/takeoffai_og_banner.png">
 <meta property="og:locale" content="en_AU">
 <meta property="og:site_name" content="TakeoffAI">
-
-<!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="TakeoffAI — Electrical Takeoff Software for Australian Contractors">
-<meta name="twitter:description" content="Upload plans. AI counts every device in 40 seconds. Export a BOQ. Double your bid capacity without hiring another estimator.">
+<meta name="twitter:title" content="TakeoffAI — AI Electrical Take-off Software for Australian Contractors">
+<meta name="twitter:description" content="Upload plans. AI counts every symbol in 40 seconds and marks each one on the drawing. Free to start, no card. Official Simpro integration partner.">
 <meta name="twitter:image" content="https://takeoffai.com.au/takeoffai_og_banner.png">
 
-<!-- Schema.org -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -32,1516 +28,465 @@
   "url": "https://takeoffai.com.au",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web",
-  "description": "AI-powered electrical takeoff software for Australian contractors. Upload PDF plans, AI detects and counts every symbol in seconds, export a bill of quantities to Excel or PDF.",
+  "description": "AI-powered electrical take-off software for Australian contractors. Upload PDF plans, AI counts every symbol and marks it on the drawing, export a bill of quantities or push a priced quote to Simpro.",
   "offers": {
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "AUD",
-    "description": "The TakeoffAI platform is free — manual take-off, mark-up, exports, price lists, symbol library, SimPro, unlimited projects and unlimited users. AI take-offs are charged on a monthly plan from A$149, or pay as you go."
+    "description": "Free account with 2,000 credits and no credit card. The platform is free — manual take-off, exports, price lists, symbol library, Simpro integration, unlimited projects and users. AI take-offs are charged on a monthly plan from A$149, or pay as you go."
   },
-  "publisher": {
-    "@type": "Organization",
-    "name": "TakeoffAI Pty Ltd",
-    "url": "https://takeoffai.com.au"
-  }
+  "publisher": { "@type": "Organization", "name": "TakeoffAI Pty Ltd", "url": "https://takeoffai.com.au" }
 }
 </script>
-
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="shortcut icon" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css?v=20260902">
+<script src="/pixel.js" async></script>
 <style>
-:root{--orange:#E8611A;--orange-hover:#D4560F;--orange-light:#FFF3EC;--orange-100:#FFE4D1;--gray-900:#1C1C1C;--gray-800:#2D2D2D;--gray-700:#404040;--gray-600:#555555;--gray-500:#777777;--gray-400:#999999;--gray-300:#BBBBBB;--gray-200:#E0E0E0;--gray-150:#EBEBEB;--gray-100:#F4F4F4;--gray-50:#F9F9F9;--white:#FFFFFF;--green:#1B8C4F;--green-light:#EDFBF3;--red:#D94040;--red-light:#FEF2F2}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Outfit',-apple-system,sans-serif;background:var(--white);color:var(--gray-900);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-.container{max-width:1080px;margin:0 auto;padding:0 24px}
-.kicker{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:14px;display:inline-block}
-.section-heading{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(34px,5vw,58px);line-height:1.08;letter-spacing:-.03em;color:var(--gray-900);margin-bottom:16px}
-.section-sub{font-size:17px;line-height:1.65;color:var(--gray-500);max-width:580px;font-weight:400}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:var(--white);font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;padding:14px 28px;border-radius:10px;border:none;cursor:pointer;text-decoration:none;transition:all .2s ease}
-.btn-primary:hover{background:var(--orange-hover);transform:translateY(-1px);box-shadow:0 6px 24px rgba(232,97,26,.25)}
-.btn-primary svg{transition:transform .2s ease}
-.btn-primary:hover svg{transform:translateX(3px)}
-.btn-primary.lg{font-size:17px;padding:18px 36px;border-radius:12px}
-.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:0 0;color:var(--gray-700);font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;padding:14px 24px;border-radius:10px;border:1.5px solid var(--gray-200);cursor:pointer;text-decoration:none;transition:all .2s ease}
-.btn-ghost:hover{border-color:var(--gray-300);background:var(--gray-50)}
-.arrow-svg{width:18px;height:18px}
-.arrow-sm{width:15px;height:15px}
+/* ---- Home hero ---- */
+.home-hero{padding:88px 0 48px;text-align:center;background:linear-gradient(180deg,var(--paper) 0%,#fff 100%)}
+.home-hero .container{max-width:920px;display:flex;flex-direction:column;align-items:center}
+.home-hero .pill{margin-bottom:30px}
+.home-hero .h1{margin-bottom:22px;font-size:clamp(40px,6vw,68px)}
+.home-hero .lead{max-width:620px;font-size:18px;margin-bottom:32px}
+.home-hero .hero-ctas{margin-top:0;justify-content:center}
+.hero-trust{list-style:none;display:flex;gap:10px 26px;flex-wrap:wrap;justify-content:center;margin-top:26px}
+.hero-trust li{display:flex;align-items:center;gap:7px;font-size:14px;color:var(--gray-600)}
+.hero-trust li svg{width:15px;height:15px;color:var(--green);flex-shrink:0}
+.home-shot{padding:20px 0 0}
+.home-shot .container{max-width:1040px}
+.home-shot .caption{text-align:center;font-size:13.5px;color:var(--gray-500);margin-top:18px}
+.home-stats{padding:56px 0 0}
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-.anim{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
-.anim.visible{opacity:1;transform:translateY(0)}
-.anim-hero{opacity:0;animation:fadeUp .65s ease forwards}
-.d1{animation-delay:.05s}.d2{animation-delay:.12s}.d3{animation-delay:.2s}.d4{animation-delay:.28s}.d5{animation-delay:.36s}
+/* ---- Before / after ---- */
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:920px;margin:0 auto}
+.vs-card{border-radius:var(--r-lg);padding:34px 32px}
+.vs-old{background:#fff;border:1.5px solid var(--paper-line)}
+.vs-new{background:var(--gray-900);color:#fff}
+.vs-label{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
+.vs-old .vs-label{color:var(--gray-400)}
+.vs-new .vs-label{color:#FF9A66}
+.vs-big{font-family:var(--display);font-size:42px;font-weight:700;line-height:1;margin-bottom:6px;letter-spacing:-.02em}
+.vs-old .vs-big{color:var(--gray-800)}
+.vs-new .vs-big{color:#fff}
+.vs-big-sub{font-size:14px;margin-bottom:24px}
+.vs-old .vs-big-sub{color:var(--gray-500)}
+.vs-new .vs-big-sub{color:rgba(255,255,255,.55)}
+.vs-card ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.vs-card li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;line-height:1.5}
+.vs-old li{color:var(--gray-600)}
+.vs-new li{color:rgba(255,255,255,.85)}
+.vs-card li .ic{flex-shrink:0;width:22px;height:22px;border-radius:7px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.vs-old li .ic{background:var(--red-light);color:var(--red)}
+.vs-new li .ic{background:var(--orange);color:#fff}
+.vs-card li .ic svg{width:12px;height:12px}
+@media(max-width:768px){.vs-grid{grid-template-columns:1fr}}
 
-/* PRODUCT SHOT */
-.product-shot{padding:0 0 96px;margin-top:-40px;position:relative;z-index:1}
-.product-shot .container{max-width:1040px}
-.product-frame{border-radius:16px;overflow:hidden;border:1px solid var(--gray-150);box-shadow:0 32px 96px rgba(0,0,0,.12),0 8px 24px rgba(0,0,0,.06)}
-.product-frame-bar{background:var(--gray-100);padding:10px 16px;display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--gray-150)}
-.product-frame-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.product-frame-dot:nth-child(1){background:#FF5F57}
-.product-frame-dot:nth-child(2){background:#FEBC2E}
-.product-frame-dot:nth-child(3){background:#28C840}
-.product-frame img{width:100%;display:block}
-.product-frame iframe{width:100%;display:block;border:none;aspect-ratio:11/7}
+/* ---- Simpro ---- */
+.simpro-home .container{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.simpro-copy .partner-badge{margin-bottom:26px}
+.simpro-copy .h2{margin-bottom:16px}
+.simpro-copy .lead{margin-bottom:26px}
+.simpro-copy .check-list{margin-bottom:32px}
+@media(max-width:900px){.simpro-home .container{grid-template-columns:1fr;gap:40px}}
+.flow{display:flex;flex-direction:column;gap:12px}
+.flow-node{background:#fff;border:1.5px solid var(--gray-150);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow-card)}
+.fn-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.fn-app{font-size:14px;font-weight:700;letter-spacing:-.01em;color:var(--gray-900)}
+.fn-app span{color:var(--gray-400);font-weight:400}
+.fn-app.sp{padding:4px 10px;border-radius:6px;background:var(--gray-900);color:#fff;font-size:12.5px}
+.fn-status{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:6px}
+.fn-status .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.6s ease infinite}
+.fn-title{font-size:14px;font-weight:600;color:var(--gray-800);margin-bottom:10px}
+.fn-rows{display:flex;flex-direction:column;gap:6px}
+.fn-rows div{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;color:var(--gray-600);padding:7px 11px;background:var(--gray-50);border-radius:7px}
+.fn-rows div b{font-family:var(--display);font-weight:700;color:var(--gray-900);font-size:15px}
+.fn-rows div.fn-total{background:var(--orange-light);color:var(--gray-800);font-weight:600}
+.fn-rows div.fn-total b{color:var(--orange)}
+.flow-arrow{display:flex;align-items:center;gap:12px;padding:2px 10px}
+.flow-arrow .line{flex:1;height:1.5px;background:var(--gray-200)}
+.flow-arrow .lbl{font-size:12.5px;font-weight:600;color:var(--gray-500);display:flex;align-items:center;gap:8px;white-space:nowrap}
+.flow-arrow .lbl svg{width:16px;height:16px;color:var(--orange)}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;background:rgba(255,255,255,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--gray-150);transition:box-shadow .3s ease}
-nav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.07)}
-nav .container{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer}
-.nav-logo-icon{width:34px;height:34px;position:relative}
-.nav-logo-icon .corner-tl{position:absolute;top:2px;left:2px;width:13px;height:13px;border-top:3px solid var(--gray-900);border-left:3px solid var(--gray-900)}
-.nav-logo-icon .corner-br{position:absolute;bottom:2px;right:2px;width:13px;height:13px;border-bottom:3px solid var(--orange);border-right:3px solid var(--orange)}
-.nav-logo-text{font-size:18px;font-weight:700;color:var(--gray-900);letter-spacing:-.01em}
-.nav-logo-text span{color:var(--gray-400);font-weight:400}
-#nav-main-links{display:flex;align-items:center;justify-content:center;gap:36px}
-#nav-main-links a{font-size:15px;font-weight:600;color:var(--gray-700);text-decoration:none;transition:color .2s;cursor:pointer;white-space:nowrap}
-#nav-main-links a:hover{color:var(--orange)}
-.nav-right{display:flex;justify-content:flex-end;align-items:center;gap:12px}
-.nav-login{font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;padding:10px 18px;background:0 0;color:var(--gray-700);border:1.5px solid var(--gray-200);border-radius:8px;cursor:pointer;text-decoration:none;transition:all .2s;white-space:nowrap}
-.nav-login:hover{border-color:var(--gray-300);background:var(--gray-50);color:var(--gray-900)}
-.nav-cta{font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;padding:10px 22px;background:var(--gray-900);color:var(--white);border:none;border-radius:8px;cursor:pointer;text-decoration:none;transition:all .2s}
-.nav-cta:hover{background:var(--orange);transform:translateY(-1px)}
-#nav-back{font-size:14px;font-weight:500;color:var(--gray-500);text-decoration:none;transition:color .2s;cursor:pointer;display:none}
-#nav-back:hover{color:var(--orange)}
-/* MOBILE NAV */
-.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;cursor:pointer;background:none;border:none;padding:4px}
-.nav-hamburger span{display:block;height:2px;border-radius:2px;background:var(--gray-900);transition:all .25s ease}
-.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.nav-hamburger.open span:nth-child(2){opacity:0}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.nav-mobile-menu{display:none;position:fixed;top:61px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--gray-150);padding:16px 24px 24px;z-index:99;flex-direction:column;gap:4px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.nav-mobile-menu.open{display:flex}
-.nav-mobile-menu a{font-size:16px;font-weight:600;color:var(--gray-700);padding:12px 0;border-bottom:1px solid var(--gray-100);text-decoration:none}
-.nav-mobile-menu a:last-child{border-bottom:none}
-.nav-mobile-menu a:hover{color:var(--orange)}
-.nav-mobile-cta{margin-top:8px;display:block;text-align:center;background:var(--gray-900);color:var(--white)!important;padding:14px!important;border-radius:10px;border-bottom:none!important}
-@media(max-width:768px){
-  nav .container{grid-template-columns:1fr auto}
-  #nav-main-links{display:none!important}
-  .nav-cta{display:none}
-  .nav-login{display:none}
-  .nav-hamburger{display:flex}
-}
+/* ---- Trust ---- */
+.trust-card .badge{margin-bottom:16px}
+.trust-card h3{font-family:var(--display);font-size:21px;margin-bottom:10px;letter-spacing:-.015em;line-height:1.2}
 
-/* HERO */
-.hero{padding:140px 0 80px;position:relative;background:linear-gradient(180deg,var(--gray-50) 0%,var(--white) 100%)}
-.hero .container{max-width:880px;text-align:center;display:flex;flex-direction:column;align-items:center}
-.hero h1{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(38px,6vw,64px);line-height:1.08;letter-spacing:-.03em;margin-bottom:20px;color:var(--gray-900)}
-.hero h1 .orange{color:var(--orange)}
-.hero-sub{font-size:18px;line-height:1.65;color:var(--gray-500);max-width:540px;margin-bottom:36px;font-weight:400}
-.hero-sub strong{color:var(--gray-800);font-weight:600}
-.hero-ctas{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center;margin-bottom:56px}
-.hero-stats{display:flex;gap:48px;flex-wrap:wrap;justify-content:center;padding-top:40px;border-top:1px solid var(--gray-150);width:100%;max-width:560px}
-.hero-stat{text-align:center}
-.hero-stat-num{font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:var(--gray-900)}
-.hero-stat-num .orange{color:var(--orange);font-size:inherit}
-.hero-stat-label{font-size:13px;color:var(--gray-400);margin-top:2px}
+/* ---- Pricing summary ---- */
+.tiers-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1000px;margin:0 auto}
+.tm{background:#fff;border:1.5px solid var(--gray-150);border-radius:var(--r-lg);padding:28px 26px;display:flex;flex-direction:column;position:relative}
+.tm.feat{border-color:var(--orange);box-shadow:0 12px 40px rgba(232,97,26,.10)}
+.tm.free{background:var(--gray-900);color:#fff;border-color:var(--gray-900)}
+.tm-tag{position:absolute;top:-12px;left:24px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--orange);color:#fff;padding:5px 12px;border-radius:100px}
+.tm.free .tm-tag{background:#fff;color:var(--gray-900)}
+.tm-name{font-size:18px;font-weight:700;margin-bottom:4px}
+.tm.free .tm-name{color:#fff}
+.tm-desc{font-size:13.5px;color:var(--gray-500);margin-bottom:18px;line-height:1.5;min-height:40px}
+.tm.free .tm-desc{color:rgba(255,255,255,.6)}
+.tm-price{display:flex;align-items:baseline;gap:5px;margin-bottom:4px}
+.tm-price .d{font-family:var(--display);font-size:40px;font-weight:700;line-height:1;letter-spacing:-.02em}
+.tm.free .tm-price .d{color:#fff}
+.tm-price .per{font-size:14px;color:var(--gray-400)}
+.tm.free .tm-price .per{color:rgba(255,255,255,.5)}
+.tm-rate{font-size:14.5px;color:var(--gray-600);margin-bottom:22px}
+.tm-rate b{color:var(--gray-900);font-weight:700}
+.tm.free .tm-rate{color:rgba(255,255,255,.7)}
+.tm.free .tm-rate b{color:#fff}
+.tm ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:26px;font-size:14px;color:var(--gray-700)}
+.tm.free ul{color:rgba(255,255,255,.85)}
+.tm ul li{padding-left:20px;position:relative;line-height:1.45}
+.tm ul li::before{content:'';position:absolute;left:0;top:7px;width:11px;height:6px;border-left:2px solid var(--green);border-bottom:2px solid var(--green);transform:rotate(-45deg)}
+.tm.free ul li::before{border-color:#54D98C}
+.tm .btn{margin-top:auto}
+@media(max-width:900px){.tiers-mini{grid-template-columns:1fr}}
 
-/* PAIN */
-.pain{padding:96px 0}
-.pain-header{margin-bottom:48px}
-.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.pain-card{background:var(--white);border:1px solid var(--gray-150);border-radius:14px;padding:28px 24px;transition:all .25s ease}
-.pain-card:hover{border-color:var(--gray-200);box-shadow:0 4px 20px rgba(0,0,0,.04)}
-.pain-icon{width:40px;height:40px;border-radius:10px;background:var(--red-light);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
-.pain-icon svg{color:var(--red)}
-.pain-card h3{font-size:16px;font-weight:600;margin-bottom:8px;line-height:1.35;color:var(--gray-800)}
-.pain-card p{font-size:14px;line-height:1.6;color:var(--gray-500)}
-.pain-tag{display:inline-block;margin-top:14px;font-size:12px;font-weight:600;color:var(--red);background:var(--red-light);padding:4px 10px;border-radius:6px}
-
-/* INTERACTIVE TOUR */
-.tour{padding:80px 0 96px;background:var(--gray-50)}
-.tour-header{text-align:center;margin-bottom:40px}
-.tour-header .section-sub{margin:0 auto}
-.tour-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
-.tour-tab{padding:8px 20px;border-radius:100px;border:1.5px solid var(--gray-200);background:#fff;font-size:14px;font-weight:500;color:var(--gray-500);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif}
-.tour-tab.active{background:var(--orange);border-color:var(--orange);color:#fff;font-weight:600}
-.tour-tab:hover:not(.active){border-color:var(--orange);color:var(--orange)}
-.tour-progress-bar{height:2px;background:var(--gray-150);border-radius:2px;max-width:480px;margin:0 auto 24px;overflow:hidden}
-.tour-progress-fill{height:100%;background:var(--orange);width:0%}
-.tour-frame{margin-bottom:24px}
-.tour-screens{min-height:400px}
-.tour-screen{display:none;flex-direction:row}
-.tour-screen.active{display:flex;animation:tourFadeIn .35s ease}
-@keyframes tourFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.mock-sidebar{width:190px;flex-shrink:0;background:var(--gray-50);border-right:1px solid var(--gray-150);padding:16px}
-.mock-main{flex:1;padding:24px;background:#fff;overflow:auto}
-.mock-nav-title{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-400);margin-bottom:10px}
-.mock-project-item{padding:7px 10px;border-radius:6px;font-size:13px;font-weight:500;color:var(--gray-600);cursor:default;display:flex;align-items:center;gap:8px;margin-bottom:2px}
-.mock-project-item.active-item{background:var(--orange-light);color:var(--orange)}
-.mock-new-btn{margin-top:10px;padding:7px 10px;border-radius:6px;border:1.5px dashed var(--gray-200);font-size:12px;color:var(--gray-400);text-align:center;cursor:default}
-.mock-sheet-item{padding:5px 10px;border-radius:6px;font-size:12px;color:var(--gray-500);display:flex;align-items:center;gap:6px;margin-bottom:2px}
-.mock-sheet-item.processing{color:var(--orange)}
-.mock-sheet-item.done{color:var(--green)}
-.mock-drop-zone{border:2px dashed var(--gray-200);border-radius:12px;padding:48px 24px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;background:var(--gray-50)}
-.mock-drop-icon{width:48px;height:48px;border-radius:12px;background:var(--orange-light);display:flex;align-items:center;justify-content:center;color:var(--orange)}
-.mock-drop-title{font-size:15px;font-weight:600;color:var(--gray-800)}
-.mock-drop-sub{font-size:13px;color:var(--gray-400)}
-.mock-badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:4px}
-.mock-badge{padding:3px 10px;border-radius:100px;background:var(--gray-100);font-size:11px;font-weight:500;color:var(--gray-500)}
-.mock-upload-btn{margin-top:8px;padding:10px 24px;border-radius:8px;background:var(--orange);color:#fff;font-size:13px;font-weight:600;border:none;cursor:default}
-.mock-status{font-size:13px;color:var(--gray-500);margin-bottom:12px}
-.mock-status strong{color:var(--gray-800);font-weight:600}
-.mock-progress-track{height:8px;background:var(--gray-100);border-radius:100px;overflow:hidden;margin-bottom:20px}
-.mock-progress-inner{height:100%;background:var(--orange);border-radius:100px}
-.mock-counter-row{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:8px;background:var(--gray-50);margin-bottom:6px;border:1px solid var(--gray-150)}
-.mock-counter-label{font-size:13px;font-weight:500;color:var(--gray-700)}
-.mock-counter-val{font-size:16px;font-weight:700;color:var(--orange);font-family:'Fraunces',serif;min-width:32px;text-align:right}
-.mock-plan{position:relative;border:1px solid var(--gray-150);border-radius:10px;overflow:hidden;background:#fff;margin-bottom:14px}
-.mock-plan svg{display:block;width:100%;height:auto}
-.mock-plan-tag{position:absolute;top:8px;left:8px;background:rgba(28,28,28,.82);color:#fff;font-size:10px;font-weight:600;letter-spacing:.03em;padding:3px 9px;border-radius:5px;display:flex;align-items:center;gap:6px}
-.mock-plan-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--orange);animation:pulse 1.4s ease infinite}
-.mock-legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:16px}
-.mock-legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray-500);font-weight:500}
-.mock-legend-swatch{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-@keyframes markIn{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}
-.mock-mark{transform-box:fill-box;transform-origin:center;animation:markIn .45s ease backwards}
-.mock-table{width:100%;border-collapse:collapse}
-.mock-table th{font-size:11px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;padding:0 12px 10px;text-align:left;border-bottom:1px solid var(--gray-150)}
-.mock-table td{font-size:13px;color:var(--gray-700);padding:10px 12px;border-bottom:1px solid var(--gray-100)}
-.mock-table tr:last-child td{border-bottom:none;font-weight:700;color:var(--gray-900)}
-.mock-check{color:var(--green)}
-.mock-edit{font-size:12px;color:var(--orange);cursor:default}
-.mock-export-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.mock-export-card{border:1px solid var(--gray-150);border-radius:10px;padding:18px;text-align:center;background:var(--gray-50);display:flex;flex-direction:column;align-items:center;gap:8px}
-.mock-export-card.featured{border-color:var(--orange);background:var(--orange-light)}
-.mock-export-icon{width:40px;height:40px;border-radius:10px;background:var(--gray-100);display:flex;align-items:center;justify-content:center;color:var(--gray-500)}
-.mock-export-card.featured .mock-export-icon{background:var(--orange);color:#fff}
-.mock-export-name{font-size:13px;font-weight:600;color:var(--gray-800)}
-.mock-export-sub{font-size:11px;color:var(--gray-400);line-height:1.4}
-.mock-export-btn{margin-top:4px;padding:7px 16px;border-radius:6px;border:1.5px solid var(--gray-200);background:#fff;font-size:12px;font-weight:500;color:var(--gray-600);cursor:default}
-.mock-export-card.featured .mock-export-btn{background:var(--orange);border-color:var(--orange);color:#fff}
-.tour-desc{display:flex;align-items:center;justify-content:space-between;max-width:860px;margin:0 auto;gap:16px;padding:0 4px}
-.tour-desc-text{font-size:15px;color:var(--gray-500);line-height:1.6}
-.tour-nav{display:flex;gap:8px;flex-shrink:0}
-.tour-nav button{padding:8px 16px;border-radius:8px;border:1.5px solid var(--gray-200);background:#fff;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;color:var(--gray-700)}
-.tour-nav button:hover{border-color:var(--orange);color:var(--orange)}
-
-/* OFFER */
-.offer{padding:96px 0}
-.offer-header{text-align:center;margin-bottom:48px}
-.offer-header .section-sub{margin:0 auto}
-.offer-name-badge{display:inline-flex;align-items:center;gap:6px;background:var(--gray-900);color:var(--white);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:6px;margin-bottom:16px}
-.stack{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
-.stack-card{display:grid;grid-template-columns:1fr auto;background:var(--white);border:1.5px solid var(--gray-150);border-radius:14px;overflow:hidden;transition:all .25s ease}
-.stack-card:hover{border-color:var(--gray-200);box-shadow:0 4px 16px rgba(0,0,0,.04)}
-.stack-card.core{border-color:var(--orange);background:var(--orange-light)}
-.stack-body{padding:22px 24px}
-.stack-body .sb-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:4px;margin-bottom:8px}
-.stack-card.core .sb-tag{background:var(--orange);color:var(--white)}
-.stack-card:not(.core) .sb-tag{background:var(--gray-100);color:var(--gray-500)}
-.stack-body h3{font-size:16px;font-weight:600;color:var(--gray-800);margin-bottom:4px}
-.stack-body p{font-size:13px;line-height:1.6;color:var(--gray-500)}
-.stack-val{display:flex;align-items:center;justify-content:center;padding:0 24px;border-left:1px solid var(--gray-150);min-width:100px;flex-direction:column;gap:1px}
-.stack-card.core .stack-val{border-left-color:rgba(232,97,26,.2)}
-.stack-val-label{font-size:10px;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;font-weight:500}
-.stack-val-num{font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:var(--orange)}
-.offer-total{max-width:760px;margin:20px auto 0;background:var(--gray-900);border-radius:14px;padding:24px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-.ot-left .ot-label{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:2px}
-.ot-left .ot-num{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:rgba(255,255,255,.4);text-decoration:line-through;text-decoration-color:var(--red)}
-.ot-right{text-align:right}
-.ot-right .ot-label{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:2px}
-.ot-right .ot-num{font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:var(--orange)}
-.ot-right .ot-per{font-size:13px;color:rgba(255,255,255,.4)}
-
-/* URGENCY */
-.urgency{padding:0 0 96px}
-
-/* GUARANTEE */
-.guarantee{padding:96px 0;background:var(--gray-50)}
-.guarantee-header{text-align:center;margin-bottom:48px}
-.guarantee-header .section-sub{margin:0 auto}
-.guar-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px;margin:0 auto}
-.guar-card{border-radius:16px;padding:32px 28px}
-.guar-card.g1{background:var(--white);border:1.5px solid var(--gray-150)}
-.guar-card.g2{background:var(--orange-light);border:1.5px solid var(--orange-100)}
-.guar-badge{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:5px;margin-bottom:18px}
-.guar-card.g1 .guar-badge{background:var(--gray-100);color:var(--gray-600)}
-.guar-card.g2 .guar-badge{background:var(--orange-100);color:var(--orange)}
-.guar-card h3{font-family:'Fraunces',serif;font-size:20px;font-weight:700;margin-bottom:10px;color:var(--gray-900);line-height:1.25}
-.guar-card p{font-size:14px;line-height:1.65;color:var(--gray-500)}
-.guar-card p strong{color:var(--gray-800);font-weight:600}
-
-/* PRICING */
-.pricing{padding:96px 0}
-.pricing-header{text-align:center;margin-bottom:48px}
-.pricing-header .section-sub{margin:0 auto}
-.pricing-compare{display:grid;grid-template-columns:1fr 48px 1fr;max-width:780px;margin:0 auto 48px;align-items:stretch}
-.pr-card{border-radius:18px;padding:36px 32px;display:flex;flex-direction:column;align-items:center;text-align:center}
-.pr-old{background:var(--gray-50);border:1.5px solid var(--gray-150);opacity:.7}
-.pr-old .pr-tag{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-400);margin-bottom:16px}
-.pr-old .pr-amount{font-family:'Fraunces',serif;font-size:40px;font-weight:700;color:var(--gray-400);text-decoration:line-through;text-decoration-color:var(--red);margin-bottom:4px}
-.pr-old .pr-per{font-size:14px;color:var(--gray-400);margin-bottom:16px}
-.pr-old .pr-detail{font-size:13px;color:var(--gray-400);line-height:1.55}
-.pr-vs{display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--gray-300)}
-.pr-new{background:var(--white);border:2px solid var(--orange);position:relative;box-shadow:0 8px 40px rgba(232,97,26,.08)}
-.pr-featured{position:absolute;top:-12px;background:var(--orange);color:var(--white);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 16px;border-radius:100px}
-.pr-new .pr-tag{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;margin-top:6px}
-.pr-new .pr-amount{font-family:'Fraunces',serif;font-size:52px;font-weight:700;color:var(--gray-900);margin-bottom:2px}
-.pr-new .pr-amount small{font-size:20px;font-weight:400;color:var(--gray-400)}
-.pr-new .pr-per{font-size:13px;color:var(--gray-400);margin-bottom:24px}
-.pr-list{text-align:left;width:100%;list-style:none}
-.pr-list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.5;color:var(--gray-600);padding:9px 0;border-bottom:1px solid var(--gray-100)}
-.pr-list li:last-child{border-bottom:none}
-.pr-check{width:20px;height:20px;min-width:20px;border-radius:6px;background:var(--green-light);display:flex;align-items:center;justify-content:center;margin-top:1px}
-.pr-check svg{color:var(--green)}
-.pricing-cta{text-align:center}
-.pricing-cta .sub{margin-top:14px;font-size:13px;color:var(--gray-400)}
-
-/* PRICING TIERS */
-.pricing-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto 28px;align-items:stretch}
-.pt-card{background:var(--white);border:1.5px solid var(--gray-150);border-radius:18px;padding:32px 28px;position:relative;display:flex;flex-direction:column}
-.pt-card.pt-featured{border-color:var(--orange);background:var(--orange-light);box-shadow:0 8px 40px rgba(232,97,26,.10)}
-.pt-card.pt-dim{opacity:.65}
-.pt-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 16px;border-radius:100px;background:var(--orange);color:var(--white)}
-.pt-badge.pt-badge-dim{background:var(--gray-200);color:var(--gray-500)}
-.pt-name{font-size:20px;font-weight:700;color:var(--gray-900);margin-bottom:4px}
-.pt-desc{font-size:13px;color:var(--gray-500);margin-bottom:20px;line-height:1.5}
-.pt-price{display:flex;align-items:baseline;gap:3px;margin-bottom:4px}
-.pt-price .pt-dollar{font-family:'Fraunces',serif;font-size:44px;font-weight:700;color:var(--gray-900);line-height:1}
-.pt-card.pt-dim .pt-price .pt-dollar{color:var(--gray-400)}
-.pt-price .pt-per{font-size:14px;color:var(--gray-400)}
-.pt-billed{font-size:12px;color:var(--gray-400);margin-bottom:24px}
-.pt-list{list-style:none;margin-bottom:28px;display:flex;flex-direction:column;gap:10px}
-.pt-list li{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--gray-600);line-height:1.4}
-.pt-list li.pt-no{color:var(--gray-300)}
-.pt-check-icon{width:18px;height:18px;min-width:18px;border-radius:5px;background:var(--green-light);display:flex;align-items:center;justify-content:center}
-.pt-check-icon svg{color:var(--green)}
-.pt-x-icon{width:18px;height:18px;min-width:18px;border-radius:5px;background:var(--gray-100);display:flex;align-items:center;justify-content:center}
-.pt-x-icon svg{color:var(--gray-300)}
-.pt-btn{display:block;text-align:center;width:100%;margin-top:auto;padding:13px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;border:none}
-.pt-btn-primary{background:var(--orange);color:var(--white)}
-.pt-btn-primary:hover{background:var(--orange-hover);transform:translateY(-1px)}
-.pt-btn-ghost{background:var(--white);color:var(--gray-700);border:1.5px solid var(--gray-200)}
-.pt-btn-ghost:hover{border-color:var(--gray-300);background:var(--gray-50)}
-.pt-btn-disabled{background:var(--gray-100);color:var(--gray-400);cursor:not-allowed}
-@media(max-width:768px){.pricing-tiers{grid-template-columns:1fr}}
-
-/* FREE PLATFORM CARD */
-.free-card{position:relative;max-width:960px;margin:0 auto 56px;background:var(--gray-900);color:var(--white);border-radius:20px;padding:42px 44px;overflow:hidden}
-.free-card::before{content:'';position:absolute;top:-140px;right:-90px;width:440px;height:340px;background:radial-gradient(ellipse,rgba(232,97,26,.22),transparent 70%);pointer-events:none}
-.free-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.15fr;gap:44px;align-items:center}
-.fc-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 13px;border-radius:100px;background:rgba(232,97,26,.2);color:var(--orange);margin-bottom:18px}
-.fc-price{display:flex;align-items:baseline;gap:7px;margin-bottom:12px}
-.fc-dollar{font-family:'Fraunces',serif;font-size:66px;font-weight:800;line-height:1;letter-spacing:-.03em}
-.fc-per{font-size:15px;color:rgba(255,255,255,.5)}
-.fc-lead{font-size:15px;line-height:1.65;color:rgba(255,255,255,.62)}
-.fc-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 22px}
-.fc-list li{display:flex;align-items:flex-start;gap:9px;font-size:14px;color:rgba(255,255,255,.85);line-height:1.4}
-.fc-ic{width:17px;height:17px;min-width:17px;margin-top:1px;border-radius:5px;background:rgba(84,217,140,.18);display:flex;align-items:center;justify-content:center;color:#54D98C}
-
-/* PER-TAKEOFF RATES */
-.rate-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto 20px}
-.rate-card{background:var(--white);border:1.5px solid var(--gray-150);border-radius:16px;padding:28px 24px;text-align:center}
-.rate-card.rc-feat{border-color:var(--orange);background:var(--orange-light)}
-.rate-name{font-size:15px;font-weight:700;color:var(--gray-900);margin-bottom:10px}
-.rate-price{font-family:'Fraunces',serif;font-size:40px;font-weight:700;color:var(--gray-900);line-height:1}
-.rate-cr{font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;color:var(--gray-500);margin-left:5px}
-.rate-unit{font-size:12px;color:var(--gray-400);margin:6px 0 0}
-.rate-desc{font-size:13px;line-height:1.6;color:var(--gray-600)}
-.rate-value{margin-top:16px;padding-top:14px;border-top:1px solid var(--gray-150);font-size:13px;line-height:1.5;color:var(--gray-600)}
-.rate-card.rc-feat .rate-value{border-top-color:var(--orange-100)}
-.rate-value strong{color:var(--green);font-weight:700;font-size:15px}
-.pt-value{margin:0 0 20px;padding:11px 14px;background:var(--green-light);border-radius:10px;font-size:13px;line-height:1.5;color:var(--gray-700);text-align:center;min-height:60px;display:flex;align-items:center;justify-content:center}
-.pt-value strong{color:var(--green);font-weight:700}
-.pt-card.pt-featured .pt-value{background:rgba(255,255,255,.72)}
-.pt-card.pt-dim .pt-value{background:var(--gray-100)}
-.pt-card.pt-dim .pt-value strong{color:var(--gray-600)}
-.pt-list li{align-items:flex-start}
-.pt-list li .pt-check-icon{margin-top:2px}
-.pt-list li strong{color:var(--gray-900);font-weight:700}
-.sheet-note{max-width:960px;margin:0 auto;background:var(--gray-50);border:1.5px solid var(--gray-150);border-radius:14px;padding:22px 26px;font-size:14px;line-height:1.7;color:var(--gray-600)}
-.sheet-note strong{color:var(--gray-900);font-weight:600}
-
-/* CREDIT PACKS */
-.pack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto 20px}
-.pack-card{background:var(--white);border:1.5px solid var(--gray-150);border-radius:16px;padding:26px 24px;position:relative}
-.pack-card.pk-best{border-color:var(--orange);box-shadow:0 8px 32px rgba(232,97,26,.09)}
-.pack-tag{position:absolute;top:-11px;left:24px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 12px;border-radius:100px;background:var(--orange);color:var(--white)}
-.pack-jobs{font-size:14px;font-weight:600;color:var(--gray-900);margin-bottom:16px;line-height:1.4;min-height:40px}
-.pack-price{display:flex;align-items:baseline;gap:4px;margin-bottom:6px}
-.pk-dollar{font-family:'Fraunces',serif;font-size:36px;font-weight:700;color:var(--gray-900);line-height:1}
-.pk-cr{font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;color:var(--gray-500);margin-left:5px}
-.pack-cost{font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:var(--gray-900);margin-bottom:4px}
-.pack-eff{font-size:13px;color:var(--gray-500);margin-bottom:18px;line-height:1.5;min-height:39px}
-.pack-eff strong{color:var(--orange);font-weight:700}
-.pack-sub{font-size:14px;font-weight:600;color:var(--orange);margin:4px 0 14px}
-.pc-per{font-size:14px;font-weight:600;color:var(--gray-400);margin-left:2px}
-.pt-rate{margin:2px 0 18px;font-size:15px;color:var(--gray-600)}
-.pt-rate strong{color:var(--gray-900);font-weight:700;font-size:17px}
-.pt-card.pt-dim .pt-rate strong{color:var(--gray-500)}
-.pt-extra{margin:0 0 18px;padding:12px 14px;background:var(--gray-50);border-radius:10px;font-size:13px;line-height:1.5;color:var(--gray-600)}
-.pt-card.pt-featured .pt-extra{background:rgba(255,255,255,.72)}
-.pt-extra strong{color:var(--gray-900);font-weight:700}
-.incl{max-width:960px;margin:0 auto;background:var(--gray-50);border:1.5px solid var(--gray-150);border-radius:16px;padding:26px 30px;text-align:center}
-.incl-title{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--gray-400);margin-bottom:16px}
-.incl-items{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;margin-bottom:20px}
-.incl-i{position:relative;padding-left:22px;font-size:14px;color:var(--gray-700);line-height:1.5}
-.incl-i::before{content:'';position:absolute;left:0;top:5px;width:13px;height:8px;border-left:2.5px solid var(--green);border-bottom:2.5px solid var(--green);transform:rotate(-45deg)}
-.incl-free{border-top:1px solid var(--gray-150);padding-top:18px;font-size:14px;line-height:1.65;color:var(--gray-600);max-width:720px;margin:0 auto}
-.incl-free strong{color:var(--gray-900);font-weight:700}
-@media(max-width:768px){.incl{padding:22px 20px}.incl-items{flex-direction:column;align-items:flex-start;text-align:left;gap:9px}}
-.onceoff{max-width:960px;margin:22px auto 0;background:var(--gray-50);border:1.5px solid var(--gray-150);border-radius:14px;padding:20px 26px;text-align:center;font-size:14px;color:var(--gray-600);line-height:1.6}
-.onceoff strong{color:var(--gray-900);font-weight:700}
-.oo-label{font-weight:700;color:var(--gray-900)}
-.oo-note{display:block;font-size:13px;color:var(--gray-400);margin-top:6px}
-.pk-save{color:var(--green);font-weight:700}
-.pack-credits{font-size:12px;color:var(--gray-400);border-top:1px solid var(--gray-150);padding-top:14px}
-
-@media(max-width:768px){
-  .free-card{padding:32px 26px}
-  .free-inner{grid-template-columns:1fr;gap:28px}
-  .fc-list{grid-template-columns:1fr}
-  .fc-dollar{font-size:54px}
-  .rate-grid,.pack-grid{grid-template-columns:1fr}
-  .pack-jobs,.pack-eff,.rate-unit,.pack-sub{min-height:0}
-  .pt-value{min-height:0}
-  .rate-value{min-height:0}
-}
-
-/* ROI */
-.roi{padding:96px 0;background:var(--gray-50)}
-.roi-header{text-align:center;margin-bottom:48px}
-.roi-header .section-sub{margin:0 auto}
-.roi-calc{max-width:680px;margin:0 auto;background:var(--white);border:1.5px solid var(--gray-150);border-radius:18px;padding:36px;box-shadow:0 2px 12px rgba(0,0,0,.03)}
-.roi-inputs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
-.roi-field label{display:block;font-size:13px;font-weight:500;color:var(--gray-500);margin-bottom:6px}
-.roi-field input{width:100%;padding:12px 14px;background:var(--gray-50);border:1.5px solid var(--gray-150);border-radius:10px;color:var(--gray-900);font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;outline:none;transition:border-color .2s}
-.roi-field input:focus{border-color:var(--orange);background:var(--white)}
-.roi-results{background:var(--gray-50);border-radius:12px;padding:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-.roi-r{text-align:center}
-.roi-r-label{font-size:11px;color:var(--gray-400);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
-.roi-r-num{font-family:'Fraunces',serif;font-size:28px;font-weight:700}
-.roi-r-num.c-orange{color:var(--orange)}
-.roi-r-num.c-green{color:var(--green)}
-.roi-r-num.c-dark{color:var(--gray-900)}
-
-/* FAQ */
-.faq{padding:96px 0}
-.faq-header{text-align:center;margin-bottom:48px}
-.faq-list{max-width:660px;margin:0 auto;display:flex;flex-direction:column;gap:6px}
-.faq-item{background:var(--white);border:1.5px solid var(--gray-150);border-radius:12px;overflow:hidden;transition:border-color .2s}
-.faq-item.open{border-color:var(--gray-200)}
-.faq-q{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:15px;font-weight:500;color:var(--gray-800);user-select:none;transition:color .2s}
-.faq-q:hover{color:var(--orange)}
-.faq-arrow{width:18px;height:18px;transition:transform .3s ease;color:var(--gray-300);flex-shrink:0}
-.faq-item.open .faq-arrow{transform:rotate(180deg);color:var(--orange)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
-.faq-item.open .faq-a{max-height:300px}
-.faq-a-inner{padding:0 22px 20px;font-size:14px;line-height:1.65;color:var(--gray-500)}
-
-/* FINAL CTA */
-/* BOOKING */
-.booking{padding:96px 0;background:var(--gray-50)}
-.booking .container{max-width:860px}
-.booking-header{text-align:center;margin-bottom:44px}
-.booking-header p{font-size:16px;color:var(--gray-500);line-height:1.6;max-width:520px;margin:0 auto}
-.booking-embed{width:100%;height:700px;overflow:scroll;border-radius:16px;border:1.5px solid var(--gray-150);background:var(--white)}
-.booking-fallback{text-align:center;margin-top:28px}
-.booking-fallback p{font-size:14px;color:var(--gray-400)}
-.booking-fallback a{color:var(--orange);font-weight:600;text-decoration:none}
-.booking-fallback a:hover{color:var(--orange-hover)}
-
-.final-cta{padding:96px 0 112px;text-align:center;background:var(--gray-900);color:var(--white);position:relative;overflow:hidden}
-.final-cta::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(232,97,26,.15),transparent 70%);pointer-events:none}
-.final-cta .container{position:relative;z-index:1}
-.final-cta h2{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(32px,5vw,52px);line-height:1.1;letter-spacing:-.025em;margin-bottom:16px}
-.final-cta h2 .orange{color:var(--orange)}
-.final-cta p{font-size:17px;color:rgba(255,255,255,.55);max-width:480px;margin:0 auto 36px;line-height:1.6}
-.final-cta .subtext{font-size:13px;color:rgba(255,255,255,.35);margin-top:16px}
-
-/* FOOTER */
-footer{padding:36px 0;border-top:1px solid var(--gray-150)}
-footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-footer p{font-size:13px;color:var(--gray-400)}
-footer a{color:var(--gray-500);text-decoration:none;cursor:pointer}
-footer a:hover{color:var(--orange)}
-
-/* ABOUT PAGE */
-.about-hero{padding:120px 0 64px;background:var(--gray-900);color:var(--white);text-align:center;position:relative;overflow:hidden}
-.about-hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(232,97,26,.18),transparent 70%);pointer-events:none}
-.about-hero .container{position:relative;z-index:1;max-width:720px}
-.about-hero .kicker{color:var(--orange)}
-.about-hero h1{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(32px,5vw,52px);line-height:1.1;letter-spacing:-.025em;margin-bottom:16px}
-.about-hero p{font-size:18px;color:rgba(255,255,255,.6);line-height:1.65;max-width:520px;margin:0 auto}
-.about-body{max-width:720px;margin:0 auto;padding:64px 24px 96px}
-.about-body p{font-size:16px;line-height:1.8;color:var(--gray-600);margin-bottom:20px}
-.about-body p strong{color:var(--gray-900);font-weight:600}
-.about-body h2{font-family:'Fraunces',serif;font-weight:700;font-size:26px;color:var(--gray-900);margin:48px 0 16px;letter-spacing:-.015em;line-height:1.2}
-.about-body h2:first-child{margin-top:0}
-.founder-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:40px 0}
-.founder-card{background:var(--gray-50);border:1.5px solid var(--gray-150);border-radius:16px;padding:28px 24px}
-.founder-initials{width:48px;height:48px;border-radius:12px;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--white);margin-bottom:14px;font-family:'Outfit',sans-serif}
-.founder-card h3{font-size:17px;font-weight:600;color:var(--gray-900);margin-bottom:4px}
-.founder-card .founder-role{font-size:13px;color:var(--orange);font-weight:500;margin-bottom:10px}
-.founder-card p{font-size:14px;line-height:1.65;color:var(--gray-500);margin:0}
-.about-cta{background:var(--orange-light);border:1.5px solid var(--orange-100);border-radius:16px;padding:32px;text-align:center;margin-top:48px}
-.about-cta h3{font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--gray-900);margin-bottom:8px}
-.about-cta p{font-size:15px;color:var(--gray-500);margin-bottom:20px}
-.founder-photo{width:100%;border-radius:16px;border:1.5px solid var(--gray-150);display:block;margin-bottom:24px;object-fit:cover}
-@media(max-width:640px){.founder-cards{grid-template-columns:1fr}}
-
-/* LEGAL PAGES */
-.page-view{display:none}
-.page-view.active{display:block}
-.legal-header{padding:120px 0 48px;background:var(--gray-50);border-bottom:1px solid var(--gray-150)}
-.legal-header .container{max-width:720px}
-.legal-header h1{font-family:'Fraunces',serif;font-weight:700;font-size:36px;line-height:1.15;letter-spacing:-.02em;color:var(--gray-900);margin-bottom:8px}
-.legal-header .updated{font-size:14px;color:var(--gray-400)}
-.legal-body{max-width:720px;margin:0 auto;padding:48px 24px 96px}
-.legal-body h2{font-family:'Fraunces',serif;font-weight:700;font-size:22px;color:var(--gray-900);margin:40px 0 12px;letter-spacing:-.01em}
-.legal-body h2:first-child{margin-top:0}
-.legal-body h3{font-size:16px;font-weight:600;color:var(--gray-800);margin:28px 0 8px}
-.legal-body p{font-size:15px;line-height:1.75;color:var(--gray-600);margin-bottom:12px}
-.legal-body ul,.legal-body ol{margin:8px 0 16px 20px;list-style:none}
-.legal-body ul li,.legal-body ol li{font-size:15px;line-height:1.75;color:var(--gray-600);padding:3px 0;position:relative;padding-left:16px}
-.legal-body ul li::before{content:'';position:absolute;left:0;top:12px;width:5px;height:5px;border-radius:50%;background:var(--gray-300)}
-.legal-body ol{counter-reset:item}
-.legal-body ol li{counter-increment:item}
-.legal-body ol li::before{content:counter(item,lower-alpha) ')';position:absolute;left:-4px;top:3px;font-size:14px;color:var(--gray-400);font-weight:500;width:auto;height:auto;border-radius:0;background:none}
-.legal-body a{color:var(--orange);text-decoration:none}
-.legal-body a:hover{color:var(--orange-hover);text-decoration:underline}
-.legal-body strong{color:var(--gray-800);font-weight:600}
-.lc{background:var(--orange-light);border:1px solid var(--orange-100);border-radius:12px;padding:20px 24px;margin:20px 0}
-.lc p{color:var(--gray-700);margin-bottom:0}
-.lcn{background:var(--gray-50);border:1px solid var(--gray-150);border-radius:12px;padding:20px 24px;margin:20px 0}
-.lcn p{color:var(--gray-600);margin-bottom:0}
-
-/* IN-HOUSE ESTIMATOR */
-.estimator{padding:96px 0;background:var(--orange-light)}
-.estimator .container{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
-.est-copy .kicker{color:var(--orange)}
-.est-copy h2{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(30px,4vw,44px);line-height:1.12;letter-spacing:-.02em;color:var(--gray-900);margin-bottom:16px}
-.est-copy>p{font-size:16px;line-height:1.7;color:var(--gray-600);margin-bottom:24px;max-width:480px}
-.est-list{list-style:none;display:flex;flex-direction:column;gap:13px;margin-bottom:28px}
-.est-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--gray-700);line-height:1.5}
-.est-list li strong{color:var(--gray-900);font-weight:600}
-.est-ic{width:22px;height:22px;min-width:22px;border-radius:7px;background:var(--orange);display:flex;align-items:center;justify-content:center;margin-top:1px}
-.est-ic svg{color:#fff}
-.est-note{font-size:13px;font-weight:600;color:var(--orange);margin-top:14px}
-.est-card{background:#fff;border:1.5px solid var(--orange-100);border-radius:20px;padding:26px;box-shadow:0 16px 48px rgba(232,97,26,.12)}
-.est-card-head{display:flex;align-items:center;gap:14px;padding-bottom:18px;border-bottom:1px solid var(--gray-150);margin-bottom:18px}
-.est-avatar{width:52px;height:52px;border-radius:14px;background:var(--gray-900);color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;flex-shrink:0;font-family:'Outfit',sans-serif}
-.est-card-head h3{font-size:17px;font-weight:700;color:var(--gray-900);margin-bottom:2px}
-.est-role{font-size:13px;color:var(--orange);font-weight:500}
-.est-badge{margin-left:auto;font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--green);background:var(--green-light);padding:4px 9px;border-radius:6px;display:flex;align-items:center;gap:5px}
-.est-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.6s ease infinite}
-.est-stat-row{display:flex;gap:10px;margin-bottom:18px}
-.est-stat{flex:1;background:var(--gray-50);border-radius:12px;padding:14px 8px;text-align:center}
-.est-stat-num{font-family:'Fraunces',serif;font-size:24px;font-weight:700;color:var(--orange)}
-.est-stat-lbl{font-size:11px;color:var(--gray-500);margin-top:2px;line-height:1.3}
-.est-bubble{background:var(--gray-50);border-radius:12px;border-top-left-radius:4px;padding:14px 16px;font-size:14px;line-height:1.55;color:var(--gray-700)}
-.est-bubble strong{color:var(--gray-900);font-weight:600}
-@media(max-width:768px){.estimator .container{grid-template-columns:1fr;gap:32px}}
-
-/* Claude integration */
-.integ{padding:72px 0;background:var(--gray-50);border-top:1px solid var(--gray-150);border-bottom:1px solid var(--gray-150)}
-.integ .container{max-width:900px;text-align:center}
-.integ h2{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(26px,3.6vw,38px);line-height:1.15;letter-spacing:-.02em;color:var(--gray-900);margin-bottom:14px}
-.integ>.container>p{font-size:16px;line-height:1.7;color:var(--gray-600);max-width:600px;margin:0 auto 32px}
-.integ-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:left}
-.integ-card{background:var(--white);border:1.5px solid var(--gray-150);border-radius:14px;padding:22px 24px}
-.integ-card h3{font-size:15px;font-weight:700;color:var(--gray-900);margin-bottom:7px}
-.integ-card p{font-size:14px;line-height:1.6;color:var(--gray-600)}
-@media(max-width:768px){.integ-grid{grid-template-columns:1fr}}
-.claude-sec{padding:96px 0;background:var(--gray-900)}
+/* ---- Claude ---- */
 .claude-sec .container{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-.claude-copy .kicker{color:#E8825A}
-.claude-copy h2{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(30px,4vw,44px);line-height:1.12;letter-spacing:-.02em;color:#fff;margin-bottom:16px}
-.claude-copy h2 .claude-hl{color:#E8825A}
-.claude-copy>p{font-size:16px;line-height:1.7;color:var(--gray-300);margin-bottom:24px;max-width:480px}
-.claude-copy>p strong{color:#fff;font-weight:600}
-.claude-list{list-style:none;display:flex;flex-direction:column;gap:13px;margin-bottom:28px}
-.claude-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--gray-300);line-height:1.5}
-.claude-list li strong{color:#fff;font-weight:600}
-.claude-ic{width:22px;height:22px;min-width:22px;border-radius:7px;background:#E8825A;display:flex;align-items:center;justify-content:center;margin-top:1px}
-.claude-ic svg{color:#fff}
+.claude-copy .h2{margin-bottom:16px}
+.claude-copy .h2 .hl{color:#E8825A}
+.claude-copy .lead{margin-bottom:24px}
+.claude-copy .check-list{margin-bottom:30px}
+.claude-copy .check-list .ck{background:#E8825A}
 .claude-note{font-size:13px;font-weight:600;color:#E8825A;margin-top:14px}
 .claude-card{background:#242424;border:1.5px solid #3A3A3A;border-radius:20px;padding:24px;box-shadow:0 16px 48px rgba(0,0,0,.4)}
 .claude-card-head{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid #3A3A3A;margin-bottom:16px}
 .claude-logo-mark{width:40px;height:40px;border-radius:11px;background:#E8825A;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.claude-card-head h3{font-size:15px;font-weight:700;color:#fff;margin-bottom:1px}
+.claude-logo-mark svg{width:20px;height:20px}
+.claude-card-head h3{font-size:15px;color:#fff;margin-bottom:1px}
 .claude-card-sub{font-size:12px;color:var(--gray-400);font-weight:500}
 .claude-chat{display:flex;flex-direction:column;gap:12px}
 .claude-msg{border-radius:12px;padding:12px 15px;font-size:13.5px;line-height:1.55;max-width:92%}
 .claude-msg.user{background:#3A3A3A;color:var(--gray-200);align-self:flex-end;border-bottom-right-radius:4px}
 .claude-msg.ai{background:#2E2A28;border:1px solid rgba(232,130,90,.25);color:var(--gray-200);align-self:flex-start;border-bottom-left-radius:4px}
-.claude-msg.ai strong{color:#fff;font-weight:600}
-.claude-msg.ai .claude-msg-tag{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#E8825A;margin-bottom:6px}
-@media(max-width:768px){.claude-sec .container{grid-template-columns:1fr;gap:32px}.claude-msg{max-width:100%}}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  .pain-grid,.guar-grid,.roi-inputs{grid-template-columns:1fr}
-  .mock-sidebar{display:none}
-  .mock-export-grid{grid-template-columns:1fr}
-  .tour-tabs{gap:6px}
-  .tour-tab{font-size:13px;padding:7px 14px}
-  .tour-desc{flex-direction:column;text-align:center}
-  .tour-screens{min-height:260px}
-  .pricing-compare{grid-template-columns:1fr;gap:12px}
-  .pr-vs{padding:8px 0}
-  .stack-card{grid-template-columns:1fr}
-  .stack-val{border-left:none;border-top:1px solid var(--gray-150);padding:14px 24px;flex-direction:row;gap:8px;justify-content:flex-start}
-  .stack-card.core .stack-val{border-top-color:rgba(232,97,26,.2)}
-  .roi-results{grid-template-columns:1fr}
-  .hero-stats{gap:32px}
-  .offer-total{flex-direction:column;text-align:center}
-  .ot-right{text-align:center}
-}
+.claude-msg.ai strong{color:#fff}
+.claude-tag{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#E8825A;margin-bottom:6px}
+.claude-tag svg{width:9px;height:9px}
+@media(max-width:860px){.claude-sec .container{grid-template-columns:1fr;gap:32px}.claude-msg{max-width:100%}}
 </style>
-
-<!-- Meta Pixel -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1881764475868036');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel -->
 </head>
 <body>
-
-<nav id="nav">
-  <div class="container">
-    <a class="nav-logo" id="nav-logo">
-      <div class="nav-logo-icon"><div class="corner-tl"></div><div class="corner-br"></div></div>
-      <div class="nav-logo-text">takeoff<span>.ai</span></div>
+<nav class="site-nav" id="nav">
+  <div class="container nav-inner">
+    <a class="nav-logo" href="/" aria-label="TakeoffAI home">
+      <span class="nav-logo-icon"><span class="corner-tl"></span><span class="corner-br"></span></span>
+      <span class="nav-logo-text">takeoff<span>.ai</span></span>
     </a>
-    <div id="nav-main-links">
+    <div class="nav-links" id="nav-links">
+      <a href="/product">Product</a>
+      <a href="/simpro">Simpro</a>
       <a href="/pricing">Pricing</a>
-      <a href="javascript:void(0)" onclick="showPage('about')">Our story</a>
       <a href="/compare">Compare</a>
-      <a href="/demo">Book a demo</a>
+      <a href="/about">About</a>
     </div>
     <div class="nav-right">
-      <a href="https://app.takeoffai.com.au/signup" class="nav-login" target="_blank" rel="noopener">Log in</a>
-      <a href="/demo" class="nav-cta">Book a demo</a>
-      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="https://app.takeoffai.com.au/login" class="nav-login">Log in</a>
+      <a href="https://app.takeoffai.com.au/signup" class="btn btn-primary btn-sm nav-cta">Try it free</a>
+      <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile"><span></span><span></span><span></span></button>
     </div>
-    <a id="nav-back" style="display:none">&larr; Back to home</a>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="/product">Product</a>
+    <a href="/simpro">Simpro integration</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/compare">Compare</a>
+    <a href="/about">About</a>
+    <a href="/demo">Book a demo</a>
+    <a href="https://app.takeoffai.com.au/login">Log in</a>
+    <a href="https://app.takeoffai.com.au/signup" class="nav-mobile-cta">Try it free</a>
   </div>
 </nav>
+<main>
 
-<div class="nav-mobile-menu" id="nav-mobile-menu">
-  <a href="#offer" onclick="closeMobileMenu()">What's included</a>
-  <a href="/pricing">Pricing</a>
-  <a href="#roi" onclick="closeMobileMenu()">ROI calculator</a>
-  <a href="javascript:void(0)" onclick="showPage('about');closeMobileMenu()">Our story</a>
-  <a href="/compare">Compare</a>
-  <a href="/demo">Book a demo</a>
-  <a href="https://app.takeoffai.com.au/signup" target="_blank" rel="noopener">Log in</a>
-  <a href="/demo" class="nav-mobile-cta">Book a demo</a>
-</div>
-
-<!-- ========== MAIN PAGE ========== -->
-<div id="page-main">
-
-<section class="hero">
+<!-- ============ HERO ============ -->
+<section class="home-hero">
   <div class="container">
-    <h1 class="anim-hero d2">Double your bids.<br>Without hiring another <span class="orange">estimator.</span></h1>
-    <p class="hero-sub anim-hero d3">TakeoffAI replaces 80% of manual electrical takeoff work. <strong>Upload plans. AI counts. You review.</strong> Your estimator does the work of three.</p>
+    <a href="/simpro" class="pill anim-hero d1"><span class="pill-tag">New</span> Official Simpro integration partner <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+    <h1 class="h1 anim-hero d2">Upload your plans.<br>Every symbol counted<br>in <span class="orange">40 seconds.</span></h1>
+    <p class="lead anim-hero d3">AI take-off for Australian electrical contractors. It reads the legend, counts every downlight, GPO, switch and data point, and marks each one on the drawing so you can check it yourself.</p>
     <div class="hero-ctas anim-hero d4">
-      <a href="#book-call" class="btn-primary lg">Book a demo <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-      <a href="#how-it-works" class="btn-ghost">See it in action</a>
+      <a href="https://app.takeoffai.com.au/signup" class="btn btn-primary btn-lg">Try it free <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="/demo" class="btn btn-ghost btn-lg">Book a demo</a>
     </div>
-    <div class="hero-stats anim-hero d5">
-      <div class="hero-stat"><div class="hero-stat-num"><span class="orange">40</span>s</div><div class="hero-stat-label">Average takeoff time</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">2–3<span class="orange">x</span></div><div class="hero-stat-label">More bids submitted</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">$<span class="orange">0</span></div><div class="hero-stat-label">Software cost — pay per take-off</div></div>
-    </div>
+    <ul class="hero-trust anim-hero d5">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>2,000 free credits on sign-up</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No credit card</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Price shown before every take-off</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>No result, no charge</li>
+    </ul>
   </div>
 </section>
 
-<section class="product-shot">
+<section class="home-shot">
   <div class="container">
-    <div style="text-align:center;margin-bottom:28px;">
-      <div class="kicker">The product</div>
-      <h2 class="section-heading" style="margin:0 auto 12px;">AI reads your plans.<br>Every symbol counted. No manual work.</h2>
-      <p class="section-sub" style="margin:0 auto;">Upload any PDF drawing set and our AI estimating engine identifies every downlight, GPO, switch, and data point — room by room, sheet by sheet — in seconds. You review, confirm, and export. The AI does the counting so your estimator doesn't have to.</p>
+    <div class="product-frame anim-hero d6">
+      <div class="product-frame-bar"><div class="product-frame-dot"></div><div class="product-frame-dot"></div><div class="product-frame-dot"></div><span class="product-frame-url">app.takeoffai.com.au</span></div>
+      <iframe src="/takeoffai-hero-animation.html" title="TakeoffAI counting symbols on an electrical drawing" scrolling="no" loading="eager" data-anim></iframe>
     </div>
-    <div class="product-frame anim">
-      <div class="product-frame-bar">
-        <div class="product-frame-dot"></div>
-        <div class="product-frame-dot"></div>
-        <div class="product-frame-dot"></div>
-      </div>
-      <iframe src="/takeoffai-hero-animation.html" title="TakeoffAI — AI electrical takeoff in action" scrolling="no" allowtransparency="true"></iframe>
+    <p class="caption">A PDF drawing set going in, and every detected symbol marked on the plan coming out.</p>
+  </div>
+</section>
+
+<section class="home-stats">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat"><div class="stat-num"><span class="orange">40</span>s</div><div class="stat-label">Average AI count time</div></div>
+      <div class="stat"><div class="stat-num">95<span class="orange">%+</span></div><div class="stat-label">Accuracy on standard symbols</div></div>
+      <div class="stat"><div class="stat-num">$<span class="orange">0</span></div><div class="stat-label">Software cost. Pay per AI take-off</div></div>
+      <div class="stat"><div class="stat-num">2,000</div><div class="stat-label">Free credits on every new account</div></div>
     </div>
   </div>
 </section>
 
-<section class="tour" id="how-it-works">
-  <div class="container" style="max-width:1040px">
-    <div class="tour-header">
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section" id="how-it-works">
+  <div class="container">
+    <div class="sec-head center">
       <div class="kicker">How it works</div>
-      <h2 class="section-heading" style="margin:0 auto 12px;">From PDF to finished takeoff<br>in under a minute.</h2>
-      <p class="section-sub" style="margin:0 auto;">Four steps. No database setup. No training required. See it for yourself.</p>
+      <h2 class="h2">From PDF to bill of quantities<br>in four steps.</h2>
+      <p class="lead">No database to set up, no symbol library to build first. Create an account, upload a set and see what it finds.</p>
     </div>
-
-    <div class="tour-tabs">
-      <button class="tour-tab active" data-step="0">1 · Upload Plans</button>
-      <button class="tour-tab" data-step="1">2 · AI Detects &amp; Counts</button>
-      <button class="tour-tab" data-step="2">3 · Review Results</button>
-      <button class="tour-tab" data-step="3">4 · Export</button>
+    <div class="steps-grid">
+      <div class="step anim"><div class="step-num">1</div><h3>Upload the drawing set</h3><p>Drop in the whole PDF binder. TakeoffAI works out which sheets are electrical and reads the legend itself.</p></div>
+      <div class="step anim"><div class="step-num">2</div><h3>AI counts every symbol</h3><p>Downlights, GPOs, switches, data points, smoke detectors, counted sheet by sheet with a marker placed on each one.</p></div>
+      <div class="step anim"><div class="step-num">3</div><h3>You review</h3><p>Check the markers against the drawing, correct anything, and answer the RFIs it raised where the plan was ambiguous.</p></div>
+      <div class="step anim"><div class="step-num">4</div><h3>Export or push to Simpro</h3><p>Excel or PDF bill of quantities, or a quote priced with your own rates pushed straight into Simpro.</p></div>
     </div>
-    <div class="tour-progress-bar"><div class="tour-progress-fill" id="tour-fill"></div></div>
+    <p class="sec-foot"><a href="/product" class="link">See the full product walkthrough →</a></p>
+  </div>
+</section>
 
-    <div class="product-frame tour-frame">
-      <div class="product-frame-bar">
-        <div class="product-frame-dot"></div>
-        <div class="product-frame-dot"></div>
-        <div class="product-frame-dot"></div>
-        <span style="margin-left:8px;font-size:12px;color:var(--gray-400);font-weight:500">TakeoffAI — app.takeoffai.com.au</span>
+<!-- ============ BEFORE / AFTER ============ -->
+<section class="section section-paper">
+  <div class="container">
+    <div class="sec-head center">
+      <div class="kicker">Why contractors switch</div>
+      <h2 class="h2">Counting is the slowest part<br>of every bid.</h2>
+      <p class="lead">A commercial set takes an estimator six to ten hours by hand. Miss one room and the margin is gone before the job starts.</p>
+    </div>
+    <div class="vs-grid">
+      <div class="vs-card vs-old anim">
+        <div class="vs-label">By hand</div>
+        <div class="vs-big">6–10 hrs</div>
+        <div class="vs-big-sub">per commercial drawing set</div>
+        <ul>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Sheet by sheet, symbol by symbol, with a highlighter</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>One missed device and you eat the difference on site</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Bids you can't get to go to someone who could</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Then the whole count gets re-keyed into a quote</li>
+        </ul>
       </div>
-      <div class="tour-screens">
-
-        <!-- Step 0: Upload -->
-        <div class="tour-screen active" data-screen="0">
-          <div class="mock-sidebar">
-            <div class="mock-nav-title">Projects</div>
-            <div class="mock-project-item active-item">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-              Richmond Office
-            </div>
-            <div class="mock-project-item">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-              Thornbury Units
-            </div>
-            <div class="mock-new-btn">+ New project</div>
-          </div>
-          <div class="mock-main" style="display:flex;flex-direction:column;justify-content:center">
-            <div style="font-size:14px;font-weight:600;color:var(--gray-800);margin-bottom:16px">Upload drawing set</div>
-            <div class="mock-drop-zone">
-              <div class="mock-drop-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-              </div>
-              <div class="mock-drop-title">Drop your PDF drawing set here</div>
-              <div class="mock-drop-sub">Or click to browse — multi-sheet sets supported</div>
-              <div class="mock-badges">
-                <span class="mock-badge">PDF</span>
-                <span class="mock-badge">Multi-sheet</span>
-                <span class="mock-badge">Electrical</span>
-                <span class="mock-badge">Architectural</span>
-              </div>
-              <button class="mock-upload-btn">Browse files</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 1: AI Detects -->
-        <div class="tour-screen" data-screen="1">
-          <div class="mock-sidebar">
-            <div class="mock-nav-title">Sheets (12)</div>
-            <div class="mock-sheet-item done">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-001 Ground Flr
-            </div>
-            <div class="mock-sheet-item done">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-002 Level 1
-            </div>
-            <div class="mock-sheet-item done">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-003 Level 2
-            </div>
-            <div class="mock-sheet-item done">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-004 Level 3
-            </div>
-            <div class="mock-sheet-item done">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-005 Level 4
-            </div>
-            <div class="mock-sheet-item done">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-006 Level 5
-            </div>
-            <div class="mock-sheet-item done">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-007 Level 6
-            </div>
-            <div class="mock-sheet-item processing">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> E-008 Level 7
-            </div>
-            <div class="mock-sheet-item" style="color:var(--gray-300)">E-009 Roof</div>
-            <div class="mock-sheet-item" style="color:var(--gray-300)">E-010 Basement</div>
-            <div class="mock-sheet-item" style="color:var(--gray-300)">E-011 Details</div>
-            <div class="mock-sheet-item" style="color:var(--gray-300)">E-012 Legend</div>
-          </div>
-          <div class="mock-main">
-            <div class="mock-status"><strong>Analysing Sheet 8 of 12</strong> — E-008 Level 7 Electrical</div>
-            <div class="mock-progress-track"><div class="mock-progress-inner" id="tour-prog-bar" style="width:65%"></div></div>
-            <div class="mock-plan">
-              <div class="mock-plan-tag"><span class="dot"></span> Live markup — E-008</div>
-              <svg viewBox="0 0 460 260" role="img" aria-label="Mock electrical floor plan with AI markups">
-                <rect x="12" y="12" width="436" height="236" rx="3" fill="#FAFAFA" stroke="#3A3A3A" stroke-width="3"/>
-                <!-- interior walls with door gaps -->
-                <line x1="200" y1="12" x2="200" y2="100" stroke="#3A3A3A" stroke-width="2.5"/>
-                <line x1="200" y1="140" x2="200" y2="150" stroke="#3A3A3A" stroke-width="2.5"/>
-                <line x1="12" y1="150" x2="120" y2="150" stroke="#3A3A3A" stroke-width="2.5"/>
-                <line x1="170" y1="150" x2="300" y2="150" stroke="#3A3A3A" stroke-width="2.5"/>
-                <line x1="300" y1="150" x2="300" y2="248" stroke="#3A3A3A" stroke-width="2.5"/>
-                <!-- room labels -->
-                <text x="95" y="142" fill="#C4C4C4" font-family="Outfit,sans-serif" font-size="9" font-weight="600" letter-spacing="1" text-anchor="middle">LIVING</text>
-                <text x="322" y="142" fill="#C4C4C4" font-family="Outfit,sans-serif" font-size="9" font-weight="600" letter-spacing="1" text-anchor="middle">KITCHEN</text>
-                <text x="150" y="242" fill="#C4C4C4" font-family="Outfit,sans-serif" font-size="9" font-weight="600" letter-spacing="1" text-anchor="middle">BED 1</text>
-                <text x="374" y="242" fill="#C4C4C4" font-family="Outfit,sans-serif" font-size="9" font-weight="600" letter-spacing="1" text-anchor="middle">BED 2</text>
-                <!-- downlights (orange) -->
-                <g class="mock-mark" style="animation-delay:.05s"><circle cx="55" cy="50" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="55" cy="50" r="1.6" fill="#E8611A"/></g>
-                <g class="mock-mark" style="animation-delay:.1s"><circle cx="110" cy="50" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="110" cy="50" r="1.6" fill="#E8611A"/></g>
-                <g class="mock-mark" style="animation-delay:.15s"><circle cx="160" cy="50" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="160" cy="50" r="1.6" fill="#E8611A"/></g>
-                <g class="mock-mark" style="animation-delay:.2s"><circle cx="55" cy="105" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="55" cy="105" r="1.6" fill="#E8611A"/></g>
-                <g class="mock-mark" style="animation-delay:.25s"><circle cx="110" cy="105" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="110" cy="105" r="1.6" fill="#E8611A"/></g>
-                <g class="mock-mark" style="animation-delay:.12s"><circle cx="250" cy="50" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="250" cy="50" r="1.6" fill="#E8611A"/></g>
-                <g class="mock-mark" style="animation-delay:.18s"><circle cx="320" cy="50" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="320" cy="50" r="1.6" fill="#E8611A"/></g>
-                <g class="mock-mark" style="animation-delay:.24s"><circle cx="400" cy="50" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="400" cy="50" r="1.6" fill="#E8611A"/></g>
-                <g class="mock-mark" style="animation-delay:.3s"><circle cx="255" cy="108" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="255" cy="108" r="1.6" fill="#E8611A"/></g>
-                <g class="mock-mark" style="animation-delay:.34s"><circle cx="365" cy="108" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="365" cy="108" r="1.6" fill="#E8611A"/></g>
-                <g class="mock-mark" style="animation-delay:.28s"><circle cx="72" cy="200" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="72" cy="200" r="1.6" fill="#E8611A"/></g>
-                <g class="mock-mark" style="animation-delay:.32s"><circle cx="155" cy="205" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="155" cy="205" r="1.6" fill="#E8611A"/></g>
-                <g class="mock-mark" style="animation-delay:.36s"><circle cx="240" cy="200" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="240" cy="200" r="1.6" fill="#E8611A"/></g>
-                <g class="mock-mark" style="animation-delay:.4s"><circle cx="375" cy="200" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="375" cy="200" r="1.6" fill="#E8611A"/></g>
-                <!-- GPOs (blue) -->
-                <g class="mock-mark" style="animation-delay:.42s"><rect x="19" y="70" width="10" height="10" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/></g>
-                <g class="mock-mark" style="animation-delay:.46s"><rect x="19" y="200" width="10" height="10" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/></g>
-                <g class="mock-mark" style="animation-delay:.5s"><rect x="181" y="35" width="10" height="10" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/></g>
-                <g class="mock-mark" style="animation-delay:.54s"><rect x="431" y="90" width="10" height="10" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/></g>
-                <g class="mock-mark" style="animation-delay:.58s"><rect x="275" y="231" width="10" height="10" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/></g>
-                <g class="mock-mark" style="animation-delay:.62s"><rect x="415" y="200" width="10" height="10" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/></g>
-                <!-- switches (green) -->
-                <g class="mock-mark" style="animation-delay:.5s"><path d="M188,112 L194,123 L182,123 Z" fill="none" stroke="#1B8C4F" stroke-width="2" stroke-linejoin="round"/></g>
-                <g class="mock-mark" style="animation-delay:.56s"><path d="M140,154 L146,165 L134,165 Z" fill="none" stroke="#1B8C4F" stroke-width="2" stroke-linejoin="round"/></g>
-                <g class="mock-mark" style="animation-delay:.6s"><path d="M310,156 L316,167 L304,167 Z" fill="none" stroke="#1B8C4F" stroke-width="2" stroke-linejoin="round"/></g>
-                <!-- data points (purple) -->
-                <g class="mock-mark" style="animation-delay:.64s"><path d="M330,134 L337,141 L330,148 L323,141 Z" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linejoin="round"/></g>
-                <g class="mock-mark" style="animation-delay:.68s"><path d="M110,229 L117,236 L110,243 L103,236 Z" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linejoin="round"/></g>
-                <!-- smoke detectors (red) -->
-                <g class="mock-mark" style="animation-delay:.7s"><circle cx="110" cy="75" r="6" fill="none" stroke="#D94040" stroke-width="2"/><circle cx="110" cy="75" r="2" fill="#D94040"/></g>
-                <g class="mock-mark" style="animation-delay:.74s"><circle cx="360" cy="200" r="6" fill="none" stroke="#D94040" stroke-width="2"/><circle cx="360" cy="200" r="2" fill="#D94040"/></g>
-              </svg>
-            </div>
-            <div class="mock-legend">
-              <span class="mock-legend-item"><span class="mock-legend-swatch" style="background:#E8611A"></span>Downlights</span>
-              <span class="mock-legend-item"><span class="mock-legend-swatch" style="background:#2563EB"></span>GPOs</span>
-              <span class="mock-legend-item"><span class="mock-legend-swatch" style="background:#1B8C4F"></span>Switches</span>
-              <span class="mock-legend-item"><span class="mock-legend-swatch" style="background:#7C3AED"></span>Data points</span>
-              <span class="mock-legend-item"><span class="mock-legend-swatch" style="background:#D94040"></span>Smoke detectors</span>
-            </div>
-            <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-400);margin-bottom:10px">Detected so far</div>
-            <div class="mock-counter-row"><span class="mock-counter-label">Downlights</span><span class="mock-counter-val" id="cnt-downlights">0</span></div>
-            <div class="mock-counter-row"><span class="mock-counter-label">GPOs (power points)</span><span class="mock-counter-val" id="cnt-gpos">0</span></div>
-            <div class="mock-counter-row"><span class="mock-counter-label">Switches</span><span class="mock-counter-val" id="cnt-switches">0</span></div>
-            <div class="mock-counter-row"><span class="mock-counter-label">Smoke detectors</span><span class="mock-counter-val" id="cnt-smoke-det">0</span></div>
-            <div class="mock-counter-row"><span class="mock-counter-label">Data points</span><span class="mock-counter-val" id="cnt-data-pts">0</span></div>
-          </div>
-        </div>
-
-        <!-- Step 2: Review -->
-        <div class="tour-screen" data-screen="2">
-          <div class="mock-sidebar">
-            <div class="mock-nav-title">Sheets (12)</div>
-            <div class="mock-sheet-item" style="color:var(--gray-400);font-size:12px;font-weight:600">All sheets</div>
-            <div class="mock-sheet-item done"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-001 Ground Flr</div>
-            <div class="mock-sheet-item done"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-002 Level 1</div>
-            <div class="mock-sheet-item done"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-003 Level 2</div>
-            <div class="mock-sheet-item done"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-004 Level 3</div>
-          </div>
-          <div class="mock-main">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-              <div style="font-size:14px;font-weight:600;color:var(--gray-800)">Takeoff results — all sheets</div>
-              <div style="font-size:12px;color:var(--green);font-weight:600;display:flex;align-items:center;gap:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 12 sheets complete</div>
-            </div>
-            <table class="mock-table">
-              <thead><tr><th>Symbol</th><th>Count</th><th>Sheets</th><th></th></tr></thead>
-              <tbody>
-                <tr><td><span class="mock-check">✓</span> Downlights</td><td>247</td><td>E-001–E-012</td><td><span class="mock-edit">Edit</span></td></tr>
-                <tr><td><span class="mock-check">✓</span> GPOs (power points)</td><td>183</td><td>E-001–E-010</td><td><span class="mock-edit">Edit</span></td></tr>
-                <tr><td><span class="mock-check">✓</span> Switches</td><td>94</td><td>E-001–E-012</td><td><span class="mock-edit">Edit</span></td></tr>
-                <tr><td><span class="mock-check">✓</span> Smoke detectors</td><td>38</td><td>E-001–E-009</td><td><span class="mock-edit">Edit</span></td></tr>
-                <tr><td><span class="mock-check">✓</span> Data points</td><td>72</td><td>E-001–E-008</td><td><span class="mock-edit">Edit</span></td></tr>
-                <tr><td><span class="mock-check">✓</span> Junction boxes</td><td>56</td><td>E-001–E-012</td><td><span class="mock-edit">Edit</span></td></tr>
-                <tr style="background:var(--gray-50)"><td>Total items</td><td>690</td><td>12 sheets</td><td></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Step 3: Export -->
-        <div class="tour-screen" data-screen="3">
-          <div class="mock-sidebar">
-            <div class="mock-nav-title">Project</div>
-            <div class="mock-project-item active-item">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-              Richmond Office
-            </div>
-            <div style="margin-top:16px" class="mock-nav-title">Summary</div>
-            <div style="font-size:12px;color:var(--gray-500);padding:4px 10px">690 items counted</div>
-            <div style="font-size:12px;color:var(--gray-500);padding:4px 10px">12 sheets processed</div>
-            <div style="font-size:12px;color:var(--green);padding:4px 10px;font-weight:600">Ready to export</div>
-          </div>
-          <div class="mock-main">
-            <div style="font-size:14px;font-weight:600;color:var(--gray-800);margin-bottom:6px">Export your takeoff</div>
-            <div style="font-size:13px;color:var(--gray-400);margin-bottom:20px">Choose your format — all include the full BOQ with 690 counted items.</div>
-            <div class="mock-export-grid">
-              <div class="mock-export-card">
-                <div class="mock-export-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg></div>
-                <div class="mock-export-name">Excel BOQ</div>
-                <div class="mock-export-sub">Itemised bill of quantities, editable spreadsheet</div>
-                <button class="mock-export-btn">Export .xlsx</button>
-              </div>
-              <div class="mock-export-card">
-                <div class="mock-export-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
-                <div class="mock-export-name">PDF Report</div>
-                <div class="mock-export-sub">Print-ready summary with quantities by sheet</div>
-                <button class="mock-export-btn">Export .pdf</button>
-              </div>
-              <div class="mock-export-card featured">
-                <div class="mock-export-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
-                <div class="mock-export-name">Bid Proposal</div>
-                <div class="mock-export-sub">Branded PDF with scope, exclusions &amp; pricing — ready to send</div>
-                <button class="mock-export-btn">Generate proposal</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /tour-screens -->
-    </div><!-- /product-frame -->
-
-    <div class="tour-desc">
-      <div class="tour-desc-text" id="tour-desc-text">Drop in any multi-sheet PDF drawing set — residential, commercial, or industrial. No reformatting or page splitting needed.</div>
-      <div class="tour-nav">
-        <button class="tour-prev">&#8592; Prev</button>
-        <button class="tour-next">Next &#8594;</button>
+      <div class="vs-card vs-new anim">
+        <div class="vs-label">With TakeoffAI</div>
+        <div class="vs-big">40 sec</div>
+        <div class="vs-big-sub">to a first count, then a review</div>
+        <ul>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Every item marked on the drawing so you can see what was counted</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>RFIs raised where the drawing is ambiguous, instead of a guess</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Your estimator reviews and prices instead of counting</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>The finished count becomes a Simpro quote without re-keying</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<section class="pain"><div class="container"><div class="pain-header"><div class="kicker">The problem</div><h2 class="section-heading">Manual takeoffs are killing<br>your growth</h2><p class="section-sub">Every bid you can't get to is revenue on the table. Every counting error erodes margin.</p></div>
-<div class="pain-grid">
-  <div class="pain-card anim"><div class="pain-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div><h3>Takeoffs consume 50%+ of your bid cycle</h3><p>Counting thousands of devices from drawings by hand — downlights, GPOs, switches, junction boxes — sheet by sheet.</p><span class="pain-tag">15–20 hrs/week lost to counting</span></div>
-  <div class="pain-card anim"><div class="pain-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><h3>Can't find or afford another estimator</h3><p>Experienced electrical estimators earn $95K–$130K+. The hiring pool is tiny and ramp time is 3–6 months.</p><span class="pain-tag">$120K–$150K true cost per hire</span></div>
-  <div class="pain-card anim"><div class="pain-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></div><h3>One missed device, thousands in margin gone</h3><p>Underbidding from counting errors is invisible until the job's underway. One rushed takeoff — you eat the difference.</p><span class="pain-tag">1 error can cost $5K–$30K+</span></div>
-  <div class="pain-card anim"><div class="pain-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div><h3>Legacy software takes months to learn</h3><p>ConEst, Accubid, McCormick — massive database setup, weeks of training, steep learning curves.</p><span class="pain-tag">4–6 weeks just to configure</span></div>
-</div></div></section>
-
-<section class="estimator" id="estimator"><div class="container">
-  <div class="est-copy anim">
-    <div class="kicker">The human layer</div>
-    <h2>AI does the counting.<br>A real estimator has your back.</h2>
-    <p>TakeoffAI isn't software you're left alone with. Annual members get a dedicated <strong>in-house electrical estimator</strong> — a real person who knows the trade and works your jobs alongside the AI.</p>
-    <ul class="est-list">
-      <li><span class="est-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><div><strong>5 full takeoffs done for you, every month.</strong> Hand over a drawing set, get back a reviewed, bid-ready BOQ.</div></li>
-      <li><span class="est-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><div><strong>A second set of eyes before you bid.</strong> Tricky sheets, odd symbols, tight margins — sanity-checked by a human.</div></li>
-      <li><span class="est-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><div><strong>No hiring, no $120K salary.</strong> Estimator capacity on tap — without another head on payroll.</div></li>
-    </ul>
-    <a href="#book-call" class="btn-primary">Book a demo <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-    <div class="est-note">Ask about done-for-you take-offs on your demo call.</div>
-  </div>
-  <div class="est-card anim">
-    <div class="est-card-head">
-      <div class="est-avatar"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
-      <div>
-        <h3>Senior Estimator</h3>
-        <div class="est-role">TakeoffAI in-house team</div>
-      </div>
-      <div class="est-badge"><span class="dot"></span> Online</div>
-    </div>
-    <div class="est-stat-row">
-      <div class="est-stat"><div class="est-stat-num">5</div><div class="est-stat-lbl">takeoffs / month</div></div>
-      <div class="est-stat"><div class="est-stat-num">12+</div><div class="est-stat-lbl">yrs on the tools</div></div>
-      <div class="est-stat"><div class="est-stat-num">24h</div><div class="est-stat-lbl">avg turnaround</div></div>
-    </div>
-    <div class="est-bubble">"Ran your <strong>Richmond Office</strong> set — 690 items counted and reviewed. Flagged 3 GPOs on E-007 that weren't in the legend. Bid-ready BOQ is in your inbox."</div>
-  </div>
-</div></section>
-
-<section class="claude-sec" id="claude"><div class="container">
-  <div class="claude-copy anim">
-    <div class="kicker">New — Claude integration</div>
-    <h2>TakeoffAI now integrates with <span class="claude-hl">Claude</span></h2>
-    <p>Your takeoff and your estimate, in one place. TakeoffAI connects with <strong>Claude</strong> — Anthropic's AI assistant — so once the counting is done, you can ask questions, build the estimate, and get bid-ready without leaving the app. An all-in-one takeoff and estimating workflow.</p>
-    <ul class="claude-list">
-      <li><span class="claude-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><div><strong>Ask your drawings anything.</strong> "How many downlights on level 2?" "Which sheets changed in the addendum?" Plain-English answers, straight from your takeoff data.</div></li>
-      <li><span class="claude-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><div><strong>Go from counts to estimate.</strong> Claude helps turn your BOQ into a priced estimate — labour, materials, and margin — using your own rates.</div></li>
-      <li><span class="claude-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><div><strong>Draft the paperwork in seconds.</strong> Scopes, exclusions, RFIs, and proposal copy generated from the actual takeoff — ready to review and send.</div></li>
-    </ul>
-    <a href="#book-call" class="btn-primary">Book a demo <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-    <div class="claude-note">Included on every TakeoffAI plan.</div>
-  </div>
-  <div class="claude-card anim">
-    <div class="claude-card-head">
-      <div class="claude-logo-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="21"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="5.6" y1="5.6" x2="18.4" y2="18.4"></line><line x1="18.4" y1="5.6" x2="5.6" y2="18.4"></line></svg></div>
-      <div>
-        <h3>Claude in TakeoffAI</h3>
-        <div class="claude-card-sub">Connected to: Richmond Office — 690 items</div>
-      </div>
-    </div>
-    <div class="claude-chat">
-      <div class="claude-msg user">What's driving the cost on this job, and what should I watch before I bid?</div>
-      <div class="claude-msg ai"><span class="claude-msg-tag"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="21"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="5.6" y1="5.6" x2="18.4" y2="18.4"></line><line x1="18.4" y1="5.6" x2="5.6" y2="18.4"></line></svg> Claude</span><br>Biggest cost driver is <strong>lighting — 212 downlights</strong> across levels 1–3, roughly 38% of material spend at your standard rates. Two things to check before bidding: <strong>E-007 shows 3 GPOs not in the legend</strong>, and the level 2 data points jumped from 24 to 31 in the latest addendum. Want me to draft the estimate with a line-item breakdown?</div>
-      <div class="claude-msg user">Yes — use my July labour rates.</div>
-    </div>
-  </div>
-</div></section>
-
-<section class="integ" id="simpro"><div class="container">
-  <div class="kicker">Integrations</div>
-  <h2>Your counts don't stop at the take-off.</h2>
-  <p>TakeoffAI connects to <strong>SimPro</strong>, so a finished take-off becomes a priced quote in the system you already run your jobs from — without anyone retyping a bill of quantities.</p>
-  <div class="integ-grid">
-    <div class="integ-card">
-      <h3>Push quotes straight to SimPro</h3>
-      <p>Send the finished quote into SimPro from TakeoffAI. No CSV shuffling, no re-keying line items, no transcription errors between the count and the quote.</p>
-    </div>
-    <div class="integ-card">
-      <h3>Priced with your own rates</h3>
-      <p>Counts are costed against your price lists and labour rates before they go across, so what lands in SimPro is a quote you can send, not a raw parts list.</p>
-    </div>
-    <div class="integ-card">
-      <h3>Included free</h3>
-      <p>The SimPro connection is part of the free platform — like every other export. You're only ever charged for the AI take-off itself.</p>
-    </div>
-  </div>
-  <p style="font-size:12px;color:var(--gray-400);margin:28px auto 0">SimPro is a trademark of its respective owner. TakeoffAI is an independent product and is not affiliated with or endorsed by SimPro.</p>
-</div></section>
-
-<section class="offer" id="offer"><div class="container"><div class="offer-header"><div class="offer-name-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> The 90-day bid domination system</div><h2 class="section-heading">Everything you get</h2><p class="section-sub">Not just software — a complete system to transform your estimating capacity and win rate.</p></div>
-<div class="stack">
-  <div class="stack-card core anim"><div class="stack-body"><div class="sb-tag">Core</div><h3>The TakeoffAI platform — free, forever</h3><p>Unlimited projects and users, manual take-off and mark-up, conduit & wire measurement, your own symbol library and price lists, exportable BOQ to Excel/PDF. No seat fees, no per-project fees.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$24K</div></div></div>
-  <div class="stack-card anim"><div class="stack-body"><div class="sb-tag">Bonus</div><h3>"Bid-ready in 60 min" onboarding sprint</h3><p>1-on-1 setup on your actual plans. You leave with a completed AI takeoff you can submit — not a sandbox demo.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$2.5K</div></div></div>
-  <div class="stack-card anim"><div class="stack-body"><div class="sb-tag">Bonus</div><h3>One-click bid proposal generator</h3><p>Turn your finished BQ into a branded, professional proposal PDF — with scope, exclusions, terms, and pricing pre-filled. Send or share a trackable link. No more formatting in Word.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$5K</div></div></div>
-<div class="stack-card anim"><div class="stack-body"><div class="sb-tag">Bonus</div><h3>Addendum variance auto-detection</h3><p>Upload revised plans → instantly see what changed. Side-by-side delta report. No re-counting entire sheets.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$4K</div></div></div>
-  <div class="stack-card anim"><div class="stack-body"><div class="sb-tag">Bonus</div><h3>Priority support + quarterly accuracy audits</h3><p>Dedicated channel, same-day response. Every 90 days, benchmark AI quantities against actual as-builts.</p></div><div class="stack-val"><div class="stack-val-label">Value</div><div class="stack-val-num">$6K</div></div></div>
-</div>
-<div class="offer-total anim"><div class="ot-left"><div class="ot-label">Total value</div><div class="ot-num">$41,500/year</div></div><div class="ot-right"><div class="ot-label">You pay</div><div class="ot-num">From $149/mo</div><div class="ot-per">Software free — plans cover the AI take-offs, or pay as you go</div></div></div>
-</div></section>
-
-<section class="urgency"><div class="container"><div class="anim" style="text-align:center"><a href="#book-call" class="btn-primary" style="padding:11px 22px;font-size:14px;">Book a demo <svg class="arrow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a></div></div></section>
-
-<section class="guarantee"><div class="container"><div class="guarantee-header"><div class="kicker">Zero risk</div><h2 class="section-heading">You're only charged if it delivers</h2><p class="section-sub">Cancel any time. The only thing you ever pay for is a finished take-off.</p></div>
-<div class="guar-grid">
-  <div class="guar-card g1 anim"><div class="guar-badge">No result, no charge</div><h3>A failed take-off costs you nothing.</h3><p>If the AI can't deliver, the credits go <strong>straight back onto your account automatically</strong> — you don't have to email anyone or ask. You see the exact price before you spend it, and we re-check that price the moment you confirm.</p></div>
-  <div class="guar-card g2 anim"><div class="guar-badge">Every count is checkable</div><h3>Nothing you have to take on trust.</h3><p>The AI doesn't hand you a number and ask you to believe it. <strong>Every single item it counts gets a marker placed on the drawing</strong>, so you can check it against the plan yourself. Where a drawing is ambiguous, it raises an RFI instead of guessing.</p></div>
-</div></div></section>
-
-
-<section class="roi" id="roi"><div class="container"><div class="roi-header"><div class="kicker">ROI calculator</div><h2 class="section-heading">See what you're leaving<br>on the table</h2><p class="section-sub">Plug in your numbers. The math does the selling.</p></div>
-<div class="roi-calc anim">
-  <div class="roi-inputs">
-    <div class="roi-field"><label>Hours per takeoff (manual)</label><input type="number" id="roi-hours" value="8" min="1" max="40"></div>
-    <div class="roi-field"><label>Bids per month</label><input type="number" id="roi-bids" value="6" min="1" max="50"></div>
-    <div class="roi-field"><label>Estimator hourly cost ($)</label><input type="number" id="roi-rate" value="46" min="20" max="200"></div>
-    <div class="roi-field"><label>Average project value ($)</label><input type="number" id="roi-proj" value="150000" min="10000" max="10000000"></div>
-  </div>
-  <div class="roi-results">
-    <div class="roi-r"><div class="roi-r-label">Hours saved / year</div><div class="roi-r-num c-orange" id="res-hours">461</div></div>
-    <div class="roi-r"><div class="roi-r-label">Labour cost saved</div><div class="roi-r-num c-green" id="res-cost">$21K</div></div>
-    <div class="roi-r"><div class="roi-r-label">Extra bids / year</div><div class="roi-r-num c-dark" id="res-bids">58</div></div>
-  </div>
-</div></div></section>
-
-<section class="faq"><div class="container"><div class="faq-header"><div class="kicker">Questions</div><h2 class="section-heading">Frequently asked</h2></div>
-<div class="faq-list">
-  <div class="faq-item"><div class="faq-q">What types of electrical plans does TakeoffAI support? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Any PDF electrical drawing — residential, commercial, and industrial. Standard symbols including downlights, GPOs, switches, data points, smoke detectors, distribution boards, and more. Multi-sheet sets are fully supported.</div></div></div>
-  <div class="faq-item"><div class="faq-q">How accurate is the AI counting? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">95%+ accuracy on standard symbols out of the box, improving over time as you review and confirm counts. Quarterly accuracy audits benchmark AI performance against real project as-builts.</div></div></div>
-  <div class="faq-item"><div class="faq-q">What does it cost? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">The software is free — unlimited projects, unlimited users, manual take-off, exports, price lists, your symbol library and the SimPro connection. You only pay when you ask the AI to do a take-off. Plans start at $149 a month for 3 commercial take-offs ($50 each), and Contractor is $349 for 10 ($35 each). Prefer no commitment? Buy a pack of credits and spend them whenever. Either way, if a take-off doesn't deliver you're not charged. <a href="/pricing" style="color:var(--orange)">See full pricing</a>.</div></div></div>
-  <div class="faq-item"><div class="faq-q">How does this compare to ConEst, Accubid, or STACK? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Legacy tools require weeks of database setup. TakeoffAI gets you to a completed takeoff on your first session — in under 60 minutes. AI does the counting; your estimator focuses on review and winning work.</div></div></div>
-  <div class="faq-item"><div class="faq-q">What does the onboarding sprint include? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">A dedicated 60-minute 1-on-1 session using your actual plans. Upload a real drawing set, run the AI takeoff, review and adjust counts, export a finished BOQ you can use immediately.</div></div></div>
-  <div class="faq-item"><div class="faq-q">How does the Claude integration work? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">TakeoffAI connects with Claude, Anthropic's AI assistant, inside the app. Once your takeoff is done, you can ask questions about your drawings in plain English, turn counts into a priced estimate using your own rates, and draft scopes, RFIs, and proposals from the actual takeoff data — takeoff and estimating in one place.</div></div></div>
-  <div class="faq-item"><div class="faq-q">Does it work with SimPro? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Yes. TakeoffAI connects to SimPro, so you can push a finished quote straight across rather than re-keying a bill of quantities. Counts are priced against your own rates and price lists first, so what arrives in SimPro is a quote you can send. The connection is part of the free platform — you're only ever charged for the AI take-off itself.</div></div></div>
-  <div class="faq-item"><div class="faq-q">Is my plan data secure? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">All plans are encrypted in transit and at rest. We never share your drawings or data with third parties. Your project information stays yours — always.</div></div></div>
-</div></div></section>
-
-<!-- BOOKING -->
-<section class="booking" id="book-call">
+<!-- ============ SIMPRO ============ -->
+<section class="section simpro-home" id="simpro">
   <div class="container">
-    <div class="booking-header">
-      <div class="kicker">Book a call</div>
-      <h2 class="section-heading">See it run on your plans</h2>
-      <p>30-minute call. Bring a set of drawings and we'll run a real takeoff live — you leave with a completed BOQ, whether you sign up or not.</p>
+    <div class="simpro-copy anim">
+      <a href="/simpro" class="partner-badge"><span class="pb-mark">S</span><span class="pb-text"><span class="pb-top">Official</span><span class="pb-name">Simpro integration partner</span></span></a>
+      <h2 class="h2">Count in TakeoffAI.<br>Quote in Simpro.</h2>
+      <p class="lead">TakeoffAI is now an official Simpro integration partner. A finished take-off is priced against your own rates and pushed into Simpro as a quote you can send. No CSV export, no re-keying a bill of quantities.</p>
+      <ul class="check-list">
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Priced before it lands.</strong> Counts are costed against your price lists and labour rates, so what arrives in Simpro is a quote, not a parts list.</div></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>No transcription errors.</strong> The number on the drawing is the number on the quote.</div></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Included free.</strong> The Simpro connection is part of the free platform. You only ever pay for the AI take-off itself.</div></li>
+      </ul>
+      <a href="/simpro" class="btn btn-dark">About the Simpro integration <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
     </div>
-
-    <!-- Cal inline embed -->
-    <div class="booking-embed" id="my-cal-inline"></div>
-    <script type="text/javascript">
-      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-      Cal("init", {origin:"https://cal.com"});
-      Cal("inline", {
-        elementOrSelector:"#my-cal-inline",
-        calLink: "jonah-flinos-fv2dw0/30min",
-        layout: "month_view"
-      });
-      Cal("ui", {"styles":{"branding":{"brandColor":"#E8611A"}},"hideEventTypeDetails":false,"layout":"month_view"});
-    </script>
-    <!-- End Cal inline embed -->
-
-    <div class="booking-fallback">
-      <p>Prefer email? Send your plans and a good time to reach you to <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a> and we'll lock in a session.</p>
-      <p style="margin-top:10px">Can't make a call? <a href="mailto:info@takeoffai.com.au?subject=Send%20me%20a%20TakeoffAI%20walkthrough%20video&amp;body=Hi%20TakeoffAI%20team%2C%0A%0AI%27d%20like%20a%20screen-recorded%20walkthrough%20of%20TakeoffAI%20instead%20of%20a%20live%20call.%0A%0ACompany%3A%20%0AType%20of%20work%20you%20price%3A%20%0A%0AThanks">Request a screen-recorded walkthrough</a> and we'll send you a video of a real takeoff.</p>
+    <div class="flow anim" aria-hidden="true">
+      <div class="flow-node">
+        <div class="fn-head"><span class="fn-app">takeoff<span>.ai</span></span><span class="fn-status"><span class="dot"></span> Reviewed</span></div>
+        <div class="fn-title">Richmond Office · 12 electrical sheets</div>
+        <div class="fn-rows">
+          <div><span>Downlights</span><b>247</b></div>
+          <div><span>GPOs (power points)</span><b>183</b></div>
+          <div><span>Switches</span><b>94</b></div>
+          <div><span>Data points</span><b>72</b></div>
+        </div>
+      </div>
+      <div class="flow-arrow"><span class="line"></span><span class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg> Priced with your rates, pushed to Simpro</span><span class="line"></span></div>
+      <div class="flow-node">
+        <div class="fn-head"><span class="fn-app sp">Simpro</span><span class="fn-status"><span class="dot" style="animation:none"></span> Quote created</span></div>
+        <div class="fn-title">Quote #4821 · Richmond Office fit-out</div>
+        <div class="fn-rows">
+          <div><span>Materials</span><b>$18,420</b></div>
+          <div><span>Labour</span><b>$9,860</b></div>
+          <div class="fn-total"><span>Quote total ex GST</span><b>$28,280</b></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="final-cta"><div class="container"><h2>Stop counting.<br>Start <span class="orange">winning.</span></h2><p>Join the electrical contractors replacing manual takeoffs with AI — and doubling their bid capacity in 90 days.</p><a href="#book-call" class="btn-primary lg">Book a demo <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a><p class="subtext">Free to use · Only charged when the AI delivers a take-off</p></div></section>
-
-</div><!-- /page-main -->
-
-<!-- ========== PRICING PAGE ========== -->
-<div id="page-pricing" class="page-view">
-
-<div class="about-hero">
-  <div class="container" style="max-width:760px">
-    <div class="kicker">Pricing</div>
-    <h1>The software is free.<br>You only pay when the AI counts.</h1>
-    <p>Plans from $149 a month, or pay as you go. Nothing per user, per project or per page.</p>
-    <div style="margin-top:32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      <a href="/demo" class="btn-primary lg">Book a demo <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+<!-- ============ TRUST ============ -->
+<section class="section section-paper">
+  <div class="container">
+    <div class="sec-head center">
+      <div class="kicker">Built to be checked</div>
+      <h2 class="h2">Nothing you have to take on trust.</h2>
+      <p class="lead">The AI doesn't hand you a number and ask you to believe it. Every claim it makes is visible on the drawing, and you only pay when it delivers.</p>
     </div>
-    <div style="margin-top:20px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap">
-      <span style="font-size:13px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Priced per finished take-off</span>
-      <span style="font-size:13px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Only charged if it delivers</span>
-      <span style="font-size:13px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Cancel any time</span>
+    <div class="grid-3">
+      <div class="card trust-card anim"><span class="badge orange">Every count is marked</span><h3>See exactly what was counted.</h3><p>Every single item the AI counts gets a marker on the drawing, so you can check the count against the plan yourself, room by room. Where a drawing is ambiguous it raises an RFI instead of guessing.</p></div>
+      <div class="card trust-card anim"><span class="badge green">No result, no charge</span><h3>A failed take-off costs nothing.</h3><p>If the AI can't deliver, the credits go straight back onto your account automatically. You don't have to email anyone or ask.</p></div>
+      <div class="card trust-card anim"><span class="badge">Price shown first</span><h3>You see the price before you spend.</h3><p>Every take-off shows its exact price before you confirm it, and that price is re-checked the moment you do, so it can never quietly go up.</p></div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- Benefits -->
-<div style="background:var(--gray-50);border-bottom:1px solid var(--gray-150);padding:40px 0">
+<!-- ============ PRICING ============ -->
+<section class="section" id="pricing">
   <div class="container">
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:860px;margin:0 auto;text-align:center">
-      <div>
-        <div style="font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:var(--orange);margin-bottom:4px">40s</div>
-        <div style="font-size:14px;color:var(--gray-500);line-height:1.5">Average takeoff time vs hours by hand</div>
+    <div class="sec-head center">
+      <div class="kicker">Pricing</div>
+      <h2 class="h2">The software is free.<br>Pay per AI take-off.</h2>
+      <p class="lead">Unlimited projects and users, manual take-off, exports, price lists and the Simpro connection cost nothing. You only pay when you ask the AI to count, and every new account starts with 2,000 free credits.</p>
+    </div>
+    <div class="tiers-mini">
+      <div class="tm free anim">
+        <span class="tm-tag">Start here</span>
+        <div class="tm-name">Free account</div>
+        <div class="tm-desc">Everything in the platform, plus 2,000 credits to try the AI on your own drawings</div>
+        <div class="tm-price"><span class="d">$0</span><span class="per">no card</span></div>
+        <div class="tm-rate"><b>2 commercial</b> or <b>4 residential</b> AI take-offs included</div>
+        <ul><li>Unlimited projects and users</li><li>Manual take-off, conduit and wire measurement</li><li>Excel, CSV and PDF export</li><li>Simpro quote push</li></ul>
+        <a href="https://app.takeoffai.com.au/signup" class="btn btn-white btn-block">Create free account</a>
       </div>
-      <div>
-        <div style="font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:var(--orange);margin-bottom:4px">95%+</div>
-        <div style="font-size:14px;color:var(--gray-500);line-height:1.5">AI counting accuracy on standard symbols</div>
+      <div class="tm anim">
+        <div class="tm-name">Solo</div>
+        <div class="tm-desc">3 commercial or 6 residential AI take-offs a month</div>
+        <div class="tm-price"><span class="d">$149</span><span class="per">/month</span></div>
+        <div class="tm-rate"><b>$50</b> a commercial take-off</div>
+        <ul><li>Unused take-offs roll over</li><li>Price shown before every take-off</li><li>Cancel any time</li></ul>
+        <a href="https://app.takeoffai.com.au/signup" class="btn btn-ghost btn-block">Start free, upgrade in-app</a>
       </div>
-      <div>
-        <div style="font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:var(--orange);margin-bottom:4px">2–3×</div>
-        <div style="font-size:14px;color:var(--gray-500);line-height:1.5">More bids submitted per month</div>
+      <div class="tm feat anim">
+        <span class="tm-tag">Most popular</span>
+        <div class="tm-name">Contractor</div>
+        <div class="tm-desc">10 commercial or 20 residential AI take-offs a month</div>
+        <div class="tm-price"><span class="d">$349</span><span class="per">/month</span></div>
+        <div class="tm-rate"><b>$35</b> a commercial take-off</div>
+        <ul><li>Everything in Solo</li><li>Claude connector for your take-off data</li><li>Unused take-offs roll over</li></ul>
+        <a href="https://app.takeoffai.com.au/signup" class="btn btn-primary btn-block">Start free, upgrade in-app</a>
+      </div>
+    </div>
+    <p class="sec-foot">Prefer no plan? Credit packs from $100 that never expire. Unlimited plan at $749/month coming soon. <a href="/pricing" class="link">Full pricing and FAQ →</a></p>
+  </div>
+</section>
+
+<!-- ============ CLAUDE ============ -->
+<section class="section section-dark claude-sec" id="claude">
+  <div class="container">
+    <div class="claude-copy anim">
+      <div class="kicker">Claude connector</div>
+      <h2 class="h2">Your take-offs, available to <span class="hl">Claude</span>.</h2>
+      <p class="lead">Connect Claude, Anthropic's AI assistant, to your TakeoffAI account and it can read your projects: counted quantities per drawing, bills of quantities, estimates and project notes. Ask questions in plain English and have the tender paperwork drafted from real counts.</p>
+      <ul class="check-list">
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Ask about any project.</strong> "How many downlights on level 2?" "Which lines in the Richmond BOQ are still unpriced?"</div></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Draft the paperwork from real numbers.</strong> Tender letters, scopes and exclusions written from the counted quantities, never invented ones.</div></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Read-only by design.</strong> Counts can only be changed in the TakeoffAI review screen, where every marker stays on the drawing.</div></li>
+      </ul>
+      <a href="/pricing" class="btn btn-white">See plans with the Claude connector</a>
+      <div class="claude-note">Included on Contractor and Unlimited plans.</div>
+    </div>
+    <div class="claude-card anim" aria-hidden="true">
+      <div class="claude-card-head">
+        <div class="claude-logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="5.6" y1="5.6" x2="18.4" y2="18.4"/><line x1="18.4" y1="5.6" x2="5.6" y2="18.4"/></svg></div>
+        <div><h3>Claude</h3><div class="claude-card-sub">Connected to TakeoffAI · Richmond Office</div></div>
+      </div>
+      <div class="claude-chat">
+        <div class="claude-msg user">Pull the Richmond Office take-off and draft the tender cover letter with the quantities.</div>
+        <div class="claude-msg ai"><span class="claude-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="5.6" y1="5.6" x2="18.4" y2="18.4"/><line x1="18.4" y1="5.6" x2="5.6" y2="18.4"/></svg> Claude</span><br>Richmond Office has <strong>12 electrical sheets and 690 counted items</strong>: 247 downlights, 183 GPOs, 94 switches, 72 data points, 38 smoke detectors and 56 junction boxes. The bill of quantities still has <strong>three unpriced lines on E-007</strong>, so I've flagged those in the letter rather than filling them in. Here's the draft…</div>
+        <div class="claude-msg user">Good. Add the exclusions from the July template.</div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- Pricing cards -->
-<div style="padding:80px 0 48px">
+<!-- ============ FAQ ============ -->
+<section class="section section-paper" id="faq">
   <div class="container">
-    <div style="text-align:center;margin-bottom:40px">
-      <h2 class="section-heading">Pick the volume you run.</h2>
-      <p class="section-sub" style="margin:0 auto">Every plan is priced per finished take-off — never per page, per user or per project. A commercial take-off is <strong style="color:var(--gray-800);font-weight:600">6–10 hours of work by hand</strong>.</p>
-    </div>
-
-    <div class="pricing-tiers">
-
-      <div class="pt-card">
-        <div class="pt-name">Solo</div>
-        <div class="pt-desc">3 commercial or 6 residential take-offs a month</div>
-        <div class="pt-price"><span class="pt-dollar">$149</span><span class="pt-per">/month</span></div>
-        <div class="pt-rate"><strong>$50</strong> a take-off</div>
-        <a href="/demo" class="pt-btn pt-btn-ghost">Book a demo</a>
-      </div>
-
-      <div class="pt-card pt-featured">
-        <div class="pt-badge">Most popular</div>
-        <div class="pt-name">Contractor</div>
-        <div class="pt-desc">10 commercial or 20 residential take-offs a month</div>
-        <div class="pt-price"><span class="pt-dollar">$349</span><span class="pt-per">/month</span></div>
-        <div class="pt-rate"><strong>$35</strong> a take-off</div>
-        <div class="pt-extra"><strong>Claude connector</strong> — run counts on your own Claude account and import them</div>
-        <a href="/demo" class="pt-btn pt-btn-primary">Book a demo</a>
-      </div>
-
-      <div class="pt-card pt-dim">
-        <div class="pt-badge pt-badge-dim">Coming soon</div>
-        <div class="pt-name">Unlimited</div>
-        <div class="pt-desc">Unlimited take-offs, fair use 40 a month</div>
-        <div class="pt-price"><span class="pt-dollar">$749</span><span class="pt-per">/month</span></div>
-        <div class="pt-rate"><strong>Per company</strong>, not per seat</div>
-        <div class="pt-extra"><strong>Claude connector</strong> — run counts on your own Claude account and import them</div>
-        <a href="mailto:info@takeoffai.com.au?subject=Unlimited%20plan" class="pt-btn pt-btn-ghost">Talk to us</a>
-      </div>
-
-    </div>
-
-    <div class="incl">
-      <div class="incl-title">On every plan</div>
-      <div class="incl-items">
-        <span class="incl-i">Price shown before every take-off</span>
-        <span class="incl-i">No result, no charge — refunded automatically</span>
-        <span class="incl-i">Every count marked on the drawing</span>
-        <span class="incl-i">Unused take-offs roll over</span>
-        <span class="incl-i">Cancel any time</span>
-      </div>
-      <div class="incl-free"><strong>And the software itself is free</strong>, on every account — unlimited projects and users, manual take-off, Excel/CSV/PDF export, your symbol library, price lists, quotes pushed to SimPro, and 1-on-1 onboarding. You only ever reach a price when you ask the AI to count.</div>
-    </div>
-
-    <div class="onceoff">
-      <span class="oo-label">Or pay as you go —</span> 1,000 credits for <strong>$100</strong> &middot; 5,000 for <strong>$450</strong> &middot; 15,000 for <strong>$1,275</strong>
-      <span class="oo-note">No subscription, and credits never expire. A commercial take-off is 1,000 credits, residential 500.</span>
-    </div>
-
-    <p style="text-align:center;font-size:14px;color:var(--gray-500);margin-top:26px">Running bigger volume than any of this? <a href="mailto:info@takeoffai.com.au?subject=High-volume%20take-off%20pricing" style="color:var(--orange);font-weight:600">Talk to us.</a></p>
-
-    <p style="text-align:center;font-size:13px;color:var(--gray-400);margin-top:14px">Prices in AUD, GST included</p>
-  </div>
-</div>
-
-<!-- Guarantee -->
-<div style="padding:0 0 80px;background:var(--gray-50)">
-  <div class="container">
-    <div style="text-align:center;margin-bottom:36px;padding-top:80px">
-      <div class="kicker">Zero risk</div>
-      <h2 class="section-heading">You're only charged if it delivers.</h2>
-      <p class="section-sub" style="margin:0 auto">Cancel any time, and unused take-offs roll over. The only thing you ever pay for is a finished take-off.</p>
-    </div>
-    <div class="guar-grid">
-      <div class="guar-card g1"><div class="guar-badge">No result, no charge</div><h3>A failed take-off costs you nothing.</h3><p>If the AI can't deliver, the credits go <strong>straight back onto your account automatically</strong> — you don't have to email anyone or ask. You see the exact price before you spend it, and we re-check that price the moment you confirm, so it can never quietly go up.</p></div>
-      <div class="guar-card g2"><div class="guar-badge">Every count is checkable</div><h3>Nothing you have to take on trust.</h3><p>The AI doesn't hand you a number and ask you to believe it. <strong>Every single item it counts gets a marker placed on the drawing</strong>, so you can check the count against the plan yourself. Where a drawing is ambiguous, it raises an RFI instead of guessing.</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- Pricing FAQ -->
-<div style="padding:80px 0 96px">
-  <div class="container">
-    <div style="text-align:center;margin-bottom:36px"><div class="kicker">Questions</div><h2 class="section-heading">Pricing FAQ</h2></div>
+    <div class="sec-head center"><div class="kicker">Questions</div><h2 class="h2">Frequently asked</h2></div>
     <div class="faq-list">
-      <div class="faq-item"><div class="faq-q">Is the software really free? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Yes. Unlimited projects, unlimited users, manual take-off, exports, your symbol library, price lists and the SimPro connection — all free, permanently, with no card to start. What costs money is the AI doing a take-off for you, because that's the part with a real cost behind it. You can put that on a monthly plan from $149, or skip the plan entirely and buy a pack of credits to spend whenever. Stop paying either way and you keep your account, your projects and your exports.</div></div></div>
-      <div class="faq-item"><div class="faq-q">What am I actually paying for? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">A finished take-off, not a tool to do one with. The AI reads the legend itself, works out what needs counting, counts it, and drops a marker on every single item so you can check its work against the drawing. A commercial job replaces six to ten hours of estimator time and costs $50 a take-off on Solo, or $35 on Contractor.</div></div></div>
-      <div class="faq-item"><div class="faq-q">Why can't I just sign up and try it myself? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Every account is tuned to your own symbol legends and drawing standards before it will count accurately — that's the setup we do with you on the onboarding call. A generic self-serve account gives you a poor first take-off and a wrong impression of the tool, so we don't offer one. Book a 30-minute demo and you'll leave with a real BOQ from your own plans, and a free account already tuned to your drawings.</div></div></div>
-      <div class="faq-item"><div class="faq-q">What counts as an "electrical sheet"? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Only the electrical drawings — never pages in the PDF. Upload the entire binder and we work out which sheets are electrical and count just those. On real jobs we've run, a 25-page binder held one electrical sheet. Fifteen electrical sheets is a large tender set, usually a binder of well over a hundred pages.</div></div></div>
-      <div class="faq-item"><div class="faq-q">What's the difference between a residential and a commercial take-off? <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"></polyline></svg></div><div class="faq-a"><div class="faq-a-inner">Residential is a house or a unit — typically one or two sheets and a short legend. Commercial is offices, retail, industrial, healthcare and the like, where there's far more to read before anything gets counted. Multi-residential and mixed-use sets sit between the two and we quote those individually. Either way you see the exact price for your job before you spend anything.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Do I need to book a demo before I can use it? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">No. Create a free account, upload a drawing set and run a take-off. Every new account comes with 2,000 credits, which is two commercial take-offs or four residential, so you can see how it handles your own drawings before paying anything. If you'd rather have someone walk you through it, <a href="/demo">book a 30-minute demo</a> and we'll run a take-off live on your plans.</div></div></div>
+      <div class="faq-item"><button class="faq-q">What types of electrical plans does it support? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Any PDF electrical drawing: residential, commercial and industrial. Upload the whole binder and TakeoffAI works out which sheets are electrical and counts just those. Standard symbols include downlights, GPOs, switches, data points, smoke detectors, distribution boards and more, and it reads the legend on your drawing rather than relying on a fixed library.</div></div></div>
+      <div class="faq-item"><button class="faq-q">How accurate is the AI counting? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">95%+ on standard symbols. More importantly, every count is checkable: each item gets a marker on the drawing, so you can review it against the plan and correct anything before you export. Where a drawing is ambiguous, the AI raises an RFI rather than guessing.</div></div></div>
+      <div class="faq-item"><button class="faq-q">What does it cost? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">The software is free: unlimited projects and users, manual take-off, exports, price lists, your symbol library and the Simpro connection. You only pay when you ask the AI to do a take-off. Plans start at $149 a month for 3 commercial take-offs, Contractor is $349 for 10, or buy a pack of credits from $100 that never expire. If a take-off doesn't deliver you're not charged. <a href="/pricing">See full pricing</a>.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Does it work with Simpro? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Yes. TakeoffAI is an official Simpro integration partner. A finished take-off is priced against your own rates and price lists and pushed into Simpro as a quote, so nobody re-keys a bill of quantities. The connection is part of the free platform. <a href="/simpro">More about the Simpro integration</a>.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Can I still do take-offs manually? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Yes, and it's free. Manual counting and mark-up, conduit and wire measurement, your own symbol library and price lists, and Excel, CSV and PDF export are all part of the free platform. The AI is there for when you want the counting done for you.</div></div></div>
+      <div class="faq-item"><button class="faq-q">What is the Claude connector? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">On Contractor and Unlimited plans you can connect Claude, Anthropic's AI assistant, to your TakeoffAI account. Claude can then read your projects, counted quantities, bills of quantities and estimates, answer questions about them and draft tender documents from the real numbers. It's read-only: counts are only ever changed in the TakeoffAI review screen.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Is my plan data secure? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">All plans are encrypted in transit and at rest. We never share your drawings or data with third parties, and your project information stays yours. Details are in our <a href="/privacy">privacy policy</a>.</div></div></div>
     </div>
   </div>
-</div>
+</section>
 
-</div><!-- /page-pricing -->
-
-<!-- ========== ABOUT ========== -->
-<div id="page-about" class="page-view">
-<div class="about-hero">
+<!-- ============ FINAL CTA ============ -->
+<section class="cta-band">
   <div class="container">
-    <div class="kicker">Our story</div>
-    <h1>Built by tradies.<br>For tradies.</h1>
-    <p>We're not a Silicon Valley startup that stumbled onto construction. We came up through the trade — and we built the tool we wished existed.</p>
+    <h2 class="h2">Run your first take-off today.</h2>
+    <p>Create a free account, upload a set of drawings and see what the AI finds. Your first two commercial take-offs are on us.</p>
+    <div class="hero-ctas">
+      <a href="https://app.takeoffai.com.au/signup" class="btn btn-primary btn-lg">Try it free <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="/demo" class="btn btn-ghost on-dark btn-lg">Book a demo instead</a>
+    </div>
+    <p class="hero-note">2,000 free credits · No credit card · Cancel any time</p>
   </div>
-</div>
-<div class="about-body">
+</section>
 
-<h2>We noticed a problem nobody was fixing.</h2>
-<p>Jonah and AJ spent years in the electrical trade in Melbourne. On the tools. Reading plans. Running jobs. Quoting work at the kitchen table at 10pm because there wasn't enough time during the day.</p>
-<p>The estimating process was broken — and everyone in the industry just accepted it. You'd spend <strong>15 to 20 hours a week</strong> counting symbols by hand, sheet by sheet, praying you hadn't missed a room. Legacy software like Accubid or ConEst took weeks to set up and still required someone to do the counting manually.</p>
-<p>Smaller contractors couldn't afford a full-time estimator. Larger ones were buried in bottlenecks. And the tools built to help? They were designed for people with a month to spare and an IT team to configure them.</p>
-<p>We knew there had to be a better way.</p>
-
-<h2>So we built it.</h2>
-<p>TakeoffAI started with a simple idea: <strong>what if AI could do the counting?</strong> Not as a gimmick. Not as a "coming soon" feature. Actually count — every downlight, GPO, switch, data point, smoke detector — off a real PDF drawing set, in seconds.</p>
-<p>We spent months building and testing on real plans from real Australian jobs. Commercial fitouts. Residential subdivisions. Industrial facilities. We obsessed over accuracy because we knew from experience that <strong>one missed device can cost thousands.</strong></p>
-<p>The result is TakeoffAI — an AI estimating engine that replaces the worst part of your bid cycle, without replacing your estimator.</p>
-
-<h2>Why we're different from every other tool.</h2>
-<p>Most construction software is built by people who've never set foot on a job site. They build features that look good in demos but fall apart on real drawings.</p>
-<p>We're ex-tradies from Melbourne. We speak the language. We know what a messy set of plans looks like. We know the pressure of a Friday afternoon bid deadline. And we built TakeoffAI around that reality — not a sanitised version of it.</p>
-<p><strong>This isn't a faceless SaaS product.</strong> It's a tool built by two people who care deeply about the trade and want to see Australian contractors win more work, stress less, and build better businesses.</p>
-
-<img src="/founders.png" alt="Jonah and AJ — co-founders of TakeoffAI" class="founder-photo" loading="lazy">
-<div class="founder-cards">
-  <div class="founder-card">
-    <div class="founder-initials">J</div>
-    <h3>Jonah</h3>
-    <div class="founder-role">Co-founder</div>
-    <p>Ex-tradie turned builder of things. Spent years in the electrical industry before moving into tech. Still thinks in plans and quantities.</p>
-  </div>
-  <div class="founder-card">
-    <div class="founder-initials">AJ</div>
-    <h3>AJ</h3>
-    <div class="founder-role">Co-founder</div>
-    <p>Grew up around the trade. Worked his way through the industry before co-founding TakeoffAI. Obsessed with building things that actually work on the job.</p>
-  </div>
-</div>
-
-<p>We started TakeoffAI because we wanted to build something with <strong>so much real value</strong> that it genuinely improves people's lives — not just their workflow. When a contractor wins a job they would've missed because they could finally bid it on time, that matters to us.</p>
-<p>Melbourne-made. Australian-owned. Built for the trade.</p>
-
-<div class="about-cta">
-  <h3>Come see it yourself.</h3>
-  <p>30 minutes, your actual plans. No database setup, no training required.</p>
-  <a href="/demo" class="btn-primary">Book a demo <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-</div>
-
-</div>
-</div><!-- /page-about -->
-
-<!-- ========== PRIVACY ========== -->
-<div id="page-privacy" class="page-view">
-<div class="legal-header"><div class="container"><h1>Privacy policy</h1><p class="updated">Last updated: 9 April 2026</p></div></div>
-<div class="legal-body">
-<div class="lc"><p><strong>In plain English:</strong> We collect only what's necessary to run TakeoffAI, we never sell your data, and your construction plans remain yours at all times. We comply with the Australian Privacy Act 1988 and the Australian Privacy Principles (APPs).</p></div>
-<h2>1. Who we are</h2><p>TakeoffAI Pty Ltd (ABN 97 395 522 316) ("TakeoffAI", "we", "us", "our") operates the TakeoffAI platform, a cloud-based electrical takeoff and estimating tool available at takeoffai.com.au and related applications.</p><p>We are the data controller for the personal information we collect through our platform, website, and communications.</p>
-<h2>2. Information we collect</h2><h3>Information you provide directly</h3><ul><li><strong>Account information:</strong> name, email address, company name, phone number, and billing details when you sign up or subscribe.</li><li><strong>Construction plans and documents:</strong> PDF drawings, specifications, and other project files you upload for takeoff processing.</li><li><strong>Communications:</strong> messages you send through our support channels, emails, or feedback forms.</li><li><strong>Payment information:</strong> credit card or payment method details processed by our third-party payment provider (we do not store full card numbers).</li></ul><h3>Information collected automatically</h3><ul><li><strong>Usage data:</strong> features used, takeoffs generated, pages visited, session duration, and interaction patterns.</li><li><strong>Device information:</strong> browser type, operating system, device identifiers, and screen resolution.</li><li><strong>Log data:</strong> IP address, access times, referring URLs, and error logs.</li><li><strong>Cookies and similar technologies:</strong> as described in Section 8 below.</li></ul>
-<h2>3. How we use your information</h2><p>We use the information we collect to:</p><ul><li>Provide, maintain, and improve the TakeoffAI platform and services.</li><li>Process your construction plans and generate takeoff outputs.</li><li>Process payments and manage your subscription.</li><li>Communicate with you about your account, updates, and support requests.</li><li>Send product updates and marketing communications (with your consent, and you can opt out at any time).</li><li>Analyse usage patterns to improve our AI models, features, and user experience.</li><li>Detect, prevent, and address fraud, abuse, and technical issues.</li><li>Comply with legal obligations and enforce our terms.</li></ul>
-<h2>4. Your construction plans and project data</h2><div class="lc"><p><strong>Your plans are your property.</strong> We do not sell, share, or distribute your construction plans or project data to third parties. Plans are processed solely for the purpose of providing takeoff services to you.</p></div><p>Uploaded plans and generated takeoff data are encrypted in transit (TLS 1.2+) and at rest (AES-256). Access to plan data is restricted to authorised personnel on a need-to-know basis for support and technical purposes only.</p><p>We may use anonymised, aggregated data derived from platform usage (not identifiable project data) to improve our AI models and service quality. This data cannot be traced back to any individual, company, or project.</p><p>When you delete your account, your plans and project data are permanently deleted from our active systems within 30 days. Backup copies are purged within 90 days.</p>
-<h2>5. How we share your information</h2><p>We do not sell your personal information. We may share information with the following categories of third parties, solely for the purposes described:</p><ul><li><strong>Service providers:</strong> cloud hosting (e.g., AWS, Google Cloud), payment processing (e.g., Stripe), email delivery, analytics, and customer support tools — each bound by data processing agreements.</li><li><strong>Professional advisors:</strong> lawyers, accountants, and auditors where necessary for our business operations.</li><li><strong>Legal requirements:</strong> where required by law, regulation, legal process, or enforceable governmental request.</li><li><strong>Business transfers:</strong> in connection with a merger, acquisition, or sale of assets, where your data may be transferred as a business asset (with notice to you).</li></ul>
-<h2>6. Data retention</h2><p>We retain your personal information for as long as your account is active or as needed to provide services. Specific retention periods:</p><ul><li><strong>Account data:</strong> retained while your account is active and for 12 months after closure.</li><li><strong>Construction plans:</strong> retained while your account is active. Deleted within 30 days of account closure (90 days from backups).</li><li><strong>Usage and log data:</strong> retained for up to 24 months for analytics and security purposes.</li><li><strong>Billing records:</strong> retained for 7 years as required by Australian tax law.</li></ul>
-<h2>7. Data security</h2><p>We implement industry-standard security measures to protect your information, including:</p><ul><li>Encryption in transit (TLS 1.2+) and at rest (AES-256).</li><li>Access controls and role-based permissions for internal systems.</li><li>Regular security assessments and vulnerability testing.</li><li>Secure cloud infrastructure hosted in reputable data centres.</li><li>Employee security awareness training.</li></ul><p>While we take reasonable steps to protect your data, no method of electronic transmission or storage is 100% secure. We encourage you to use strong passwords and take appropriate precautions.</p>
-<h2>8. Cookies and tracking</h2><p>We use cookies and similar technologies for the following purposes:</p><ul><li><strong>Essential cookies:</strong> required for the platform to function (authentication, session management). These cannot be disabled.</li><li><strong>Analytics cookies:</strong> help us understand how users interact with our platform (e.g., Google Analytics). You can opt out via your browser settings or our cookie preferences.</li><li><strong>Marketing cookies:</strong> used to deliver relevant advertising and measure campaign effectiveness. Only used with your consent.</li></ul><p>You can manage cookie preferences through your browser settings. Disabling non-essential cookies will not affect core platform functionality.</p>
-<h2>9. Your rights</h2><p>Under the Australian Privacy Act and applicable privacy laws, you have the right to:</p><ul><li><strong>Access:</strong> request a copy of the personal information we hold about you.</li><li><strong>Correction:</strong> request correction of inaccurate or incomplete information.</li><li><strong>Deletion:</strong> request deletion of your personal information (subject to legal obligations).</li><li><strong>Data portability:</strong> request your data in a structured, commonly used format.</li><li><strong>Opt out:</strong> unsubscribe from marketing communications at any time.</li><li><strong>Complaint:</strong> lodge a complaint with the Office of the Australian Information Commissioner (OAIC) if you believe we have breached the APPs.</li></ul><p>To exercise any of these rights, contact us at <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a>. We will respond within 30 days.</p>
-<h2>10. International data transfers</h2><p>Our services may involve processing data in countries outside Australia (e.g., where our cloud providers operate data centres). Where this occurs, we ensure appropriate safeguards are in place, including data processing agreements and compliance with the APPs regarding cross-border disclosure (APP 8).</p>
-<h2>11. Children's privacy</h2><p>TakeoffAI is not intended for use by individuals under the age of 18. We do not knowingly collect personal information from children. If we become aware that we have collected information from a child, we will take steps to delete it promptly.</p>
-<h2>12. Changes to this policy</h2><p>We may update this privacy policy from time to time. We will notify you of material changes by posting the updated policy on our website and, where appropriate, by email. The "Last updated" date at the top indicates when this policy was last revised.</p>
-<h2>13. Contact us</h2><p>If you have questions about this privacy policy or our data practices, contact us at:</p><p><strong>TakeoffAI Pty Ltd</strong><br>Email: <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a></p>
-</div>
-</div><!-- /page-privacy -->
-
-<!-- ========== TERMS ========== -->
-<div id="page-terms" class="page-view">
-<div class="legal-header"><div class="container"><h1>Terms & conditions</h1><p class="updated">Last updated: 9 April 2026</p></div></div>
-<div class="legal-body">
-<div class="lc"><p><strong>Summary:</strong> You retain full ownership of your plans and data. We grant you a licence to use our platform. You pay the agreed subscription fee. Either party can terminate with notice. Our liability is capped. These terms are governed by Australian law.</p></div>
-<h2>1. Agreement to terms</h2><p>These Terms and Conditions ("Terms") constitute a legally binding agreement between you ("Customer", "you", "your") and TakeoffAI Pty Ltd (ABN 97 395 522 316) ("TakeoffAI", "we", "us", "our") governing your access to and use of the TakeoffAI platform, website at takeoffai.com.au, and related services (collectively, the "Service").</p><p>By creating an account, subscribing to a plan, or otherwise accessing the Service, you agree to be bound by these Terms. If you are entering into these Terms on behalf of a company or other legal entity, you represent that you have the authority to bind that entity.</p><p>If you do not agree with these Terms, do not use the Service.</p>
-<h2>2. Definitions</h2><ul><li><strong>"Platform"</strong> means the TakeoffAI web application, APIs, and any associated tools or features.</li><li><strong>"Customer Data"</strong> means all data, files, construction plans, documents, and information uploaded, submitted, or generated by you through the Service.</li><li><strong>"Subscription"</strong> means the paid plan you have selected, as described on our pricing page or in an order form.</li><li><strong>"User"</strong> means any individual authorised by the Customer to access and use the Service under the Customer's account.</li><li><strong>"Takeoff Output"</strong> means the bills of quantities, reports, proposals, spreadsheets, and other deliverables generated by the Service from Customer Data.</li></ul>
-<h2>3. Account registration</h2><p>To use the Service, you must create an account and provide accurate, complete, and current information. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.</p><p>You must notify us immediately at <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a> if you become aware of any unauthorised use of your account.</p><p>You must be at least 18 years of age to create an account. Each account is for a single organisation and may not be shared with unrelated third parties.</p>
-<h2>4. Service description</h2><p>TakeoffAI provides an AI-powered platform for electrical takeoff and estimating. The Service includes:</p><ul><li>Automated detection and counting of electrical symbols from uploaded PDF construction plans.</li><li>Measurement of conduit runs, wire pulls, and related quantities.</li><li>Generation of exportable bills of quantities (BOQ) in Excel and PDF formats.</li><li>One-click bid proposal generation with customisable scope, exclusions, and terms.</li><li>Addendum variance detection and revision tracking.</li><li>Access to proposal generation tools, training materials, and exclusion libraries (where included in your plan).</li></ul><p>The Service is provided as a tool to assist qualified electrical estimators and contractors. Takeoff Outputs are generated by AI and should always be reviewed by a qualified professional before being used for bidding, procurement, or construction purposes.</p><div class="lcn"><p><strong>Important:</strong> TakeoffAI is an estimating assistance tool, not a substitute for professional judgment. You are solely responsible for verifying the accuracy of all Takeoff Outputs before relying on them for any purpose.</p></div>
-<h2>5. Subscription and payment</h2><h3>5.1 Plans and pricing</h3><p>The Service is offered on a subscription basis. Current pricing, plan features, and billing cycles are described on our website or in a separate order form. All prices are in Australian Dollars (AUD) unless otherwise stated, and are exclusive of GST.</p><h3>5.2 Billing</h3><p>Subscriptions are billed in advance on a monthly or annual basis, depending on the plan selected. Payment is processed through our third-party payment provider (currently Stripe). You authorise us to charge your chosen payment method for all applicable fees.</p><h3>5.3 Founding member pricing</h3><p>Customers who subscribe during the Founding 100 promotion period receive a locked-in subscription rate for the lifetime of their continuous subscription. If a Founding 100 subscription is cancelled and later reactivated, the founding rate is forfeited and current pricing applies.</p><h3>5.4 Price changes</h3><p>We may change our pricing from time to time. For existing subscribers (excluding Founding 100 members on continuous subscriptions), we will provide at least 30 days' notice of any price increase. Continued use after the effective date constitutes acceptance of the new pricing.</p><h3>5.5 Taxes</h3><p>You are responsible for all applicable taxes (including GST) associated with your subscription, except for taxes based on TakeoffAI's income.</p>
-<h2>6. Refund and guarantee policy</h2><h3>6.1 30-day unconditional guarantee</h3><p>New subscribers may request a full refund within 30 days of their initial subscription date for any reason. Refund requests should be sent to <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a>. Refunds will be processed within 10 business days.</p><h3>6.2 90-day outcome guarantee</h3><p>If, within 90 days of completing the onboarding sprint, you have not at least doubled the number of bids you submit compared to your pre-TakeoffAI baseline, you may request a full refund of your annual subscription fee. To qualify:</p><ol><li>You must have completed the onboarding sprint within 14 days of subscribing.</li><li>You must have actively used the platform, completing a minimum of 10 takeoffs during the 90-day period.</li><li>You must provide reasonable documentation of your bid submission volume before and after using TakeoffAI.</li></ol><p>Refund requests under this guarantee should be submitted to <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a> within 100 days of your onboarding sprint completion. We will review and respond within 14 business days.</p><h3>6.3 General refund policy</h3><p>Outside of the guarantees described above, subscription fees are non-refundable. Partial-month or partial-year refunds are not provided for cancellations made after the applicable guarantee period.</p>
-<h2>7. Intellectual property</h2><h3>7.1 Your content</h3><p><strong>You retain all ownership rights to your Customer Data.</strong> By uploading Customer Data to the Service, you grant TakeoffAI a limited, non-exclusive licence to process, store, and display your Customer Data solely for the purpose of providing and improving the Service.</p><p>Takeoff Outputs generated from your Customer Data are owned by you.</p><h3>7.2 Our platform</h3><p>TakeoffAI and its licensors retain all rights, title, and interest in the Service, including all software, algorithms, AI models, user interfaces, designs, documentation, and trademarks. These Terms do not grant you any rights to our intellectual property except the limited licence to use the Service as described herein.</p><h3>7.3 Feedback</h3><p>If you provide suggestions, feature requests, or other feedback about the Service, we may use that feedback without restriction or obligation to you.</p>
-<h2>8. Acceptable use</h2><p>You agree not to:</p><ul><li>Use the Service for any unlawful purpose or in violation of any applicable law or regulation.</li><li>Upload content that infringes on third-party intellectual property rights.</li><li>Attempt to reverse-engineer, decompile, or extract source code from any part of the Service.</li><li>Interfere with or disrupt the integrity or performance of the Service.</li><li>Access the Service through automated means (bots, scrapers) except through our authorised APIs.</li><li>Resell, sublicence, or provide access to the Service to third parties without our written consent.</li><li>Use the Service to develop a competing product or service.</li></ul>
-<h2>9. Data handling</h2><p>Our handling of personal information and Customer Data is described in our <a href="javascript:void(0)" onclick="showPage('privacy')">Privacy Policy</a>, which forms part of these Terms.</p><p>We implement appropriate technical and organisational measures to protect Customer Data. However, no method of electronic storage is completely secure, and we cannot guarantee absolute security.</p>
-<h2>10. Service availability and support</h2><p>We aim to maintain high availability of the Service but do not guarantee uninterrupted access. We may perform scheduled maintenance with reasonable advance notice where possible.</p><p>Support is provided according to the level included in your subscription plan. Priority support subscribers receive same-business-day response via their dedicated support channel.</p><p>We reserve the right to modify, suspend, or discontinue any feature of the Service at any time. For material changes that reduce functionality, we will provide at least 30 days' notice.</p>
-<h2>11. AI-generated outputs disclaimer</h2><p>The Service uses artificial intelligence and machine learning to process construction plans and generate Takeoff Outputs. While we strive for high accuracy, AI-generated outputs may contain errors, omissions, or inaccuracies.</p><p><strong>You acknowledge and agree that:</strong></p><ul><li>Takeoff Outputs are provided as estimating aids and must be reviewed by qualified professionals.</li><li>You are solely responsible for verifying the accuracy of all outputs before use in bidding, pricing, or construction.</li><li>TakeoffAI does not warrant that outputs will be error-free, complete, or suitable for any particular purpose.</li><li>Reliance on Takeoff Outputs without independent verification is at your own risk.</li></ul>
-<h2>12. Limitation of liability</h2><p>To the maximum extent permitted by law, including the Australian Consumer Law:</p><ul><li><strong>No consequential damages:</strong> TakeoffAI will not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, revenue, data, business opportunities, or goodwill, regardless of the cause of action or theory of liability.</li><li><strong>Liability cap:</strong> TakeoffAI's total aggregate liability arising out of or in connection with these Terms or the Service will not exceed the total fees paid by you to TakeoffAI in the 12 months immediately preceding the event giving rise to the claim.</li><li><strong>Exclusions:</strong> Nothing in these Terms excludes, restricts, or modifies any consumer guarantee or right under the Australian Consumer Law (Schedule 2 of the Competition and Consumer Act 2010 (Cth)) that cannot be excluded, restricted, or modified by agreement.</li></ul>
-<h2>13. Indemnification</h2><p>You agree to indemnify, defend, and hold harmless TakeoffAI, its directors, officers, employees, and agents from and against any claims, liabilities, damages, losses, and expenses (including reasonable legal fees) arising out of or in connection with:</p><ul><li>Your use of the Service.</li><li>Your breach of these Terms.</li><li>Your violation of any applicable law or third-party rights.</li><li>Customer Data you upload or submit through the Service.</li><li>Any reliance on Takeoff Outputs without appropriate verification.</li></ul>
-<h2>14. Term and termination</h2><h3>14.1 Term</h3><p>These Terms commence when you create an account and continue until terminated by either party.</p><h3>14.2 Termination by you</h3><p>You may cancel your subscription at any time through your account settings or by contacting <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a>. Cancellation takes effect at the end of your current billing period. You will retain access until then.</p><h3>14.3 Termination by us</h3><p>We may suspend or terminate your access to the Service if you breach these Terms, fail to pay fees when due, or if we reasonably believe your use poses a security risk. Where practicable, we will provide notice and an opportunity to cure before termination.</p><h3>14.4 Effect of termination</h3><p>Upon termination, your right to access the Service ceases immediately. You may export your Customer Data for up to 30 days following termination by contacting support. After 30 days, Customer Data will be deleted in accordance with our Privacy Policy.</p><p>Sections that by their nature should survive termination will survive, including Sections 7, 11, 12, 13, and 16.</p>
-<h2>15. Changes to terms</h2><p>We may modify these Terms from time to time. We will notify you of material changes at least 30 days before they take effect, by email or through the Service. Your continued use of the Service after the effective date constitutes acceptance of the modified Terms.</p><p>If you do not agree with modified Terms, you may cancel your subscription before the changes take effect.</p>
-<h2>16. Governing law and disputes</h2><p>These Terms are governed by and construed in accordance with the laws of the State of Victoria, Australia. Any disputes arising out of or in connection with these Terms will be subject to the exclusive jurisdiction of the courts of Victoria, Australia.</p><p>Before commencing legal proceedings, the parties agree to attempt to resolve disputes through good faith negotiation for a period of at least 30 days.</p>
-<h2>17. General provisions</h2><ul><li><strong>Entire agreement:</strong> These Terms, together with the Privacy Policy and any order forms, constitute the entire agreement between you and TakeoffAI regarding the Service.</li><li><strong>Severability:</strong> If any provision of these Terms is found to be unenforceable, the remaining provisions will continue in full force and effect.</li><li><strong>Waiver:</strong> Failure to enforce any provision does not constitute a waiver of that provision.</li><li><strong>Assignment:</strong> You may not assign your rights under these Terms without our written consent. We may assign our rights and obligations in connection with a merger, acquisition, or sale of assets.</li><li><strong>Force majeure:</strong> Neither party will be liable for delays or failures in performance caused by events beyond their reasonable control, including natural disasters, pandemics, government actions, or internet disruptions.</li><li><strong>Notices:</strong> Notices to TakeoffAI should be sent to <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a>. Notices to you will be sent to the email address associated with your account.</li></ul>
-<h2>18. Contact us</h2><p>For questions about these Terms, contact us at:</p><p><strong>TakeoffAI Pty Ltd</strong><br>Email: <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a></p>
-</div>
-</div><!-- /page-terms -->
-
-<!-- ========== FOOTER ========== -->
-<footer>
+</main>
+<footer class="site-footer">
   <div class="container">
-    <a class="nav-logo" id="footer-logo"><div class="nav-logo-icon"><div class="corner-tl"></div><div class="corner-br"></div></div><div class="nav-logo-text">takeoff<span>.ai</span></div></a>
-    <p>&copy; 2026 TakeoffAI Pty Ltd. <a id="footer-about">Our story</a> &middot; <a href="/pricing">Pricing</a> &middot;<a href="/compare">Compare</a> &middot; <a href="/demo">Book a demo</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a></p>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="/" aria-label="TakeoffAI home">
+          <span class="nav-logo-icon"><span class="corner-tl"></span><span class="corner-br"></span></span>
+          <span class="nav-logo-text">takeoff<span>.ai</span></span>
+        </a>
+        <p>AI electrical take-off for Australian contractors. Upload the drawings, review the count, quote in Simpro. Built in Melbourne.</p>
+        <a href="/simpro" class="partner-badge"><span class="pb-mark">S</span><span class="pb-text"><span class="pb-top">Official</span><span class="pb-name">Simpro integration partner</span></span></a>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="/product">How it works</a>
+        <a href="/simpro">Simpro integration</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/compare">Compare</a>
+        <a href="/demo">Book a demo</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/about">About</a>
+        <a href="mailto:info@takeoffai.com.au">Contact</a>
+        <a href="https://app.takeoffai.com.au/login">Log in</a>
+        <a href="https://app.takeoffai.com.au/signup">Create a free account</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="/privacy">Privacy policy</a>
+        <a href="/terms">Terms &amp; conditions</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 TakeoffAI Pty Ltd &middot; ABN 97 395 522 316</span>
+      <span>Simpro is a trademark of Simpro Software Pty Ltd.</span>
+    </div>
   </div>
 </footer>
-
-<script>
-// Mobile nav
-var navHamburger = document.getElementById('nav-hamburger');
-var navMobileMenu = document.getElementById('nav-mobile-menu');
-if (navHamburger) {
-  navHamburger.addEventListener('click', function() {
-    var open = navMobileMenu.classList.toggle('open');
-    navHamburger.classList.toggle('open', open);
-  });
-}
-function closeMobileMenu() {
-  navMobileMenu.classList.remove('open');
-  navHamburger.classList.remove('open');
-}
-
-// Page routing
-function showPage(page) {
-  var main = document.getElementById('page-main');
-  var privacy = document.getElementById('page-privacy');
-  var terms = document.getElementById('page-terms');
-  var about = document.getElementById('page-about');
-  var pricing = document.getElementById('page-pricing');
-  var navLinks = document.getElementById('nav-main-links');
-  var navBack = document.getElementById('nav-back');
-
-  main.style.display = 'none';
-  privacy.className = 'page-view';
-  terms.className = 'page-view';
-  about.className = 'page-view';
-  pricing.className = 'page-view';
-
-  if (page === 'main') {
-    main.style.display = '';
-    navLinks.style.display = '';
-    navBack.style.display = 'none';
-    document.title = 'TakeoffAI \u2014 The 90-Day Bid Domination System';
-  } else {
-    navLinks.style.display = 'none';
-    navBack.style.display = 'inline';
-    if (page === 'privacy') {
-      privacy.className = 'page-view active';
-      document.title = 'Privacy Policy \u2014 TakeoffAI';
-    } else if (page === 'terms') {
-      terms.className = 'page-view active';
-      document.title = 'Terms & Conditions \u2014 TakeoffAI';
-    } else if (page === 'about') {
-      about.className = 'page-view active';
-      document.title = 'Our Story \u2014 TakeoffAI';
-    } else if (page === 'pricing') {
-      pricing.className = 'page-view active';
-      document.title = 'Pricing \u2014 TakeoffAI';
-    }
-  }
-  window.scrollTo(0, 0);
-}
-
-// Wire up navigation
-document.getElementById('nav-logo').addEventListener('click', function(e) { e.preventDefault(); showPage('main'); });
-document.getElementById('nav-back').addEventListener('click', function(e) { e.preventDefault(); showPage('main'); });
-document.getElementById('footer-logo').addEventListener('click', function(e) { e.preventDefault(); showPage('main'); });
-document.getElementById('footer-about').addEventListener('click', function(e) { e.preventDefault(); showPage('about'); });
-
-// ROI calculator
-function calc() {
-  var h = parseFloat(document.getElementById('roi-hours').value) || 8;
-  var b = parseFloat(document.getElementById('roi-bids').value) || 6;
-  var r = parseFloat(document.getElementById('roi-rate').value) || 46;
-  var s = Math.round(h * 0.8 * b * 12);
-  var c = Math.round(s * r);
-  var e = Math.round(h * 0.8 * b * 12 / h);
-  document.getElementById('res-hours').textContent = s.toLocaleString();
-  document.getElementById('res-cost').textContent = c >= 1000 ? '$' + Math.round(c / 1000) + 'K' : '$' + c;
-  document.getElementById('res-bids').textContent = e;
-}
-var roiInputs = document.querySelectorAll('.roi-field input');
-for (var i = 0; i < roiInputs.length; i++) { roiInputs[i].addEventListener('input', calc); }
-calc();
-
-// FAQ accordion
-var faqQs = document.querySelectorAll('.faq-q');
-for (var j = 0; j < faqQs.length; j++) {
-  faqQs[j].addEventListener('click', function() {
-    var item = this.parentElement;
-    var wasOpen = item.classList.contains('open');
-    var allItems = document.querySelectorAll('.faq-item');
-    for (var k = 0; k < allItems.length; k++) { allItems[k].classList.remove('open'); }
-    if (!wasOpen) item.classList.add('open');
-  });
-}
-
-// Scroll animations
-var obs = new IntersectionObserver(function(entries) {
-  for (var i = 0; i < entries.length; i++) {
-    if (entries[i].isIntersecting) {
-      entries[i].target.classList.add('visible');
-      obs.unobserve(entries[i].target);
-    }
-  }
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-var anims = document.querySelectorAll('.anim');
-for (var m = 0; m < anims.length; m++) {
-  anims[m].style.transitionDelay = Math.min(m * 0.04, 0.3) + 's';
-  obs.observe(anims[m]);
-}
-
-// Animation iframe — play only when visible
-var animFrame = document.querySelector('.product-frame iframe');
-if (animFrame) {
-  var animObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      animFrame.contentWindow.postMessage(entry.isIntersecting ? 'play' : 'pause', '*');
-    });
-  }, { threshold: 0.3 });
-  animFrame.addEventListener('load', function() { animObs.observe(animFrame); });
-}
-
-// Interactive product tour
-(function() {
-  var DESCS = [
-    'Drop in any multi-sheet PDF drawing set — residential, commercial, or industrial. No reformatting or page splitting needed.',
-    'TakeoffAI scans every sheet and marks each detection right on the plan — downlights, GPOs, switches, data points, smoke detectors — so you can see exactly what was counted, not just a number.',
-    'Review AI-counted quantities by symbol type and sheet. Spot-check or adjust any row before you export.',
-    'Export a complete BOQ to Excel, generate a PDF summary, or create a branded bid proposal with scope, exclusions, and pricing — ready to send.'
-  ];
-  var INTERVAL = 5000;
-  var tourTabs = document.querySelectorAll('.tour-tab');
-  var tourScreens = document.querySelectorAll('.tour-screen');
-  var descEl = document.getElementById('tour-desc-text');
-  var fill = document.getElementById('tour-fill');
-  var prevBtn = document.querySelector('.tour-prev');
-  var nextBtn = document.querySelector('.tour-next');
-  var tourSection = document.querySelector('.tour');
-  var current = 0;
-  var autoTimer = null;
-  var paused = false;
-  var fillStart = null;
-  var fillRaf = null;
-
-  function animateFill() {
-    if (fillRaf) cancelAnimationFrame(fillRaf);
-    fill.style.transition = 'none';
-    fill.style.width = '0%';
-    fillStart = performance.now();
-    function step(ts) {
-      if (paused) { fillRaf = requestAnimationFrame(step); return; }
-      var pct = Math.min((ts - fillStart) / INTERVAL * 100, 100);
-      fill.style.width = pct + '%';
-      if (pct < 100) fillRaf = requestAnimationFrame(step);
-    }
-    fillRaf = requestAnimationFrame(step);
-  }
-
-  function goTo(idx) {
-    tourTabs[current].classList.remove('active');
-    tourScreens[current].classList.remove('active');
-    current = ((idx % DESCS.length) + DESCS.length) % DESCS.length;
-    tourTabs[current].classList.add('active');
-    tourScreens[current].classList.add('active');
-    descEl.textContent = DESCS[current];
-    animateFill();
-    if (current === 1) startCounters();
-  }
-
-  function startAuto() {
-    clearInterval(autoTimer);
-    autoTimer = setInterval(function() { if (!paused) goTo(current + 1); }, INTERVAL);
-  }
-
-  for (var ti = 0; ti < tourTabs.length; ti++) {
-    (function(i) { tourTabs[i].addEventListener('click', function() { paused = false; goTo(i); startAuto(); }); })(ti);
-  }
-  prevBtn.addEventListener('click', function() { paused = false; goTo(current - 1); startAuto(); });
-  nextBtn.addEventListener('click', function() { paused = false; goTo(current + 1); startAuto(); });
-  tourSection.addEventListener('mouseenter', function() { paused = true; });
-  tourSection.addEventListener('mouseleave', function() { paused = false; fillStart = performance.now() - (parseFloat(fill.style.width) / 100 * INTERVAL); });
-
-  var counterTargets = { downlights: 247, gpos: 183, switches: 94, 'smoke-det': 38, 'data-pts': 72 };
-  function startCounters() {
-    Object.keys(counterTargets).forEach(function(key) {
-      var el = document.getElementById('cnt-' + key);
-      if (!el) return;
-      var target = counterTargets[key];
-      var n = 0;
-      el.textContent = '0';
-      var iv = setInterval(function() {
-        n += Math.ceil(target / 25);
-        if (n >= target) { n = target; clearInterval(iv); }
-        el.textContent = n;
-      }, 50);
-    });
-  }
-
-  goTo(0);
-  startAuto();
-})();
-
-// Nav scroll shadow
-window.addEventListener('scroll', function() {
-  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
-}, { passive: true });
-</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1" alt=""></noscript>
+<script src="/site.js?v=20260902"></script>
 </body>
 </html>

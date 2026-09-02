@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How TakeoffAI Works — AI Electrical Take-off, Step by Step</title>
+<meta name="description" content="See exactly what TakeoffAI does with a drawing set: reads the legend, counts every symbol, marks each one on the plan, raises RFIs where it's unsure, and exports a BOQ or a priced Simpro quote. Free to try.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://takeoffai.com.au/product">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://takeoffai.com.au/product">
+<meta property="og:title" content="How TakeoffAI Works — AI Electrical Take-off, Step by Step">
+<meta property="og:description" content="Upload a drawing set. AI reads the legend, counts every symbol and marks it on the plan. You review, then export a BOQ or push a priced quote to Simpro.">
+<meta property="og:image" content="https://takeoffai.com.au/takeoffai_og_banner.png">
+<meta property="og:locale" content="en_AU">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css?v=20260902">
+<script src="/pixel.js" async></script>
+<style>
+/* INTERACTIVE TOUR */
+.tour{padding:96px 0}
+.tour-header{text-align:center;margin-bottom:40px}.tour-header .lead{margin:0 auto}
+.tour-header .section-sub{margin:0 auto}
+.tour-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+.tour-tab{padding:8px 20px;border-radius:100px;border:1.5px solid var(--gray-200);background:#fff;font-size:14px;font-weight:500;color:var(--gray-500);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif}
+.tour-tab.active{background:var(--orange);border-color:var(--orange);color:#fff;font-weight:600}
+.tour-tab:hover:not(.active){border-color:var(--orange);color:var(--orange)}
+.tour-progress-bar{height:2px;background:var(--gray-150);border-radius:2px;max-width:480px;margin:0 auto 24px;overflow:hidden}
+.tour-progress-fill{height:100%;background:var(--orange);width:0%}
+.tour-frame{margin-bottom:24px}
+.tour-screens{min-height:400px}
+.tour-screen{display:none;flex-direction:row}
+.tour-screen.active{display:flex;animation:tourFadeIn .35s ease}
+@keyframes tourFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.mock-sidebar{width:190px;flex-shrink:0;background:var(--gray-50);border-right:1px solid var(--gray-150);padding:16px}
+.mock-main{flex:1;padding:24px;background:#fff;overflow:auto}
+.mock-nav-title{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-400);margin-bottom:10px}
+.mock-project-item{padding:7px 10px;border-radius:6px;font-size:13px;font-weight:500;color:var(--gray-600);cursor:default;display:flex;align-items:center;gap:8px;margin-bottom:2px}
+.mock-project-item.active-item{background:var(--orange-light);color:var(--orange)}
+.mock-new-btn{margin-top:10px;padding:7px 10px;border-radius:6px;border:1.5px dashed var(--gray-200);font-size:12px;color:var(--gray-400);text-align:center;cursor:default}
+.mock-sheet-item{padding:5px 10px;border-radius:6px;font-size:12px;color:var(--gray-500);display:flex;align-items:center;gap:6px;margin-bottom:2px}
+.mock-sheet-item.processing{color:var(--orange)}
+.mock-sheet-item.done{color:var(--green)}
+.mock-drop-zone{border:2px dashed var(--gray-200);border-radius:12px;padding:48px 24px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;background:var(--gray-50)}
+.mock-drop-icon{width:48px;height:48px;border-radius:12px;background:var(--orange-light);display:flex;align-items:center;justify-content:center;color:var(--orange)}
+.mock-drop-title{font-size:15px;font-weight:600;color:var(--gray-800)}
+.mock-drop-sub{font-size:13px;color:var(--gray-400)}
+.mock-badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:4px}
+.mock-badge{padding:3px 10px;border-radius:100px;background:var(--gray-100);font-size:11px;font-weight:500;color:var(--gray-500)}
+.mock-upload-btn{margin-top:8px;padding:10px 24px;border-radius:8px;background:var(--orange);color:#fff;font-size:13px;font-weight:600;border:none;cursor:default}
+.mock-status{font-size:13px;color:var(--gray-500);margin-bottom:12px}
+.mock-status strong{color:var(--gray-800);font-weight:600}
+.mock-progress-track{height:8px;background:var(--gray-100);border-radius:100px;overflow:hidden;margin-bottom:20px}
+.mock-progress-inner{height:100%;background:var(--orange);border-radius:100px}
+.mock-counter-row{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:8px;background:var(--gray-50);margin-bottom:6px;border:1px solid var(--gray-150)}
+.mock-counter-label{font-size:13px;font-weight:500;color:var(--gray-700)}
+.mock-counter-val{font-size:16px;font-weight:700;color:var(--orange);font-family:'Fraunces',serif;min-width:32px;text-align:right}
+.mock-plan{position:relative;border:1px solid var(--gray-150);border-radius:10px;overflow:hidden;background:#fff;margin-bottom:14px}
+.mock-plan svg{display:block;width:100%;height:auto}
+.mock-plan-tag{position:absolute;top:8px;left:8px;background:rgba(28,28,28,.82);color:#fff;font-size:10px;font-weight:600;letter-spacing:.03em;padding:3px 9px;border-radius:5px;display:flex;align-items:center;gap:6px}
+.mock-plan-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--orange);animation:pulse 1.4s ease infinite}
+.mock-legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:16px}
+.mock-legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray-500);font-weight:500}
+.mock-legend-swatch{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+@keyframes markIn{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}
+.mock-mark{transform-box:fill-box;transform-origin:center;animation:markIn .45s ease backwards}
+.mock-table{width:100%;border-collapse:collapse}
+.mock-table th{font-size:11px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:.06em;padding:0 12px 10px;text-align:left;border-bottom:1px solid var(--gray-150)}
+.mock-table td{font-size:13px;color:var(--gray-700);padding:10px 12px;border-bottom:1px solid var(--gray-100)}
+.mock-table tr:last-child td{border-bottom:none;font-weight:700;color:var(--gray-900)}
+.mock-check{color:var(--green)}
+.mock-edit{font-size:12px;color:var(--orange);cursor:default}
+.mock-export-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.mock-export-card{border:1px solid var(--gray-150);border-radius:10px;padding:18px;text-align:center;background:var(--gray-50);display:flex;flex-direction:column;align-items:center;gap:8px}
+.mock-export-card.featured{border-color:var(--orange);background:var(--orange-light)}
+.mock-export-icon{width:40px;height:40px;border-radius:10px;background:var(--gray-100);display:flex;align-items:center;justify-content:center;color:var(--gray-500)}
+.mock-export-card.featured .mock-export-icon{background:var(--orange);color:#fff}
+.mock-export-name{font-size:13px;font-weight:600;color:var(--gray-800)}
+.mock-export-sub{font-size:11px;color:var(--gray-400);line-height:1.4}
+.mock-export-btn{margin-top:4px;padding:7px 16px;border-radius:6px;border:1.5px solid var(--gray-200);background:#fff;font-size:12px;font-weight:500;color:var(--gray-600);cursor:default}
+.mock-export-card.featured .mock-export-btn{background:var(--orange);border-color:var(--orange);color:#fff}
+.tour-desc{display:flex;align-items:center;justify-content:space-between;max-width:860px;margin:0 auto;gap:16px;padding:0 4px}
+.tour-desc-text{font-size:15px;color:var(--gray-500);line-height:1.6}
+.tour-nav{display:flex;gap:8px;flex-shrink:0}
+.tour-nav button{padding:8px 16px;border-radius:8px;border:1.5px solid var(--gray-200);background:#fff;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;color:var(--gray-700)}
+.tour-nav button:hover{border-color:var(--orange);color:var(--orange)}
+/* ROI */
+.roi{padding:96px 0}
+.roi-header{text-align:center;margin-bottom:48px}
+.roi-header .lead{margin:0 auto}
+.roi-calc{max-width:680px;margin:0 auto;background:var(--white);border:1.5px solid var(--gray-150);border-radius:18px;padding:36px;box-shadow:0 2px 12px rgba(0,0,0,.03)}
+.roi-inputs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+.roi-field label{display:block;font-size:13px;font-weight:500;color:var(--gray-500);margin-bottom:6px}
+.roi-field input{width:100%;padding:12px 14px;background:var(--gray-50);border:1.5px solid var(--gray-150);border-radius:10px;color:var(--gray-900);font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;outline:none;transition:border-color .2s}
+.roi-field input:focus{border-color:var(--orange);background:var(--white)}
+.roi-results{background:var(--gray-50);border-radius:12px;padding:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.roi-r{text-align:center}
+.roi-r-label{font-size:11px;color:var(--gray-400);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.roi-r-num{font-family:'Fraunces',serif;font-size:28px;font-weight:700}
+.roi-r-num.c-orange{color:var(--orange)}
+.roi-r-num.c-green{color:var(--green)}
+.roi-r-num.c-dark{color:var(--gray-900)}
+.feat{background:#fff;border:1.5px solid var(--gray-150);border-radius:var(--r);padding:26px 24px}
+.section-paper .feat{border-color:var(--paper-line)}
+.feat h3{font-size:16.5px;margin-bottom:6px}
+.feat p{font-size:14px;line-height:1.6;color:var(--gray-600)}
+.feat .tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:5px;margin-bottom:12px}
+.feat .tag.free{background:var(--green-light);color:var(--green)}
+.feat .tag.ai{background:var(--orange-light);color:var(--orange)}
+.ai-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ai-card{background:#fff;border:1.5px solid var(--paper-line);border-radius:var(--r-lg);padding:32px 28px}
+.ai-card .icon-sq{margin-bottom:20px}
+.ai-card h3{font-family:var(--display);font-size:22px;margin-bottom:10px;letter-spacing:-.015em;line-height:1.2}
+.ai-card p{font-size:14.5px;line-height:1.65;color:var(--gray-600)}
+.ai-card p+p{margin-top:10px}
+@media(max-width:860px){.ai-grid{grid-template-columns:1fr}}
+.export-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:960px){.export-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.export-grid{grid-template-columns:1fr}}
+.roi-calc{border-color:var(--paper-line)}
+.roi-inputs{grid-template-columns:repeat(3,1fr)}
+@media(max-width:768px){
+  .roi-inputs,.roi-results{grid-template-columns:1fr}
+  .mock-sidebar{display:none}
+  .mock-export-grid{grid-template-columns:1fr}
+  .tour-tabs{gap:6px}
+  .tour-tab{font-size:13px;padding:7px 14px}
+  .tour-desc{flex-direction:column;text-align:center}
+  .tour-screens{min-height:260px}
+  .tour{padding:72px 0}
+}
+</style>
+</head>
+<body>
+<nav class="site-nav" id="nav">
+  <div class="container nav-inner">
+    <a class="nav-logo" href="/" aria-label="TakeoffAI home">
+      <span class="nav-logo-icon"><span class="corner-tl"></span><span class="corner-br"></span></span>
+      <span class="nav-logo-text">takeoff<span>.ai</span></span>
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="/product">Product</a>
+      <a href="/simpro">Simpro</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/compare">Compare</a>
+      <a href="/about">About</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://app.takeoffai.com.au/login" class="nav-login">Log in</a>
+      <a href="https://app.takeoffai.com.au/signup" class="btn btn-primary btn-sm nav-cta">Try it free</a>
+      <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="/product">Product</a>
+    <a href="/simpro">Simpro integration</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/compare">Compare</a>
+    <a href="/about">About</a>
+    <a href="/demo">Book a demo</a>
+    <a href="https://app.takeoffai.com.au/login">Log in</a>
+    <a href="https://app.takeoffai.com.au/signup" class="nav-mobile-cta">Try it free</a>
+  </div>
+</nav>
+<main>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="kicker">Product</div>
+    <h1 class="h1">Upload a drawing set.<br>Get back a take-off you can check.</h1>
+    <p class="lead">TakeoffAI reads the legend, counts every symbol on every electrical sheet and puts a marker on each one. You review, fix anything it got wrong, and export a bill of quantities or push a priced quote to Simpro.</p>
+    <div class="hero-ctas">
+      <a href="https://app.takeoffai.com.au/signup" class="btn btn-primary btn-lg">Try it free <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="#tour" class="btn btn-ghost btn-lg">See the walkthrough</a>
+    </div>
+    <p class="hero-note">2,000 free credits on sign-up · No credit card · Cancel any time</p>
+  </div>
+</section>
+
+<section class="tour section-paper" id="tour">
+  <div class="container" style="max-width:1040px">
+    <div class="tour-header">
+      <div class="kicker">Walkthrough</div>
+      <h2 class="h2" style="margin:0 auto 14px;max-width:720px">From PDF to finished take-off<br>in under a minute.</h2>
+      <p class="lead" style="margin:0 auto;max-width:620px">Click through the four screens below. This is the same flow you get in a free account.</p>
+    </div>
+
+    <div class="tour-tabs">
+      <button class="tour-tab active" data-step="0">1 · Upload Plans</button>
+      <button class="tour-tab" data-step="1">2 · AI Detects &amp; Counts</button>
+      <button class="tour-tab" data-step="2">3 · Review Results</button>
+      <button class="tour-tab" data-step="3">4 · Export</button>
+    </div>
+    <div class="tour-progress-bar"><div class="tour-progress-fill" id="tour-fill"></div></div>
+
+    <div class="product-frame tour-frame">
+      <div class="product-frame-bar">
+        <div class="product-frame-dot"></div>
+        <div class="product-frame-dot"></div>
+        <div class="product-frame-dot"></div>
+        <span style="margin-left:8px;font-size:12px;color:var(--gray-400);font-weight:500">TakeoffAI — app.takeoffai.com.au</span>
+      </div>
+      <div class="tour-screens">
+
+        <!-- Step 0: Upload -->
+        <div class="tour-screen active" data-screen="0">
+          <div class="mock-sidebar">
+            <div class="mock-nav-title">Projects</div>
+            <div class="mock-project-item active-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+              Richmond Office
+            </div>
+            <div class="mock-project-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+              Thornbury Units
+            </div>
+            <div class="mock-new-btn">+ New project</div>
+          </div>
+          <div class="mock-main" style="display:flex;flex-direction:column;justify-content:center">
+            <div style="font-size:14px;font-weight:600;color:var(--gray-800);margin-bottom:16px">Upload drawing set</div>
+            <div class="mock-drop-zone">
+              <div class="mock-drop-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              </div>
+              <div class="mock-drop-title">Drop your PDF drawing set here</div>
+              <div class="mock-drop-sub">Or click to browse — multi-sheet sets supported</div>
+              <div class="mock-badges">
+                <span class="mock-badge">PDF</span>
+                <span class="mock-badge">Multi-sheet</span>
+                <span class="mock-badge">Electrical</span>
+                <span class="mock-badge">Architectural</span>
+              </div>
+              <button class="mock-upload-btn">Browse files</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 1: AI Detects -->
+        <div class="tour-screen" data-screen="1">
+          <div class="mock-sidebar">
+            <div class="mock-nav-title">Sheets (12)</div>
+            <div class="mock-sheet-item done">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-001 Ground Flr
+            </div>
+            <div class="mock-sheet-item done">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-002 Level 1
+            </div>
+            <div class="mock-sheet-item done">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-003 Level 2
+            </div>
+            <div class="mock-sheet-item done">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-004 Level 3
+            </div>
+            <div class="mock-sheet-item done">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-005 Level 4
+            </div>
+            <div class="mock-sheet-item done">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-006 Level 5
+            </div>
+            <div class="mock-sheet-item done">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-007 Level 6
+            </div>
+            <div class="mock-sheet-item processing">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> E-008 Level 7
+            </div>
+            <div class="mock-sheet-item" style="color:var(--gray-300)">E-009 Roof</div>
+            <div class="mock-sheet-item" style="color:var(--gray-300)">E-010 Basement</div>
+            <div class="mock-sheet-item" style="color:var(--gray-300)">E-011 Details</div>
+            <div class="mock-sheet-item" style="color:var(--gray-300)">E-012 Legend</div>
+          </div>
+          <div class="mock-main">
+            <div class="mock-status"><strong>Analysing Sheet 8 of 12</strong> — E-008 Level 7 Electrical</div>
+            <div class="mock-progress-track"><div class="mock-progress-inner" id="tour-prog-bar" style="width:65%"></div></div>
+            <div class="mock-plan">
+              <div class="mock-plan-tag"><span class="dot"></span> Live markup — E-008</div>
+              <svg viewBox="0 0 460 260" role="img" aria-label="Mock electrical floor plan with AI markups">
+                <rect x="12" y="12" width="436" height="236" rx="3" fill="#FAFAFA" stroke="#3A3A3A" stroke-width="3"/>
+                <!-- interior walls with door gaps -->
+                <line x1="200" y1="12" x2="200" y2="100" stroke="#3A3A3A" stroke-width="2.5"/>
+                <line x1="200" y1="140" x2="200" y2="150" stroke="#3A3A3A" stroke-width="2.5"/>
+                <line x1="12" y1="150" x2="120" y2="150" stroke="#3A3A3A" stroke-width="2.5"/>
+                <line x1="170" y1="150" x2="300" y2="150" stroke="#3A3A3A" stroke-width="2.5"/>
+                <line x1="300" y1="150" x2="300" y2="248" stroke="#3A3A3A" stroke-width="2.5"/>
+                <!-- room labels -->
+                <text x="95" y="142" fill="#C4C4C4" font-family="Outfit,sans-serif" font-size="9" font-weight="600" letter-spacing="1" text-anchor="middle">LIVING</text>
+                <text x="322" y="142" fill="#C4C4C4" font-family="Outfit,sans-serif" font-size="9" font-weight="600" letter-spacing="1" text-anchor="middle">KITCHEN</text>
+                <text x="150" y="242" fill="#C4C4C4" font-family="Outfit,sans-serif" font-size="9" font-weight="600" letter-spacing="1" text-anchor="middle">BED 1</text>
+                <text x="374" y="242" fill="#C4C4C4" font-family="Outfit,sans-serif" font-size="9" font-weight="600" letter-spacing="1" text-anchor="middle">BED 2</text>
+                <!-- downlights (orange) -->
+                <g class="mock-mark" style="animation-delay:.05s"><circle cx="55" cy="50" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="55" cy="50" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.1s"><circle cx="110" cy="50" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="110" cy="50" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.15s"><circle cx="160" cy="50" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="160" cy="50" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.2s"><circle cx="55" cy="105" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="55" cy="105" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.25s"><circle cx="110" cy="105" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="110" cy="105" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.12s"><circle cx="250" cy="50" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="250" cy="50" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.18s"><circle cx="320" cy="50" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="320" cy="50" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.24s"><circle cx="400" cy="50" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="400" cy="50" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.3s"><circle cx="255" cy="108" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="255" cy="108" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.34s"><circle cx="365" cy="108" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="365" cy="108" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.28s"><circle cx="72" cy="200" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="72" cy="200" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.32s"><circle cx="155" cy="205" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="155" cy="205" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.36s"><circle cx="240" cy="200" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="240" cy="200" r="1.6" fill="#E8611A"/></g>
+                <g class="mock-mark" style="animation-delay:.4s"><circle cx="375" cy="200" r="6.5" fill="none" stroke="#E8611A" stroke-width="2"/><circle cx="375" cy="200" r="1.6" fill="#E8611A"/></g>
+                <!-- GPOs (blue) -->
+                <g class="mock-mark" style="animation-delay:.42s"><rect x="19" y="70" width="10" height="10" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/></g>
+                <g class="mock-mark" style="animation-delay:.46s"><rect x="19" y="200" width="10" height="10" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/></g>
+                <g class="mock-mark" style="animation-delay:.5s"><rect x="181" y="35" width="10" height="10" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/></g>
+                <g class="mock-mark" style="animation-delay:.54s"><rect x="431" y="90" width="10" height="10" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/></g>
+                <g class="mock-mark" style="animation-delay:.58s"><rect x="275" y="231" width="10" height="10" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/></g>
+                <g class="mock-mark" style="animation-delay:.62s"><rect x="415" y="200" width="10" height="10" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/></g>
+                <!-- switches (green) -->
+                <g class="mock-mark" style="animation-delay:.5s"><path d="M188,112 L194,123 L182,123 Z" fill="none" stroke="#1B8C4F" stroke-width="2" stroke-linejoin="round"/></g>
+                <g class="mock-mark" style="animation-delay:.56s"><path d="M140,154 L146,165 L134,165 Z" fill="none" stroke="#1B8C4F" stroke-width="2" stroke-linejoin="round"/></g>
+                <g class="mock-mark" style="animation-delay:.6s"><path d="M310,156 L316,167 L304,167 Z" fill="none" stroke="#1B8C4F" stroke-width="2" stroke-linejoin="round"/></g>
+                <!-- data points (purple) -->
+                <g class="mock-mark" style="animation-delay:.64s"><path d="M330,134 L337,141 L330,148 L323,141 Z" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linejoin="round"/></g>
+                <g class="mock-mark" style="animation-delay:.68s"><path d="M110,229 L117,236 L110,243 L103,236 Z" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linejoin="round"/></g>
+                <!-- smoke detectors (red) -->
+                <g class="mock-mark" style="animation-delay:.7s"><circle cx="110" cy="75" r="6" fill="none" stroke="#D94040" stroke-width="2"/><circle cx="110" cy="75" r="2" fill="#D94040"/></g>
+                <g class="mock-mark" style="animation-delay:.74s"><circle cx="360" cy="200" r="6" fill="none" stroke="#D94040" stroke-width="2"/><circle cx="360" cy="200" r="2" fill="#D94040"/></g>
+              </svg>
+            </div>
+            <div class="mock-legend">
+              <span class="mock-legend-item"><span class="mock-legend-swatch" style="background:#E8611A"></span>Downlights</span>
+              <span class="mock-legend-item"><span class="mock-legend-swatch" style="background:#2563EB"></span>GPOs</span>
+              <span class="mock-legend-item"><span class="mock-legend-swatch" style="background:#1B8C4F"></span>Switches</span>
+              <span class="mock-legend-item"><span class="mock-legend-swatch" style="background:#7C3AED"></span>Data points</span>
+              <span class="mock-legend-item"><span class="mock-legend-swatch" style="background:#D94040"></span>Smoke detectors</span>
+            </div>
+            <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-400);margin-bottom:10px">Detected so far</div>
+            <div class="mock-counter-row"><span class="mock-counter-label">Downlights</span><span class="mock-counter-val" id="cnt-downlights">0</span></div>
+            <div class="mock-counter-row"><span class="mock-counter-label">GPOs (power points)</span><span class="mock-counter-val" id="cnt-gpos">0</span></div>
+            <div class="mock-counter-row"><span class="mock-counter-label">Switches</span><span class="mock-counter-val" id="cnt-switches">0</span></div>
+            <div class="mock-counter-row"><span class="mock-counter-label">Smoke detectors</span><span class="mock-counter-val" id="cnt-smoke-det">0</span></div>
+            <div class="mock-counter-row"><span class="mock-counter-label">Data points</span><span class="mock-counter-val" id="cnt-data-pts">0</span></div>
+          </div>
+        </div>
+
+        <!-- Step 2: Review -->
+        <div class="tour-screen" data-screen="2">
+          <div class="mock-sidebar">
+            <div class="mock-nav-title">Sheets (12)</div>
+            <div class="mock-sheet-item" style="color:var(--gray-400);font-size:12px;font-weight:600">All sheets</div>
+            <div class="mock-sheet-item done"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-001 Ground Flr</div>
+            <div class="mock-sheet-item done"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-002 Level 1</div>
+            <div class="mock-sheet-item done"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-003 Level 2</div>
+            <div class="mock-sheet-item done"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> E-004 Level 3</div>
+          </div>
+          <div class="mock-main">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+              <div style="font-size:14px;font-weight:600;color:var(--gray-800)">Takeoff results — all sheets</div>
+              <div style="font-size:12px;color:var(--green);font-weight:600;display:flex;align-items:center;gap:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 12 sheets complete</div>
+            </div>
+            <table class="mock-table">
+              <thead><tr><th>Symbol</th><th>Count</th><th>Sheets</th><th></th></tr></thead>
+              <tbody>
+                <tr><td><span class="mock-check">✓</span> Downlights</td><td>247</td><td>E-001–E-012</td><td><span class="mock-edit">Edit</span></td></tr>
+                <tr><td><span class="mock-check">✓</span> GPOs (power points)</td><td>183</td><td>E-001–E-010</td><td><span class="mock-edit">Edit</span></td></tr>
+                <tr><td><span class="mock-check">✓</span> Switches</td><td>94</td><td>E-001–E-012</td><td><span class="mock-edit">Edit</span></td></tr>
+                <tr><td><span class="mock-check">✓</span> Smoke detectors</td><td>38</td><td>E-001–E-009</td><td><span class="mock-edit">Edit</span></td></tr>
+                <tr><td><span class="mock-check">✓</span> Data points</td><td>72</td><td>E-001–E-008</td><td><span class="mock-edit">Edit</span></td></tr>
+                <tr><td><span class="mock-check">✓</span> Junction boxes</td><td>56</td><td>E-001–E-012</td><td><span class="mock-edit">Edit</span></td></tr>
+                <tr style="background:var(--gray-50)"><td>Total items</td><td>690</td><td>12 sheets</td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Step 3: Export -->
+        <div class="tour-screen" data-screen="3">
+          <div class="mock-sidebar">
+            <div class="mock-nav-title">Project</div>
+            <div class="mock-project-item active-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+              Richmond Office
+            </div>
+            <div style="margin-top:16px" class="mock-nav-title">Summary</div>
+            <div style="font-size:12px;color:var(--gray-500);padding:4px 10px">690 items counted</div>
+            <div style="font-size:12px;color:var(--gray-500);padding:4px 10px">12 sheets processed</div>
+            <div style="font-size:12px;color:var(--green);padding:4px 10px;font-weight:600">Ready to export</div>
+          </div>
+          <div class="mock-main">
+            <div style="font-size:14px;font-weight:600;color:var(--gray-800);margin-bottom:6px">Export your takeoff</div>
+            <div style="font-size:13px;color:var(--gray-400);margin-bottom:20px">Choose your format — all include the full BOQ with 690 counted items.</div>
+            <div class="mock-export-grid">
+              <div class="mock-export-card">
+                <div class="mock-export-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg></div>
+                <div class="mock-export-name">Excel BOQ</div>
+                <div class="mock-export-sub">Itemised bill of quantities, editable spreadsheet</div>
+                <button class="mock-export-btn">Export .xlsx</button>
+              </div>
+              <div class="mock-export-card">
+                <div class="mock-export-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
+                <div class="mock-export-name">PDF Report</div>
+                <div class="mock-export-sub">Print-ready summary with quantities by sheet</div>
+                <button class="mock-export-btn">Export .pdf</button>
+              </div>
+              <div class="mock-export-card featured">
+                <div class="mock-export-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+                <div class="mock-export-name">Bid Proposal</div>
+                <div class="mock-export-sub">Branded PDF with scope, exclusions &amp; pricing — ready to send</div>
+                <button class="mock-export-btn">Generate proposal</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /tour-screens -->
+    </div><!-- /product-frame -->
+
+    <div class="tour-desc">
+      <div class="tour-desc-text" id="tour-desc-text">Drop in any multi-sheet PDF drawing set — residential, commercial, or industrial. No reformatting or page splitting needed.</div>
+      <div class="tour-nav">
+        <button class="tour-prev">&#8592; Prev</button>
+        <button class="tour-next">Next &#8594;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="sec-head center">
+      <div class="kicker">What the AI does</div>
+      <h2 class="h2">Three things a counting tool can't do.</h2>
+      <p class="lead">Click-to-count software makes you faster at counting. TakeoffAI does the counting, and shows its work.</p>
+    </div>
+    <div class="ai-grid">
+      <div class="ai-card anim">
+        <div class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <h3>Reads the legend itself</h3>
+        <p>Every drawing set uses its own symbols. TakeoffAI reads the legend on your drawings and works out what needs counting, so there's no symbol library to build before it will work on a new consultant's set.</p>
+        <p>Upload the whole binder and it finds the electrical sheets. On real jobs a 25-page binder has held one electrical sheet; it counts that one and ignores the rest.</p>
+      </div>
+      <div class="ai-card anim">
+        <div class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M4.9 19.1l2.2-2.2M16.9 7.1l2.2-2.2"/></svg></div>
+        <h3>Counts and marks every item</h3>
+        <p>Downlights, GPOs, switches, data points, smoke detectors, distribution boards and more, counted sheet by sheet. Each detected item gets a marker placed on the drawing at the spot it was found.</p>
+        <p>That marker is the point. You're not checking a total against a hunch; you're checking a drawing with the count drawn on it.</p>
+      </div>
+      <div class="ai-card anim">
+        <div class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <h3>Raises RFIs instead of guessing</h3>
+        <p>Where a drawing is ambiguous, whether it's a symbol that isn't in the legend, a clash between sheets or a note that changes a count, the AI raises an RFI for you to answer rather than picking an answer and hiding it in the total.</p>
+        <p>You see every question it had, and you decide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-paper">
+  <div class="container">
+    <div class="sec-head center">
+      <div class="kicker">The free platform</div>
+      <h2 class="h2">Everything else is free, on every account.</h2>
+      <p class="lead">You only ever pay for AI take-offs. The tools around them cost nothing, with no seat fees and no per-project fees.</p>
+    </div>
+    <div class="grid-3">
+      <div class="feat anim"><span class="tag free">Free</span><h3>Unlimited projects and users</h3><p>Add the whole estimating team. Nothing is priced per seat or per project.</p></div>
+      <div class="feat anim"><span class="tag free">Free</span><h3>Manual take-off and mark-up</h3><p>Count and annotate by hand when you want to, on the same drawings, with the same exports.</p></div>
+      <div class="feat anim"><span class="tag free">Free</span><h3>Conduit and wire measurement</h3><p>Measure runs on the plan for the lengths a symbol count doesn't give you.</p></div>
+      <div class="feat anim"><span class="tag free">Free</span><h3>Your symbol library and price lists</h3><p>Keep your own symbols, materials and labour rates in the account so counts can be priced the way you price.</p></div>
+      <div class="feat anim"><span class="tag free">Free</span><h3>Excel, CSV and PDF export</h3><p>An itemised bill of quantities as a spreadsheet, or a print-ready report with quantities by sheet.</p></div>
+      <div class="feat anim"><span class="tag free">Free</span><h3>Simpro quote push</h3><p>Send the priced quote straight into Simpro. <a href="/simpro" class="link">Official integration partner.</a></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="sec-head center">
+      <div class="kicker">Getting it out</div>
+      <h2 class="h2">Where the take-off goes next.</h2>
+    </div>
+    <div class="export-grid">
+      <div class="card anim"><div class="icon-sq green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><h3>Excel bill of quantities</h3><p>Itemised and editable. Drop it into whatever you price with today.</p></div>
+      <div class="card anim"><div class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><h3>PDF report</h3><p>Print-ready summary with quantities by sheet, for the file or the client.</p></div>
+      <div class="card anim"><div class="icon-sq dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><h3>Simpro quote</h3><p>Priced with your rates and pushed into Simpro as a quote you can send. <a href="/simpro" class="link">How it works</a></p></div>
+      <div class="card anim"><div class="icon-sq blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="5.6" y1="5.6" x2="18.4" y2="18.4"/><line x1="18.4" y1="5.6" x2="5.6" y2="18.4"/></svg></div><h3>Claude connector</h3><p>Let Claude read your take-offs and draft tender documents from the real counts. Contractor and Unlimited plans.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-paper">
+<section class="roi" id="roi"><div class="container"><div class="roi-header"><div class="kicker">ROI calculator</div><h2 class="h2">See what you're leaving<br>on the table</h2><p class="lead">Plug in your numbers. Rough numbers are fine; it updates as you type.</p></div>
+<div class="roi-calc anim">
+  <div class="roi-inputs">
+    <div class="roi-field"><label>Hours per takeoff (manual)</label><input type="number" id="roi-hours" value="8" min="1" max="40"></div>
+    <div class="roi-field"><label>Bids per month</label><input type="number" id="roi-bids" value="6" min="1" max="50"></div>
+    <div class="roi-field"><label>Estimator hourly cost ($)</label><input type="number" id="roi-rate" value="46" min="20" max="200"></div>
+      </div>
+  <div class="roi-results">
+    <div class="roi-r"><div class="roi-r-label">Hours saved / year</div><div class="roi-r-num c-orange" id="res-hours">461</div></div>
+    <div class="roi-r"><div class="roi-r-label">Labour cost saved</div><div class="roi-r-num c-green" id="res-cost">$21K</div></div>
+    <div class="roi-r"><div class="roi-r-label">Extra bids / year</div><div class="roi-r-num c-dark" id="res-bids">58</div></div>
+  </div>
+</div></div></section>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="sec-head center"><div class="kicker">Questions</div><h2 class="h2">About the product</h2></div>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q">What happens if the AI gets a count wrong? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">You fix it in the review screen, where every marker sits on the drawing. Add a missed item, remove a false one, or reassign a symbol, and the bill of quantities updates. You're always the last set of eyes before anything is exported or pushed to Simpro.</div></div></div>
+      <div class="faq-item"><button class="faq-q">What counts as one take-off? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">One job's drawing set, priced by what's in it rather than by page count. Residential is a house or a unit, typically one or two electrical sheets. Commercial covers offices, retail, industrial and healthcare, where there's far more to read before anything gets counted. You see the exact price for your set before you confirm.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Do I have to set up a symbol library first? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">No. The AI reads the legend on each drawing set. You can keep your own symbol library and price lists in the account so that counts get priced your way, but it isn't a prerequisite for counting.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Can I try it on my own drawings before paying? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Yes. A free account includes 2,000 credits, which is two commercial take-offs or four residential, with no card required. Run one on a set you're pricing this week and compare it with your own count. If you'd like us to do it with you, <a href="/demo">book a demo</a>.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2 class="h2">See it on your own drawings.</h2>
+    <p>Create a free account and run a take-off on a set you're pricing right now. No card, no call required.</p>
+    <div class="hero-ctas">
+      <a href="https://app.takeoffai.com.au/signup" class="btn btn-primary btn-lg">Try it free <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="/demo" class="btn btn-ghost on-dark btn-lg">Book a demo</a>
+    </div>
+    <p class="hero-note">2,000 free credits · No credit card · Cancel any time</p>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="/" aria-label="TakeoffAI home">
+          <span class="nav-logo-icon"><span class="corner-tl"></span><span class="corner-br"></span></span>
+          <span class="nav-logo-text">takeoff<span>.ai</span></span>
+        </a>
+        <p>AI electrical take-off for Australian contractors. Upload the drawings, review the count, quote in Simpro. Built in Melbourne.</p>
+        <a href="/simpro" class="partner-badge"><span class="pb-mark">S</span><span class="pb-text"><span class="pb-top">Official</span><span class="pb-name">Simpro integration partner</span></span></a>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="/product">How it works</a>
+        <a href="/simpro">Simpro integration</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/compare">Compare</a>
+        <a href="/demo">Book a demo</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/about">About</a>
+        <a href="mailto:info@takeoffai.com.au">Contact</a>
+        <a href="https://app.takeoffai.com.au/login">Log in</a>
+        <a href="https://app.takeoffai.com.au/signup">Create a free account</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="/privacy">Privacy policy</a>
+        <a href="/terms">Terms &amp; conditions</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 TakeoffAI Pty Ltd &middot; ABN 97 395 522 316</span>
+      <span>Simpro is a trademark of Simpro Software Pty Ltd.</span>
+    </div>
+  </div>
+</footer>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1" alt=""></noscript>
+<script src="/site.js?v=20260902"></script>
+<script>
+// Interactive product tour
+(function() {
+  var DESCS = [
+    'Drop in any multi-sheet PDF drawing set — residential, commercial, or industrial. No reformatting or page splitting needed.',
+    'TakeoffAI scans every sheet and marks each detection right on the plan — downlights, GPOs, switches, data points, smoke detectors — so you can see exactly what was counted, not just a number.',
+    'Review AI-counted quantities by symbol type and sheet. Spot-check or adjust any row before you export.',
+    'Export a complete BOQ to Excel, generate a PDF summary, or create a branded bid proposal with scope, exclusions, and pricing — ready to send.'
+  ];
+  var INTERVAL = 5000;
+  var tourTabs = document.querySelectorAll('.tour-tab');
+  var tourScreens = document.querySelectorAll('.tour-screen');
+  var descEl = document.getElementById('tour-desc-text');
+  var fill = document.getElementById('tour-fill');
+  var prevBtn = document.querySelector('.tour-prev');
+  var nextBtn = document.querySelector('.tour-next');
+  var tourSection = document.querySelector('.tour');
+  var current = 0;
+  var autoTimer = null;
+  var paused = false;
+  var fillStart = null;
+  var fillRaf = null;
+
+  function animateFill() {
+    if (fillRaf) cancelAnimationFrame(fillRaf);
+    fill.style.transition = 'none';
+    fill.style.width = '0%';
+    fillStart = performance.now();
+    function step(ts) {
+      if (paused) { fillRaf = requestAnimationFrame(step); return; }
+      var pct = Math.min((ts - fillStart) / INTERVAL * 100, 100);
+      fill.style.width = pct + '%';
+      if (pct < 100) fillRaf = requestAnimationFrame(step);
+    }
+    fillRaf = requestAnimationFrame(step);
+  }
+
+  function goTo(idx) {
+    tourTabs[current].classList.remove('active');
+    tourScreens[current].classList.remove('active');
+    current = ((idx % DESCS.length) + DESCS.length) % DESCS.length;
+    tourTabs[current].classList.add('active');
+    tourScreens[current].classList.add('active');
+    descEl.textContent = DESCS[current];
+    animateFill();
+    if (current === 1) startCounters();
+  }
+
+  function startAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(function() { if (!paused) goTo(current + 1); }, INTERVAL);
+  }
+
+  for (var ti = 0; ti < tourTabs.length; ti++) {
+    (function(i) { tourTabs[i].addEventListener('click', function() { paused = false; goTo(i); startAuto(); }); })(ti);
+  }
+  prevBtn.addEventListener('click', function() { paused = false; goTo(current - 1); startAuto(); });
+  nextBtn.addEventListener('click', function() { paused = false; goTo(current + 1); startAuto(); });
+  tourSection.addEventListener('mouseenter', function() { paused = true; });
+  tourSection.addEventListener('mouseleave', function() { paused = false; fillStart = performance.now() - (parseFloat(fill.style.width) / 100 * INTERVAL); });
+
+  var counterTargets = { downlights: 247, gpos: 183, switches: 94, 'smoke-det': 38, 'data-pts': 72 };
+  function startCounters() {
+    Object.keys(counterTargets).forEach(function(key) {
+      var el = document.getElementById('cnt-' + key);
+      if (!el) return;
+      var target = counterTargets[key];
+      var n = 0;
+      el.textContent = '0';
+      var iv = setInterval(function() {
+        n += Math.ceil(target / 25);
+        if (n >= target) { n = target; clearInterval(iv); }
+        el.textContent = n;
+      }, 50);
+    });
+  }
+
+  goTo(0);
+  startAuto();
+})();
+(function(){
+  function calc(){
+    var h=parseFloat(document.getElementById('roi-hours').value)||8, b=parseFloat(document.getElementById('roi-bids').value)||6, r=parseFloat(document.getElementById('roi-rate').value)||46;
+    var s=Math.round(h*0.8*b*12), c=Math.round(s*r), e=Math.round(h*0.8*b*12/h);
+    document.getElementById('res-hours').textContent=s.toLocaleString();
+    document.getElementById('res-cost').textContent=c>=1000?'$'+Math.round(c/1000)+'K':'$'+c;
+    document.getElementById('res-bids').textContent=e;
+  }
+  document.querySelectorAll('.roi-field input').forEach(function(i){i.addEventListener('input',calc)}); calc();
+})();
+</script>
+</body>
+</html>

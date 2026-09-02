@@ -1,8 +1,11 @@
 {
   "outputDirectory": ".",
   "routes": [
+    { "src": "/product", "dest": "/product.html" },
+    { "src": "/simpro", "dest": "/simpro.html" },
     { "src": "/pricing", "dest": "/pricing.html" },
     { "src": "/compare", "dest": "/compare.html" },
+    { "src": "/about", "dest": "/about.html" },
     { "src": "/demo", "dest": "/demo.html" },
     { "src": "/booking", "dest": "/demo.html" },
     { "src": "/terms", "dest": "/terms.html" },
