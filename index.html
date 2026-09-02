@@ -104,11 +104,12 @@
 @media(max-width:768px){.howto-panel{padding:20px}}
 
 /* ---- screenshot + checklist ---- */
-.shot-panel{background:var(--panel);border-radius:var(--r);padding:40px 0 40px 40px;overflow:hidden}
-.shot-panel img{width:100%;border-radius:12px 0 0 12px;box-shadow:var(--shadow-card);display:block}
+.shot-panel{background:var(--panel);border-radius:var(--r);padding:40px;display:flex;justify-content:center}
+.shot-panel video{width:auto;max-width:100%;height:auto;max-height:640px;aspect-ratio:9/16;border-radius:14px;box-shadow:var(--shadow-card);display:block;background:#fff}
+@media(max-width:900px){.shot-panel video{max-height:560px}}
 .check-cols{display:grid;grid-template-columns:1fr 1fr;gap:28px 32px;margin-top:32px}
 .check-cols h4{font-size:14px;font-weight:600;color:var(--muted);margin-bottom:14px}
-@media(max-width:768px){.shot-panel{padding:20px 0 20px 20px}.check-cols{grid-template-columns:1fr}}
+@media(max-width:768px){.shot-panel{padding:20px}.check-cols{grid-template-columns:1fr}}
 
 /* ---- integrations orbit ---- */
 .orbit{position:relative;width:100%;max-width:520px;margin:0 auto}
@@ -274,7 +275,9 @@
 <section class="section section-band">
   <div class="container split">
     <div class="shot-panel">
-      <img src="/takeoffai_plan_review_web.png" width="1345" height="662" alt="The TakeoffAI review screen with every counted symbol marked on a ground floor power and lighting drawing" loading="lazy">
+      <video autoplay muted loop playsinline preload="metadata" poster="/assets/review-loop.jpg" width="900" height="1600" aria-label="The TakeoffAI review screen: symbols counted and marked on a drawing, then the sheet confirmed and exported">
+        <source src="/assets/review-loop.mp4" type="video/mp4">
+      </video>
     </div>
     <div>
       <h2 class="h2">Every count, marked on the drawing</h2>
@@ -410,6 +413,7 @@
 <script src="/site.js?v=20260902"></script>
 <script>
 (function(){
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('video[autoplay]').forEach(function(v){v.removeAttribute('autoplay');v.pause();});}
   var c=document.getElementById('count-carousel'); if(!c) return;
   document.querySelectorAll('[data-scroll]').forEach(function(b){ b.addEventListener('click',function(){ var card=c.querySelector('.card'); var w=card?card.getBoundingClientRect().width+20:320; c.scrollBy({left:parseInt(b.dataset.scroll,10)*w,behavior:'smooth'}); }); });
 })();
