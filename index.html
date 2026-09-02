@@ -39,50 +39,103 @@
 <link rel="stylesheet" href="/site.css?v=20260903">
 <script src="/pixel.js" async></script>
 <style>
-.hero{padding:64px 0 0}
-.hero-copy{max-width:740px}
-.hero .h1{margin-bottom:18px}
-.hero .lead{max-width:600px;margin-bottom:26px}
-.hero-shot{margin:52px 0 0}
-.hero-shot img{width:100%;height:auto;border:1px solid var(--line);border-radius:var(--r-lg);background:#fff}
-.hero-shot figcaption,.caption{font-size:14px;color:var(--muted);margin-top:12px;max-width:720px}
-.hero-shot figcaption b{color:var(--ink);font-weight:600}
-@media(max-width:768px){.hero{padding:40px 0 0}.hero-shot{margin-top:32px}}
+/* ---- hero ---- */
+.hero{background:var(--band);padding:56px 0 80px}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.hero .h1{margin-bottom:24px}
+.hero .lead{max-width:520px;margin-bottom:32px}
+.hero .hero-ctas{margin-top:0}
+.hero .hero-note{margin-top:18px}
+@media(max-width:900px){.hero{padding:32px 0 56px}.hero-grid{grid-template-columns:1fr;gap:40px}}
+/* composed product visual */
+.hv{position:relative;background:var(--panel-2);border-radius:120px 32px 32px 32px;padding:48px 0 0 48px;overflow:visible}
+.hv-window{background:#fff;border-radius:14px 0 0 14px;box-shadow:var(--shadow-card);overflow:hidden;border:1px solid var(--line);border-right:none}
+.hv-bar{display:flex;gap:6px;padding:10px 14px;border-bottom:1px solid var(--line)}
+.hv-bar span{width:9px;height:9px;border-radius:50%;background:var(--panel-2)}
+.hv-window img{width:100%;height:auto;display:block}
+.hv-badges{position:absolute;top:-14px;left:28px;display:flex;gap:10px}
+.hv-badge{position:relative;width:52px;height:52px;border-radius:50%;background:#fff;box-shadow:var(--shadow-float);display:flex;align-items:center;justify-content:center;color:var(--ink)}
+.hv-badge svg{width:22px;height:22px}
+.hv-badge b{position:absolute;top:-6px;right:-8px;min-width:24px;height:24px;padding:0 6px;border-radius:12px;background:var(--orange);color:#fff;font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.hv-export{position:absolute;top:18px;right:-16px;background:#fff;border-radius:var(--pill);box-shadow:var(--shadow-float);padding:10px 12px 10px 16px;display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--ink)}
+.hv-export svg{width:16px;height:16px;color:var(--ink)}
+.hv-export .chip{padding:5px 10px;font-size:12.5px}
+.hv-export .chip.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.hv-card{position:absolute;left:-18px;bottom:28px;width:260px;background:#fff;border-radius:16px;box-shadow:var(--shadow-float);padding:16px 18px}
+.hv-card-head{display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:12px}
+.hv-card-head .ic{width:28px;height:28px;border-radius:8px;background:var(--orange-tint);color:var(--orange);display:flex;align-items:center;justify-content:center}
+.hv-card-head .ic svg{width:15px;height:15px}
+.hv-row{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;color:var(--text);padding:7px 0;border-top:1px solid var(--line)}
+.hv-row b{font-weight:700;color:var(--ink)}
+.hv-row .bar{flex:1;height:8px;border-radius:4px;background:var(--panel-2);margin:0 12px}
+.hv-row .bar i{display:block;height:100%;border-radius:4px;background:var(--orange)}
+.hv-plus{position:absolute;right:22px;bottom:-16px;width:48px;height:48px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-float);font-size:24px;font-weight:500}
+@media(max-width:900px){.hv{border-radius:64px 24px 24px 24px;padding:36px 0 0 24px}.hv-card{left:-8px;width:220px;bottom:20px}.hv-export{right:-6px}}
+@media(max-width:560px){.hv{padding:32px 0 0 16px;margin:0 0 56px}.hv-badges{left:12px}.hv-badge{width:44px;height:44px}.hv-badge svg{width:18px;height:18px}.hv-export{top:auto;bottom:-52px;right:0;left:0;justify-content:center}.hv-card{position:static;width:auto;margin:16px 16px 0 0}.hv-plus{display:none}}
 
-.how-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-.how-copy p{font-size:17px;line-height:1.7;color:var(--ink-2);margin-bottom:16px;max-width:520px}
-.how-copy .h2{margin-bottom:18px}
-.how-steps{list-style:none;counter-reset:s;margin:26px 0 22px;border-top:1px solid var(--line);max-width:520px}
-.how-steps li{counter-increment:s;padding:12px 0;border-bottom:1px solid var(--line);font-size:16px;display:flex;gap:14px;color:var(--ink-2)}
-.how-steps li::before{content:counter(s);font-weight:700;color:var(--orange);min-width:16px}
-.how-steps b{font-weight:600;color:var(--ink)}
-.how-anim{position:sticky;top:calc(var(--nav-h) + 24px)}
-@media(max-width:860px){.how-grid{grid-template-columns:1fr;gap:32px}.how-anim{position:static}}
+/* ---- logo / works-with strip ---- */
+.strip{background:var(--band);padding:0 0 72px}
+.strip p{text-align:center;font-size:15px;color:var(--text);margin-bottom:28px}
+.strip-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.strip-row .chip{font-size:15px;padding:12px 20px;background:#fff}
+.strip-row .chip svg{width:16px;height:16px}
 
-.price-intro{max-width:640px;margin-bottom:8px}
-.price-table{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:32px}
-.price-col{padding:28px 28px 28px 0;border-right:1px solid var(--line);display:flex;flex-direction:column}
-.price-col+.price-col{padding-left:28px}
-.price-col:last-child{border-right:none}
-.price-col h3{font-size:15px;font-weight:600;color:var(--muted);margin-bottom:10px}
-.price{font-size:38px;font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1;margin-bottom:14px}
-.price span{font-size:15px;font-weight:500;color:var(--muted);margin-left:4px;letter-spacing:0}
-.price-col p{font-size:15px;line-height:1.6;color:var(--ink-2);margin-bottom:22px}
-.price-col .btn{margin-top:auto;align-self:flex-start}
-@media(max-width:800px){.price-table{grid-template-columns:1fr}.price-col{border-right:none;border-bottom:1px solid var(--line);padding:24px 0}.price-col+.price-col{padding-left:0}.price-col:last-child{border-bottom:none}}
+/* ---- counts cards carousel ---- */
+.intro-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:start;margin-bottom:56px}
+.intro-grid p{font-size:17px;line-height:1.65;color:var(--text);margin-bottom:18px}
+.carousel{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:none}
+.carousel::-webkit-scrollbar{display:none}
+.carousel .card{flex:0 0 calc(25% - 15px);scroll-snap-align:start;display:flex;flex-direction:column}
+.carousel .card .btn{margin-top:auto;align-self:flex-start}
+.carousel .card p{margin-bottom:24px}
+.car-nav{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
+@media(max-width:1100px){.carousel .card{flex-basis:calc(33.33% - 14px)}}
+@media(max-width:900px){.intro-grid{grid-template-columns:1fr;gap:20px}.carousel .card{flex-basis:calc(50% - 10px)}}
+@media(max-width:600px){.carousel .card{flex-basis:82%}}
 
-.out-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:32px}
-.out-grid h3{font-size:18px;margin-bottom:8px}
-.out-grid p{font-size:16px;line-height:1.65;color:var(--ink-2)}
-@media(max-width:800px){.out-grid{grid-template-columns:1fr;gap:24px}}
+/* ---- how-to ---- */
+.howto-list{list-style:none;margin:32px 0 24px;max-width:520px}
+.howto-list li{display:grid;grid-template-columns:36px 1fr;gap:12px;padding:18px 0;border-top:1px solid var(--line)}
+.howto-list li:last-child{border-bottom:1px solid var(--line)}
+.howto-list .n{font-size:14px;font-weight:700;color:var(--orange);padding-top:3px}
+.howto-list b{display:block;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.howto-list span{font-size:15px;color:var(--muted)}
+.howto-panel{background:var(--panel);border-radius:var(--r);padding:40px}
+@media(max-width:768px){.howto-panel{padding:20px}}
 
-.who-grid{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:center}
-.who-photo{width:100%;border-radius:var(--r-lg);border:1px solid var(--line)}
-.who-grid p{font-size:17px;line-height:1.7;color:var(--ink-2);margin-bottom:14px;max-width:560px}
-.who-grid .h2{margin-bottom:16px}
-@media(max-width:760px){.who-grid{grid-template-columns:1fr;gap:24px}.who-photo{max-width:300px}}
+/* ---- screenshot + checklist ---- */
+.shot-panel{background:var(--panel);border-radius:var(--r);padding:40px 0 40px 40px;overflow:hidden}
+.shot-panel img{width:100%;border-radius:12px 0 0 12px;box-shadow:var(--shadow-card);display:block}
+.check-cols{display:grid;grid-template-columns:1fr 1fr;gap:28px 32px;margin-top:32px}
+.check-cols h4{font-size:14px;font-weight:600;color:var(--muted);margin-bottom:14px}
+@media(max-width:768px){.shot-panel{padding:20px 0 20px 20px}.check-cols{grid-template-columns:1fr}}
 
-.booking-embed{width:100%;height:700px;overflow:auto;border-radius:var(--r-lg);border:1px solid var(--line);background:#fff;margin-top:28px}
+/* ---- integrations orbit ---- */
+.orbit{position:relative;width:100%;max-width:520px;margin:0 auto}
+.orbit::before{content:"";display:block;padding-top:100%}
+.orbit .ring{position:absolute;inset:0;border-radius:50%;border:1px solid var(--line)}
+.orbit .ring.inner{inset:18%}
+.orbit .core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:96px;height:96px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;box-shadow:0 14px 40px rgba(232,97,26,.35)}
+.orbit .core .nav-logo-icon{width:40px;height:40px}
+.orbit .core .corner-tl{border-color:#fff;width:16px;height:16px;border-width:4px}
+.orbit .core .corner-br{border-color:#fff;width:16px;height:16px;border-width:4px}
+.orbit .node{position:absolute;transform:translate(-50%,-50%);background:#fff;border-radius:var(--pill);box-shadow:var(--shadow-float);padding:12px 18px;font-size:15px;font-weight:700;color:var(--ink);white-space:nowrap;display:flex;align-items:center;gap:8px}
+.orbit .node.dark{background:var(--ink);color:#fff}
+.orbit .node .dot{width:9px;height:9px;border-radius:50%}
+@media(max-width:560px){.orbit .node{padding:9px 13px;font-size:13px}.orbit .core{width:72px;height:72px}}
+
+/* ---- booking ---- */
+.booking-embed{width:100%;height:700px;overflow:auto;border-radius:16px;background:#fff;border:1px solid var(--line)}
+
+/* ---- why cards ---- */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:900px){.why-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.why-grid{grid-template-columns:1fr}}
+
+/* ---- final cta ---- */
+.final .split{align-items:center}
+.final-photo{border-radius:var(--r);overflow:hidden;background:var(--panel-2)}
+.final-photo img{width:100%;height:100%;object-fit:cover;display:block}
 </style>
 </head>
 <body>
@@ -118,120 +171,200 @@
 <main>
 
 <section class="hero">
-  <div class="container">
-    <div class="hero-copy">
-      <h1 class="h1">Upload the drawings.<br>We'll count the symbols.</h1>
-      <p class="lead">TakeoffAI reads an electrical drawing set, counts every downlight, GPO, switch and data point, and puts a marker on each one so you can check it against the plan. Built in Melbourne by two ex-sparkies.</p>
+  <div class="container hero-grid">
+    <div>
+      <h1 class="h1">Count your electrical plans in seconds</h1>
+      <p class="lead">Upload a PDF drawing set and TakeoffAI counts every downlight, GPO, switch and data point, marks each one on the plan, and turns it into a bill of quantities or a Simpro quote. Built for Australian electrical contractors.</p>
       <div class="hero-ctas">
         <a href="https://app.takeoffai.com.au/signup" class="btn btn-primary btn-lg">Try it free</a>
-        <a href="#book-call" class="btn btn-dark btn-lg">Book a call</a>
+        <a href="#book-call" class="btn btn-white btn-lg">Book a call</a>
       </div>
-      <p class="hero-note">Free account with 2,000 credits and no card. That's two commercial take-offs, enough to see whether it's any good on your drawings.</p>
+      <p class="hero-note">2,000 free credits on sign-up. No credit card.</p>
     </div>
-    <figure class="hero-shot">
-      <img src="/takeoffai_plan_review_web.png" width="1345" height="662" alt="The TakeoffAI review screen: a ground floor power and lighting drawing with every counted symbol marked, and the AI's notes down the left" loading="eager">
-      <figcaption><b>The review screen on a real job.</b> A medical clinic fit-out, three electrical sheets, 154 items counted. Down the left are the six notes the AI raised for the estimator instead of guessing.</figcaption>
-    </figure>
+    <div class="hv" aria-hidden="true">
+      <div class="hv-badges">
+        <div class="hv-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg><b>48</b></div>
+        <div class="hv-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><b>154</b></div>
+        <div class="hv-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><b>6</b></div>
+      </div>
+      <div class="hv-export"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Export to <span class="chip">Excel</span><span class="chip">PDF</span><span class="chip dark">Simpro</span></div>
+      <div class="hv-window">
+        <div class="hv-bar"><span></span><span></span><span></span></div>
+        <img src="/takeoffai_plan_review_web.png" width="1345" height="662" alt="" loading="eager">
+      </div>
+      <div class="hv-card">
+        <div class="hv-card-head"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg></span> Ground floor · power &amp; lighting</div>
+        <div class="hv-row"><span>Downlight type 1</span><span class="bar"><i style="width:82%"></i></span><b>48</b></div>
+        <div class="hv-row"><span>Light rail</span><span class="bar"><i style="width:34%"></i></span><b>19</b></div>
+        <div class="hv-row"><span>Double GPO</span><span class="bar"><i style="width:56%"></i></span><b>31</b></div>
+        <div class="hv-row"><span>Total items</span><span class="bar"></span><b>154</b></div>
+      </div>
+      <div class="hv-plus">+</div>
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="container">
+    <p>Works with the tools you already quote and run jobs from.</p>
+    <div class="strip-row">
+      <span class="chip"><span class="dot" style="background:var(--ink)"></span>Simpro</span>
+      <span class="chip"><span class="dot" style="background:var(--green)"></span>Excel</span>
+      <span class="chip"><span class="dot" style="background:var(--red)"></span>PDF</span>
+      <span class="chip"><span class="dot" style="background:var(--blue)"></span>CSV</span>
+      <span class="chip"><span class="dot" style="background:var(--orange)"></span>Claude</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="what-it-counts">
+  <div class="container">
+    <div class="intro-grid">
+      <h2 class="h2">Take-off software built for electrical</h2>
+      <div>
+        <p><strong>Residential, commercial and industrial</strong>, we've got you covered.</p>
+        <p>TakeoffAI is made for the electrical take-off: it reads the legend on your drawings, works out what needs counting, and counts it. You review the markers on the plan and export.</p>
+        <p>Whether you're pricing a house, a fit-out or a factory, you get the same thing back: a checkable count in minutes instead of an afternoon with a highlighter.</p>
+        <a href="/product" class="btn btn-white">See how it works</a>
+      </div>
+    </div>
+    <div class="carousel" id="count-carousel">
+      <div class="card"><div class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg></div><h3>Lighting</h3><p>Downlights, battens, linear and track lighting, emergency and exit lights, counted by type straight off the legend.</p><a href="/product" class="btn btn-white btn-sm">Explore lighting</a></div>
+      <div class="card"><div class="icon-sq blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="9" cy="10" r="1.2"/><circle cx="15" cy="10" r="1.2"/><path d="M10 15h4"/></svg></div><h3>Power</h3><p>Single and double GPOs, isolators, dedicated circuits and floor boxes, each one marked where it sits on the plan.</p><a href="/product" class="btn btn-white btn-sm">Explore power</a></div>
+      <div class="card"><div class="icon-sq green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="10" rx="5"/><circle cx="16" cy="12" r="3"/></svg></div><h3>Switches</h3><p>Single, double and multi-gang switches, dimmers and sensors, so the switching schedule comes out with the count.</p><a href="/product" class="btn btn-white btn-sm">Explore switches</a></div>
+      <div class="card"><div class="icon-sq purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16v10H4zM8 10V6h8v4M10 14h4"/></svg></div><h3>Data &amp; comms</h3><p>Data points, TV and phone outlets, WAPs and security devices, picked up from the same sheets in the same pass.</p><a href="/product" class="btn btn-white btn-sm">Explore data</a></div>
+      <div class="card"><div class="icon-sq red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg></div><h3>Fire &amp; safety</h3><p>Smoke detectors, heat detectors and alarm devices, with the notes the AI raises where a symbol isn't in the legend.</p><a href="/product" class="btn btn-white btn-sm">Explore fire</a></div>
+      <div class="card"><div class="icon-sq amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></div><h3>Switchboards</h3><p>Distribution boards and sub-boards identified per sheet, ready for you to price the board work on top of the count.</p><a href="/product" class="btn btn-white btn-sm">Explore boards</a></div>
+    </div>
+    <div class="car-nav">
+      <button class="round-btn soft" type="button" data-scroll="-1" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+      <button class="round-btn" type="button" data-scroll="1" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight" style="padding-top:0">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat"><div class="stat-num">40 sec</div><div class="stat-label">Average time to a first AI count</div></div>
+      <div class="stat orange"><div class="stat-num">95%+</div><div class="stat-label">Accuracy on standard symbols, every one marked so you can check it</div></div>
+      <div class="stat black"><div class="stat-num">2,000</div><div class="stat-label">Free credits on every new account. Two commercial take-offs, no card</div></div>
+    </div>
   </div>
 </section>
 
 <section class="section" id="how-it-works">
-  <div class="container how-grid">
-    <div class="how-copy">
-      <h2 class="h2">What it actually does</h2>
-      <p>You upload the whole PDF binder. TakeoffAI works out which sheets are electrical, reads the legend on those sheets, and counts what it finds. Every item it counts gets a marker on the drawing at the spot it was found.</p>
-      <p>Where the drawing is unclear, it writes a note instead of guessing. In the screenshot above that's the notes down the left: a GPO count that's approximate because the symbols are packed together, and a legend sheet that wasn't in the upload.</p>
-      <p>You go through the markers, fix whatever it got wrong, and confirm each page. Then you export a bill of quantities to Excel or PDF, or push a priced quote into Simpro.</p>
-      <ol class="how-steps">
-        <li><span><b>Upload</b> the drawing set, whole binder is fine</span></li>
-        <li><span><b>AI counts</b> and marks every symbol, sheet by sheet</span></li>
-        <li><span><b>You review</b> the markers and answer its notes</span></li>
-        <li><span><b>Export</b> a BOQ, or push a quote into Simpro</span></li>
-      </ol>
-      <p><a class="link" href="/product">Full walkthrough of the product</a></p>
-    </div>
-    <div class="how-anim">
-      <div class="product-frame"><iframe src="/takeoffai-hero-animation.html" title="TakeoffAI: a drawing set uploaded and the first count appearing" scrolling="no" loading="lazy" allowtransparency="true" data-anim></iframe></div>
-      <p class="caption">Upload to first count.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="pricing">
-  <div class="container">
-    <h2 class="h2">What it costs</h2>
-    <p class="lead price-intro">The software is free. You pay for AI take-offs, and every new account starts with 2,000 credits, which is two commercial take-offs or four residential.</p>
-    <div class="price-table">
-      <div class="price-col">
-        <h3>Free account</h3>
-        <div class="price">$0</div>
-        <p>Unlimited projects and users, manual take-off and measurement, Excel and PDF export, price lists, the Simpro connection. Plus 2,000 credits to start.</p>
-        <a href="https://app.takeoffai.com.au/signup" class="btn btn-dark">Create account</a>
-      </div>
-      <div class="price-col">
-        <h3>Solo</h3>
-        <div class="price">$149<span>a month</span></div>
-        <p>3 commercial or 6 residential AI take-offs a month, so $50 each. Unused ones roll over. Cancel any time.</p>
-        <a href="https://app.takeoffai.com.au/signup" class="btn btn-ghost">Start free</a>
-      </div>
-      <div class="price-col">
-        <h3>Contractor</h3>
-        <div class="price">$349<span>a month</span></div>
-        <p>10 commercial or 20 residential a month, so $35 each. Includes the Claude connector for your take-off data.</p>
-        <a href="https://app.takeoffai.com.au/signup" class="btn btn-ghost">Start free</a>
-      </div>
-    </div>
-    <p class="muted" style="margin-top:20px;max-width:720px;font-size:15px;line-height:1.6">Or buy credits as you need them: 1,000 for $100, and they don't expire. A commercial take-off is 1,000 credits, residential is 500. If a take-off fails, the credits come straight back. <a href="/pricing">All the pricing detail</a>.</p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <h2 class="h2">Where the count goes</h2>
-    <div class="out-grid">
-      <div><h3>Excel or PDF</h3><p>An itemised bill of quantities as a spreadsheet, or a print-ready report with quantities by sheet.</p></div>
-      <div><h3>Simpro</h3><p>Priced against your own materials and labour rates, then pushed into Simpro as a quote. Nothing gets re-keyed. <a href="/simpro">How the Simpro connection works</a>.</p></div>
-      <div><h3>Claude</h3><p>On Contractor and Unlimited plans you can connect Claude to your account. It can read the counted quantities and write the tender paperwork from the real numbers, not invented ones.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container who-grid">
-    <img src="/founders.png" width="450" height="306" alt="Jonah and AJ, the founders of TakeoffAI" class="who-photo" loading="lazy">
+  <div class="container split">
     <div>
-      <h2 class="h2">Who's behind it</h2>
-      <p>We're Jonah and AJ. We both came up through the electrical trade in Melbourne, and we both spent too many nights counting downlights off a PDF at the kitchen table. TakeoffAI is the tool we wanted then.</p>
-      <p>It's a small company. If you email <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a>, you get one of us, not a ticket.</p>
-      <p><a class="link" href="/about">More about us</a></p>
+      <h2 class="h2">How to do a take-off with TakeoffAI</h2>
+      <p class="lead" style="margin-top:16px;max-width:520px">From a PDF binder to a bill of quantities, without building a symbol library first.</p>
+      <ol class="howto-list">
+        <li><span class="n">01</span><div><b>Upload your plans</b><span>Drop in the whole PDF binder. TakeoffAI finds the electrical sheets.</span></div></li>
+        <li><span class="n">02</span><div><b>AI counts, you review</b><span>Every symbol is counted and marked on the drawing. Fix anything it got wrong and answer its notes.</span></div></li>
+        <li><span class="n">03</span><div><b>Export your take-off</b><span>To Excel or PDF, or push a priced quote straight into Simpro.</span></div></li>
+      </ol>
+      <p class="muted" style="font-size:15px;max-width:520px">Need lengths as well? Measure conduit and cable runs on the same plan with the free measuring tools.</p>
+    </div>
+    <div class="howto-panel">
+      <div class="product-frame"><div class="product-frame-bar"><div class="product-frame-dot"></div><div class="product-frame-dot"></div><div class="product-frame-dot"></div></div><iframe src="/takeoffai-hero-animation.html" title="TakeoffAI: a drawing set uploaded and the first count appearing" scrolling="no" loading="lazy" allowtransparency="true" data-anim></iframe></div>
     </div>
   </div>
 </section>
 
-<section class="section" id="book-call">
+<section class="section section-band">
+  <div class="container split">
+    <div class="shot-panel">
+      <img src="/takeoffai_plan_review_web.png" width="1345" height="662" alt="The TakeoffAI review screen with every counted symbol marked on a ground floor power and lighting drawing" loading="lazy">
+    </div>
+    <div>
+      <h2 class="h2">Every count, marked on the drawing</h2>
+      <p class="lead" style="margin-top:16px;max-width:520px">You're not asked to trust a total. Each item the AI counts gets a marker at the spot it found it, and anything unclear becomes a note for you rather than a guess in the number.</p>
+      <div class="check-cols">
+        <div>
+          <h4>Counting</h4>
+          <ul class="check-list">
+            <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div>Reads the legend on your drawing</div></li>
+            <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div>Marks every item where it sits</div></li>
+            <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div>Raises notes instead of guessing</div></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Exporting</h4>
+          <ul class="check-list">
+            <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div>Excel bill of quantities</div></li>
+            <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div>PDF report by sheet</div></li>
+            <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div>Priced quote into Simpro</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div>
+      <h2 class="h2">Integrations to suit your existing workflow</h2>
+      <p class="lead" style="margin-top:16px;max-width:520px">The count is priced against your own materials and labour rates, then goes wherever you quote from. Push it into Simpro as a quote, drop the Excel into your own sheet, or let Claude write the tender paperwork from the real numbers.</p>
+      <div class="hero-ctas"><a href="/simpro" class="btn btn-white">How the Simpro connection works</a></div>
+    </div>
+    <div class="orbit" aria-hidden="true">
+      <div class="ring"></div><div class="ring inner"></div>
+      <div class="core"><span class="nav-logo-icon"><span class="corner-tl"></span><span class="corner-br"></span></span></div>
+      <div class="node dark" style="left:50%;top:0">Simpro</div>
+      <div class="node" style="left:93%;top:32%"><span class="dot" style="background:var(--green)"></span>Excel</div>
+      <div class="node" style="left:84%;top:84%"><span class="dot" style="background:var(--red)"></span>PDF</div>
+      <div class="node" style="left:18%;top:86%"><span class="dot" style="background:var(--blue)"></span>CSV</div>
+      <div class="node" style="left:5%;top:34%"><span class="dot" style="background:var(--orange)"></span>Claude</div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-band" id="book-call">
   <div class="container">
-    <h2 class="h2">Book a call</h2>
-    <p class="lead" style="max-width:600px">Thirty minutes. Send a set of drawings beforehand and we'll run the take-off on them live, then send you the bill of quantities to keep either way.</p>
+    <div class="sec-head">
+      <h2 class="h2">Or see it done on your plans first</h2>
+      <p class="lead">Book a 30-minute call. Send a set of drawings beforehand and we'll run the take-off on them live, answer your questions, and send you the bill of quantities to keep either way.</p>
+    </div>
     <div class="booking-embed" id="my-cal-inline"></div>
     <script type="text/javascript">
       (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
       Cal("init", {origin:"https://cal.com"});
       Cal("inline", { elementOrSelector:"#my-cal-inline", calLink: "jonah-flinos-fv2dw0/30min", layout: "month_view" });
-      Cal("ui", {"styles":{"branding":{"brandColor":"#E8611A"}},"hideEventTypeDetails":false,"layout":"month_view"});
+      Cal("ui", {"theme":"light","styles":{"branding":{"brandColor":"#E8611A"}},"hideEventTypeDetails":false,"layout":"month_view"});
     </script>
-    <p class="muted" style="margin-top:14px;font-size:15px">Prefer email? <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a></p>
+    <p class="sec-foot">Prefer email? <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a></p>
   </div>
 </section>
 
-<section class="section" id="faq">
+<section class="section">
   <div class="container">
-    <h2 class="h2" style="margin-bottom:24px">Questions we get</h2>
-    <div class="faq-list">
-      <div class="faq-item"><button class="faq-q">How accurate is it? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Around 95% on standard symbols, which is why every count is marked on the drawing. You're checking a plan with the count drawn on it, not trusting a total. Where a drawing is ambiguous the AI leaves a note rather than a guess.</div></div></div>
-      <div class="faq-item"><button class="faq-q">What drawings does it handle? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Any PDF electrical drawing: residential, commercial, industrial. Upload the whole binder and it finds the electrical sheets. It reads the legend on your drawing rather than relying on a fixed symbol library, so a new consultant's set doesn't need setting up first.</div></div></div>
-      <div class="faq-item"><button class="faq-q">Do I need to book a call to get started? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">No. Create an account, upload a set and run it with the free credits. The call is there if you'd rather watch it done on your own drawings first, or you have questions about your workflow.</div></div></div>
-      <div class="faq-item"><button class="faq-q">Does it work with Simpro? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Yes. A finished take-off is priced against your own rates and pushed into Simpro as a quote. The connection is part of the free platform. <a href="/simpro">More on the Simpro connection</a>.</div></div></div>
-      <div class="faq-item"><button class="faq-q">Is my drawing data secure? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Encrypted in transit and at rest, never shared with third parties, and yours to delete. Details in the <a href="/privacy">privacy policy</a>.</div></div></div>
+    <div class="sec-head">
+      <h2 class="h2">Why contractors use TakeoffAI for their take-offs</h2>
+    </div>
+    <div class="why-grid">
+      <div class="card"><div class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 .5-9 7 7 0 0 0-13.5 2A3.5 3.5 0 0 0 6 19z"/></svg></div><h3>Free to start</h3><p>The software is free: unlimited projects and users, manual take-off, measuring, exports. You only pay for AI take-offs, and the first two are on us.</p></div>
+      <div class="card"><div class="icon-sq green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Every count is checkable</h3><p>Markers on the drawing for every item, and notes where the plan was unclear. You're the last set of eyes before anything is exported.</p></div>
+      <div class="card"><div class="icon-sq blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8z"/><circle cx="7" cy="7" r="1.5"/></svg></div><h3>Price shown before you spend</h3><p>Every take-off shows its exact price before you confirm it. If it fails, the credits come straight back.</p></div>
+      <div class="card"><div class="icon-sq dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div><h3>Straight into Simpro</h3><p>The finished quote lands in Simpro priced with your rates. Nobody re-keys a bill of quantities.</p></div>
+      <div class="card"><div class="icon-sq purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-5.4A8 8 0 1 1 21 12z"/></svg></div><h3>Real people on the other end</h3><p>Two founders from the electrical trade. Optional onboarding call included, and email goes to a person.</p></div>
+      <div class="card"><div class="icon-sq amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Made in Melbourne</h3><p>Australian symbols, Australian drawing conventions, Australian-owned. Built on real sets from real local jobs.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band final">
+  <div class="container">
+    <div class="split">
+      <div>
+        <h2 class="h2">Start with 2,000 free credits</h2>
+        <p>Create a free account, upload a set of drawings and run the AI on it today. Two commercial take-offs are included before you decide on a plan, and an onboarding call is there if you want one.</p>
+        <div class="hero-ctas">
+          <a href="https://app.takeoffai.com.au/signup" class="btn btn-primary btn-lg">Try it free</a>
+          <a href="#book-call" class="btn btn-white btn-lg">Book a call</a>
+        </div>
+      </div>
+      <div class="final-photo"><img src="/founders.png" width="450" height="306" alt="Jonah and AJ, the founders of TakeoffAI" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -245,7 +378,7 @@
           <span class="nav-logo-icon"><span class="corner-tl"></span><span class="corner-br"></span></span>
           <span class="nav-logo-text">takeoff<span>.ai</span></span>
         </a>
-        <p>AI electrical take-off for Australian contractors. Upload the drawings, review the count, send the quote. Built in Melbourne.</p>
+        <p>AI electrical take-off for Australian contractors. Melbourne, Australia<br><a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a></p>
       </div>
       <div class="footer-col">
         <h4>Product</h4>
@@ -275,5 +408,11 @@
 </footer>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1" alt=""></noscript>
 <script src="/site.js?v=20260902"></script>
+<script>
+(function(){
+  var c=document.getElementById('count-carousel'); if(!c) return;
+  document.querySelectorAll('[data-scroll]').forEach(function(b){ b.addEventListener('click',function(){ var card=c.querySelector('.card'); var w=card?card.getBoundingClientRect().width+20:320; c.scrollBy({left:parseInt(b.dataset.scroll,10)*w,behavior:'smooth'}); }); });
+})();
+</script>
 </body>
 </html>
