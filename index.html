@@ -171,8 +171,11 @@
 
 /* ---- final cta ---- */
 .final .split{align-items:center}
-.final-photo{border-radius:var(--r);overflow:hidden;background:var(--panel-2)}
-.final-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.final-photo{position:relative;border-radius:var(--r);overflow:hidden;background:var(--panel-2);max-width:420px;justify-self:end}
+.final-photo img{width:100%;height:auto;display:block}
+.final-cap{position:absolute;left:16px;bottom:16px;background:rgba(255,255,255,.92);border-radius:12px;padding:10px 14px;font-size:13.5px;color:var(--muted);line-height:1.3}
+.final-cap b{display:block;font-size:15px;color:var(--ink)}
+@media(max-width:900px){.final-photo{justify-self:start}}
 </style>
 </head>
 <body>
@@ -415,7 +418,7 @@
       <div class="card"><div class="icon-sq green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Every count is checkable</h3><p>Markers on the drawing for every item, and notes where the plan was unclear. You're the last set of eyes before anything is exported.</p></div>
       <div class="card"><div class="icon-sq blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8z"/><circle cx="7" cy="7" r="1.5"/></svg></div><h3>Price shown before you spend</h3><p>Every take-off shows its exact price before you confirm it. If it fails, the credits come straight back.</p></div>
       <div class="card"><div class="icon-sq dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div><h3>Straight into Simpro</h3><p>The finished quote lands in Simpro priced with your rates. Nobody re-keys a bill of quantities.</p></div>
-      <div class="card"><div class="icon-sq purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-5.4A8 8 0 1 1 21 12z"/></svg></div><h3>Real people on the other end</h3><p>Two founders from the electrical trade. Optional onboarding call included, and email goes to a person.</p></div>
+      <div class="card"><div class="icon-sq purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-5.4A8 8 0 1 1 21 12z"/></svg></div><h3>A real person on the other end</h3><p>Founded and run by an ex-tradie. Optional onboarding call included, and email goes to a person, not a ticket queue.</p></div>
       <div class="card"><div class="icon-sq amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Made in Melbourne</h3><p>Australian symbols, Australian drawing conventions, Australian-owned. Built on real sets from real local jobs.</p></div>
     </div>
   </div>
@@ -432,7 +435,7 @@
           <a href="#book-call" class="btn btn-white btn-lg">Book a call</a>
         </div>
       </div>
-      <div class="final-photo"><img src="/founders.png" width="450" height="306" alt="Jonah and AJ, the founders of TakeoffAI" loading="lazy"></div>
+      <div class="final-photo"><img src="/assets/jonah.jpg" width="600" height="750" alt="Jonah Flinos, founding director of TakeoffAI" loading="lazy"><div class="final-cap"><b>Jonah Flinos</b>Founding Director</div></div>
     </div>
   </div>
 </section>
