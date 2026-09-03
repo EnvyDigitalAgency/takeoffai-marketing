@@ -11,6 +11,7 @@ Plain HTML/CSS/JS, no build step. One HTML file per page, all sharing the same s
 |------------|-----------------|---------|
 | `/`        | `index.html`    | Home: "try it free" and "book a call" side by side, Simpro integration, Cal.com booking, pricing summary |
 | `/product` | `product.html`  | Interactive walkthrough (the 4-step tour), features, exports, ROI calculator |
+| `/walkthrough` | `walkthrough.html` | Five-minute app walkthrough video with chapters, plus the 8-second review loop |
 | `/simpro`  | `simpro.html`   | Simpro integration page (not in nav or sitemap until the partnership is finalised) |
 | `/pricing` | `pricing.html`  | Plans, credit packs, free-credits offer, pricing FAQ |
 | `/compare` | `compare.html`  | vs Groundplan / ConEst / Bluebeam |
