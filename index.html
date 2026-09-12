@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TakeoffAI — AI Electrical Take-off Software for Australian Contractors</title>
-<meta name="description" content="Upload an electrical drawing set. TakeoffAI counts every symbol, marks each one on the drawing so you can check it, and exports a bill of quantities or a Simpro quote. Free account with 2,000 credits, no card. Built in Melbourne.">
+<meta name="description" content="Upload an electrical drawing set. TakeoffAI counts every symbol, marks each one on the drawing so you can check it, and exports a priced bill of quantities. Free account with 2,000 credits, no card. Built in Melbourne.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.takeoffai.com.au/">
 <meta property="og:type" content="website">
@@ -26,7 +26,7 @@
   "url": "https://www.takeoffai.com.au",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web",
-  "description": "AI electrical take-off software for Australian contractors. Upload PDF plans, AI counts every symbol and marks it on the drawing, export a bill of quantities or push a priced quote to Simpro.",
+  "description": "AI electrical take-off software for Australian contractors. Upload PDF plans, AI counts every symbol and marks it on the drawing, export a priced bill of quantities to Excel or PDF.",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD", "description": "Free account with 2,000 credits and no credit card. AI take-offs are charged on a monthly plan from A$149, or pay as you go." },
   "publisher": { "@type": "Organization", "name": "TakeoffAI Pty Ltd", "url": "https://www.takeoffai.com.au" }
 }
@@ -36,7 +36,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/site.css?v=20260903c">
+<link rel="stylesheet" href="/site.css?v=20260912">
 <script src="/pixel.js" async></script>
 <style>
 /* ---- hero ---- */
@@ -93,7 +93,7 @@
 @media(max-width:768px){.howto-panel{padding:20px}}
 
 
-/* ---- integrations: the count becomes a Simpro quote ---- */
+/* ---- the count becomes a priced bill of quantities ---- */
 .pipe-panel{background:var(--panel);border-radius:var(--r);padding:28px}
 .pipe{display:flex;flex-direction:column;gap:0}
 .pipe-step{background:#fff;border-radius:16px;padding:18px 20px;box-shadow:var(--shadow-card)}
@@ -216,7 +216,7 @@
   <div class="container hero-grid">
     <div>
       <h1 class="h1">Count your electrical plans in seconds</h1>
-      <p class="lead">Upload a PDF drawing set and TakeoffAI counts every downlight, GPO, switch and data point, marks each one on the plan, and turns it into a bill of quantities or a Simpro quote. Built for Australian electrical contractors.</p>
+      <p class="lead">Upload a PDF drawing set and TakeoffAI counts every downlight, GPO, switch and data point, marks each one on the plan, and turns it into a priced bill of quantities. Built for Australian electrical contractors.</p>
       <div class="hero-ctas">
         <a href="https://app.takeoffai.com.au/signup" class="btn btn-primary btn-lg">Try it free</a>
         <a href="#book-call" class="btn btn-white btn-lg">Book a call</a>
@@ -240,7 +240,6 @@
   <div class="container">
     <p>Works with the tools you already quote and run jobs from.</p>
     <div class="strip-row">
-      <span class="chip"><span class="dot" style="background:var(--ink)"></span>Simpro</span>
       <span class="chip"><span class="dot" style="background:var(--green)"></span>Excel</span>
       <span class="chip"><span class="dot" style="background:var(--red)"></span>PDF</span>
       <span class="chip"><span class="dot" style="background:var(--blue)"></span>CSV</span>
@@ -293,7 +292,7 @@
       <ol class="howto-list">
         <li><span class="n">01</span><div><b>Upload your plans</b><span>Drop in the whole PDF binder. TakeoffAI finds the electrical sheets.</span></div></li>
         <li><span class="n">02</span><div><b>AI counts, you review</b><span>Every symbol is counted and marked on the drawing. Fix anything it got wrong and answer its notes.</span></div></li>
-        <li><span class="n">03</span><div><b>Export your take-off</b><span>To Excel or PDF, or push a priced quote straight into Simpro.</span></div></li>
+        <li><span class="n">03</span><div><b>Export your take-off</b><span>A bill of quantities to Excel or PDF, priced with your own rates.</span></div></li>
       </ol>
       <p class="muted" style="font-size:15px;max-width:520px">Need lengths as well? Measure conduit and cable runs on the same plan with the free measuring tools.</p>
     </div>
@@ -305,18 +304,18 @@
   </div>
 </section>
 
-<section class="section" id="simpro">
+<section class="section" id="priced">
   <div class="container split">
     <div>
-      <span class="kicker">Simpro integration</span>
-      <h2 class="h2">Count in TakeoffAI.<br>Quote in Simpro.</h2>
-      <p class="lead" style="margin-top:16px;max-width:520px">TakeoffAI connects to Simpro. Once you've reviewed the take-off it's priced against your own rates and pushed into Simpro as a quote you can send. No CSV export, no re-keying a bill of quantities.</p>
+      <span class="kicker">From count to quote</span>
+      <h2 class="h2">A count is only half<br>the job.</h2>
+      <p class="lead" style="margin-top:16px;max-width:520px">Keep your materials and labour rates in TakeoffAI and the counted quantities are costed as soon as they're confirmed. What you export is a priced bill of quantities you can put straight into a quote.</p>
       <ul class="check-list" style="margin:26px 0 30px;max-width:540px">
-        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Priced before it lands.</strong> Counts are costed against your price lists and labour rates, so what arrives in Simpro is a quote, not a parts list.</div></li>
-        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>No transcription errors.</strong> The number on the drawing is the number on the quote.</div></li>
-        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Included free.</strong> The Simpro connection is part of the free platform. You only ever pay for the AI take-off itself.</div></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Your own rates.</strong> Price lists and labour rates live in your account, so the numbers come out the way you price, not the way we guess.</div></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>No transcription errors.</strong> The number on the drawing is the number on the quote. Nobody re-types a bill of quantities.</div></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><strong>Excel, CSV or PDF.</strong> Take it into whatever you quote and run jobs from today. Exports are part of the free platform.</div></li>
       </ul>
-      <a href="/simpro" class="btn btn-dark">About the Simpro integration</a>
+      <a href="/product" class="btn btn-dark">See what comes out</a>
     </div>
     <div class="pipe-panel" aria-hidden="true">
       <div class="pipe">
@@ -324,11 +323,11 @@
           <div class="pipe-head"><span class="pipe-app">takeoff<span>.ai</span></span><span class="pipe-label">REVIEWED · 12 / 12 SHEETS</span></div>
           <div class="pipe-rows"><div><span>Recessed 600×600</span><b>31</b></div><div><span>Emergency luminaire</span><b>24</b></div><div><span>Data outlet ×2</span><b>26</b></div><div><span>Total items</span><b>264</b></div></div>
         </div>
-        <div class="pipe-arrow"><span class="ln"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg> priced with your rates, pushed to Simpro <span class="ln"></span></div>
+        <div class="pipe-arrow"><span class="ln"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg> costed against your price list <span class="ln"></span></div>
         <div class="pipe-step dark">
-          <div class="pipe-head"><span class="pipe-app sp"><i>S</i>Simpro</span><span class="pipe-label">QUOTE CREATED</span></div>
-          <div class="pipe-rows"><div><span>Quote #4821 · Office fit-out</span><b>Draft</b></div><div><span>Materials</span><b>$18,420</b></div><div><span>Labour · 164 hrs</span><b>$9,860</b></div><div class="tot"><span>Quote total ex GST</span><b>$28,280</b></div></div>
-          <span class="pipe-tag"><span class="dot"></span> Created from TakeoffAI, ready to send</span>
+          <div class="pipe-head"><span class="pipe-app">Priced bill of quantities</span><span class="pipe-label">READY TO EXPORT</span></div>
+          <div class="pipe-rows"><div><span>Materials</span><b>$18,420</b></div><div><span>Labour · 164 hrs</span><b>$9,860</b></div><div class="tot"><span>Total ex GST</span><b>$28,280</b></div></div>
+          <span class="pipe-tag"><span class="dot"></span> Excel, CSV or PDF</span>
         </div>
       </div>
     </div>
@@ -417,7 +416,7 @@
       <div class="card"><div class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 .5-9 7 7 0 0 0-13.5 2A3.5 3.5 0 0 0 6 19z"/></svg></div><h3>Free to start</h3><p>The software is free: unlimited projects and users, manual take-off, measuring, exports. You only pay for AI take-offs, and the first two are on us.</p></div>
       <div class="card"><div class="icon-sq green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Every count is checkable</h3><p>Markers on the drawing for every item, and notes where the plan was unclear. You're the last set of eyes before anything is exported.</p></div>
       <div class="card"><div class="icon-sq blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8z"/><circle cx="7" cy="7" r="1.5"/></svg></div><h3>Price shown before you spend</h3><p>Every take-off shows its exact price before you confirm it. If it fails, the credits come straight back.</p></div>
-      <div class="card"><div class="icon-sq dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div><h3>Straight into Simpro</h3><p>The finished quote lands in Simpro priced with your rates. Nobody re-keys a bill of quantities.</p></div>
+      <div class="card"><div class="icon-sq dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div><h3>Priced with your rates</h3><p>Counts are costed against your own price lists and labour rates, so what you export is a priced bill of quantities, not a parts list.</p></div>
       <div class="card"><div class="icon-sq purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-5.4A8 8 0 1 1 21 12z"/></svg></div><h3>A real person on the other end</h3><p>Founded and run by an ex-tradie. Optional onboarding call included, and email goes to a person, not a ticket queue.</p></div>
       <div class="card"><div class="icon-sq amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Made in Melbourne</h3><p>Australian symbols, Australian drawing conventions, Australian-owned. Built on real sets from real local jobs.</p></div>
     </div>
@@ -474,7 +473,6 @@
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 TakeoffAI Pty Ltd &middot; ABN 97 395 522 316</span>
-      <span>Simpro is a trademark of Simpro Software Pty Ltd.</span>
     </div>
   </div>
 </footer>

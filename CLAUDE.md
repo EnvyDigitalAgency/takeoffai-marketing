@@ -9,10 +9,9 @@ Plain HTML/CSS/JS, no build step. One HTML file per page, all sharing the same s
 
 | URL        | File            | Purpose |
 |------------|-----------------|---------|
-| `/`        | `index.html`    | Home: "try it free" and "book a call" side by side, Simpro integration, Cal.com booking, pricing summary |
+| `/`        | `index.html`    | Home: "try it free" and "book a call" side by side, priced-BOQ section, Cal.com booking, pricing summary |
 | `/product` | `product.html`  | Interactive walkthrough (the 4-step tour), features, exports, ROI calculator |
 | `/walkthrough` | `walkthrough.html` | Five-minute app walkthrough video with chapters, plus the 8-second review loop |
-| `/simpro`  | `simpro.html`   | Simpro integration page (not in nav or sitemap until the partnership is finalised) |
 | `/pricing` | `pricing.html`  | Plans, credit packs, free-credits offer, pricing FAQ |
 | `/compare` | `compare.html`  | vs Groundplan / ConEst / Bluebeam |
 | `/demo`    | `demo.html`     | Optional 30-min demo booking (Cal.com embed). `/booking` is an alias |
@@ -27,9 +26,9 @@ Shared files:
 - `vercel.json` — clean-URL routes. Add a route here when adding a page. `sitemap.xml` lists every page.
 
 ## Conventions
-- **Nav and footer are duplicated verbatim in every page.** When changing a link, change it in all nine HTML files (a `grep -l 'nav-links'` finds them).
+- **Nav and footer are duplicated verbatim in every page.** When changing a link, change it in all HTML files (a `grep -l 'nav-links'` finds them).
 - Cache-bust `site.css` / `site.js` by bumping the `?v=` query in every page's `<link>`/`<script>` when you change them.
-- Brand is **Simpro** (not SimPro). The Simpro partnership is NOT finalised (Sept 2026): the site says TakeoffAI "connects to Simpro" and nothing about being a partner. Don't add partner badges or claims until Jonah confirms.
+- **No Simpro anywhere on the site** (as of 12 Sept 2026, at Simpro's request). All mentions, the `/simpro` page and its route were removed; the copy now talks about a priced bill of quantities exported to Excel/CSV/PDF instead. Don't reintroduce Simpro until Jonah says they're happy for it to appear.
 - Facts the copy relies on (verify in the app before changing): free account gives 2,000 credits, no card; commercial take-off = 1,000 credits, residential = 500; Solo $149/mo, Contractor $349/mo, Unlimited $749/mo (coming soon); packs 1,000/$100, 5,000/$450, 15,000/$1,275.
 - Two CTAs everywhere, equal weight: "Try it free" → `https://app.takeoffai.com.au/signup` and "Book a call" → `/demo` (on the home page, `#book-call`, which has the Cal.com embed).
 
