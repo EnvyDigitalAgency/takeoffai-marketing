@@ -12,7 +12,7 @@ Plain HTML/CSS/JS, no build step. One HTML file per page, all sharing the same s
 | `/`        | `index.html`    | Home: "try it free" and "book a call" side by side, priced-BOQ section, Cal.com booking, pricing summary |
 | `/how-it-works` | `how-it-works.html` | Lead endpoint (the link sent to leads): 90-second founder VSL (`assets/vsl.mp4`, autoplays muted with burned-in captions, tap for sound), one primary CTA to the on-page Cal.com calendar, FAQ. Deliberately has no main nav and a single primary CTA; linked from the footer only. `?name=&email=` prefill the calendar |
 | `/product` | `product.html`  | Interactive walkthrough (the 4-step tour), features, exports, ROI calculator |
-| `/walkthrough` | `walkthrough.html` | Five-minute app walkthrough video with chapters, plus the 8-second review loop |
+| `/walkthrough` | `walkthrough.html` | The 90-second founder VSL (same file as `/how-it-works`) at the top, then the five-minute app walkthrough with chapters, plus the 8-second review loop |
 | `/pricing` | `pricing.html`  | Plans, credit packs, free-credits offer, pricing FAQ |
 | `/compare` | `compare.html`  | vs Groundplan / ConEst / Bluebeam |
 | `/demo`    | `demo.html`     | Optional 30-min demo booking (Cal.com embed). `/booking` is an alias |
