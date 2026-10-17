@@ -10,6 +10,7 @@ Plain HTML/CSS/JS, no build step. One HTML file per page, all sharing the same s
 | URL        | File            | Purpose |
 |------------|-----------------|---------|
 | `/`        | `index.html`    | Home: "try it free" and "book a call" side by side, priced-BOQ section, Cal.com booking, pricing summary |
+| `/how-it-works` | `how-it-works.html` | VSL landing page for leads: the 90-second founder video (`assets/vsl.mp4`, autoplays muted with burned-in captions, tap for sound), three steps, stats, CTAs |
 | `/product` | `product.html`  | Interactive walkthrough (the 4-step tour), features, exports, ROI calculator |
 | `/walkthrough` | `walkthrough.html` | Five-minute app walkthrough video with chapters, plus the 8-second review loop |
 | `/pricing` | `pricing.html`  | Plans, credit packs, free-credits offer, pricing FAQ |
@@ -23,6 +24,7 @@ Shared files:
 - `site.js` — nav scroll/active state, mobile menu, FAQ accordion, scroll-in animation, hero-animation play/pause, Meta Pixel `SignupClick` event on any link to the app sign-up.
 - `pixel.js` — Meta Pixel init, loaded on every page.
 - `takeoffai-hero-animation.html` — the animated product demo embedded in an iframe on the home page.
+- Video assets live in `assets/` and are committed to git (keep each under ~20 MB: re-encode with ffmpeg, 720p, CRF 23, `-movflags +faststart`). Source cuts of the VSL are in Jonah's Downloads (`takeoffai_vsl_short.mp4` is the 9:16 captioned master).
 - `vercel.json` — clean-URL routes. Add a route here when adding a page. `sitemap.xml` lists every page.
 
 ## Conventions

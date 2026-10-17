@@ -1,6 +1,7 @@
 {
   "outputDirectory": ".",
   "routes": [
+    { "src": "/how-it-works", "dest": "/how-it-works.html" },
     { "src": "/product", "dest": "/product.html" },
     { "src": "/walkthrough", "dest": "/walkthrough.html" },
     { "src": "/pricing", "dest": "/pricing.html" },
