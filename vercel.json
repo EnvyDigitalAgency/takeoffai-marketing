@@ -3,6 +3,7 @@
   "routes": [
     { "src": "/how-it-works", "dest": "/how-it-works.html" },
     { "src": "/product", "dest": "/product.html" },
+    { "src": "/estimating", "dest": "/estimating.html" },
     { "src": "/walkthrough", "dest": "/walkthrough.html" },
     { "src": "/pricing", "dest": "/pricing.html" },
     { "src": "/compare", "dest": "/compare.html" },
