@@ -61,8 +61,10 @@ async function addToCrm(f, leadId, notes) {
   const next = (used.values || []).length + 1;
   // Lead ID, Date, Name, Email, Phone, Source, Company, Auto Email, Stage, Notes (same columns as the
   // Meta sync). USER_ENTERED so the date is a real date; apostrophes keep IDs and phones as text.
+  // Auto Email = manual_contact: Grokbot's 8:05am cold emails pick rows by Stage and skip only
+  // manual_contact, and estimating leads must never get the software emails (Jonah, 30 Oct 2026).
   const row = ["'" + leadId, melbourneNow(), cell(f.name), cell(f.email), f.phone ? "'" + f.phone : '',
-    'Estimating page', cell(f.company), '—', 'New', cell(notes)];
+    'Estimating page', cell(f.company), 'manual_contact', 'New', cell(notes)];
   const r = await fetch(`${api}/values/Leads!A${next}:J${next}?valueInputOption=USER_ENTERED`, {
     method: 'PUT', headers: auth, body: JSON.stringify({ values: [row] }) });
   if (!r.ok) throw new Error(`Sheets write ${r.status}: ${await r.text()}`);

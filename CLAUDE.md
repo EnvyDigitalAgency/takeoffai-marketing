@@ -26,7 +26,7 @@ Shared files:
 - `pixel.js` — Meta Pixel init, loaded on every page.
 - `takeoffai-hero-animation.html` — the animated product demo embedded in an iframe on the home page.
 - Video assets live in `assets/` and are committed to git (keep each under ~20 MB: re-encode with ffmpeg, 720p, CRF 23, `-movflags +faststart`). Source cuts of the VSL are in Jonah's Downloads (`takeoffai_vsl_short.mp4` is the 9:16 captioned master).
-- `api/estimating-lead.js` — Vercel function behind the estimating form: writes a row to the "TakeoffAI Lead CRM" sheet (Leads tab, Source = "Estimating page", at an explicit row because column A is hidden and the Sheets append API shifts rows right) and emails info@ via Resend. Needs Vercel env vars `GOOGLE_SA_EMAIL`, `GOOGLE_SA_PRIVATE_KEY` (from `../service_account.json`), `CRM_SHEET_ID`, `RESEND_API_KEY` (from `../.env`), optional `LEAD_NOTIFY_EMAIL`. Lead IDs start `web-est-`, so the Meta nurture emails ignore these rows.
+- `api/estimating-lead.js` — Vercel function behind the estimating form: writes a row to the "TakeoffAI Lead CRM" sheet (Leads tab, Source = "Estimating page", at an explicit row because column A is hidden and the Sheets append API shifts rows right) and emails info@ via Resend. Needs Vercel env vars `GOOGLE_SA_EMAIL`, `GOOGLE_SA_PRIVATE_KEY` (from `../service_account.json`), `CRM_SHEET_ID`, `RESEND_API_KEY` (from `../.env`), optional `LEAD_NOTIFY_EMAIL`. Lead IDs start `web-est-` and Auto Email is written as `manual_contact`, which is what Grokbot's 8:05am cold emails skip on, so estimating leads never get the software emails.
 - `vercel.json` — clean-URL routes. Add a route here when adding a page. `sitemap.xml` lists every page.
 
 ## Conventions
