@@ -1,6 +1,7 @@
 {
   "outputDirectory": ".",
   "routes": [
+    { "src": "/call/?", "status": 307, "headers": { "Location": "https://cal.com/jonah-flinos-fv2dw0/30min" } },
     { "src": "/how-it-works", "dest": "/how-it-works.html" },
     { "src": "/product", "dest": "/product.html" },
     { "src": "/estimating", "dest": "/estimating.html" },
