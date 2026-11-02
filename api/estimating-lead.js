@@ -8,7 +8,7 @@
 const crypto = require('crypto');
 
 const NOTIFY = process.env.LEAD_NOTIFY_EMAIL || 'info@takeoffai.com.au';
-const LIMITS = { name: 100, company: 150, phone: 40, email: 200, job_type: 20, deadline: 20,
+const LIMITS = { name: 100, company: 150, phone: 40, email: 200, job_type: 20, job_size: 40, deadline: 20,
   plans_link: 1000, quoting_software: 150, notes: 3000, source_page: 200, utm_source: 100,
   utm_medium: 100, utm_campaign: 150, utm_content: 150, referrer: 500 };
 
@@ -104,11 +104,11 @@ module.exports = async (req, res) => {
   const source = [f.source_page, f.utm_source && `utm_source=${f.utm_source}`, f.utm_medium && `utm_medium=${f.utm_medium}`,
     f.utm_campaign && `utm_campaign=${f.utm_campaign}`, f.utm_content && `utm_content=${f.utm_content}`,
     f.referrer && `referrer=${f.referrer}`].filter(Boolean).join(' · ');
-  const notes = [`${f.job_type === 'commercial' ? 'Commercial' : 'Residential'}, tender due ${formatDeadline(f.deadline)}`,
+  const notes = [`${f.job_type === 'commercial' ? 'Commercial' : 'Residential'}${f.job_size ? ` (${f.job_size})` : ''}, tender due ${formatDeadline(f.deadline)}`,
     `Plans: ${f.plans_link || 'not linked (may email them)'}`, f.quoting_software && `Quotes in: ${f.quoting_software}`,
     f.notes && `Notes: ${f.notes}`, source && `Source: ${source}`].filter(Boolean).join(' | ');
   const lines = [['Name', f.name], ['Company', f.company], ['Phone', f.phone], ['Email', f.email],
-    ['Job type', f.job_type], ['Tender deadline', formatDeadline(f.deadline)],
+    ['Job type', f.job_type], ['Job size', f.job_size], ['Tender deadline', formatDeadline(f.deadline)],
     ['Plans', f.plans_link || 'No link. They may email the plans.'], ['Quotes in', f.quoting_software],
     ['Notes', f.notes], ['Source', source], ['Lead ID', leadId]];
 

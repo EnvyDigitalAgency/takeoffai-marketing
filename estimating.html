@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Electrical Estimating Services Australia | TakeoffAI Estimating</title>
-<meta name="description" content="Done-for-you electrical estimating for sparkies. AI takeoff, priced in your rates, tender-ready and back by your deadline or it's free. Residential jobs from $497.">
+<meta name="description" content="Done-for-you electrical estimating for Australian sparkies. AI takeoff, priced in your rates, no lazy exclusions, back 48 hours before close. Commercial tenders from $595.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.takeoffai.com.au/estimating">
 <meta property="og:type" content="website">
@@ -29,7 +29,10 @@
   "areaServed": { "@type": "Country", "name": "Australia" },
   "audience": { "@type": "BusinessAudience", "audienceType": "Electrical contractors" },
   "provider": { "@type": "Organization", "name": "TakeoffAI Pty Ltd", "url": "https://www.takeoffai.com.au", "email": "info@takeoffai.com.au" },
-  "offers": { "@type": "Offer", "priceCurrency": "AUD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "497", "priceCurrency": "AUD", "description": "Residential jobs from $497. Commercial jobs quoted up front." } }
+  "offers": [
+    { "@type": "Offer", "name": "Commercial tender", "priceCurrency": "AUD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "595", "priceCurrency": "AUD", "valueAddedTaxIncluded": false }, "description": "Full commercial tender, fixed price by electrical contract value. From $595 ex GST." },
+    { "@type": "Offer", "name": "Residential job", "priceCurrency": "AUD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "299", "priceCurrency": "AUD", "valueAddedTaxIncluded": false }, "description": "Residential, up to 5 sheets $299, 6 to 15 sheets $449, ex GST." }
+  ]
 }
 </script>
 <script type="application/ld+json">
@@ -41,7 +44,9 @@
     { "@type": "Question", "name": "Who submits the tender?", "acceptedAnswer": { "@type": "Answer", "text": "You do, under your name and branding. The builder never sees us." } },
     { "@type": "Question", "name": "Are my plans kept private?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Plans are never shared or sold. Same privacy policy as the software." } },
     { "@type": "Question", "name": "Do I need to use the TakeoffAI software?", "acceptedAnswer": { "@type": "Answer", "text": "No. But you'll get access, and the finished job comes back as Excel, CSV or PDF, ready for whatever you quote in." } },
-    { "@type": "Question", "name": "What if I miss a detail or the scope changes?", "acceptedAnswer": { "@type": "Answer", "text": "Send us the addendum and we'll re-price it fast." } },
+    { "@type": "Question", "name": "What if I miss a detail or the scope changes?", "acceptedAnswer": { "@type": "Answer", "text": "Send us the addendum and we'll re-price it the same day." } },
+    { "@type": "Question", "name": "Do you exclude anything you're unsure about?", "acceptedAnswer": { "@type": "Answer", "text": "No. We send RFIs on day 1. If there's no answer, we price an allowance and label it clearly, so you're not guessing with 12 hours to go." } },
+    { "@type": "Question", "name": "Do you allow for site conditions?", "acceptedAnswer": { "@type": "Answer", "text": "Yes: heights, refurbs, multi-storey, restricted sites and inductions are priced in, or shown as their own line so you can decide." } },
     { "@type": "Question", "name": "Do you guarantee I'll win the job?", "acceptedAnswer": { "@type": "Answer", "text": "No one can. You set the margin and make the call. We make sure the count is right, the scope is clear and it's in on time." } },
     { "@type": "Question", "name": "What areas do you cover?", "acceptedAnswer": { "@type": "Answer", "text": "All of Australia. Everything is done online." } }
   ]
@@ -103,9 +108,47 @@
 .pain h3{font-size:21px;line-height:1.25;margin-bottom:0}
 @media(max-width:860px){.pain-grid{grid-template-columns:1fr;gap:14px}.pain{padding:26px 24px}}
 
+/* ---- no lazy estimates ---- */
+.lazy-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+.lazy-grid .h2{margin-bottom:18px}
+.lazy-list{list-style:none;display:flex;flex-direction:column}
+.lazy-list li{display:grid;grid-template-columns:30px 1fr;gap:14px;padding:20px 0;border-top:1px solid var(--line);font-size:16.5px;line-height:1.5;color:var(--muted)}
+.lazy-list li:last-child{border-bottom:1px solid var(--line)}
+.lazy-list b{display:block;font-size:18px;color:var(--ink);letter-spacing:-.01em}
+.lazy-list .ck{width:26px;height:26px;border-radius:50%;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.lazy-list .ck svg{width:12px;height:12px}
+@media(max-width:900px){.lazy-grid{grid-template-columns:1fr;gap:28px}}
+
 /* ---- how it works ---- */
 .est-warm .step{background:#fff}
 .step h3{font-size:19px}
+.how-line{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
+.how-line span{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;font-size:15px;font-weight:600;padding:10px 16px;border-radius:var(--pill)}
+.how-line span::before{content:'';width:8px;height:8px;border-radius:50%;background:#54D98C}
+
+/* ---- pricing ---- */
+.price-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:20px;align-items:stretch}
+.price-card{background:#fff;border-radius:var(--r);padding:30px 32px;box-shadow:var(--shadow-card)}
+.price-card h3{font-size:21px;margin-bottom:4px}
+.price-card .pc-sub{font-size:14.5px;color:var(--muted);margin-bottom:16px}
+.price-table{width:100%;border-collapse:collapse}
+.price-table th{font-size:13px;font-weight:600;color:var(--muted);text-align:left;padding:0 0 10px;border-bottom:1px solid var(--line)}
+.price-table th:last-child,.price-table td:last-child{text-align:right}
+.price-table td{padding:14px 0;border-bottom:1px solid var(--line);font-size:16px;color:var(--text)}
+.price-table td:last-child{font-size:18px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.price-table tr:last-child td{border-bottom:none}
+.price-table .q{font-size:13px;font-weight:600;color:var(--muted)}
+.price-note{font-size:14.5px;color:var(--muted);line-height:1.55;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
+.price-side{display:flex;flex-direction:column;gap:20px}
+.extra-card{flex:1;background:#fff;border-radius:var(--r);padding:24px 28px;border-left:4px solid var(--orange)}
+.extra-card h3{font-size:18px;margin-bottom:6px}
+.extra-card p{font-size:15.5px;color:var(--muted);line-height:1.55}
+.member{margin-top:20px;background:var(--ink);color:#fff;border-radius:var(--r);padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.member p{font-size:18px;font-weight:600;line-height:1.4;max-width:640px}
+.member p span{color:rgba(255,255,255,.7);font-weight:500}
+.member .btn{flex-shrink:0}
+@media(max-width:900px){.price-grid{grid-template-columns:1fr}.member{flex-direction:column;align-items:flex-start}}
+@media(max-width:560px){.price-card{padding:24px 20px}.price-table td{font-size:15px}.extra-card{padding:22px 20px}.member{padding:24px 20px}}
 
 /* ---- what you get ---- */
 .docs{position:relative;min-height:440px}
@@ -163,6 +206,8 @@
 .who-card h3{font-size:24px;margin-bottom:8px}
 .who-card p{font-size:16.5px;color:var(--muted);line-height:1.55}
 .who-card .icon-sq{margin-bottom:20px}
+.who-over{margin-top:20px;background:#fff;border-radius:var(--r);padding:22px 28px;font-size:17px;color:var(--muted);line-height:1.5}
+.who-over b{color:var(--ink)}
 .who-line{margin-top:28px;font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
 .who-line span{color:var(--orange)}
 
@@ -180,6 +225,8 @@
 .field{display:flex;flex-direction:column;gap:7px;margin-bottom:18px}
 .field label,.field .lbl{font-size:14px;font-weight:600;color:var(--ink)}
 .field .opt{font-weight:500;color:var(--faint)}
+.field select{font-family:var(--font);font-size:16px;color:var(--ink);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 14px center/16px;border:1px solid var(--line);border-radius:12px;padding:13px 40px 13px 14px;width:100%;appearance:none;-webkit-appearance:none}
+.field select:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,97,26,.15)}
 .field input,.field textarea{font-family:var(--font);font-size:16px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 14px;width:100%;transition:border-color .15s,box-shadow .15s}
 .field textarea{min-height:110px;resize:vertical}
 .field input:focus,.field textarea:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,97,26,.15)}
@@ -259,12 +306,12 @@
     <div>
       <span class="kicker">TakeoffAI Estimating</span>
       <h1 class="h1">Electrical estimating, done for you.</h1>
-      <p class="lead">Send us the plans. We'll count every downlight, GPO and switch, price it in your rates, and hand back a tender that's ready to send, by your deadline or it's free.</p>
+      <p class="lead">Send us the plans. AI counts every point, our estimator prices it in your rates, and it's back at least 48 hours before close. No lazy exclusions.</p>
       <div class="hero-ctas">
         <a href="https://cal.com/jonah-flinos-fv2dw0/30min?source=estimating" class="btn btn-primary btn-lg" data-call>Book a quick call</a>
         <a href="#send-a-job" class="btn btn-white btn-lg">Send us a job</a>
       </div>
-      <p class="hero-note"><b>Residential jobs from $497</b> · Commercial jobs quoted up front</p>
+      <p class="hero-note"><b>Commercial tenders from $595</b> · Residential from $299 · Back by your deadline or it's free</p>
     </div>
     <div class="plan-visual brackets" aria-hidden="true">
       <span class="ctl"></span><span class="cbr"></span>
@@ -353,7 +400,24 @@
   </div>
 </section>
 
-<!-- 3. How it works -->
+<!-- 3. No lazy estimates -->
+<section class="section" id="no-lazy-estimates">
+  <div class="container lazy-grid">
+    <div>
+      <h2 class="h2">No lazy estimates</h2>
+      <p class="lead">Sick of getting a tender back 12 hours before close with a page of exclusions? So were we.</p>
+    </div>
+    <ul class="lazy-list">
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><b>RFIs out on day 1, not at the end.</b></div></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><b>Allowances, not lazy exclusions.</b>If something's unclear, we price it and label it.</div></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><b>Site conditions priced in.</b>Heights, refurbs, multi-storey, restricted sites, inductions, after hours. Every assumption shown as its own line.</div></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><b>Supplier quotes checked against the spec.</b>Not just dropped in.</div></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><b>Back at least 48 hours before close.</b></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 4. How it works -->
 <section class="section est-warm" id="how">
   <div class="container">
     <div class="sec-head">
@@ -362,14 +426,15 @@
     </div>
     <div class="steps-grid">
       <div class="step"><div class="step-num">1</div><h3>We learn how you price.</h3><p>Your rates, prebuilds, wholesaler and margin, set up once.</p></div>
-      <div class="step"><div class="step-num">2</div><h3>You flick us the plans.</h3><p>Upload them or email them with your deadline.</p></div>
+      <div class="step"><div class="step-num">2</div><h3>You flick us the plans.</h3><p>Send a link or email them, with your deadline.</p></div>
       <div class="step"><div class="step-num">3</div><h3>AI counts, our estimator prices.</h3><p>TakeoffAI does the take-off in minutes. Our estimator checks it and prices it your way.</p></div>
       <div class="step"><div class="step-num">4</div><h3>You get it back ready to send.</h3><p>Priced BOQ, tender letter and marked-up drawings. Review it, then send it under your name.</p></div>
     </div>
+    <p class="how-line"><span>Tender back in 48–72 hours</span><span>Addenda re-priced the same day</span></p>
   </div>
 </section>
 
-<!-- 4. What you get -->
+<!-- 5. What you get -->
 <section class="section" id="what-you-get">
   <div class="container split">
     <div>
@@ -377,10 +442,10 @@
       <h2 class="h2">Everything you need to send the tender.</h2>
       <ul class="check-list" style="margin:28px 0 30px;max-width:520px">
         <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div>Priced bill of quantities in your rates</div></li>
-        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div>Tender letter with inclusions, exclusions and clarifications</div></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div>Tender letter with inclusions, allowances, exclusions and clarifications</div></li>
         <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div>Marked-up drawings showing every counted item</div></li>
         <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div>Supplier quotes for lighting and switchboards, chased for you</div></li>
-        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div>Addenda re-priced fast</div></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div>Addenda re-priced the same day</div></li>
         <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div>Export to Excel, CSV or PDF, ready for whatever you quote in</div></li>
       </ul>
       <p class="muted" style="font-size:15px">Rather run the take-offs yourself? <a href="/product">See the TakeoffAI software</a>.</p>
@@ -410,8 +475,57 @@
   </div>
 </section>
 
-<!-- 5. Comparison -->
-<section class="section est-warm" id="compare">
+<!-- 6. Pricing -->
+<section class="section est-warm" id="pricing">
+  <div class="container">
+    <div class="sec-head">
+      <span class="kicker">Pricing</span>
+      <h2 class="h2">Simple, fixed pricing</h2>
+      <p class="lead">Priced by your electrical contract value. No hourly rates, no surprises. All prices ex GST.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card">
+        <h3>Commercial</h3>
+        <p class="pc-sub">Full tender</p>
+        <table class="price-table">
+          <thead><tr><th>Electrical contract value</th><th>Price</th></tr></thead>
+          <tbody>
+            <tr><td>Under $50K</td><td>$595</td></tr>
+            <tr><td>$50K–$100K</td><td>$750</td></tr>
+            <tr><td>$100K–$250K</td><td>$1,150</td></tr>
+            <tr><td>$250K–$500K</td><td>$1,650</td></tr>
+            <tr><td>$500K–$1M</td><td>$2,250</td></tr>
+            <tr><td>Over $1M</td><td>from $3,000 <span class="q">(quoted)</span></td></tr>
+          </tbody>
+        </table>
+        <p class="price-note">Not sure of the contract value? Pick your best guess. If the drawings say otherwise, we'll confirm the price before we start.</p>
+      </div>
+      <div class="price-side">
+      <div class="price-card">
+        <h3>Residential</h3>
+        <p class="pc-sub">Priced by number of sheets</p>
+        <table class="price-table">
+          <thead><tr><th>Drawings</th><th>Price</th></tr></thead>
+          <tbody>
+            <tr><td>Up to 5 sheets</td><td>$299</td></tr>
+            <tr><td>6–15 sheets</td><td>$449</td></tr>
+            <tr><td>Larger or complex jobs</td><td><span class="q">Quoted</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="extra-card"><h3>Budget estimate</h3><p>Quantities and labour hours for early pricing. About half price, back in 24–48 hours.</p></div>
+      <div class="extra-card"><h3>Already won the job?</h3><p>We'll set it up: material order list by stage, labour budget, and imported into your job system.</p></div>
+      </div>
+    </div>
+    <div class="member">
+      <p>Doing 2+ tenders a month? <span>Memberships from $1,690/mo, with priority turnaround and TakeoffAI included.</span></p>
+      <a href="https://cal.com/jonah-flinos-fv2dw0/30min?source=estimating" class="btn btn-primary btn-lg" data-call>Book a quick call</a>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Comparison -->
+<section class="section" id="compare">
   <div class="container">
     <div class="sec-head">
       <h2 class="h2">How it stacks up</h2>
@@ -421,7 +535,7 @@
       <table class="cmp">
         <thead><tr><th><span class="sr-only">Compare</span></th><th>Doing it yourself</th><th>Hiring an estimator</th><th>Traditional estimating service</th><th class="us">TakeoffAI Estimating</th></tr></thead>
         <tbody>
-          <tr><th>Cost</th><td data-label="Doing it yourself">Your nights and weekends</td><td data-label="Hiring an estimator">$110K+ a year in salary alone</td><td data-label="Traditional service">Per quote or hourly</td><td class="us" data-label="TakeoffAI Estimating">Residential from $497, fixed price</td></tr>
+          <tr><th>Cost</th><td data-label="Doing it yourself">Your nights and weekends</td><td data-label="Hiring an estimator">$110K+ a year in salary alone</td><td data-label="Traditional service">Per quote or hourly</td><td class="us" data-label="TakeoffAI Estimating">From $595 per tender, fixed</td></tr>
           <tr><th>Speed</th><td data-label="Doing it yourself">When you get to it</td><td data-label="Hiring an estimator">Depends on workload</td><td data-label="Traditional service">Counted by hand</td><td class="us" data-label="TakeoffAI Estimating">AI count in minutes</td></tr>
           <tr><th>Priced your way</th><td data-label="Doing it yourself">Yes</td><td data-label="Hiring an estimator">Over time</td><td data-label="Traditional service">Their rates</td><td class="us" data-label="TakeoffAI Estimating">Your rates, from day one</td></tr>
           <tr><th>Lock-in</th><td data-label="Doing it yourself">n/a</td><td data-label="Hiring an estimator">Salary</td><td data-label="Traditional service">Varies</td><td class="us" data-label="TakeoffAI Estimating">None</td></tr>
@@ -431,8 +545,8 @@
   </div>
 </section>
 
-<!-- 6. Guarantee -->
-<section class="section-tight est-warm" style="padding-top:0">
+<!-- 8. Guarantee -->
+<section class="section-tight" style="padding-top:0">
   <div class="container">
     <div class="guarantee est-dark brackets" style="border-radius:var(--r)">
       <span class="ctl"></span><span class="cbr"></span>
@@ -443,7 +557,7 @@
   </div>
 </section>
 
-<!-- 7. Who it's for -->
+<!-- 9. Who it's for -->
 <section class="section est-warm" id="who">
   <div class="container">
     <div class="sec-head">
@@ -451,9 +565,10 @@
       <h2 class="h2">Sparkies without an estimator.</h2>
     </div>
     <div class="grid-2">
-      <div class="who-card"><div class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div><h3>Residential</h3><p>Houses, units, townhouses, extensions</p></div>
-      <div class="who-card"><div class="icon-sq dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2"/></svg></div><h3>Commercial</h3><p>Fitouts, offices, retail, light commercial</p></div>
+      <div class="who-card"><div class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2"/></svg></div><h3>Commercial</h3><p>Shop and café fitouts, offices, medical suites, retail, light commercial</p></div>
+      <div class="who-card"><div class="icon-sq dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div><h3>Residential</h3><p>Houses, units, townhouses, extensions</p></div>
     </div>
+    <p class="who-over">Already have an estimator or service? <b>Use us as your overflow when they're flat out.</b></p>
     <p class="who-line">Electrical only. <span>That's all we do.</span></p>
   </div>
 </section>
@@ -466,7 +581,7 @@
   </div>
 </section>
 
-<!-- 8. Send us a job -->
+<!-- 10. Send us a job -->
 <section class="section" id="send-a-job">
   <div class="container job-grid">
     <div class="job-side">
@@ -493,11 +608,16 @@
         <div class="row">
           <div class="field"><span class="lbl" id="l-type">Job type</span>
             <div class="seg" role="radiogroup" aria-labelledby="l-type">
-              <input type="radio" name="job_type" id="t-res" value="residential" checked><label for="t-res">Residential</label>
-              <input type="radio" name="job_type" id="t-com" value="commercial"><label for="t-com">Commercial</label>
+              <input type="radio" name="job_type" id="t-com" value="commercial" checked><label for="t-com">Commercial</label>
+              <input type="radio" name="job_type" id="t-res" value="residential"><label for="t-res">Residential</label>
             </div>
           </div>
           <div class="field"><label for="f-deadline">Tender deadline</label><input id="f-deadline" name="deadline" type="date" required></div>
+        </div>
+        <div class="field"><label for="f-size" id="l-size">Electrical contract value <span class="opt">(best guess)</span></label>
+          <select id="f-size" name="job_size">
+            <option value="Not sure">Not sure</option><option>Under $50K</option><option>$50K–$100K</option><option>$100K–$250K</option><option>$250K–$500K</option><option>$500K–$1M</option><option>Over $1M</option>
+          </select>
         </div>
         <div class="field"><label for="f-link">Link to the plans <span class="opt">(Dropbox, Google Drive, WeTransfer)</span></label><input id="f-link" name="plans_link" type="text" inputmode="url" autocomplete="off" placeholder="Paste the link here">
           <p class="field-note">Or email the plans to <a href="mailto:info@takeoffai.com.au?subject=Plans%20for%20estimating">info@takeoffai.com.au</a></p>
@@ -519,7 +639,7 @@
   </div>
 </section>
 
-<!-- 9. FAQ -->
+<!-- 11. FAQ -->
 <section class="section est-warm faq-sec" id="faq">
   <div class="container">
     <div class="sec-head"><h2 class="h2">Questions</h2></div>
@@ -528,14 +648,16 @@
       <div class="faq-item"><button class="faq-q">Who submits the tender? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">You do, under your name and branding. The builder never sees us.</div></div></div>
       <div class="faq-item"><button class="faq-q">Are my plans kept private? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Yes. Plans are never shared or sold. Same <a href="/privacy">privacy policy</a> as the software.</div></div></div>
       <div class="faq-item"><button class="faq-q">Do I need to use the TakeoffAI software? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">No. But you'll get access, and the finished job comes back as Excel, CSV or PDF, ready for whatever you quote in.</div></div></div>
-      <div class="faq-item"><button class="faq-q">What if I miss a detail or the scope changes? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Send us the addendum and we'll re-price it fast.</div></div></div>
+      <div class="faq-item"><button class="faq-q">What if I miss a detail or the scope changes? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Send us the addendum and we'll re-price it the same day.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Do you exclude anything you're unsure about? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">No. We send RFIs on day 1. If there's no answer, we price an allowance and label it clearly, so you're not guessing with 12 hours to go.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Do you allow for site conditions? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Yes: heights, refurbs, multi-storey, restricted sites and inductions are priced in, or shown as their own line so you can decide.</div></div></div>
       <div class="faq-item"><button class="faq-q">Do you guarantee I'll win the job? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">No one can. You set the margin and make the call. We make sure the count is right, the scope is clear and it's in on time.</div></div></div>
       <div class="faq-item"><button class="faq-q">What areas do you cover? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">All of Australia. Everything is done online.</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- 10. Final CTA -->
+<!-- 12. Final CTA -->
 <section class="final-dark">
   <div class="container">
     <div class="panel brackets">
@@ -624,6 +746,21 @@ Cal("ui", {"theme":"light","styles":{"branding":{"brandColor":"#E8611A"}},"hideE
   });
   form.elements.source_page.value = location.pathname;
   form.elements.referrer.value = document.referrer;
+
+  // Job size: contract value bands for commercial, sheet counts for residential (matches the pricing table)
+  var SIZES = {
+    commercial: { label: 'Electrical contract value', opts: ['Under $50K', '$50K–$100K', '$100K–$250K', '$250K–$500K', '$500K–$1M', 'Over $1M'] },
+    residential: { label: 'Number of sheets', opts: ['Up to 5 sheets', '6–15 sheets', 'More than 15 sheets'] }
+  };
+  var sizeSel = document.getElementById('f-size'), sizeLbl = document.getElementById('l-size');
+  function setSizes() {
+    var t = SIZES[form.elements.job_type.value] || SIZES.commercial;
+    sizeLbl.firstChild.nodeValue = t.label + ' ';
+    sizeSel.innerHTML = '';
+    ['Not sure'].concat(t.opts).forEach(function (o) { sizeSel.add(new Option(o, o)); });
+  }
+  Array.prototype.forEach.call(form.elements.job_type, function (r) { r.addEventListener('change', setSizes); });
+  setSizes();
 
   var btn = document.getElementById('job-submit'), err = document.getElementById('form-err');
   form.addEventListener('submit', function (e) {
