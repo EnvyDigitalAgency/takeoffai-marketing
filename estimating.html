@@ -28,7 +28,7 @@
   "description": "Done-for-you electrical estimating for Australian electrical contractors. Plans are counted with TakeoffAI, priced by an estimator in the contractor's own rates and returned as a priced bill of quantities, tender letter and marked-up drawings.",
   "areaServed": { "@type": "Country", "name": "Australia" },
   "audience": { "@type": "BusinessAudience", "audienceType": "Electrical contractors" },
-  "provider": { "@type": "Organization", "name": "TakeoffAI Pty Ltd", "url": "https://www.takeoffai.com.au", "email": "info@takeoffai.com.au" },
+  "provider": { "@type": "Organization", "name": "TakeoffAI", "url": "https://www.takeoffai.com.au", "email": "info@takeoffai.com.au" },
   "offers": [
     { "@type": "Offer", "name": "Commercial tender", "priceCurrency": "AUD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "595", "priceCurrency": "AUD", "valueAddedTaxIncluded": false }, "description": "Full commercial tender, fixed price by electrical contract value. From $595 ex GST." },
     { "@type": "Offer", "name": "Residential job", "priceCurrency": "AUD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "299", "priceCurrency": "AUD", "valueAddedTaxIncluded": false }, "description": "Residential, up to 5 sheets $299, 6 to 15 sheets $449, ex GST." }
@@ -48,7 +48,8 @@
     { "@type": "Question", "name": "Do you exclude anything you're unsure about?", "acceptedAnswer": { "@type": "Answer", "text": "No. We send RFIs on day 1. If there's no answer, we price an allowance and label it clearly, so you're not guessing with 12 hours to go." } },
     { "@type": "Question", "name": "Do you allow for site conditions?", "acceptedAnswer": { "@type": "Answer", "text": "Yes: heights, refurbs, multi-storey, restricted sites and inductions are priced in, or shown as their own line so you can decide." } },
     { "@type": "Question", "name": "Do you guarantee I'll win the job?", "acceptedAnswer": { "@type": "Answer", "text": "No one can. You set the margin and make the call. We make sure the count is right, the scope is clear and it's in on time." } },
-    { "@type": "Question", "name": "What areas do you cover?", "acceptedAnswer": { "@type": "Answer", "text": "All of Australia. Everything is done online." } }
+    { "@type": "Question", "name": "What areas do you cover?", "acceptedAnswer": { "@type": "Answer", "text": "All of Australia. Everything is done online." } },
+    { "@type": "Question", "name": "What are the terms?", "acceptedAnswer": { "@type": "Answer", "text": "Our Estimating Service Terms cover how jobs, the guarantee and memberships work: https://www.takeoffai.com.au/estimating/terms" } }
   ]
 }
 </script>
@@ -243,6 +244,9 @@
 .job-form{position:relative}
 .job-form .btn{width:100%;margin-top:6px}
 .job-form .btn[disabled]{opacity:.6;cursor:wait;transform:none}
+.agree{display:flex;align-items:flex-start;gap:12px;font-size:15px;font-weight:500;color:var(--ink);line-height:1.45;cursor:pointer}
+.agree input{width:20px;height:20px;margin-top:1px;accent-color:var(--orange);flex-shrink:0}
+.agree a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .form-fine{font-size:13.5px;color:var(--muted);margin-top:14px;text-align:center}
 .form-ok{display:none;text-align:left}
 .form-ok .icon-sq{background:var(--green-tint);color:var(--green)}
@@ -554,7 +558,7 @@
       <span class="ctl"></span><span class="cbr"></span>
       <div class="g-big">Back by your deadline, <em>or it's free.</em></div>
       <p class="g-sub">And if you're not happy enough to send it, you don't pay.</p>
-      <p class="g-fine">Deadline agreed in writing when you book the job. Plans and rates needed before we start. Refund covers that job's fee. <a href="/terms#estimating">Terms</a></p>
+      <p class="g-fine">Deadline agreed in writing when you book the job. Plans and rates needed before we start. Refund covers that job's fee. <a href="/estimating/terms">Estimating Service Terms</a></p>
     </div>
   </div>
 </section>
@@ -628,6 +632,7 @@
         <div class="field"><label for="f-notes">Notes <span class="opt">(optional)</span></label><textarea id="f-notes" name="notes" placeholder="Scope, anything to leave out, which addendum you're on…"></textarea></div>
         <div class="hp" aria-hidden="true"><label for="f-website">Website</label><input id="f-website" name="website" tabindex="-1" autocomplete="off"></div>
         <input type="hidden" name="source_page"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content"><input type="hidden" name="referrer">
+        <div class="field"><label class="agree"><input type="checkbox" name="terms_agreed" value="yes" required> <span>I agree to the <a href="/estimating/terms" target="_blank" rel="noopener">Estimating Service Terms</a></span></label><input type="hidden" name="terms_version" value="v1"></div>
         <p class="form-err" id="form-err" role="alert" hidden>That didn't go through. Try again, or email the details and plans to <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a>.</p>
         <button type="submit" class="btn btn-primary btn-lg" id="job-submit">Send us the job</button>
         <p class="form-fine">Plans are never shared or sold. <a href="/privacy">Privacy policy</a></p>
@@ -657,6 +662,7 @@
       <div class="faq-item"><button class="faq-q">Do you allow for site conditions? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Yes: heights, refurbs, multi-storey, restricted sites and inductions are priced in, or shown as their own line so you can decide.</div></div></div>
       <div class="faq-item"><button class="faq-q">Do you guarantee I'll win the job? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">No one can. You set the margin and make the call. We make sure the count is right, the scope is clear and it's in on time.</div></div></div>
       <div class="faq-item"><button class="faq-q">What areas do you cover? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">All of Australia. Everything is done online.</div></div></div>
+      <div class="faq-item"><button class="faq-q">What are the terms? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Our Estimating Service Terms cover how jobs, the guarantee and memberships work: <a href="/estimating/terms">Estimating Service Terms</a>.</div></div></div>
     </div>
   </div>
 </section>
@@ -709,10 +715,11 @@
         <h4>Legal</h4>
         <a href="/privacy">Privacy policy</a>
         <a href="/terms">Terms &amp; conditions</a>
+        <a href="/estimating/terms">Estimating terms</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 TakeoffAI Pty Ltd &middot; ABN 97 395 522 316</span>
+      <span>&copy; 2026 TakeoffAI &middot; ABN 97 395 522 316</span>
     </div>
   </div>
 </footer>
@@ -773,7 +780,7 @@ Cal("ui", {"theme":"light","styles":{"branding":{"brandColor":"#E8611A"}},"hideE
     if (!form.reportValidity()) return;
     var data = {};
     Array.prototype.forEach.call(form.elements, function (el) {
-      if (!el.name || (el.type === 'radio' && !el.checked)) return;
+      if (!el.name || ((el.type === 'radio' || el.type === 'checkbox') && !el.checked)) return;
       data[el.name] = el.value.trim();
     });
     btn.disabled = true; btn.textContent = 'Sending…';

@@ -11,4 +11,5 @@
   <url><loc>https://www.takeoffai.com.au/about</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
   <url><loc>https://www.takeoffai.com.au/privacy</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
   <url><loc>https://www.takeoffai.com.au/terms</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://www.takeoffai.com.au/estimating/terms</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
 </urlset>

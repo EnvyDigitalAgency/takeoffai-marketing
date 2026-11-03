@@ -5,6 +5,8 @@
     { "src": "/product", "dest": "/product.html" },
     { "src": "/estimating", "dest": "/estimating.html" },
     { "src": "/estimating/setup", "dest": "/estimating-setup.html" },
+    { "src": "/estimating/terms", "dest": "/estimating-terms.html" },
+    { "src": "/estimating/terms/v1", "dest": "/estimating-terms.html" },
     { "src": "/walkthrough", "dest": "/walkthrough.html" },
     { "src": "/pricing", "dest": "/pricing.html" },
     { "src": "/compare", "dest": "/compare.html" },

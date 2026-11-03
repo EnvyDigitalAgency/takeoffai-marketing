@@ -81,6 +81,11 @@ body{background:var(--paper-warm)}
 .field-note a{color:var(--ink);font-weight:600}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 
+.agree{display:flex;align-items:flex-start;gap:12px;font-size:15px;font-weight:500;color:var(--ink);line-height:1.45;cursor:pointer}
+.agree input{width:20px;height:20px;margin-top:1px;accent-color:var(--orange);flex-shrink:0}
+.agree a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.agree-block{padding:22px 36px;margin-bottom:0}
+.agree-block .agree{font-size:16px}
 .submit-bar{background:var(--ink);border-radius:var(--r);padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:16px}
 .submit-bar p{font-size:15.5px;color:rgba(255,255,255,.72);line-height:1.5;max-width:420px}
 .submit-bar p b{color:#fff}
@@ -103,7 +108,7 @@ body{background:var(--paper-warm)}
 .slim-footer .links{display:flex;gap:18px;flex-wrap:wrap}
 
 @media(max-width:720px){.chips.even{grid-template-columns:1fr 1fr}.submit-bar{flex-direction:column;align-items:stretch;text-align:left}.submit-bar .btn{width:100%}}
-@media(max-width:560px){.setup{padding:32px 0 64px}.block{padding:24px 18px 8px}.block-head h2{font-size:21px}.row{grid-template-columns:1fr;gap:0}.chips.three{grid-template-columns:1fr 1fr 1fr}.chips label{padding:11px 12px;font-size:14.5px}.submit-bar{padding:24px 18px}.setup-ok{padding:32px 22px}}
+@media(max-width:560px){.setup{padding:32px 0 64px}.block{padding:24px 18px 8px}.block-head h2{font-size:21px}.row{grid-template-columns:1fr;gap:0}.chips.three{grid-template-columns:1fr 1fr 1fr}.chips label{padding:11px 12px;font-size:14.5px}.submit-bar{padding:24px 18px}.setup-ok{padding:32px 22px}.agree-block{padding:18px}}
 </style>
 </head>
 <body>
@@ -254,8 +259,9 @@ body{background:var(--paper-warm)}
       <div class="hp" aria-hidden="true"><label for="s-website">Website</label><input type="text" id="s-website" name="website" tabindex="-1" autocomplete="off"></div>
       <input type="hidden" name="form" value="setup"><input type="hidden" name="source_page"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign">
 
+      <div class="block agree-block"><label class="agree"><input type="checkbox" name="terms_agreed" value="yes" required> <span>I agree to the <a href="/estimating/terms" target="_blank" rel="noopener">Estimating Service Terms</a></span></label><input type="hidden" name="terms_version" value="v1"></div>
       <div class="submit-bar">
-        <p><b>Only the first four fields are needed.</b> Everything else helps, but we can sort it out with you on the first job.</p>
+        <p><b>Only the first four fields and the terms tick are needed.</b> Everything else helps, but we can sort it out with you on the first job.</p>
         <button type="submit" class="btn btn-primary btn-lg" id="setup-submit">Send my setup</button>
       </div>
       <p class="form-err" id="form-err" role="alert" hidden>That didn't go through. Try again, or email your details to <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a>.</p>
@@ -272,12 +278,13 @@ body{background:var(--paper-warm)}
 </main>
 <footer class="slim-footer">
   <div class="container row">
-    <span>&copy; 2026 TakeoffAI Pty Ltd &middot; Melbourne, Australia</span>
+    <span>&copy; 2026 TakeoffAI &middot; Melbourne, Australia</span>
     <div class="links">
       <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a>
       <a href="/estimating">TakeoffAI Estimating</a>
       <a href="/privacy">Privacy</a>
       <a href="/terms">Terms</a>
+      <a href="/estimating/terms">Estimating terms</a>
     </div>
   </div>
 </footer>

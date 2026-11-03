@@ -10,6 +10,9 @@
 const crypto = require('crypto');
 
 const NOTIFY = process.env.LEAD_NOTIFY_EMAIL || 'info@takeoffai.com.au';
+// Current version of /estimating/terms. Both forms make the client tick "I agree" and send the
+// version they saw; bump this when the terms change (and archive the old page, see estimating-terms.html).
+const TERMS_VERSION = 'v1';
 const LIMITS = { name: 100, company: 150, phone: 40, email: 200, job_type: 20, job_size: 40, deadline: 20,
   plans_link: 1000, quoting_software: 150, notes: 3000, source_page: 200, utm_source: 100,
   utm_medium: 100, utm_campaign: 150, utm_content: 150, referrer: 500 };
@@ -29,6 +32,22 @@ function melbourneNow() {
     .formatToParts(new Date()).map((x) => [x.type, x.value]));
   return `${p.day}/${p.month}/${p.year} ${p.hour}:${p.minute}`;
 }
+
+// When the client agreed to the terms: Melbourne time to the second, with the zone (AEDT/AEST)
+function agreedStamp() {
+  const p = Object.fromEntries(new Intl.DateTimeFormat('en-AU', { timeZone: 'Australia/Melbourne', day: '2-digit',
+    month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23',
+    timeZoneName: 'short' }).formatToParts(new Date()).map((x) => [x.type, x.value]));
+  return `${p.day}/${p.month}/${p.year} ${p.hour}:${p.minute}:${p.second} ${p.timeZoneName}`;
+}
+
+// Both forms: the "I agree to the Estimating Service Terms" tick is required and recorded
+function termsOf(body) {
+  if (!body || body.terms_agreed !== 'yes') return null;
+  const v = /^v\d{1,3}$/.test(body.terms_version || '') ? body.terms_version : TERMS_VERSION;
+  return { agreed: 'yes', version: v, at: agreedStamp() };
+}
+const TERMS_REQUIRED = 'Please tick that you agree to the Estimating Service Terms.';
 
 function formatDeadline(d) {
   const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(d);
@@ -101,7 +120,7 @@ function cleanSetup(body) {
   return out;
 }
 
-async function addSetupToCrm(f, source) {
+async function addSetupToCrm(f, source, terms) {
   const { api, auth } = await sheets();
   const date = melbourneNow();
   // Create the tab with a header row the first time a client fills the form in
@@ -111,7 +130,7 @@ async function addSetupToCrm(f, source) {
     const add = await fetch(`${api}:batchUpdate`, { method: 'POST', headers: auth, body: JSON.stringify({ requests: [
       { addSheet: { properties: { title: SETUP_TAB, gridProperties: { frozenRowCount: 1 } } } }] }) });
     if (!add.ok && !/already exists/.test(await add.text())) throw new Error(`Sheets addSheet ${add.status}`);
-    const head = ['Date', 'Lead ID', ...SETUP_FIELDS.map(([label]) => label), 'Source'];
+    const head = ['Date', 'Lead ID', ...SETUP_FIELDS.map(([label]) => label), 'Source', 'Terms agreed', 'Terms version', 'Agreed at'];
     await fetch(`${api}/values/${encodeURIComponent(`'${SETUP_TAB}'!A1`)}?valueInputOption=RAW`, {
       method: 'PUT', headers: auth, body: JSON.stringify({ values: [head] }) });
   }
@@ -135,21 +154,24 @@ async function addSetupToCrm(f, source) {
   const used = await (await fetch(`${api}/values/${encodeURIComponent(`'${SETUP_TAB}'!A:B`)}?majorDimension=ROWS`, { headers: auth })).json();
   const next = (used.values || []).length + 1;
   const asText = new Set(['phone', 'abn', 'licence', 'trade_rate', 'apprentice_rate']);
-  const row = [date, leadId ? "'" + leadId : '', ...SETUP_FIELDS.map(([, k]) => (asText.has(k) && f[k] ? "'" + f[k] : cell(f[k]))), cell(source)];
+  const row = [date, leadId ? "'" + leadId : '', ...SETUP_FIELDS.map(([, k]) => (asText.has(k) && f[k] ? "'" + f[k] : cell(f[k]))), cell(source),
+    terms.agreed, terms.version, "'" + terms.at];
   const r = await fetch(`${api}/values/${encodeURIComponent(`'${SETUP_TAB}'!A${next}`)}?valueInputOption=USER_ENTERED`, {
     method: 'PUT', headers: auth, body: JSON.stringify({ values: [row] }) });
   if (!r.ok) throw new Error(`Sheets write ${r.status}: ${await r.text()}`);
 }
 
 async function handleSetup(body, res) {
-  const f = cleanSetup(body);
+  const f = cleanSetup(body), terms = termsOf(body);
+  if (!terms) return res.status(400).json({ ok: false, error: TERMS_REQUIRED });
   if (!f.business || !f.name || !f.phone || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email)) {
     return res.status(400).json({ ok: false, error: 'Business name, your name, phone and a valid email are needed.' });
   }
   const source = [f.source_page, f.utm_source && `utm_source=${f.utm_source}`, f.utm_medium && `utm_medium=${f.utm_medium}`,
     f.utm_campaign && `utm_campaign=${f.utm_campaign}`].filter(Boolean).join(' · ');
-  const lines = SETUP_FIELDS.map(([label, k]) => [label, f[k]]).concat([['Source', source]]);
-  const [crm, mail] = await Promise.allSettled([addSetupToCrm(f, source),
+  const lines = SETUP_FIELDS.map(([label, k]) => [label, f[k]]).concat([['Source', source],
+    ['Terms agreed', terms.agreed], ['Terms version', terms.version], ['Agreed at', terms.at]]);
+  const [crm, mail] = await Promise.allSettled([addSetupToCrm(f, source, terms),
     sendEmail(f.email, `Client setup: ${f.business}`, lines, 'The setup is in the CRM sheet, Client setup tab.')]);
   if (crm.status === 'rejected') console.error('Client setup CRM write failed', f.email, crm.reason);
   if (mail.status === 'rejected') console.error('Client setup email failed', f.email, mail.reason);
@@ -186,7 +208,8 @@ module.exports = async (req, res) => {
   if (body && body.website) return res.status(200).json({ ok: true });
   if (body && body.form === 'setup') return handleSetup(body, res);
 
-  const f = clean(body);
+  const f = clean(body), terms = termsOf(body);
+  if (!terms) return res.status(400).json({ ok: false, error: TERMS_REQUIRED });
   if (!f.name || !f.phone || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email) || !f.deadline) {
     return res.status(400).json({ ok: false, error: 'Name, phone, a valid email and the tender deadline are needed.' });
   }
@@ -197,11 +220,13 @@ module.exports = async (req, res) => {
     f.referrer && `referrer=${f.referrer}`].filter(Boolean).join(' · ');
   const notes = [`${f.job_type === 'commercial' ? 'Commercial' : 'Residential'}${f.job_size ? ` (${f.job_size})` : ''}, tender due ${formatDeadline(f.deadline)}`,
     `Plans: ${f.plans_link || 'not linked (may email them)'}`, f.quoting_software && `Quotes in: ${f.quoting_software}`,
-    f.notes && `Notes: ${f.notes}`, source && `Source: ${source}`].filter(Boolean).join(' | ');
+    f.notes && `Notes: ${f.notes}`, source && `Source: ${source}`,
+    `Terms agreed: yes, ${terms.version}, ${terms.at}`].filter(Boolean).join(' | ');
   const lines = [['Name', f.name], ['Company', f.company], ['Phone', f.phone], ['Email', f.email],
     ['Job type', f.job_type], ['Job size', f.job_size], ['Tender deadline', formatDeadline(f.deadline)],
     ['Plans', f.plans_link || 'No link. They may email the plans.'], ['Quotes in', f.quoting_software],
-    ['Notes', f.notes], ['Source', source], ['Lead ID', leadId]];
+    ['Notes', f.notes], ['Source', source], ['Lead ID', leadId],
+    ['Terms agreed', terms.agreed], ['Terms version', terms.version], ['Agreed at', terms.at]];
 
   const [crm, mail] = await Promise.allSettled([addToCrm(f, leadId, notes), emailLead(f, lines)]);
   if (crm.status === 'rejected') console.error('CRM append failed', leadId, crm.reason);
