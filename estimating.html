@@ -248,6 +248,8 @@
 .form-ok .icon-sq{background:var(--green-tint);color:var(--green)}
 .form-ok h3{font-size:26px;margin-bottom:10px}
 .form-ok p{font-size:17px;color:var(--text);line-height:1.55}
+.form-ok .ok-next{margin-top:22px;padding-top:22px;border-top:1px solid var(--line);font-weight:600;color:var(--ink)}
+.form-ok .btn{margin-top:16px}
 .job-form.sent form{display:none}
 .job-form.sent .form-ok{display:block}
 @media(max-width:900px){.job-grid{grid-template-columns:1fr;gap:32px}}
@@ -634,6 +636,8 @@
         <div class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
         <h3>Got it.</h3>
         <p>We'll be in touch the same business day to confirm price and turnaround.</p>
+        <p class="ok-next">Want your first job back faster? Tell us how you price now. It takes about 5 minutes.</p>
+        <a href="/estimating/setup" class="btn btn-dark" id="setup-link">Do the client setup</a>
       </div>
     </div>
   </div>
@@ -777,6 +781,8 @@ Cal("ui", {"theme":"light","styles":{"branding":{"brandColor":"#E8611A"}},"hideE
       .then(function (r) { return r.json().then(function (j) { if (!r.ok || !j.ok) throw new Error(j.error || r.status); }); })
       .then(function () {
         track('estimating_lead', { job_type: data.job_type, utm_source: data.utm_source });
+        document.getElementById('setup-link').href = '/estimating/setup?' + new URLSearchParams({
+          name: data.name, email: data.email, phone: data.phone, business: data.company }).toString();
         document.getElementById('job-form').classList.add('sent');
       })
       .catch(function () { err.hidden = false; btn.disabled = false; btn.textContent = 'Send us the job'; });
