@@ -59,6 +59,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/site.css?v=20261030">
+<script src="/tracking.js?v=20261118"></script>
 <script src="/pixel.js" async></script>
 <style>
 /* ---- TakeoffAI Estimating: warm off-white leads, black for contrast ---- */
@@ -239,6 +240,8 @@
 .field-note{font-size:14px;color:var(--muted);margin-top:2px}
 .field-note a{color:var(--ink);font-weight:600}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.field-note.no-plans{color:var(--ink);font-weight:600}
+.field[hidden]{display:none}
 .form-err{font-size:14.5px;color:var(--red);background:var(--red-tint);border-radius:12px;padding:12px 14px;margin-bottom:12px}
 .form-err a{color:var(--red);font-weight:600}
 .job-form{position:relative}
@@ -618,7 +621,7 @@
               <input type="radio" name="job_type" id="t-res" value="residential"><label for="t-res">Residential</label>
             </div>
           </div>
-          <div class="field"><label for="f-deadline">Tender deadline</label><input id="f-deadline" name="deadline" type="date" required></div>
+          <div class="field"><label for="f-deadline">Tender deadline <span class="opt">(if there is one)</span></label><input id="f-deadline" name="deadline" type="date"></div>
         </div>
         <div class="field"><label for="f-size" id="l-size">Electrical contract value <span class="opt">(best guess)</span></label>
           <select id="f-size" name="job_size">
@@ -627,11 +630,17 @@
         </div>
         <div class="field"><label for="f-link">Link to the plans <span class="opt">(Dropbox, Google Drive, WeTransfer)</span></label><input id="f-link" name="plans_link" type="text" inputmode="url" autocomplete="off" placeholder="Paste the link here">
           <p class="field-note">Or email the plans to <a href="mailto:info@takeoffai.com.au?subject=Plans%20for%20estimating">info@takeoffai.com.au</a></p>
+          <p class="field-note no-plans">No plans handy? Leave your details and we'll call you.</p>
         </div>
         <div class="field"><label for="f-software">What do you quote in? <span class="opt">(optional)</span></label><input id="f-software" name="quoting_software" placeholder="Excel, your job management software, pen and paper…"></div>
         <div class="field"><label for="f-notes">Notes <span class="opt">(optional)</span></label><textarea id="f-notes" name="notes" placeholder="Scope, anything to leave out, which addendum you're on…"></textarea></div>
+        <div class="field" id="heard-field" hidden><label for="f-heard">How did you hear about us? <span class="opt">(optional)</span></label>
+          <select id="f-heard" name="how_heard"><option value="">Choose one</option><option>Google search</option><option>Facebook/Instagram</option><option>LinkedIn</option><option>Referral</option><option>Other</option></select>
+        </div>
         <div class="hp" aria-hidden="true"><label for="f-website">Website</label><input id="f-website" name="website" tabindex="-1" autocomplete="off"></div>
         <input type="hidden" name="source_page"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content"><input type="hidden" name="referrer">
+        <input type="hidden" name="utm_term"><input type="hidden" name="gclid"><input type="hidden" name="gbraid"><input type="hidden" name="wbraid"><input type="hidden" name="fbclid">
+        <input type="hidden" name="trade" value="Electrical"><input type="hidden" name="event_id"><input type="hidden" name="fbp"><input type="hidden" name="fbc">
         <div class="field"><label class="agree"><input type="checkbox" name="terms_agreed" value="yes" required> <span>I agree to the <a href="/estimating/terms" target="_blank" rel="noopener">Estimating Service Terms</a></span></label><input type="hidden" name="terms_version" value="v1"></div>
         <p class="form-err" id="form-err" role="alert" hidden>That didn't go through. Try again, or email the details and plans to <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a>.</p>
         <button type="submit" class="btn btn-primary btn-lg" id="job-submit">Send us the job</button>
@@ -739,6 +748,10 @@ Cal("ui", {"theme":"light","styles":{"branding":{"brandColor":"#E8611A"}},"hideE
   var CAL_LINK = 'jonah-flinos-fv2dw0/30min';
   var CAL_CONFIG = { layout: 'month_view', notes: 'Estimating service enquiry', 'metadata[source]': 'estimating' };
   var CAL_URL = 'https://cal.com/' + CAL_LINK + '?source=estimating&notes=' + encodeURIComponent(CAL_CONFIG.notes) + '&metadata%5Bsource%5D=estimating';
+  if (window.TKA) {
+    var calExtra = TKA.calParams();
+    Object.keys(calExtra).forEach(function (k) { CAL_CONFIG[k] = calExtra[k]; CAL_URL += '&' + encodeURIComponent(k) + '=' + encodeURIComponent(calExtra[k]); });
+  }
   document.querySelectorAll('[data-call]').forEach(function (b) {
     if (b.tagName === 'A') b.href = CAL_URL;
     b.addEventListener('click', function (e) {
@@ -748,15 +761,17 @@ Cal("ui", {"theme":"light","styles":{"branding":{"brandColor":"#E8611A"}},"hideE
     });
   });
 
-  // Source tags: which page or ad the lead came from (kept for the session)
+  // Source tags: which page or ad the lead came from (tracking.js keeps them for 90 days)
   var q = new URLSearchParams(location.search), form = document.getElementById('estimating-form');
-  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function (k) {
-    var v = q.get(k) || '';
-    try { if (v) sessionStorage.setItem(k, v); else v = sessionStorage.getItem(k) || ''; } catch (e) {}
-    form.elements[k].value = v;
+  var attr = window.TKA ? TKA.attribution() : {};
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid', 'fbclid'].forEach(function (k) {
+    form.elements[k].value = attr[k] || q.get(k) || '';
   });
   form.elements.source_page.value = location.pathname;
   form.elements.referrer.value = document.referrer;
+  // "How did you hear about us?" only when the visit didn't come from a tagged link or ad
+  var tracked = window.TKA ? TKA.isTracked() : !!(q.get('utm_source') || q.get('gclid'));
+  if (!tracked) document.getElementById('heard-field').hidden = false;
 
   // Job size: contract value bands for commercial, sheet counts for residential (matches the pricing table)
   var SIZES = {
@@ -783,11 +798,26 @@ Cal("ui", {"theme":"light","styles":{"branding":{"brandColor":"#E8611A"}},"hideE
       if (!el.name || ((el.type === 'radio' || el.type === 'checkbox') && !el.checked)) return;
       data[el.name] = el.value.trim();
     });
+    // One event ID for the browser pixel (on the thank-you page) and the server's Conversions API
+    data.event_id = window.TKA ? TKA.eventId('est') : 'est-' + Date.now().toString(36);
+    if (window.TKA) { var ids = TKA.metaIds(); data.fbp = ids.fbp; data.fbc = ids.fbc; }
     btn.disabled = true; btn.textContent = 'Sending…';
     fetch('/api/estimating-lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
       .then(function (r) { return r.json().then(function (j) { if (!r.ok || !j.ok) throw new Error(j.error || r.status); }); })
       .then(function () {
+        // Hand the lead to /estimating/thanks in this tab only (never in the URL), where the
+        // conversions fire once. If storage is blocked, fall back to the inline thank-you.
+        var lead = { event_id: data.event_id, name: data.name, email: data.email, phone: data.phone, company: data.company,
+          trade: data.trade, job_type: data.job_type, utm_source: data.utm_source, page: location.pathname, ts: Date.now() };
+        try {
+          sessionStorage.setItem('tka_est_lead', JSON.stringify(lead));
+          sessionStorage.setItem('tka_est_prefill', JSON.stringify({ name: data.name, email: data.email, phone: data.phone, business: data.company }));
+          location.href = '/estimating/thanks' + (data.trade === 'HVAC' ? '?trade=hvac' : '');
+          return;
+        } catch (x) {}
         track('estimating_lead', { job_type: data.job_type, utm_source: data.utm_source });
+        if (window.fbq) { try { fbq('track', 'Lead', { content_name: 'Estimating enquiry' }, { eventID: data.event_id }); } catch (x) {} }
+        if (window.TKA) TKA.conversion('estimating_enquiry', { transaction_id: data.event_id, email: data.email, phone: data.phone });
         document.getElementById('setup-link').href = '/estimating/setup?' + new URLSearchParams({
           name: data.name, email: data.email, phone: data.phone, business: data.company }).toString();
         document.getElementById('job-form').classList.add('sent');

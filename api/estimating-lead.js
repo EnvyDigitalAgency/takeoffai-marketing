@@ -7,6 +7,9 @@
 //
 // Vercel env vars: GOOGLE_SA_EMAIL, GOOGLE_SA_PRIVATE_KEY, CRM_SHEET_ID,
 // RESEND_API_KEY, LEAD_NOTIFY_EMAIL (defaults to info@takeoffai.com.au).
+// Meta Conversions API (job form only; skipped until the token is set): META_CAPI_TOKEN,
+// optional META_TEST_EVENT_CODE (set on Preview only, so test leads land in Events Manager → Test events),
+// optional META_PIXEL_ID (default the site pixel) and META_GRAPH_VERSION.
 const crypto = require('crypto');
 
 const NOTIFY = process.env.LEAD_NOTIFY_EMAIL || 'info@takeoffai.com.au';
@@ -15,7 +18,15 @@ const NOTIFY = process.env.LEAD_NOTIFY_EMAIL || 'info@takeoffai.com.au';
 const TERMS_VERSION = 'v1';
 const LIMITS = { name: 100, company: 150, phone: 40, email: 200, job_type: 20, job_size: 40, deadline: 20,
   plans_link: 1000, quoting_software: 150, notes: 3000, source_page: 200, utm_source: 100,
-  utm_medium: 100, utm_campaign: 150, utm_content: 150, referrer: 500 };
+  utm_medium: 100, utm_campaign: 150, utm_content: 150, referrer: 500, utm_term: 200, gclid: 300,
+  gbraid: 300, wbraid: 300, fbclid: 300, how_heard: 60, trade: 20, event_id: 80, fbp: 200, fbc: 400 };
+
+// Ad-tracking columns on the Leads tab. Found by header name, never by position: A–L belong to the
+// Meta sync and M–X to Grokbot, so any header missing here is added after the last used column.
+const EXTRA_COLS = [['UTM source', 'utm_source'], ['UTM medium', 'utm_medium'], ['UTM campaign', 'utm_campaign'],
+  ['UTM term', 'utm_term'], ['UTM content', 'utm_content'], ['gclid', 'gclid'], ['gbraid', 'gbraid'],
+  ['wbraid', 'wbraid'], ['fbclid', 'fbclid'], ['How heard', 'how_heard'], ['Trade', 'trade']];
+const PIXEL_ID = process.env.META_PIXEL_ID || '1881764475868036';
 
 function clean(body) {
   const out = {};
@@ -54,6 +65,13 @@ function formatDeadline(d) {
   return m ? `${m[3]}/${m[2]}/${m[1]}` : d;
 }
 
+// Column number (0-based) to sheet letters: 0 → A, 25 → Z, 26 → AA
+function colLetter(i) {
+  let s = '';
+  for (i += 1; i > 0; i = Math.floor((i - 1) / 26)) s = String.fromCharCode(65 + ((i - 1) % 26)) + s;
+  return s;
+}
+
 async function googleToken() {
   const b64 = (o) => Buffer.from(JSON.stringify(o)).toString('base64url');
   const now = Math.floor(Date.now() / 1000);
@@ -84,15 +102,82 @@ async function addToCrm(f, leadId, notes) {
   const used = await (await fetch(`${api}/values/Leads?majorDimension=ROWS`, { headers: auth })).json();
   if (!used.range) throw new Error('CRM sheet not readable: ' + JSON.stringify(used));
   const next = (used.values || []).length + 1;
+  // Ad-tracking columns, placed by header (best effort: if this fails the A–J row is still written)
+  let extra = [];
+  try { extra = await extraCells(api, auth, (used.values || [])[0] || [], f, next); }
+  catch (e) { console.error('CRM tracking columns skipped', leadId, e); }
   // Lead ID, Date, Name, Email, Phone, Source, Company, Auto Email, Stage, Notes (same columns as the
   // Meta sync). USER_ENTERED so the date is a real date; apostrophes keep IDs and phones as text.
   // Auto Email = manual_contact: Grokbot's 8:05am cold emails pick rows by Stage and skip only
   // manual_contact, and estimating leads must never get the software emails (Jonah, 30 Oct 2026).
   const row = ["'" + leadId, melbourneNow(), cell(f.name), cell(f.email), f.phone ? "'" + f.phone : '',
     'Estimating page', cell(f.company), 'manual_contact', 'New', cell(notes)];
-  const r = await fetch(`${api}/values/Leads!A${next}:J${next}?valueInputOption=USER_ENTERED`, {
-    method: 'PUT', headers: auth, body: JSON.stringify({ values: [row] }) });
+  const r = await fetch(`${api}/values:batchUpdate`, { method: 'POST', headers: auth, body: JSON.stringify({
+    valueInputOption: 'USER_ENTERED', data: [{ range: `Leads!A${next}:J${next}`, values: [row] }, ...extra] }) });
   if (!r.ok) throw new Error(`Sheets write ${r.status}: ${await r.text()}`);
+}
+
+// Value ranges for the ad-tracking columns on row `next`, adding any missing headers (and grid
+// columns) after the last used header. Only ever writes into empty header cells.
+async function extraCells(api, auth, headerRow, f, next) {
+  const header = headerRow.map((h) => String(h || '').trim());
+  let end = Math.max(header.length, 12);
+  const cells = [], heads = [];
+  for (const [label, key] of EXTRA_COLS) {
+    let i = header.indexOf(label);
+    if (i === -1) { i = end++; heads.push({ range: `Leads!${colLetter(i)}1`, values: [[label]] }); }
+    if (f[key]) cells.push({ range: `Leads!${colLetter(i)}${next}`, values: [[cell(f[key])]] });
+  }
+  if (heads.length) {
+    const meta = await (await fetch(`${api}?fields=sheets.properties(sheetId,title,gridProperties.columnCount)`, { headers: auth })).json();
+    const leads = (meta.sheets || []).map((sh) => sh.properties).find((p) => p.title === 'Leads');
+    if (!leads) throw new Error('Leads tab not found');
+    if (leads.gridProperties.columnCount < end) {
+      const add = await fetch(`${api}:batchUpdate`, { method: 'POST', headers: auth, body: JSON.stringify({ requests: [
+        { appendDimension: { sheetId: leads.sheetId, dimension: 'COLUMNS', length: end - leads.gridProperties.columnCount } }] }) });
+      if (!add.ok) throw new Error(`Sheets appendDimension ${add.status}: ${await add.text()}`);
+    }
+  }
+  return heads.concat(cells);
+}
+
+// ---- Meta Conversions API: the Lead event, deduplicated with the browser pixel by event_id ----
+const sha256 = (v) => crypto.createHash('sha256').update(v).digest('hex');
+
+// Australian phone to digits with country code (0412 345 678 → 61412345678), as Meta expects
+function phoneDigits(p) {
+  let d = String(p || '').replace(/\D/g, '');
+  if (d.startsWith('0')) d = '61' + d.slice(1);
+  else if (d.length === 9 && d.startsWith('4')) d = '61' + d;
+  return d;
+}
+
+async function sendMetaLead(f, leadId, req) {
+  const token = process.env.META_CAPI_TOKEN;
+  if (!token) return 'skipped (no META_CAPI_TOKEN)';
+  const names = f.name.toLowerCase().split(/\s+/).filter(Boolean);
+  const ud = { em: [sha256(f.email.toLowerCase())], country: [sha256('au')], external_id: [sha256(leadId)] };
+  const ph = phoneDigits(f.phone);
+  if (ph) ud.ph = [sha256(ph)];
+  if (names[0]) ud.fn = [sha256(names[0])];
+  if (names.length > 1) ud.ln = [sha256(names[names.length - 1])];
+  const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim();
+  if (ip) ud.client_ip_address = ip;
+  if (req.headers['user-agent']) ud.client_user_agent = String(req.headers['user-agent']);
+  if (f.fbp) ud.fbp = f.fbp;
+  if (f.fbc) ud.fbc = f.fbc;
+  const path = /^\/[\w\/-]*$/.test(f.source_page) ? f.source_page : '/estimating';
+  const body = { data: [{ event_name: 'Lead', event_time: Math.floor(Date.now() / 1000), action_source: 'website',
+    event_id: /^[\w.-]{6,80}$/.test(f.event_id) ? f.event_id : leadId,
+    event_source_url: 'https://www.takeoffai.com.au' + path, user_data: ud,
+    custom_data: { content_name: f.trade === 'HVAC' ? 'HVAC estimating enquiry' : 'Estimating enquiry',
+      content_category: 'estimating', trade: f.trade } }] };
+  if (process.env.META_TEST_EVENT_CODE) body.test_event_code = process.env.META_TEST_EVENT_CODE;
+  const r = await fetch(`https://graph.facebook.com/${process.env.META_GRAPH_VERSION || 'v23.0'}/${PIXEL_ID}/events` +
+    `?access_token=${encodeURIComponent(token)}`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body), signal: AbortSignal.timeout(5000) });
+  if (!r.ok) throw new Error(`Meta CAPI ${r.status}: ${await r.text()}`);
+  return 'sent';
 }
 
 // ---- Client setup ----
@@ -182,7 +267,8 @@ async function handleSetup(body, res) {
 const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 async function emailLead(f, lines) {
-  const subject = `Estimating job: ${f.company || f.name} (${f.job_type || 'job'}, due ${formatDeadline(f.deadline)})`;
+  const subject = `${f.trade === 'HVAC' ? 'HVAC estimating job' : 'Estimating job'}: ${f.company || f.name} ` +
+    `(${f.job_type || 'job'}, ${f.deadline ? 'due ' + formatDeadline(f.deadline) : 'no deadline given'})`;
   return sendEmail(f.email, subject, lines,
     'Promised: price and turnaround confirmed the same business day. The lead is in the CRM sheet with Source = Estimating page.');
 }
@@ -210,27 +296,35 @@ module.exports = async (req, res) => {
 
   const f = clean(body), terms = termsOf(body);
   if (!terms) return res.status(400).json({ ok: false, error: TERMS_REQUIRED });
-  if (!f.name || !f.phone || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email) || !f.deadline) {
-    return res.status(400).json({ ok: false, error: 'Name, phone, a valid email and the tender deadline are needed.' });
+  // Tender deadline and plans are optional: "No plans handy? Leave your details and we'll call you."
+  if (!f.name || !f.phone || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email)) {
+    return res.status(400).json({ ok: false, error: 'Name, phone and a valid email are needed.' });
   }
+  f.trade = /^hvac$/i.test(f.trade) ? 'HVAC' : 'Electrical';
 
   const leadId = 'web-est-' + Date.now().toString(36) + crypto.randomBytes(2).toString('hex');
   const source = [f.source_page, f.utm_source && `utm_source=${f.utm_source}`, f.utm_medium && `utm_medium=${f.utm_medium}`,
-    f.utm_campaign && `utm_campaign=${f.utm_campaign}`, f.utm_content && `utm_content=${f.utm_content}`,
-    f.referrer && `referrer=${f.referrer}`].filter(Boolean).join(' · ');
-  const notes = [`${f.job_type === 'commercial' ? 'Commercial' : 'Residential'}${f.job_size ? ` (${f.job_size})` : ''}, tender due ${formatDeadline(f.deadline)}`,
-    `Plans: ${f.plans_link || 'not linked (may email them)'}`, f.quoting_software && `Quotes in: ${f.quoting_software}`,
-    f.notes && `Notes: ${f.notes}`, source && `Source: ${source}`,
+    f.utm_campaign && `utm_campaign=${f.utm_campaign}`, f.utm_term && `utm_term=${f.utm_term}`,
+    f.utm_content && `utm_content=${f.utm_content}`, f.referrer && `referrer=${f.referrer}`].filter(Boolean).join(' · ');
+  const adClick = [f.gclid && 'Google (gclid)', (f.gbraid || f.wbraid) && 'Google (iOS)', f.fbclid && 'Meta (fbclid)'].filter(Boolean).join(', ');
+  const deadline = f.deadline ? `tender due ${formatDeadline(f.deadline)}` : 'no tender deadline given';
+  const notes = [`${f.trade === 'HVAC' ? 'HVAC · ' : ''}${f.job_type === 'commercial' ? 'Commercial' : 'Residential'}${f.job_size ? ` (${f.job_size})` : ''}, ${deadline}`,
+    `Plans: ${f.plans_link || 'not linked (may email them, or wants a call)'}`, f.quoting_software && `Quotes in: ${f.quoting_software}`,
+    f.notes && `Notes: ${f.notes}`, source && `Source: ${source}`, adClick && `Ad click: ${adClick}`,
+    f.how_heard && `Heard via: ${f.how_heard}`,
     `Terms agreed: yes, ${terms.version}, ${terms.at}`].filter(Boolean).join(' | ');
   const lines = [['Name', f.name], ['Company', f.company], ['Phone', f.phone], ['Email', f.email],
-    ['Job type', f.job_type], ['Job size', f.job_size], ['Tender deadline', formatDeadline(f.deadline)],
-    ['Plans', f.plans_link || 'No link. They may email the plans.'], ['Quotes in', f.quoting_software],
-    ['Notes', f.notes], ['Source', source], ['Lead ID', leadId],
+    ['Trade', f.trade], ['Job type', f.job_type], ['Job size', f.job_size],
+    ['Tender deadline', f.deadline ? formatDeadline(f.deadline) : 'Not given'],
+    ['Plans', f.plans_link || 'No link. They may email the plans, or want a call.'], ['Quotes in', f.quoting_software],
+    ['Notes', f.notes], ['Source', source], ['Ad click', adClick], ['How they heard', f.how_heard], ['Lead ID', leadId],
     ['Terms agreed', terms.agreed], ['Terms version', terms.version], ['Agreed at', terms.at]];
 
-  const [crm, mail] = await Promise.allSettled([addToCrm(f, leadId, notes), emailLead(f, lines)]);
+  const [crm, mail, meta] = await Promise.allSettled([addToCrm(f, leadId, notes), emailLead(f, lines), sendMetaLead(f, leadId, req)]);
   if (crm.status === 'rejected') console.error('CRM append failed', leadId, crm.reason);
   if (mail.status === 'rejected') console.error('Lead email failed', leadId, mail.reason);
+  // The ad event never decides whether the lead was saved
+  if (meta.status === 'rejected') console.error('Meta CAPI failed', leadId, meta.reason);
   // Either one landing is enough for Jonah to follow up; only fail if both did
   if (crm.status === 'rejected' && mail.status === 'rejected') return res.status(502).json({ ok: false, error: 'Could not save the job.' });
   return res.status(200).json({ ok: true });

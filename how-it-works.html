@@ -35,6 +35,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/site.css?v=20261030">
+<script src="/tracking.js?v=20261118"></script>
 <script src="/pixel.js" async></script>
 <style>
 /* ---- corridor page: one door ---- */
@@ -246,6 +247,7 @@
   // Prefill from the email link: /how-it-works?name=Sam%20Lee&email=sam@example.com
   var q=new URLSearchParams(location.search), cfg={};
   if(q.get('name')) cfg.name=q.get('name'); if(q.get('email')) cfg.email=q.get('email');
+  if(window.TKA){ var ce=TKA.calParams(); for(var k in ce) cfg[k]=ce[k]; }
   Cal("inline", { elementOrSelector:"#my-cal-inline", calLink: "jonah-flinos-fv2dw0/30min", layout: "month_view", config: cfg });
   Cal("ui", {"theme":"light","styles":{"branding":{"brandColor":"#E8611A"}},"hideEventTypeDetails":false,"layout":"month_view"});
 </script>

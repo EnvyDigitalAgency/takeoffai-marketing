@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Got it | TakeoffAI Estimating</title>
+<meta name="robots" content="noindex, nofollow">
+<script>
+// The lead from the /estimating (or /estimating/hvac) form, handed over in this tab's sessionStorage,
+// never in the URL. Conversions fire once: the record is removed after they fire, so a refresh or a
+// direct visit to this page counts nothing. Contact details are used only for Meta advanced matching
+// and Google enhanced conversions, which hash them (SHA-256) in the browser before sending.
+(function () {
+  var lead = null;
+  try { lead = JSON.parse(sessionStorage.getItem('tka_est_lead') || 'null'); } catch (e) {}
+  if (!lead || !lead.event_id || !lead.ts || Date.now() - lead.ts > 30 * 60 * 1000) return;
+  window.EST_LEAD = lead;
+  var names = String(lead.name || '').trim().toLowerCase().split(/\s+/).filter(Boolean);
+  var ph = String(lead.phone || '').replace(/\D/g, '');
+  if (ph.charAt(0) === '0') ph = '61' + ph.slice(1);
+  var m = {};
+  if (lead.email) m.em = String(lead.email).trim().toLowerCase();
+  if (ph) m.ph = ph;
+  if (names[0]) m.fn = names[0];
+  if (names.length > 1) m.ln = names[names.length - 1];
+  m.country = 'au';
+  window.TKA_FB_MATCH = m;
+})();
+</script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css?v=20261030">
+<script src="/tracking.js?v=20261118"></script>
+<!-- Not async here: the Lead event fires as soon as the page loads -->
+<script src="/pixel.js?v=20261118"></script>
+<style>
+/* ---- Estimating thank-you: same look as /estimating/setup ---- */
+:root{--paper-warm:#F7F6F2;--paper-warm-2:#EFEDE6}
+body{background:var(--paper-warm)}
+.mini-nav .nav-inner{justify-content:space-between}
+.mini-nav .nav-right{gap:12px}
+.mini-nav .nav-hint{font-size:14px;color:var(--muted);font-weight:500}
+.mini-nav .nav-hint a{color:var(--ink);font-weight:600}
+@media(max-width:560px){.mini-nav .nav-hint span{display:none}}
+
+.thanks{padding:56px 0 96px}
+.thanks .container{max-width:820px}
+.thanks-card{background:#fff;border-radius:var(--r);padding:48px 44px}
+.thanks-card .icon-sq{background:var(--green-tint);color:var(--green)}
+.thanks-card h1{font-size:clamp(34px,4.4vw,48px);letter-spacing:-.025em;line-height:1.05;color:var(--ink);margin-bottom:14px}
+.thanks-card .lead-p{font-size:19px;color:var(--text);line-height:1.55;max-width:600px}
+.next{margin-top:30px;padding-top:28px;border-top:1px solid var(--line)}
+.next h2{font-size:22px;letter-spacing:-.015em;margin-bottom:8px}
+.next p{font-size:17px;color:var(--text);line-height:1.55;max-width:600px}
+.next .btn{margin-top:18px}
+.plans-note{margin-top:16px;background:var(--paper-warm);border-radius:12px;padding:16px 18px;font-size:15.5px;color:var(--text);line-height:1.5}
+.plans-note a{color:var(--ink);font-weight:600}
+.back{display:inline-block;margin-top:24px;font-size:15px;font-weight:600;color:var(--muted)}
+.back:hover{color:var(--ink)}
+
+.slim-footer{padding:36px 0;border-top:1px solid var(--line)}
+.slim-footer .row{display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap;font-size:14px;color:var(--faint)}
+.slim-footer .row a{color:var(--muted)}
+.slim-footer .links{display:flex;gap:18px;flex-wrap:wrap}
+
+@media(max-width:560px){.thanks{padding:32px 0 64px}.thanks-card{padding:32px 22px}.thanks-card .lead-p{font-size:17.5px}}
+</style>
+</head>
+<body>
+<nav class="site-nav mini-nav" id="nav">
+  <div class="container nav-inner">
+    <a class="nav-logo" href="/" aria-label="TakeoffAI home">
+      <span class="nav-logo-icon"><span class="corner-tl"></span><span class="corner-br"></span></span>
+      <span class="nav-logo-text">takeoff<span>.ai</span></span>
+    </a>
+    <div class="nav-right">
+      <span class="nav-hint"><span>Questions? </span><a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a></span>
+    </div>
+  </div>
+</nav>
+<main>
+<section class="thanks">
+  <div class="container">
+    <div class="thanks-card" role="status">
+      <div class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <h1>Got it.</h1>
+      <p class="lead-p">We'll be in touch the same business day to confirm price and turnaround.</p>
+      <p class="plans-note">Haven't sent the plans yet? Email them to <a href="mailto:info@takeoffai.com.au?subject=Plans%20for%20estimating">info@takeoffai.com.au</a>, or we'll ask for them when we call.</p>
+      <div class="next">
+        <h2>Want your first job back faster?</h2>
+        <p>Tell us how you price now. It takes about 5 minutes.</p>
+        <a href="/estimating/setup" class="btn btn-dark" id="setup-link">Do the client setup</a>
+      </div>
+    </div>
+    <a href="/estimating" class="back" id="back-link">&larr; Back to TakeoffAI Estimating</a>
+  </div>
+</section>
+</main>
+<footer class="slim-footer">
+  <div class="container row">
+    <span>&copy; 2026 TakeoffAI &middot; Melbourne, Australia</span>
+    <div class="links">
+      <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a>
+      <a href="/estimating">TakeoffAI Estimating</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/estimating/terms">Estimating terms</a>
+    </div>
+  </div>
+</footer>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1881764475868036&ev=PageView&noscript=1" alt=""></noscript>
+<script src="/site.js?v=20260902"></script>
+<script>
+(function () {
+  var hvac = new URLSearchParams(location.search).get('trade') === 'hvac';
+  if (hvac) document.getElementById('back-link').href = '/estimating/hvac';
+
+  // Client setup link, prefilled (the setup page strips these from its URL before its pixel loads)
+  try {
+    var pre = JSON.parse(sessionStorage.getItem('tka_est_prefill') || 'null');
+    if (pre) {
+      var q = {};
+      ['name', 'email', 'phone', 'business'].forEach(function (k) { if (pre[k]) q[k] = pre[k]; });
+      document.getElementById('setup-link').href = '/estimating/setup?' + new URLSearchParams(q).toString();
+    }
+  } catch (e) {}
+
+  var lead = window.EST_LEAD;
+  if (!lead) return;
+  try { sessionStorage.removeItem('tka_est_lead'); } catch (e) {}
+  var trade = lead.trade === 'HVAC' ? 'HVAC' : 'Electrical';
+  if (window.fbq) {
+    try {
+      // Standard Lead: same event ID as the server's Conversions API event, so Meta counts one lead
+      fbq('track', 'Lead', { content_name: trade === 'HVAC' ? 'HVAC estimating enquiry' : 'Estimating enquiry',
+        content_category: 'estimating', trade: trade }, { eventID: lead.event_id });
+      // The existing custom event, with the same parameters as before
+      fbq('trackCustom', 'estimating_lead', { page: lead.page || '/estimating', job_type: lead.job_type, utm_source: lead.utm_source });
+    } catch (e) {}
+  }
+  if (window.TKA) TKA.conversion('estimating_enquiry', { transaction_id: lead.event_id, email: lead.email, phone: lead.phone });
+})();
+</script>
+</body>
+</html>
