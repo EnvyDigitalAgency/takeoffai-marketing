@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Electrical Estimating Services Australia | TakeoffAI Estimating</title>
-<meta name="description" content="Done-for-you electrical estimating for Australian sparkies. AI takeoff, priced in your rates, no lazy exclusions, back 48 hours before close. Commercial tenders from $595.">
+<meta name="description" content="Done-for-you electrical estimating for Australian sparkies. AI takeoff, priced in your rates, no lazy exclusions, back 48 hours before close. Commercial tenders from $395.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.takeoffai.com.au/estimating">
 <meta property="og:type" content="website">
@@ -30,7 +30,7 @@
   "audience": { "@type": "BusinessAudience", "audienceType": "Electrical contractors" },
   "provider": { "@type": "Organization", "name": "TakeoffAI", "url": "https://www.takeoffai.com.au", "email": "info@takeoffai.com.au" },
   "offers": [
-    { "@type": "Offer", "name": "Commercial tender", "priceCurrency": "AUD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "595", "priceCurrency": "AUD", "valueAddedTaxIncluded": false }, "description": "Full commercial tender, fixed price by electrical contract value. From $595 ex GST." },
+    { "@type": "Offer", "name": "Commercial tender", "priceCurrency": "AUD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "395", "priceCurrency": "AUD", "valueAddedTaxIncluded": false }, "description": "Full commercial tender, fixed price by electrical contract value. From $395 ex GST." },
     { "@type": "Offer", "name": "Residential job", "priceCurrency": "AUD", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "299", "priceCurrency": "AUD", "valueAddedTaxIncluded": false }, "description": "Residential, up to 5 sheets $299, 6 to 15 sheets $449, ex GST." }
   ]
 }
@@ -140,6 +140,12 @@
 .price-table td:last-child{font-size:18px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
 .price-table tr:last-child td{border-bottom:none}
 .price-table .q{font-size:13px;font-weight:600;color:var(--muted)}
+.pc-incl{margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.pc-incl h4{font-size:14px;font-weight:600;color:var(--muted);margin-bottom:10px}
+.pc-incl ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+.pc-incl li{position:relative;padding-left:24px;font-size:15px;color:var(--ink);font-weight:500;line-height:1.4}
+.pc-incl li::before{content:"";position:absolute;left:2px;top:4px;width:12px;height:7px;border-left:2.5px solid var(--orange);border-bottom:2.5px solid var(--orange);transform:rotate(-45deg)}
+@media(max-width:560px){.pc-incl ul{grid-template-columns:1fr}}
 .price-note{font-size:14.5px;color:var(--muted);line-height:1.55;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
 .price-side{display:flex;flex-direction:column;gap:20px}
 .extra-card{flex:1;background:#fff;border-radius:var(--r);padding:24px 28px;border-left:4px solid var(--orange)}
@@ -320,7 +326,7 @@
         <a href="https://cal.com/jonah-flinos-fv2dw0/30min?source=estimating" class="btn btn-primary btn-lg" data-call>Book a quick call</a>
         <a href="#send-a-job" class="btn btn-white btn-lg">Send us a job</a>
       </div>
-      <p class="hero-note"><b>Commercial tenders from $595</b> · Residential from $299 · Back by your deadline or it's free</p>
+      <p class="hero-note"><b>Commercial tenders from $395</b> · Residential from $299 · Back by your deadline or it's free</p>
     </div>
     <div class="plan-visual brackets" aria-hidden="true">
       <span class="ctl"></span><span class="cbr"></span>
@@ -499,15 +505,17 @@
         <table class="price-table">
           <thead><tr><th>Electrical contract value</th><th>Price</th></tr></thead>
           <tbody>
-            <tr><td>Under $50K</td><td>$595</td></tr>
-            <tr><td>$50K–$100K</td><td>$750</td></tr>
-            <tr><td>$100K–$250K</td><td>$1,150</td></tr>
-            <tr><td>$250K–$500K</td><td>$1,650</td></tr>
-            <tr><td>$500K–$1M</td><td>$2,250</td></tr>
-            <tr><td>Over $1M</td><td>from $3,000 <span class="q">(quoted)</span></td></tr>
+            <tr><td>Under $100K</td><td>$395</td></tr>
+            <tr><td>$100K–$300K</td><td>$595</td></tr>
+            <tr><td>$300K–$750K</td><td>$895</td></tr>
+            <tr><td>Over $750K</td><td>from $1,295 <span class="q">(quoted)</span></td></tr>
           </tbody>
         </table>
         <p class="price-note">Not sure of the contract value? Pick your best guess. If the drawings say otherwise, we'll confirm the price before we start.</p>
+        <div class="pc-incl">
+          <h4>Every tender includes</h4>
+          <ul><li>Priced BOQ</li><li>Tender letter</li><li>Marked-up drawings</li><li>RFIs on day 1</li><li>Addenda re-priced the same day</li><li>Back 48 hours before close</li></ul>
+        </div>
       </div>
       <div class="price-side">
       <div class="price-card">
@@ -544,7 +552,7 @@
       <table class="cmp">
         <thead><tr><th><span class="sr-only">Compare</span></th><th>Doing it yourself</th><th>Hiring an estimator</th><th>Traditional estimating service</th><th class="us">TakeoffAI Estimating</th></tr></thead>
         <tbody>
-          <tr><th>Cost</th><td data-label="Doing it yourself">Your nights and weekends</td><td data-label="Hiring an estimator">$110K+ a year in salary alone</td><td data-label="Traditional service">Per quote or hourly</td><td class="us" data-label="TakeoffAI Estimating">From $595 per tender, fixed</td></tr>
+          <tr><th>Cost</th><td data-label="Doing it yourself">Your nights and weekends</td><td data-label="Hiring an estimator">$110K+ a year in salary alone</td><td data-label="Traditional service">Per quote or hourly</td><td class="us" data-label="TakeoffAI Estimating">From $395 per tender, fixed</td></tr>
           <tr><th>Speed</th><td data-label="Doing it yourself">When you get to it</td><td data-label="Hiring an estimator">Depends on workload</td><td data-label="Traditional service">Counted by hand</td><td class="us" data-label="TakeoffAI Estimating">AI count in minutes</td></tr>
           <tr><th>Priced your way</th><td data-label="Doing it yourself">Yes</td><td data-label="Hiring an estimator">Over time</td><td data-label="Traditional service">Their rates</td><td class="us" data-label="TakeoffAI Estimating">Your rates, from day one</td></tr>
           <tr><th>Lock-in</th><td data-label="Doing it yourself">n/a</td><td data-label="Hiring an estimator">Salary</td><td data-label="Traditional service">Varies</td><td class="us" data-label="TakeoffAI Estimating">None</td></tr>
@@ -625,7 +633,7 @@
         </div>
         <div class="field"><label for="f-size" id="l-size">Electrical contract value <span class="opt">(best guess)</span></label>
           <select id="f-size" name="job_size">
-            <option value="Not sure">Not sure</option><option>Under $50K</option><option>$50K–$100K</option><option>$100K–$250K</option><option>$250K–$500K</option><option>$500K–$1M</option><option>Over $1M</option>
+            <option value="Not sure">Not sure</option><option>Under $100K</option><option>$100K–$300K</option><option>$300K–$750K</option><option>Over $750K</option>
           </select>
         </div>
         <div class="field"><label for="f-link">Link to the plans <span class="opt">(Dropbox, Google Drive, WeTransfer)</span></label><input id="f-link" name="plans_link" type="text" inputmode="url" autocomplete="off" placeholder="Paste the link here">
@@ -775,7 +783,7 @@ Cal("ui", {"theme":"light","styles":{"branding":{"brandColor":"#E8611A"}},"hideE
 
   // Job size: contract value bands for commercial, sheet counts for residential (matches the pricing table)
   var SIZES = {
-    commercial: { label: 'Electrical contract value', opts: ['Under $50K', '$50K–$100K', '$100K–$250K', '$250K–$500K', '$500K–$1M', 'Over $1M'] },
+    commercial: { label: 'Electrical contract value', opts: ['Under $100K', '$100K–$300K', '$300K–$750K', 'Over $750K'] },
     residential: { label: 'Number of sheets', opts: ['Up to 5 sheets', '6–15 sheets', 'More than 15 sheets'] }
   };
   var sizeSel = document.getElementById('f-size'), sizeLbl = document.getElementById('l-size');
