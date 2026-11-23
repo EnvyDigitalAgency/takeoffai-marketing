@@ -1,6 +1,12 @@
-// Two forms post here:
-// - "Send us a job" on /estimating: adds the lead to the "TakeoffAI Lead CRM" Google Sheet
-//   (Leads tab, same columns as the Meta lead sync, Source = "Estimating page") and emails info@.
+// Forms that post here:
+// - /estimating, two steps:
+//   1. form = "enquiry" (name, phone, email, job type): adds the lead to the "TakeoffAI Lead CRM" Google
+//      Sheet (Leads tab, same columns as the Meta lead sync, Source = "Estimating page", Stage "New – DFY"),
+//      emails info@, sends the Meta Conversions API Lead, and returns the Lead ID with a signed code.
+//   2. form = "details" (plans, deadline, contract value, terms...): the signed code lets it update that
+//      same Leads row ("Job details received" in Notes) and send a second info@ email. No new row.
+// - No form field: the original one-step job form (everything in one post). Kept for cached copies of
+//   the old page and for any page still using it.
 // - Client setup on /estimating/setup (form = "setup"): adds a row to the "Client setup" tab
 //   (created on first use), notes it on the client's Leads row if their email matches, and emails info@.
 // No dependencies: the service-account JWT is signed with node:crypto.
@@ -94,7 +100,7 @@ async function sheets() {
     auth: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } };
 }
 
-async function addToCrm(f, leadId, notes) {
+async function addToCrm(f, leadId, notes, stage = 'New') {
   const { api, auth } = await sheets();
   // Write at an explicit row, as tools/sync_leads_to_crm_sheet.py does: column A is hidden,
   // so the Sheets "append" API guesses the table starts at B and shifts the row right.
@@ -111,7 +117,7 @@ async function addToCrm(f, leadId, notes) {
   // Auto Email = manual_contact: Grokbot's 8:05am cold emails pick rows by Stage and skip only
   // manual_contact, and estimating leads must never get the software emails (Jonah, 30 Oct 2026).
   const row = ["'" + leadId, melbourneNow(), cell(f.name), cell(f.email), f.phone ? "'" + f.phone : '',
-    'Estimating page', cell(f.company), 'manual_contact', 'New', cell(notes)];
+    'Estimating page', cell(f.company), 'manual_contact', stage, cell(notes)];
   const r = await fetch(`${api}/values:batchUpdate`, { method: 'POST', headers: auth, body: JSON.stringify({
     valueInputOption: 'USER_ENTERED', data: [{ range: `Leads!A${next}:J${next}`, values: [row] }, ...extra] }) });
   if (!r.ok) throw new Error(`Sheets write ${r.status}: ${await r.text()}`);
@@ -286,6 +292,126 @@ async function sendEmail(replyTo, subject, lines, footer) {
   if (!r.ok) throw new Error(`Resend ${r.status}: ${await r.text()}`);
 }
 
+// ---- /estimating in two steps ----
+const DFY_STAGE = 'New – DFY';
+const NOT_SENT = 'job details not sent yet';
+const validContact = (f) => f.name && f.phone && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email);
+const jobLabel = (t) => (t === 'residential' ? 'Residential' : 'Commercial');
+
+function sourceOf(f) {
+  return [f.source_page, f.utm_source && `utm_source=${f.utm_source}`, f.utm_medium && `utm_medium=${f.utm_medium}`,
+    f.utm_campaign && `utm_campaign=${f.utm_campaign}`, f.utm_term && `utm_term=${f.utm_term}`,
+    f.utm_content && `utm_content=${f.utm_content}`, f.referrer && `referrer=${f.referrer}`].filter(Boolean).join(' · ');
+}
+const adClickOf = (f) => [f.gclid && 'Google (gclid)', (f.gbraid || f.wbraid) && 'Google (iOS)', f.fbclid && 'Meta (fbclid)'].filter(Boolean).join(', ');
+
+// The signed code step 1 hands back: it lets step 2 update that one Leads row and nothing else.
+// Keyed off a server-only secret (STEP2_SECRET if set, otherwise derived from the service-account key).
+const STEP2_DAYS = 7;
+function step2Key() {
+  return crypto.createHash('sha256').update('tka-estimating-step2|' +
+    (process.env.STEP2_SECRET || process.env.GOOGLE_SA_PRIVATE_KEY || '')).digest();
+}
+function signLead(leadId) {
+  const ts = Date.now().toString(36);
+  return ts + '.' + crypto.createHmac('sha256', step2Key()).update(`${leadId}|${ts}`).digest('base64url');
+}
+function checkLead(leadId, token) {
+  if (!/^web-est-[a-z0-9]{6,30}$/.test(leadId || '')) return false;
+  const [ts, sig] = String(token || '').split('.');
+  if (!ts || !sig || Date.now() - parseInt(ts, 36) > STEP2_DAYS * 86400000) return false;
+  const want = crypto.createHmac('sha256', step2Key()).update(`${leadId}|${ts}`).digest();
+  const got = Buffer.from(sig, 'base64url');
+  return got.length === want.length && crypto.timingSafeEqual(got, want);
+}
+
+async function handleEnquiry(body, req, res) {
+  const f = clean(body);
+  if (!validContact(f)) return res.status(400).json({ ok: false, error: 'Name, phone and a valid email are needed.' });
+  f.trade = /^hvac$/i.test(f.trade) ? 'HVAC' : 'Electrical';
+  f.job_type = f.job_type === 'residential' ? 'residential' : 'commercial';
+  const leadId = 'web-est-' + Date.now().toString(36) + crypto.randomBytes(2).toString('hex');
+  const source = sourceOf(f), adClick = adClickOf(f);
+  const notes = [`${f.trade === 'HVAC' ? 'HVAC · ' : ''}${jobLabel(f.job_type)}, ${NOT_SENT}`,
+    source && `Source: ${source}`, adClick && `Ad click: ${adClick}`].filter(Boolean).join(' | ');
+  const lines = [['Name', f.name], ['Phone', f.phone], ['Email', f.email], ['Trade', f.trade], ['Job type', f.job_type],
+    ['Job details', 'Not sent yet. If they don\'t follow up with the plans, give them a call.'],
+    ['Source', source], ['Ad click', adClick], ['Lead ID', leadId]];
+  const subject = `${f.trade === 'HVAC' ? 'HVAC estimating job' : 'Estimating job'}: ${f.name} (${f.job_type}, details to follow)`;
+  const [crm, mail, meta] = await Promise.allSettled([addToCrm(f, leadId, notes, DFY_STAGE),
+    sendEmail(f.email, subject, lines, 'Promised: price and turnaround confirmed the same business day. ' +
+      'The lead is in the CRM sheet with Source = Estimating page and Stage = ' + DFY_STAGE + '.'),
+    sendMetaLead(f, leadId, req)]);
+  if (crm.status === 'rejected') console.error('CRM append failed', leadId, crm.reason);
+  if (mail.status === 'rejected') console.error('Lead email failed', leadId, mail.reason);
+  if (meta.status === 'rejected') console.error('Meta CAPI failed', leadId, meta.reason);
+  if (crm.status === 'rejected' && mail.status === 'rejected') return res.status(502).json({ ok: false, error: 'Could not save the enquiry.' });
+  return res.status(200).json({ ok: true, lead_id: leadId, token: signLead(leadId) });
+}
+
+// Step 2: add the job details to the step 1 row (found by Lead ID in column A, never by position)
+async function addDetailsToCrm(leadId, f, details) {
+  const { api, auth } = await sheets();
+  const used = await (await fetch(`${api}/values/Leads?majorDimension=ROWS`, { headers: auth })).json();
+  if (!used.range) throw new Error('CRM sheet not readable: ' + JSON.stringify(used));
+  const rows = used.values || [];
+  let i = rows.length - 1;
+  while (i > 0 && String(rows[i][0] || '').replace(/^'/, '') !== leadId) i--;
+  if (i <= 0) {
+    // The step 1 row never made it into the sheet (that write failed): add the lead now so it isn't lost
+    const notes = `${jobLabel(f.job_type)}, enquiry row was missing so added at step 2 | ${details}`;
+    await addToCrm(f, leadId, notes, DFY_STAGE);
+    return { row: rows.length + 1, created: true, contact: f };
+  }
+  const n = i + 1, row = rows[i];
+  const old = String(row[9] || '');
+  const notes = (old.includes(', ' + NOT_SENT) ? old.replace(', ' + NOT_SENT, '') : old) + (old ? ' | ' : '') + details;
+  const data = [{ range: `Leads!J${n}`, values: [[notes]] }]; // RAW: never read as a formula
+  if (f.how_heard) {
+    try { data.push(...(await extraCells(api, auth, rows[0] || [], { how_heard: f.how_heard }, n))); }
+    catch (e) { console.error('How heard column skipped', leadId, e); }
+  }
+  const r = await fetch(`${api}/values:batchUpdate`, { method: 'POST', headers: auth,
+    body: JSON.stringify({ valueInputOption: 'RAW', data }) });
+  if (!r.ok) throw new Error(`Sheets update ${r.status}: ${await r.text()}`);
+  return { row: n, created: false, contact: { name: row[2] || f.name, email: row[3] || f.email,
+    phone: String(row[4] || f.phone).replace(/^'/, ''), job_type: f.job_type } };
+}
+
+async function handleDetails(body, res) {
+  const leadId = String((body && body.lead_id) || '').trim();
+  if (!checkLead(leadId, body && body.token)) {
+    return res.status(400).json({ ok: false, error: 'That link has expired. Please send the details again, or email them.' });
+  }
+  const terms = termsOf(body);
+  if (!terms) return res.status(400).json({ ok: false, error: TERMS_REQUIRED });
+  const f = clean(body);
+  f.trade = /^hvac$/i.test(f.trade) ? 'HVAC' : 'Electrical';
+  f.job_type = f.job_type === 'residential' ? 'residential' : 'commercial';
+  const deadline = f.deadline ? `tender due ${formatDeadline(f.deadline)}` : 'no tender deadline given';
+  const details = [`Job details received ${melbourneNow()}: ${jobLabel(f.job_type)}${f.job_size ? ` (${f.job_size})` : ''}, ${deadline}`,
+    `Plans: ${f.plans_link || 'not linked (may email them, or wants a call)'}`, f.quoting_software && `Quotes in: ${f.quoting_software}`,
+    f.notes && `Notes: ${f.notes}`, f.how_heard && `Heard via: ${f.how_heard}`,
+    `Terms agreed: yes, ${terms.version}, ${terms.at}`].filter(Boolean).join(' | ');
+
+  let crm;
+  try { crm = await addDetailsToCrm(leadId, f, details); }
+  catch (e) { console.error('CRM details update failed', leadId, e); }
+  const c = (crm && crm.contact) || f;
+  const lines = [['Name', c.name], ['Phone', c.phone], ['Email', c.email], ['Trade', f.trade], ['Job type', f.job_type],
+    ['Job size', f.job_size], ['Tender deadline', f.deadline ? formatDeadline(f.deadline) : 'Not given'],
+    ['Plans', f.plans_link || 'No link. They may email the plans, or want a call.'], ['Quotes in', f.quoting_software],
+    ['Notes', f.notes], ['How they heard', f.how_heard], ['Lead ID', leadId],
+    ['CRM', crm ? (crm.created ? `Row ${crm.row} added (the enquiry row was missing)` : `Row ${crm.row} updated`) : 'Update FAILED: add these details to the lead by hand'],
+    ['Terms agreed', terms.agreed], ['Terms version', terms.version], ['Agreed at', terms.at]];
+  const subject = `Job details: ${c.name || 'estimating lead'} (${f.job_type}, ${f.deadline ? 'due ' + formatDeadline(f.deadline) : 'no deadline given'})`;
+  let mailed = true;
+  try { await sendEmail(c.email, subject, lines, 'Same lead as the earlier "Estimating job" email: the details are on that row in the CRM sheet.'); }
+  catch (e) { mailed = false; console.error('Details email failed', leadId, e); }
+  if (!crm && !mailed) return res.status(502).json({ ok: false, error: 'Could not save the job details.' });
+  return res.status(200).json({ ok: true });
+}
+
 module.exports = async (req, res) => {
   if (req.method !== 'POST') { res.setHeader('Allow', 'POST'); return res.status(405).json({ ok: false, error: 'POST only' }); }
   let body = req.body;
@@ -293,6 +419,8 @@ module.exports = async (req, res) => {
   // Honeypot: bots fill the hidden "website" field. Pretend it worked.
   if (body && body.website) return res.status(200).json({ ok: true });
   if (body && body.form === 'setup') return handleSetup(body, res);
+  if (body && body.form === 'enquiry') return handleEnquiry(body, req, res);
+  if (body && body.form === 'details') return handleDetails(body, res);
 
   const f = clean(body), terms = termsOf(body);
   if (!terms) return res.status(400).json({ ok: false, error: TERMS_REQUIRED });

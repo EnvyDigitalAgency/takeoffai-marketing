@@ -79,14 +79,28 @@
 .est-dark.brackets>.ctl,.est-dark .brackets>.ctl{border-color:#fff}
 
 /* ---- hero ---- */
-.est-hero{background:var(--paper-warm);padding:56px 0 88px}
-.est-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-.est-hero .h1{margin-bottom:24px;font-size:clamp(42px,5.8vw,80px)}
-.est-hero .lead{max-width:540px;margin-bottom:32px}
+.est-hero{background:var(--paper-warm);padding:52px 0 84px}
+/* Desktop: headline, trust lines and intro on the left, the enquiry form beside them.
+   Mobile: headline, trust lines, form, then the intro. */
+.est-hero-grid{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);column-gap:56px;
+  grid-template-areas:"head form" "trust form" "more form";grid-template-rows:auto auto 1fr;align-items:start}
+.h-head{grid-area:head}.h-trust{grid-area:trust}.h-more{grid-area:more}.h-form{grid-area:form}
+.est-hero .h1{margin-bottom:22px;font-size:clamp(40px,5.2vw,72px)}
+.h-trust{list-style:none;display:flex;flex-direction:column;gap:10px;margin:0 0 28px}
+.h-trust li{position:relative;padding-left:32px;font-size:18px;font-weight:600;color:var(--ink);line-height:1.35}
+.h-trust li::before{content:"";position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;background:var(--orange)}
+.h-trust li::after{content:"";position:absolute;left:7px;top:7px;width:8px;height:5px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg)}
+.est-hero .lead{max-width:540px;margin-bottom:24px}
 .est-hero .hero-ctas{margin-top:0}
 .est-hero .hero-note{margin-top:18px;font-weight:500;color:var(--text)}
 .est-hero .hero-note b{color:var(--ink)}
-@media(max-width:900px){.est-hero{padding:32px 0 60px}.est-hero-grid{grid-template-columns:1fr;gap:40px}}
+@media(max-width:900px){
+  .est-hero{padding:28px 0 56px}
+  .est-hero-grid{grid-template-columns:1fr;grid-template-areas:"head" "trust" "form" "more";grid-template-rows:none}
+  .est-hero .h1{margin-bottom:18px}
+  .h-trust{margin-bottom:22px}.h-trust li{font-size:16.5px}
+  .h-more{margin-top:36px}
+}
 
 /* hero visual: a marked-up floor plan with the priced BOQ on top */
 .plan-visual{padding:30px}
@@ -242,8 +256,25 @@
 .job-next li:last-child{border-bottom:1px solid var(--line)}
 .job-next i{font-style:normal;font-size:13px;font-weight:700;color:var(--orange);padding-top:2px}
 .job-next b{display:block;color:var(--ink)}
-.job-form{background:var(--paper-warm);border-radius:var(--r);padding:36px}
-.job-form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.job-side .btn{margin-top:26px}
+.job-grid .plan-visual{margin-bottom:34px}
+/* The enquiry card in the hero: step 1, then step 2 in the same card */
+.est-card{position:relative;background:#fff;border-radius:var(--r);padding:32px 32px 26px;box-shadow:0 24px 60px rgba(0,0,0,.10);border-top:4px solid var(--orange);scroll-margin-top:90px}
+.est-card .card-title{font-size:25px;letter-spacing:-.02em;line-height:1.2;margin-bottom:6px;color:var(--ink)}
+.est-card .card-sub{font-size:15.5px;color:var(--muted);line-height:1.5;margin-bottom:22px}
+.est-card .field input,.est-card .field textarea,.est-card .field select,.est-card .seg label{background-color:var(--paper-warm)}
+.est-card .seg input:checked+label{background:var(--orange-tint)}
+.est-card .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.est-card .btn{width:100%;margin-top:6px}
+.est-card .btn[disabled]{opacity:.6;cursor:wait;transform:none}
+.got-it{display:flex;align-items:flex-start;gap:12px;background:var(--green-tint);border-radius:12px;padding:14px 16px;margin-bottom:22px;font-size:15.5px;line-height:1.45;color:var(--text)}
+.got-it b{color:var(--ink)}
+.got-it .ok{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;margin-top:-1px}
+.got-it .ok svg{width:13px;height:13px}
+#details-form .card-title{font-size:21px}
+.skip{font-size:14.5px;color:var(--muted);margin-top:14px;text-align:center}
+.skip a{color:var(--ink);font-weight:600}
+@media(max-width:560px){.est-card{padding:24px 18px 20px}.est-card .row{grid-template-columns:1fr;gap:0}.est-card .card-title{font-size:23px}}
 .field{display:flex;flex-direction:column;gap:7px;margin-bottom:18px}
 .field label,.field .lbl{font-size:14px;font-weight:600;color:var(--ink)}
 .field .opt{font-weight:500;color:var(--faint)}
@@ -260,27 +291,14 @@
 .field-note{font-size:14px;color:var(--muted);margin-top:2px}
 .field-note a{color:var(--ink);font-weight:600}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.field-note.no-plans{color:var(--ink);font-weight:600}
 .field[hidden]{display:none}
 .form-err{font-size:14.5px;color:var(--red);background:var(--red-tint);border-radius:12px;padding:12px 14px;margin-bottom:12px}
 .form-err a{color:var(--red);font-weight:600}
-.job-form{position:relative}
-.job-form .btn{width:100%;margin-top:6px}
-.job-form .btn[disabled]{opacity:.6;cursor:wait;transform:none}
 .agree{display:flex;align-items:flex-start;gap:12px;font-size:15px;font-weight:500;color:var(--ink);line-height:1.45;cursor:pointer}
 .agree input{width:20px;height:20px;margin-top:1px;accent-color:var(--orange);flex-shrink:0}
 .agree a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .form-fine{font-size:13.5px;color:var(--muted);margin-top:14px;text-align:center}
-.form-ok{display:none;text-align:left}
-.form-ok .icon-sq{background:var(--green-tint);color:var(--green)}
-.form-ok h3{font-size:26px;margin-bottom:10px}
-.form-ok p{font-size:17px;color:var(--text);line-height:1.55}
-.form-ok .ok-next{margin-top:22px;padding-top:22px;border-top:1px solid var(--line);font-weight:600;color:var(--ink)}
-.form-ok .btn{margin-top:16px}
-.job-form.sent form{display:none}
-.job-form.sent .form-ok{display:block}
 @media(max-width:900px){.job-grid{grid-template-columns:1fr;gap:32px}}
-@media(max-width:560px){.job-form{padding:22px 18px}.job-form .row{grid-template-columns:1fr;gap:0}}
 
 /* ---- faq + final ---- */
 .faq-sec .faq-item{background:#fff}
@@ -329,88 +347,78 @@
 </nav>
 <main>
 
-<!-- 1. Hero -->
+<!-- 1. Hero, with step 1 of the job form -->
 <section class="est-hero">
   <div class="container est-hero-grid">
-    <div>
+    <div class="h-head">
       <span class="kicker">Outsourced electrical estimating</span>
       <h1 class="h1">Electrical estimating, done for you.</h1>
+    </div>
+    <ul class="h-trust">
+      <li>Back by your deadline, or it's free</li>
+      <li>Priced in your rates, from $395</li>
+      <li>Takeoff, supplier quotes, BOQ and tender letter</li>
+    </ul>
+    <div class="h-more">
       <p class="lead">Send us the plans. AI counts every point in minutes, our in-house estimator checks it and prices it in your rates, and it's back in 24–72 hours (or per your deadline). Done in Australia, never farmed out.</p>
       <p class="hero-proof"><span class="dot"></span>We estimated a 30-storey apartment building in one day.</p>
       <div class="hero-ctas">
-        <a href="https://cal.com/jonah-flinos-fv2dw0/30min?source=estimating" class="btn btn-primary btn-lg" data-call>Book a quick call</a>
-        <a href="#send-a-job" class="btn btn-white btn-lg">Send us a job</a>
+        <a href="https://cal.com/jonah-flinos-fv2dw0/30min?source=estimating" class="btn btn-dark btn-lg" data-call>Book a quick call</a>
       </div>
-      <p class="hero-note"><b>Commercial tenders from $395</b> · Residential from $299 · Back by your deadline or it's free</p>
+      <p class="hero-note"><b>Commercial tenders from $395</b> · Residential from $299</p>
     </div>
-    <div class="plan-visual brackets" aria-hidden="true">
-      <span class="ctl"></span><span class="cbr"></span>
-      <div class="plan-sheet">
-        <span class="deadline-chip"><span class="dot"></span>Back by Thu 5pm</span>
-        <svg viewBox="0 0 520 380" role="img" aria-label="Illustration of a house electrical plan with each downlight, power point and switch tagged in orange">
-          <g fill="none" stroke="#111" stroke-linecap="square">
-            <rect x="12" y="12" width="496" height="356" stroke-width="7"/>
-            <path d="M300 12v70M300 112v128M300 270v98" stroke-width="3.5"/>
-            <path d="M12 220h90M132 220h168" stroke-width="3.5"/>
-            <path d="M300 160h60M390 160h118M300 250h40M370 250h138M404 160v90" stroke-width="3.5"/>
-            <path d="M170 220v148" stroke-width="3.5"/>
-          </g>
-          <g fill="none" stroke="#B8B8B8" stroke-width="1.5">
-            <path d="M300 82a30 30 0 0 1 30 30"/><path d="M132 220a30 30 0 0 1 -30 30"/>
-            <path d="M360 160a30 30 0 0 0 30 30"/><path d="M340 250a30 30 0 0 1 30 -30"/><path d="M300 240a30 30 0 0 1 30 30"/>
-          </g>
-          <g font-family="Outfit,sans-serif" font-size="12" font-weight="600" fill="#8C8C8C" letter-spacing=".06em">
-            <text x="30" y="40">LIVING / KITCHEN</text><text x="318" y="40">BED 1</text><text x="318" y="182">BATH</text>
-            <text x="420" y="182">LDRY</text><text x="318" y="272">BED 2</text><text x="30" y="242">BED 3</text><text x="188" y="242">ENTRY</text>
-          </g>
-          <!-- downlights -->
-          <g id="dl">
-            <g transform="translate(80 85)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
-            <g transform="translate(160 85)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
-            <g transform="translate(240 85)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
-            <g transform="translate(80 160)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
-            <g transform="translate(160 160)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
-            <g transform="translate(240 160)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
-            <g transform="translate(370 95)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
-            <g transform="translate(450 95)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
-            <g transform="translate(350 210)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
-            <g transform="translate(400 315)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
-            <g transform="translate(90 300)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
-            <g transform="translate(235 300)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
-          </g>
-          <!-- power points -->
-          <g>
-            <g transform="translate(40 190)"><circle r="15" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><rect x="-8" y="-5" width="16" height="10" rx="2" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-3-1v2M3-1v2" stroke="#111" stroke-width="2"/></g>
-            <g transform="translate(272 40)"><circle r="15" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><rect x="-8" y="-5" width="16" height="10" rx="2" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-3-1v2M3-1v2" stroke="#111" stroke-width="2"/></g>
-            <g transform="translate(480 132)"><circle r="15" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><rect x="-8" y="-5" width="16" height="10" rx="2" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-3-1v2M3-1v2" stroke="#111" stroke-width="2"/></g>
-            <g transform="translate(480 345)"><circle r="15" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><rect x="-8" y="-5" width="16" height="10" rx="2" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-3-1v2M3-1v2" stroke="#111" stroke-width="2"/></g>
-            <g transform="translate(40 345)"><circle r="15" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><rect x="-8" y="-5" width="16" height="10" rx="2" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-3-1v2M3-1v2" stroke="#111" stroke-width="2"/></g>
-            <g transform="translate(460 210)"><circle r="15" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><rect x="-8" y="-5" width="16" height="10" rx="2" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-3-1v2M3-1v2" stroke="#111" stroke-width="2"/></g>
-          </g>
-          <!-- switches -->
-          <g>
-            <g transform="translate(282 130)"><circle r="13" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="4" fill="#111"/><path d="M0 0l8-8" stroke="#111" stroke-width="2"/></g>
-            <g transform="translate(150 200)"><circle r="13" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="4" fill="#111"/><path d="M0 0l8-8" stroke="#111" stroke-width="2"/></g>
-            <g transform="translate(320 140)"><circle r="13" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="4" fill="#111"/><path d="M0 0l8-8" stroke="#111" stroke-width="2"/></g>
-            <g transform="translate(320 290)"><circle r="13" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="4" fill="#111"/><path d="M0 0l8-8" stroke="#111" stroke-width="2"/></g>
-            <g transform="translate(190 330)"><circle r="13" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="4" fill="#111"/><path d="M0 0l8-8" stroke="#111" stroke-width="2"/></g>
-          </g>
-          <!-- count tags -->
-          <g font-family="Outfit,sans-serif" font-size="12" font-weight="700" fill="#fff">
-            <rect x="182" y="112" width="58" height="22" rx="11" fill="#E8611A"/><text x="211" y="127" text-anchor="middle">DL × 6</text>
-            <rect x="404" y="120" width="58" height="22" rx="11" fill="#E8611A"/><text x="433" y="135" text-anchor="middle">DL × 2</text>
-            <rect x="420" y="282" width="72" height="22" rx="11" fill="#111"/><text x="456" y="297" text-anchor="middle">GPO × 2</text>
-          </g>
-        </svg>
-        <div class="sheet-foot"><span>E-01 · GROUND FLOOR · LIGHTING &amp; POWER</span><span><b>23</b> ITEMS TAGGED</span></div>
-      </div>
-      <div class="boq-card">
-        <div class="bc-head"><span class="bc-title">Priced BOQ · your rates</span><span class="bc-tag">READY TO SEND</span></div>
-        <div class="bc-row"><span>LED downlight, supply &amp; install</span><b>12</b></div>
-        <div class="bc-row"><span>Double GPO</span><b>6</b></div>
-        <div class="bc-row"><span>Switch, 1 gang</span><b>5</b></div>
-        <div class="bc-tot"><span>Total ex GST</span><span>$6,480</span></div>
-      </div>
+
+    <div class="h-form">
+    <div class="est-card" id="send-a-job">
+      <!-- Step 1: the enquiry. This is the lead: CRM row, info@ email, Google and Meta conversions. -->
+      <form id="enquiry-form" novalidate>
+        <h2 class="card-title">Get your tender priced</h2>
+        <p class="card-sub">Leave your details and we'll confirm price and turnaround the same business day.</p>
+        <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="row">
+          <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" required></div>
+          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        </div>
+        <div class="field"><span class="lbl" id="l-type">Job type</span>
+          <div class="seg" role="radiogroup" aria-labelledby="l-type">
+            <input type="radio" name="job_type" id="t-com" value="commercial" checked><label for="t-com">Commercial</label>
+            <input type="radio" name="job_type" id="t-res" value="residential"><label for="t-res">Residential</label>
+          </div>
+        </div>
+        <div class="hp" aria-hidden="true"><label for="f-website">Website</label><input id="f-website" name="website" tabindex="-1" autocomplete="off"></div>
+        <input type="hidden" name="form" value="enquiry">
+        <input type="hidden" name="source_page"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content"><input type="hidden" name="referrer">
+        <input type="hidden" name="utm_term"><input type="hidden" name="gclid"><input type="hidden" name="gbraid"><input type="hidden" name="wbraid"><input type="hidden" name="fbclid">
+        <input type="hidden" name="trade" value="Electrical"><input type="hidden" name="event_id"><input type="hidden" name="fbp"><input type="hidden" name="fbc">
+        <p class="form-err" id="form-err" role="alert" hidden>That didn't go through. Try again, or email your details to <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a>.</p>
+        <button type="submit" class="btn btn-primary btn-lg" id="job-submit">Get my tender priced &rarr;</button>
+        <p class="form-fine">Plans are never shared or sold. <a href="/privacy">Privacy policy</a></p>
+      </form>
+
+      <!-- Step 2: job details. Updates the same CRM row, then goes to /estimating/thanks. No new conversions. -->
+      <form id="details-form" novalidate hidden>
+        <div class="got-it" role="status" aria-live="polite"><span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><b id="got-name">Got it.</b> We'll be in touch the same business day.</div></div>
+        <h2 class="card-title" tabindex="-1" id="details-title">Send the job details now and we'll come back with price and turnaround today.</h2>
+        <div class="field" style="margin-top:18px"><label for="f-link">Link to the plans <span class="opt">(Dropbox, Google Drive, WeTransfer)</span></label><input id="f-link" name="plans_link" type="text" inputmode="url" autocomplete="off" placeholder="Paste the link here">
+          <p class="field-note">or email your plans to <a href="mailto:info@takeoffai.com.au?subject=Plans%20for%20estimating">info@takeoffai.com.au</a></p>
+        </div>
+        <div class="row">
+          <div class="field"><label for="f-deadline">Tender deadline <span class="opt">(if there is one)</span></label><input id="f-deadline" name="deadline" type="date"></div>
+          <div class="field"><label for="f-size" id="l-size">Electrical contract value <span class="opt">(best guess)</span></label>
+            <select id="f-size" name="job_size"><option value="Not sure">Not sure</option></select>
+          </div>
+        </div>
+        <div class="field"><label for="f-software">What do you quote in? <span class="opt">(optional)</span></label><input id="f-software" name="quoting_software" placeholder="Excel, your job management software, pen and paper…"></div>
+        <div class="field"><label for="f-notes">Notes <span class="opt">(optional)</span></label><textarea id="f-notes" name="notes" placeholder="Scope, anything to leave out, which addendum you're on…"></textarea></div>
+        <div class="field" id="heard-field" hidden><label for="f-heard">How did you hear about us? <span class="opt">(optional)</span></label>
+          <select id="f-heard" name="how_heard"><option value="">Choose one</option><option>Google search</option><option>Facebook/Instagram</option><option>LinkedIn</option><option>Referral</option><option>Other</option></select>
+        </div>
+        <div class="field"><label class="agree"><input type="checkbox" name="terms_agreed" value="yes" required> <span>I agree to the <a href="/estimating/terms" target="_blank" rel="noopener">Estimating Service Terms</a></span></label><input type="hidden" name="terms_version" value="v1"></div>
+        <p class="form-err" id="details-err" role="alert" hidden>That didn't go through. Try again, or email the details and plans to <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a>.</p>
+        <button type="submit" class="btn btn-primary btn-lg" id="details-submit">Send the job details</button>
+        <p class="skip">No plans handy? <a href="/estimating/thanks">Skip this and we'll call you</a>.</p>
+      </form>
+    </div>
     </div>
   </div>
 </section>
@@ -631,8 +639,8 @@
   </div>
 </section>
 
-<!-- 10. Send us a job -->
-<section class="section" id="send-a-job">
+<!-- 10. What happens after you send a job (the form itself is in the hero) -->
+<section class="section" id="next-steps">
   <div class="container job-grid">
     <div class="job-side">
       <span class="badge orange">Founding clients: limited spots each week.</span>
@@ -643,56 +651,76 @@
         <li><i>02</i><div><b>We set up your rates</b>First job only. Haven't got them sorted? We'll work them out with you.</div></li>
         <li><i>03</i><div><b>You get it back by your deadline</b>Or it's free.</div></li>
       </ul>
+      <a href="#send-a-job" class="btn btn-primary btn-lg" data-to-form>Get my tender priced &rarr;</a>
       <p class="muted" style="font-size:15px;margin-top:24px">Rather talk it through? <a href="#" data-call>Book a quick call</a> or email <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a>.</p>
     </div>
-    <div class="job-form" id="job-form">
-      <form id="estimating-form" novalidate>
-        <div class="row">
-          <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
-          <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" autocomplete="organization" required></div>
-        </div>
-        <div class="row">
-          <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" required></div>
-          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
-        </div>
-        <div class="row">
-          <div class="field"><span class="lbl" id="l-type">Job type</span>
-            <div class="seg" role="radiogroup" aria-labelledby="l-type">
-              <input type="radio" name="job_type" id="t-com" value="commercial" checked><label for="t-com">Commercial</label>
-              <input type="radio" name="job_type" id="t-res" value="residential"><label for="t-res">Residential</label>
-            </div>
-          </div>
-          <div class="field"><label for="f-deadline">Tender deadline <span class="opt">(if there is one)</span></label><input id="f-deadline" name="deadline" type="date"></div>
-        </div>
-        <div class="field"><label for="f-size" id="l-size">Electrical contract value <span class="opt">(best guess)</span></label>
-          <select id="f-size" name="job_size">
-            <option value="Not sure">Not sure</option><option>Under $100K</option><option>$100K–$300K</option><option>$300K–$750K</option><option>Over $750K</option>
-          </select>
-        </div>
-        <div class="field"><label for="f-link">Link to the plans <span class="opt">(Dropbox, Google Drive, WeTransfer)</span></label><input id="f-link" name="plans_link" type="text" inputmode="url" autocomplete="off" placeholder="Paste the link here">
-          <p class="field-note">Or email the plans to <a href="mailto:info@takeoffai.com.au?subject=Plans%20for%20estimating">info@takeoffai.com.au</a></p>
-          <p class="field-note no-plans">No plans handy? Leave your details and we'll call you.</p>
-        </div>
-        <div class="field"><label for="f-software">What do you quote in? <span class="opt">(optional)</span></label><input id="f-software" name="quoting_software" placeholder="Excel, your job management software, pen and paper…"></div>
-        <div class="field"><label for="f-notes">Notes <span class="opt">(optional)</span></label><textarea id="f-notes" name="notes" placeholder="Scope, anything to leave out, which addendum you're on…"></textarea></div>
-        <div class="field" id="heard-field" hidden><label for="f-heard">How did you hear about us? <span class="opt">(optional)</span></label>
-          <select id="f-heard" name="how_heard"><option value="">Choose one</option><option>Google search</option><option>Facebook/Instagram</option><option>LinkedIn</option><option>Referral</option><option>Other</option></select>
-        </div>
-        <div class="hp" aria-hidden="true"><label for="f-website">Website</label><input id="f-website" name="website" tabindex="-1" autocomplete="off"></div>
-        <input type="hidden" name="source_page"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content"><input type="hidden" name="referrer">
-        <input type="hidden" name="utm_term"><input type="hidden" name="gclid"><input type="hidden" name="gbraid"><input type="hidden" name="wbraid"><input type="hidden" name="fbclid">
-        <input type="hidden" name="trade" value="Electrical"><input type="hidden" name="event_id"><input type="hidden" name="fbp"><input type="hidden" name="fbc">
-        <div class="field"><label class="agree"><input type="checkbox" name="terms_agreed" value="yes" required> <span>I agree to the <a href="/estimating/terms" target="_blank" rel="noopener">Estimating Service Terms</a></span></label><input type="hidden" name="terms_version" value="v1"></div>
-        <p class="form-err" id="form-err" role="alert" hidden>That didn't go through. Try again, or email the details and plans to <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a>.</p>
-        <button type="submit" class="btn btn-primary btn-lg" id="job-submit">Send us the job</button>
-        <p class="form-fine">Plans are never shared or sold. <a href="/privacy">Privacy policy</a></p>
-      </form>
-      <div class="form-ok" role="status" aria-live="polite">
-        <div class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <h3>Got it.</h3>
-        <p>We'll be in touch the same business day to confirm price and turnaround.</p>
-        <p class="ok-next">Want your first job back faster? Tell us how you price now. It takes about 5 minutes.</p>
-        <a href="/estimating/setup" class="btn btn-dark" id="setup-link">Do the client setup</a>
+    <div class="plan-visual brackets" aria-hidden="true">
+      <span class="ctl"></span><span class="cbr"></span>
+      <div class="plan-sheet">
+        <span class="deadline-chip"><span class="dot"></span>Back by Thu 5pm</span>
+        <svg viewBox="0 0 520 380" role="img" aria-label="Illustration of a house electrical plan with each downlight, power point and switch tagged in orange">
+          <g fill="none" stroke="#111" stroke-linecap="square">
+            <rect x="12" y="12" width="496" height="356" stroke-width="7"/>
+            <path d="M300 12v70M300 112v128M300 270v98" stroke-width="3.5"/>
+            <path d="M12 220h90M132 220h168" stroke-width="3.5"/>
+            <path d="M300 160h60M390 160h118M300 250h40M370 250h138M404 160v90" stroke-width="3.5"/>
+            <path d="M170 220v148" stroke-width="3.5"/>
+          </g>
+          <g fill="none" stroke="#B8B8B8" stroke-width="1.5">
+            <path d="M300 82a30 30 0 0 1 30 30"/><path d="M132 220a30 30 0 0 1 -30 30"/>
+            <path d="M360 160a30 30 0 0 0 30 30"/><path d="M340 250a30 30 0 0 1 30 -30"/><path d="M300 240a30 30 0 0 1 30 30"/>
+          </g>
+          <g font-family="Outfit,sans-serif" font-size="12" font-weight="600" fill="#8C8C8C" letter-spacing=".06em">
+            <text x="30" y="40">LIVING / KITCHEN</text><text x="318" y="40">BED 1</text><text x="318" y="182">BATH</text>
+            <text x="420" y="182">LDRY</text><text x="318" y="272">BED 2</text><text x="30" y="242">BED 3</text><text x="188" y="242">ENTRY</text>
+          </g>
+          <!-- downlights -->
+          <g id="dl">
+            <g transform="translate(80 85)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
+            <g transform="translate(160 85)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
+            <g transform="translate(240 85)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
+            <g transform="translate(80 160)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
+            <g transform="translate(160 160)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
+            <g transform="translate(240 160)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
+            <g transform="translate(370 95)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
+            <g transform="translate(450 95)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
+            <g transform="translate(350 210)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
+            <g transform="translate(400 315)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
+            <g transform="translate(90 300)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
+            <g transform="translate(235 300)"><circle r="17" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="8" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-5.5-5.5l11 11M5.5-5.5l-11 11" stroke="#111" stroke-width="1.6"/></g>
+          </g>
+          <!-- power points -->
+          <g>
+            <g transform="translate(40 190)"><circle r="15" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><rect x="-8" y="-5" width="16" height="10" rx="2" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-3-1v2M3-1v2" stroke="#111" stroke-width="2"/></g>
+            <g transform="translate(272 40)"><circle r="15" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><rect x="-8" y="-5" width="16" height="10" rx="2" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-3-1v2M3-1v2" stroke="#111" stroke-width="2"/></g>
+            <g transform="translate(480 132)"><circle r="15" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><rect x="-8" y="-5" width="16" height="10" rx="2" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-3-1v2M3-1v2" stroke="#111" stroke-width="2"/></g>
+            <g transform="translate(480 345)"><circle r="15" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><rect x="-8" y="-5" width="16" height="10" rx="2" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-3-1v2M3-1v2" stroke="#111" stroke-width="2"/></g>
+            <g transform="translate(40 345)"><circle r="15" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><rect x="-8" y="-5" width="16" height="10" rx="2" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-3-1v2M3-1v2" stroke="#111" stroke-width="2"/></g>
+            <g transform="translate(460 210)"><circle r="15" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><rect x="-8" y="-5" width="16" height="10" rx="2" fill="#fff" stroke="#111" stroke-width="2"/><path d="M-3-1v2M3-1v2" stroke="#111" stroke-width="2"/></g>
+          </g>
+          <!-- switches -->
+          <g>
+            <g transform="translate(282 130)"><circle r="13" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="4" fill="#111"/><path d="M0 0l8-8" stroke="#111" stroke-width="2"/></g>
+            <g transform="translate(150 200)"><circle r="13" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="4" fill="#111"/><path d="M0 0l8-8" stroke="#111" stroke-width="2"/></g>
+            <g transform="translate(320 140)"><circle r="13" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="4" fill="#111"/><path d="M0 0l8-8" stroke="#111" stroke-width="2"/></g>
+            <g transform="translate(320 290)"><circle r="13" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="4" fill="#111"/><path d="M0 0l8-8" stroke="#111" stroke-width="2"/></g>
+            <g transform="translate(190 330)"><circle r="13" fill="#FDEBE0" stroke="#E8611A" stroke-width="2"/><circle r="4" fill="#111"/><path d="M0 0l8-8" stroke="#111" stroke-width="2"/></g>
+          </g>
+          <!-- count tags -->
+          <g font-family="Outfit,sans-serif" font-size="12" font-weight="700" fill="#fff">
+            <rect x="182" y="112" width="58" height="22" rx="11" fill="#E8611A"/><text x="211" y="127" text-anchor="middle">DL × 6</text>
+            <rect x="404" y="120" width="58" height="22" rx="11" fill="#E8611A"/><text x="433" y="135" text-anchor="middle">DL × 2</text>
+            <rect x="420" y="282" width="72" height="22" rx="11" fill="#111"/><text x="456" y="297" text-anchor="middle">GPO × 2</text>
+          </g>
+        </svg>
+        <div class="sheet-foot"><span>E-01 · GROUND FLOOR · LIGHTING &amp; POWER</span><span><b>23</b> ITEMS TAGGED</span></div>
+      </div>
+      <div class="boq-card">
+        <div class="bc-head"><span class="bc-title">Priced BOQ · your rates</span><span class="bc-tag">READY TO SEND</span></div>
+        <div class="bc-row"><span>LED downlight, supply &amp; install</span><b>12</b></div>
+        <div class="bc-row"><span>Double GPO</span><b>6</b></div>
+        <div class="bc-row"><span>Switch, 1 gang</span><b>5</b></div>
+        <div class="bc-tot"><span>Total ex GST</span><span>$6,480</span></div>
       </div>
     </div>
   </div>
@@ -729,7 +757,7 @@
       <p>Send it over, or have a quick chat first. Either way it's back by your deadline, or it's free.</p>
       <div class="hero-ctas" style="margin-top:0">
         <a href="https://cal.com/jonah-flinos-fv2dw0/30min?source=estimating" class="btn btn-primary btn-lg" data-call>Book a quick call</a>
-        <a href="#send-a-job" class="btn btn-white btn-lg">Send us a job</a>
+        <a href="#send-a-job" class="btn btn-white btn-lg" data-to-form>Send us a job</a>
       </div>
       <span class="soft-link">Prefer to do your own take-offs? <a href="/">Try the TakeoffAI software free</a>.</span>
     </div>
@@ -806,67 +834,119 @@ Cal("ui", {"theme":"light","styles":{"branding":{"brandColor":"#E8611A"}},"hideE
   });
 
   // Source tags: which page or ad the lead came from (tracking.js keeps them for 90 days)
-  var q = new URLSearchParams(location.search), form = document.getElementById('estimating-form');
+  var q = new URLSearchParams(location.search);
+  var f1 = document.getElementById('enquiry-form'), f2 = document.getElementById('details-form');
+  var card = document.getElementById('send-a-job');
   var attr = window.TKA ? TKA.attribution() : {};
   ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid', 'fbclid'].forEach(function (k) {
-    form.elements[k].value = attr[k] || q.get(k) || '';
+    f1.elements[k].value = attr[k] || q.get(k) || '';
   });
-  form.elements.source_page.value = location.pathname;
-  form.elements.referrer.value = document.referrer;
-  // "How did you hear about us?" only when the visit didn't come from a tagged link or ad
+  f1.elements.source_page.value = location.pathname;
+  f1.elements.referrer.value = document.referrer;
+  // "How did you hear about us?" (step 2) only when the visit didn't come from a tagged link or ad
   var tracked = window.TKA ? TKA.isTracked() : !!(q.get('utm_source') || q.get('gclid'));
   if (!tracked) document.getElementById('heard-field').hidden = false;
 
-  // Job size: contract value bands for commercial, sheet counts for residential (matches the pricing table)
+  // "Get my tender priced" / "Send us a job" further down the page: back up to the form
+  document.querySelectorAll('[data-to-form]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      var first = f2.hidden ? document.getElementById('f-name') : document.getElementById('f-link');
+      setTimeout(function () { try { first.focus({ preventScroll: true }); } catch (x) {} }, 500);
+    });
+  });
+
+  // Job size (step 2): contract value bands for commercial, sheet counts for residential (matches the pricing table)
   var SIZES = {
     commercial: { label: 'Electrical contract value', opts: ['Under $100K', '$100K–$300K', '$300K–$750K', 'Over $750K'] },
     residential: { label: 'Number of sheets', opts: ['Up to 5 sheets', '6–15 sheets', 'More than 15 sheets'] }
   };
   var sizeSel = document.getElementById('f-size'), sizeLbl = document.getElementById('l-size');
-  function setSizes() {
-    var t = SIZES[form.elements.job_type.value] || SIZES.commercial;
+  function setSizes(type) {
+    var t = SIZES[type] || SIZES.commercial;
     sizeLbl.firstChild.nodeValue = t.label + ' ';
+    sizeLbl.querySelector('.opt').hidden = type === 'residential';
     sizeSel.innerHTML = '';
     ['Not sure'].concat(t.opts).forEach(function (o) { sizeSel.add(new Option(o, o)); });
   }
-  Array.prototype.forEach.call(form.elements.job_type, function (r) { r.addEventListener('change', setSizes); });
-  setSizes();
 
-  var btn = document.getElementById('job-submit'), err = document.getElementById('form-err');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    err.hidden = true;
-    if (!form.reportValidity()) return;
+  function formData(form) {
     var data = {};
     Array.prototype.forEach.call(form.elements, function (el) {
       if (!el.name || ((el.type === 'radio' || el.type === 'checkbox') && !el.checked)) return;
       data[el.name] = el.value.trim();
     });
-    // One event ID for the browser pixel (on the thank-you page) and the server's Conversions API
+    return data;
+  }
+  function post(data) {
+    return fetch('/api/estimating-lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+      .then(function (r) { return r.json().then(function (j) { if (!r.ok || !j.ok) throw new Error(j.error || r.status); return j; }); });
+  }
+
+  // The lead counts here, at step 1, once: Meta Lead (same event ID as the server's Conversions API
+  // event, with advanced matching, which the pixel hashes in the browser), the existing estimating_lead
+  // event, and the Google "Estimating – enquiry submitted" conversion with enhanced conversions.
+  var counted = false;
+  function countLead(d) {
+    if (counted) return;
+    counted = true;
+    if (window.fbq) {
+      try {
+        var names = d.name.toLowerCase().split(/\s+/).filter(Boolean), ph = d.phone.replace(/\D/g, '');
+        if (ph.charAt(0) === '0') ph = '61' + ph.slice(1);
+        var m = { em: d.email.toLowerCase(), country: 'au' };
+        if (ph) m.ph = ph;
+        if (names[0]) m.fn = names[0];
+        if (names.length > 1) m.ln = names[names.length - 1];
+        fbq('init', '1881764475868036', m); // the site pixel (pixel.js), now with the lead's details
+        fbq('track', 'Lead', { content_name: 'Estimating enquiry', content_category: 'estimating', trade: d.trade }, { eventID: d.event_id });
+      } catch (e) {}
+    }
+    track('estimating_lead', { job_type: d.job_type, utm_source: d.utm_source });
+    if (window.TKA) TKA.conversion('estimating_enquiry', { transaction_id: d.event_id, email: d.email, phone: d.phone });
+  }
+
+  // ---- Step 1 ----
+  var lead = null;
+  var btn = document.getElementById('job-submit'), err = document.getElementById('form-err');
+  f1.addEventListener('submit', function (e) {
+    e.preventDefault();
+    err.hidden = true;
+    if (!f1.reportValidity()) return;
+    var data = formData(f1);
     data.event_id = window.TKA ? TKA.eventId('est') : 'est-' + Date.now().toString(36);
     if (window.TKA) { var ids = TKA.metaIds(); data.fbp = ids.fbp; data.fbc = ids.fbc; }
     btn.disabled = true; btn.textContent = 'Sending…';
-    fetch('/api/estimating-lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
-      .then(function (r) { return r.json().then(function (j) { if (!r.ok || !j.ok) throw new Error(j.error || r.status); }); })
-      .then(function () {
-        // Hand the lead to /estimating/thanks in this tab only (never in the URL), where the
-        // conversions fire once. If storage is blocked, fall back to the inline thank-you.
-        var lead = { event_id: data.event_id, name: data.name, email: data.email, phone: data.phone, company: data.company,
-          trade: data.trade, job_type: data.job_type, utm_source: data.utm_source, page: location.pathname, ts: Date.now() };
-        try {
-          sessionStorage.setItem('tka_est_lead', JSON.stringify(lead));
-          sessionStorage.setItem('tka_est_prefill', JSON.stringify({ name: data.name, email: data.email, phone: data.phone, business: data.company }));
-          location.href = '/estimating/thanks' + (data.trade === 'HVAC' ? '?trade=hvac' : '');
-          return;
-        } catch (x) {}
-        track('estimating_lead', { job_type: data.job_type, utm_source: data.utm_source });
-        if (window.fbq) { try { fbq('track', 'Lead', { content_name: 'Estimating enquiry' }, { eventID: data.event_id }); } catch (x) {} }
-        if (window.TKA) TKA.conversion('estimating_enquiry', { transaction_id: data.event_id, email: data.email, phone: data.phone });
-        document.getElementById('setup-link').href = '/estimating/setup?' + new URLSearchParams({
-          name: data.name, email: data.email, phone: data.phone, business: data.company }).toString();
-        document.getElementById('job-form').classList.add('sent');
-      })
-      .catch(function () { err.hidden = false; btn.disabled = false; btn.textContent = 'Send us the job'; });
+    post(data).then(function (j) {
+      countLead(data);
+      lead = { lead_id: j.lead_id, token: j.token, name: data.name, email: data.email, phone: data.phone,
+        job_type: data.job_type, trade: data.trade };
+      // For the client setup link on /estimating/thanks (the setup page strips these from its URL)
+      try { sessionStorage.setItem('tka_est_prefill', JSON.stringify({ name: data.name, email: data.email, phone: data.phone })); } catch (x) {}
+      var first = data.name.split(/\s+/)[0];
+      document.getElementById('got-name').textContent = 'Got it' + (first ? ', ' + first : '') + '.';
+      setSizes(data.job_type);
+      f1.hidden = true; f2.hidden = false;
+      var top = card.getBoundingClientRect().top;
+      if (top < 0 || top > window.innerHeight * 0.5) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      try { document.getElementById('details-title').focus({ preventScroll: true }); } catch (x) {}
+    }).catch(function () { err.hidden = false; btn.disabled = false; btn.innerHTML = 'Get my tender priced &rarr;'; });
+  });
+
+  // ---- Step 2 ----
+  var btn2 = document.getElementById('details-submit'), err2 = document.getElementById('details-err');
+  f2.addEventListener('submit', function (e) {
+    e.preventDefault();
+    err2.hidden = true;
+    if (!lead || !f2.reportValidity()) return;
+    var data = formData(f2);
+    data.form = 'details';
+    ['lead_id', 'token', 'name', 'email', 'phone', 'job_type', 'trade'].forEach(function (k) { data[k] = lead[k]; });
+    btn2.disabled = true; btn2.textContent = 'Sending…';
+    post(data).then(function () {
+      location.href = '/estimating/thanks' + (lead.trade === 'HVAC' ? '?trade=hvac' : '');
+    }).catch(function () { err2.hidden = false; btn2.disabled = false; btn2.textContent = 'Send the job details'; });
   });
 })();
 </script>
