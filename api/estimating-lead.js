@@ -367,6 +367,7 @@ async function addDetailsToCrm(leadId, f, details) {
   const old = String(row[9] || '');
   const notes = (old.includes(', ' + NOT_SENT) ? old.replace(', ' + NOT_SENT, '') : old) + (old ? ' | ' : '') + details;
   const data = [{ range: `Leads!J${n}`, values: [[notes]] }]; // RAW: never read as a formula
+  if (f.company) data.push({ range: `Leads!G${n}`, values: [[f.company]] }); // Company, now asked at step 2
   if (f.how_heard) {
     try { data.push(...(await extraCells(api, auth, rows[0] || [], { how_heard: f.how_heard }, n))); }
     catch (e) { console.error('How heard column skipped', leadId, e); }
@@ -375,7 +376,7 @@ async function addDetailsToCrm(leadId, f, details) {
     body: JSON.stringify({ valueInputOption: 'RAW', data }) });
   if (!r.ok) throw new Error(`Sheets update ${r.status}: ${await r.text()}`);
   return { row: n, created: false, contact: { name: row[2] || f.name, email: row[3] || f.email,
-    phone: String(row[4] || f.phone).replace(/^'/, ''), job_type: f.job_type } };
+    phone: String(row[4] || f.phone).replace(/^'/, ''), company: f.company || row[6] || '', job_type: f.job_type } };
 }
 
 async function handleDetails(body, res) {
@@ -398,13 +399,13 @@ async function handleDetails(body, res) {
   try { crm = await addDetailsToCrm(leadId, f, details); }
   catch (e) { console.error('CRM details update failed', leadId, e); }
   const c = (crm && crm.contact) || f;
-  const lines = [['Name', c.name], ['Phone', c.phone], ['Email', c.email], ['Trade', f.trade], ['Job type', f.job_type],
-    ['Job size', f.job_size], ['Tender deadline', f.deadline ? formatDeadline(f.deadline) : 'Not given'],
+  const lines = [['Name', c.name], ['Company', c.company], ['Phone', c.phone], ['Email', c.email], ['Trade', f.trade],
+    ['Job type', f.job_type], ['Job size', f.job_size], ['Tender deadline', f.deadline ? formatDeadline(f.deadline) : 'Not given'],
     ['Plans', f.plans_link || 'No link. They may email the plans, or want a call.'], ['Quotes in', f.quoting_software],
     ['Notes', f.notes], ['How they heard', f.how_heard], ['Lead ID', leadId],
     ['CRM', crm ? (crm.created ? `Row ${crm.row} added (the enquiry row was missing)` : `Row ${crm.row} updated`) : 'Update FAILED: add these details to the lead by hand'],
     ['Terms agreed', terms.agreed], ['Terms version', terms.version], ['Agreed at', terms.at]];
-  const subject = `Job details: ${c.name || 'estimating lead'} (${f.job_type}, ${f.deadline ? 'due ' + formatDeadline(f.deadline) : 'no deadline given'})`;
+  const subject = `Job details: ${c.company || c.name || 'estimating lead'} (${f.job_type}, ${f.deadline ? 'due ' + formatDeadline(f.deadline) : 'no deadline given'})`;
   let mailed = true;
   try { await sendEmail(c.email, subject, lines, 'Same lead as the earlier "Estimating job" email: the details are on that row in the CRM sheet.'); }
   catch (e) { mailed = false; console.error('Details email failed', leadId, e); }

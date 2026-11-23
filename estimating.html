@@ -360,7 +360,7 @@
       <li>Takeoff, supplier quotes, BOQ and tender letter</li>
     </ul>
     <div class="h-more">
-      <p class="lead">Send us the plans. AI counts every point in minutes, our in-house estimator checks it and prices it in your rates, and it's back in 24–72 hours (or per your deadline). Done in Australia, never farmed out.</p>
+      <p class="lead">Send us the plans. AI counts every point in minutes, our in-house estimator checks it and prices it in your rates, and it's back in 24–72 hours (or per your deadline). Checked and priced by our estimators.</p>
       <p class="hero-proof"><span class="dot"></span>We estimated a 30-storey apartment building in one day.</p>
       <div class="hero-ctas">
         <a href="https://cal.com/jonah-flinos-fv2dw0/30min?source=estimating" class="btn btn-dark btn-lg" data-call>Book a quick call</a>
@@ -399,7 +399,8 @@
       <form id="details-form" novalidate hidden>
         <div class="got-it" role="status" aria-live="polite"><span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div><b id="got-name">Got it.</b> We'll be in touch the same business day.</div></div>
         <h2 class="card-title" tabindex="-1" id="details-title">Send the job details now and we'll come back with price and turnaround today.</h2>
-        <div class="field" style="margin-top:18px"><label for="f-link">Link to the plans <span class="opt">(Dropbox, Google Drive, WeTransfer)</span></label><input id="f-link" name="plans_link" type="text" inputmode="url" autocomplete="off" placeholder="Paste the link here">
+        <div class="field" style="margin-top:18px"><label for="f-company">Company <span class="opt">(optional)</span></label><input id="f-company" name="company" autocomplete="organization"></div>
+        <div class="field"><label for="f-link">Link to the plans <span class="opt">(Dropbox, Google Drive, WeTransfer)</span></label><input id="f-link" name="plans_link" type="text" inputmode="url" autocomplete="off" placeholder="Paste the link here">
           <p class="field-note">or email your plans to <a href="mailto:info@takeoffai.com.au?subject=Plans%20for%20estimating">info@takeoffai.com.au</a></p>
         </div>
         <div class="row">
@@ -945,6 +946,9 @@ Cal("ui", {"theme":"light","styles":{"branding":{"brandColor":"#E8611A"}},"hideE
     ['lead_id', 'token', 'name', 'email', 'phone', 'job_type', 'trade'].forEach(function (k) { data[k] = lead[k]; });
     btn2.disabled = true; btn2.textContent = 'Sending…';
     post(data).then(function () {
+      if (data.company) {
+        try { sessionStorage.setItem('tka_est_prefill', JSON.stringify({ name: lead.name, email: lead.email, phone: lead.phone, business: data.company })); } catch (x) {}
+      }
       location.href = '/estimating/thanks' + (lead.trade === 'HVAC' ? '?trade=hvac' : '');
     }).catch(function () { err2.hidden = false; btn2.disabled = false; btn2.textContent = 'Send the job details'; });
   });
