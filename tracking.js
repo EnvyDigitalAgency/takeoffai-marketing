@@ -12,10 +12,10 @@
  */
 (function () {
   // ---- Google Ads: fill these in when the account is set up ----
-  var GOOGLE_TAG_ID = '';                 // e.g. 'AW-123456789'
+  var GOOGLE_TAG_ID = 'AW-18590661187';   // Google Ads account tag (switched on 23 Nov 2026)
   var CONVERSIONS = {                     // send_to values from Google Ads → Goals → Conversions
-    estimating_enquiry: '',               // "Estimating – enquiry submitted", e.g. 'AW-123456789/AbCdEfGh'
-    call_booked: ''                       // "Call booked"
+    estimating_enquiry: 'AW-18590661187/OVJvCOenzL0dEMP026BF', // "Estimating – enquiry submitted"
+    call_booked: 'AW-18590661187/igWACOqnzL0dEMP026BF'          // "Call booked"
   };
 
   var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
@@ -90,7 +90,19 @@
       window.dataLayer = window.dataLayer || [];
       window.gtag = function () { dataLayer.push(arguments); };
       gtag('js', new Date());
-      gtag('config', GOOGLE_TAG_ID, { linker: { domains: ['takeoffai.com.au', 'app.takeoffai.com.au'] } });
+      // Contact details sometimes ride in our own links (/how-it-works?name=&email=, setup links):
+      // the page URL Google receives never includes them
+      var loc = location.href;
+      try {
+        var u = new URL(location.href);
+        ['name', 'email', 'phone', 'business', 'company'].forEach(function (k) { u.searchParams.delete(k); });
+        loc = u.toString();
+      } catch (e) {}
+      gtag('config', GOOGLE_TAG_ID, {
+        page_location: loc,
+        allow_enhanced_conversions: true,
+        linker: { domains: ['takeoffai.com.au', 'app.takeoffai.com.au'] }
+      });
       var s = document.createElement('script');
       s.async = true;
       s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GOOGLE_TAG_ID);
