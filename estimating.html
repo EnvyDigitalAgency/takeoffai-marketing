@@ -260,6 +260,7 @@
 .job-grid .plan-visual{margin-bottom:34px}
 /* The enquiry card in the hero: step 1, then step 2 in the same card */
 .est-card{position:relative;background:#fff;border-radius:var(--r);padding:32px 32px 26px;box-shadow:0 24px 60px rgba(0,0,0,.10);border-top:4px solid var(--orange);scroll-margin-top:90px}
+.est-card .step-of{font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
 .est-card .card-title{font-size:25px;letter-spacing:-.02em;line-height:1.2;margin-bottom:6px;color:var(--ink)}
 .est-card .card-sub{font-size:15.5px;color:var(--muted);line-height:1.5;margin-bottom:22px}
 .est-card .field input,.est-card .field textarea,.est-card .field select,.est-card .seg label{background-color:var(--paper-warm)}
@@ -372,6 +373,7 @@
     <div class="est-card" id="send-a-job">
       <!-- Step 1: the enquiry. This is the lead: CRM row, info@ email, Google and Meta conversions. -->
       <form id="enquiry-form" novalidate>
+        <p class="step-of">Step 1 of 2 &middot; about 30 seconds</p>
         <h2 class="card-title">Get your tender priced</h2>
         <p class="card-sub">Leave your details and we'll confirm price and turnaround the same business day.</p>
         <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
@@ -391,7 +393,7 @@
         <input type="hidden" name="utm_term"><input type="hidden" name="gclid"><input type="hidden" name="gbraid"><input type="hidden" name="wbraid"><input type="hidden" name="fbclid">
         <input type="hidden" name="trade" value="Electrical"><input type="hidden" name="event_id"><input type="hidden" name="fbp"><input type="hidden" name="fbc">
         <p class="form-err" id="form-err" role="alert" hidden>That didn't go through. Try again, or email your details to <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a>.</p>
-        <button type="submit" class="btn btn-primary btn-lg" id="job-submit">Get my tender priced &rarr;</button>
+        <button type="submit" class="btn btn-primary btn-lg" id="job-submit">Next: send your drawings &rarr;</button>
         <p class="form-fine">Plans are never shared or sold. <a href="/privacy">Privacy policy</a></p>
       </form>
 
@@ -416,7 +418,7 @@
         </div>
         <div class="field"><label class="agree"><input type="checkbox" name="terms_agreed" value="yes" required> <span>I agree to the <a href="/estimating/terms" target="_blank" rel="noopener">Estimating Service Terms</a></span></label><input type="hidden" name="terms_version" value="v1"></div>
         <p class="form-err" id="details-err" role="alert" hidden>That didn't go through. Try again, or email the details and plans to <a href="mailto:info@takeoffai.com.au">info@takeoffai.com.au</a>.</p>
-        <button type="submit" class="btn btn-primary btn-lg" id="details-submit">Send the job details</button>
+        <button type="submit" class="btn btn-primary btn-lg" id="details-submit">Get my tender priced &rarr;</button>
         <p class="skip">No plans handy? <a href="/estimating/thanks">Skip this and we'll call you</a>.</p>
       </form>
     </div>
@@ -932,7 +934,7 @@ Cal("ui", {"theme":"light","styles":{"branding":{"brandColor":"#E8611A"}},"hideE
       var top = card.getBoundingClientRect().top;
       if (top < 0 || top > window.innerHeight * 0.5) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
       try { document.getElementById('details-title').focus({ preventScroll: true }); } catch (x) {}
-    }).catch(function () { err.hidden = false; btn.disabled = false; btn.innerHTML = 'Get my tender priced &rarr;'; });
+    }).catch(function () { err.hidden = false; btn.disabled = false; btn.innerHTML = 'Next: send your drawings &rarr;'; });
   });
 
   // ---- Step 2 ----
@@ -950,7 +952,7 @@ Cal("ui", {"theme":"light","styles":{"branding":{"brandColor":"#E8611A"}},"hideE
         try { sessionStorage.setItem('tka_est_prefill', JSON.stringify({ name: lead.name, email: lead.email, phone: lead.phone, business: data.company })); } catch (x) {}
       }
       location.href = '/estimating/thanks' + (lead.trade === 'HVAC' ? '?trade=hvac' : '');
-    }).catch(function () { err2.hidden = false; btn2.disabled = false; btn2.textContent = 'Send the job details'; });
+    }).catch(function () { err2.hidden = false; btn2.disabled = false; btn2.innerHTML = 'Get my tender priced &rarr;'; });
   });
 })();
 </script>
