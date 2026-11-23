@@ -38,6 +38,7 @@ Shared files:
 ## Conventions
 - **Nav and footer are duplicated verbatim in every page.** When changing a link, change it in all HTML files (a `grep -l 'nav-links'` finds them).
 - Cache-bust `site.css` / `site.js` by bumping the `?v=` query in every page's `<link>`/`<script>` when you change them.
+- The wordmark is **takeoffai**: bold "takeoff", regular "ai", same colour, no dot (`takeoff<span>ai</span>` in the shared header/footer and the home demo label; never "takeoff.ai"). The share image `takeoffai_og_banner.png` (Nov 2026) has no stats; bump its `?v=` in the og:image/twitter:image tags if it changes.
 - The business is "TakeoffAI (ABN 97 395 522 316)". There is **no Pty Ltd**: never write "TakeoffAI Pty Ltd" (footers say "© 2026 TakeoffAI · ABN 97 395 522 316"; schema publisher/provider name is "TakeoffAI").
 - Both estimating forms (`/estimating` job form and `/estimating/setup`) have a required, unticked "I agree to the Estimating Service Terms" box. The function rejects submissions without it and records terms agreed / version / time (Melbourne, to the second): in Notes on the Leads row for jobs, and in the last three columns of the Client setup tab. Both notification emails include them.
 - **No Simpro anywhere on the site** (as of 12 Sept 2026, at Simpro's request). All mentions, the `/simpro` page and its route were removed; the copy now talks about a priced bill of quantities exported to Excel/CSV/PDF instead. Don't reintroduce Simpro until Jonah says they're happy for it to appear.
